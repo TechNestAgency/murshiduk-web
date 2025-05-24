@@ -1,0 +1,21 @@
+﻿@model MurshadikCP.Models.StatsCardModel
+
+<div class="card bg-soft-@Model.bgColor">
+    <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+            <div class="avatar-xs mr-3">
+                <span class="avatar-title rounded-circle bg-dark font-size-18">
+                    <i class="@Model.icon"></i>
+                </span>
+            </div>
+            <h4 class="mb-0">@Model.title</h4>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div>
+                    <h1>@Model.description</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

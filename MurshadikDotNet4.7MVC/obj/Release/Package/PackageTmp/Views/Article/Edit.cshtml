@@ -1,0 +1,323 @@
+﻿@model MurshadikCP.Models.DB.article
+
+@{
+    ViewBag.Title = Resources.Resources.Edit;
+    ViewBag.pTitle = Resources.Resources.Edit;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card rounded">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="user_id" value="@Model.user_id" />
+                    <input type="hidden" name="created_at" value="@Model.created_at" />
+                    <input type="hidden" name="id" value="@Model.id" />
+                    <input type="hidden" name="allkeywords" id="allkeywords" />
+                    <div class="form-group row">
+                        <label class="col-md-12 col-form-label">@Resources.Resources.Title</label>
+                        <div class="col-md-12">
+                            <input class="form-control" name="title" type="text" value="@Model.title" placeholder="@Resources.Resources.News_Title" required>
+                            <div class="invalid-feedback">
+                                @Resources.Resources.required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-12 col-form-label">@Resources.Resources.Description</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" name="short_description" value="@Model.short_description" placeholder="short description" required>
+                            <div class="invalid-feedback">
+                                @Resources.Resources.required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-12 col-form-label">@Resources.Resources.News</label>
+                        <div class="col-md-12">
+                            <textarea id="elm1" name="description" required>@Model.description</textarea>
+                            <div class="invalid-feedback">
+                                @Resources.Resources.required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-12 col-form-label">@Resources.Resources.Keywords</label>
+                        <div class="col-md-12">
+                            @Html.DropDownList("keywords", null, htmlAttributes: new
+                       {
+                           @class = "select2 form-control select2-multiple h-auto",
+                           id = "multiKeywords",
+                           multiple = "multiple",
+                           data_placeholder = " ... أختر ",
+                           required = "required"
+                       })
+                            <div class="invalid-feedback">
+                                @Resources.Resources.required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label>@Resources.Resources.Status</label>
+                        </div>
+                        <div class="col-md-12">
+                            <span class="checkbox">
+                                @Html.EditorFor(model => model.active)
+                            </span>
+                            <label class="px-2">@Resources.Resources.Active</label>
+                        </div>
+
+                        @*@Html.LabelFor(model => model.show_bg, "إظهار صورة الخلفية", htmlAttributes: new { @class = "control-label col-auto" })
+                            <div class="col-md-1">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.show_bg)
+                                </div>
+                            </div>
+
+                            @Html.LabelFor(model => model.show_cats, "إظهار الفئات", htmlAttributes: new { @class = "control-label col-auto" })
+                            <div class="col-md-1">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.show_cats)
+                                </div>
+                            </div>*@
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-12 col-form-label">@Resources.Resources.News_Category</label>
+                        <div class="col-md-12">
+                            @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-12 col-form-label">@Resources.Resources.News_Image </label>
+                        <div class="col-md-12">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="imageFile" onchange="document.getElementById('outputimage').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="imageFile">@Resources.Resources.Select_image</label>
+                                <div class="card">
+                                    @if (Model.image != null && Model.image != "")
+                                    {
+                                        <img src="@Model.image" id="outputimage" class="card-img-top img-fluid" alt="card-img-top" style="width: 40px; height: 40px;" />
+                                        <div class="position-absolute">
+                                            <a href="#" class="btn btn-danger ml-5 sa-warning" data-id="@Model.id" data-image="@Model.image">@Resources.Resources.Delete</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.image" id="outputimage" class="card-img-top img-fluid" alt="no-image" style="width: 40px; height: 40px;" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="articleImage" value="@Model.image" />
+                    <div class="form-group row mb-5">
+
+                        <label class="col-md-12 col-form-label">@Resources.Resources.News_Gallery</label>
+                        <div class="col-md-12">
+                            <div class="">
+                                <input type="file" class="custom-file-input" name="childimage" multiple id="customFile" onchange="document.getElementById('outputcustom').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="customFile">@Resources.Resources.Select_image </label>
+                                <div class="row my-3 bg-light">
+                                    @foreach (var ag in Model.articles_galleries)
+                                    {
+                                    <div class="col-6 col-md-4">
+                                        <img src="@ag.image" id="outputcustom" class="card-img-top img-fluid" alt="icon image" style="max-height:fit-content()" />
+                                        <div class="position-absolute">
+                                            <a href="#" class="btn btn-danger ml-5 sa-warning-child" data-id="@ag.id" data-image="@ag.image">@Resources.Resources.Delete</a>
+                                        </div>
+                                    </div>
+                                        
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-12 text-center">
+                            <input id="login" type="submit" value="@Resources.Resources.Save" class="btn btn-primary" />
+                            @*@Html.ActionLink(Resources.Resources.Cancel, ViewData["returnAction"].ToString()  , null, new { @class = "btn btn-danger" })*@
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    @*<script src="~/assets/libs/jquery/jquery.min.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+
+            $(".sa-warning").click(function (e) {
+
+                var id = $(this).data('id');
+                var image = $(this).data('image');
+                Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "هل أنت متأكد من تنفيذ هذا الإجراء؟",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/Article/DeleteImage', { 'id': id, 'image': image })
+                            .then(function (r) {
+                                if (r.data == "successful") {
+                                    Swal.fire("Success", "Success", "success")
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            });
+
+            $(".sa-warning-child").click(function (e) {
+
+                var id = $(this).data('id');
+                var image = $(this).data('image');
+                Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "هل أنت متأكد من تنفيذ هذا الإجراء؟",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/Article/DeleteChildImage', { 'id': id, 'image': image })
+                            .then(function (r) {
+                                if (r.data == "successful") {
+                                    Swal.fire("Success", "Success", "success")
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            });
+
+            $(".select2").select2({
+                dir: "rtl",
+                tags: true,
+                insertTag: function (data, tag) {
+                    data.push(tag);
+                },
+                createTag: function (params) {
+                    var term = $.trim(params.term);
+                    console.log(term)
+
+                    if (term === '') {
+                        return null;
+                    }
+
+                    return {
+                        id: term,
+                        text: term,
+                        newTag: true // add additional parameters
+                    }
+                }
+            }).val(['@Html.Raw(@Model.keywords)']).trigger('change');
+
+            $('.select2').on('select2:select', function (e) {
+                var data = e.params.data;
+                if (data.newTag) {
+                    axios.post('/keywords/AddKeywords', { 'name': data.text })
+                        .then(function (r) {
+                            console.log(r)
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        });
+                    console.log(data);
+                }
+            });
+
+
+        0 < $("#elm1").length &&
+            tinymce.init({
+                selector: "textarea#elm1",
+                directionality: 'rtl',
+                language: 'ar',
+                language_url: '../assets/js/langs/ar.js',
+                height: 600,
+                menubar: true,
+                plugins: [
+                    'advlist autolink lists link image imagetools charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                ],
+                mediaembed_max_width: 300,
+                toolbar: 'undo redo | formatselect | bold italic backcolor forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | removeformat | code | image | help',
+                setup: function (editor) {
+                    editor.on('BeforeSetContent', function (e) {
+                        console.log('BeforeSetContent: ' + e.content);
+                        if (e.content.startsWith("<table ")) {
+                            e.content = '<div class="table-responsive">' + e.content + '</div>';
+                        }
+                    });
+                },
+                content_css: '../assets/css/app.min.css',
+                image_class_list: [
+                    { title: 'Responsive', value: 'img-fluid' }
+                ],
+                automatic_uploads: true,
+                images_upload_url: '/Article/upload',
+                relative_urls: false,
+                remove_script_host: false,
+                convert_urls: true,
+            });
+    });
+
+    </script>
+}

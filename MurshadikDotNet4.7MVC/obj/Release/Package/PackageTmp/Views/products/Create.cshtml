@@ -1,0 +1,130 @@
+﻿@model MurshadikCP.Models.DB.product
+
+@{
+    ViewBag.Title = Resources.Resources.Add_New_Product;
+    if (ViewBag.role == "Market")
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Create", "products", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4 class="py-3">@Resources.Resources.Add_New_Product</h4>
+
+                        <input type="hidden" value="@ViewBag.marketid" id="marketid" name="marketid" />
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.product_category_id, Resources.Resources.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("product_category_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.product_name, Resources.Resources.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.product_name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.product_name, "مطلوب اسم المنتج", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label"> @Resources.Resources.Image</label>
+                            <div class="col-md-10">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="product_image" id="imageFile" onchange="document.getElementById('outputimage').src = window.URL.createObjectURL(this.files[0])" required>
+                                    <label class="custom-file-label" for="imageFile"> @Resources.Resources.Select_image</label>
+                                    <div class="card">
+                                        <img src="~/assets/images/image_placeholder.jpg" id="outputimage" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.product_type_id, Resources.Resources.Product_Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("product_type_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.product_origin, Resources.Resources.Product_Origin, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.product_origin, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.product_origin, "مطلوب أصل المنتج", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.unit_id, Resources.Resources.Unit, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("unit_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            </div>
+                        </div>
+
+                        @*<div class="form-group row">
+                            @Html.LabelFor(model => model.unit_value, "قيمةالوحدة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.unit_value, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.unit_value, "مطلوب قيمةالوحدة", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>*@
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value=@Resources.Resources.Add class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-danger" })
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+}
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $("#product_type_id").change(function () {
+            var product_type_id = $('#product_type_id').val();
+            if (product_type_id == "3") {
+                $("#product_origin").prop("required", true);
+            } else {
+                $("#product_origin").prop("required", false);
+            }
+        });
+    });
+
+</script>

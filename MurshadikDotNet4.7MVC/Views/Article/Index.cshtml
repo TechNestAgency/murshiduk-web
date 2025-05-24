@@ -1,0 +1,306 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.article>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/assets/css/select2_mushadik.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<style>
+
+    .selectbox {
+        background: #fff;
+        color: #1d3b4a;
+        padding: 8px;
+        line-height: 18px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        border-width: 0 1px 4px;
+    }
+</style>
+@{
+    ViewBag.Title = ViewBag.ptitle;
+    ViewBag.pTitle = ViewBag.ptitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.AntiForgeryToken()
+
+<div class="row">
+    <div class="col-12 offset-lg-2 py-lg-3 py-1">
+        @Html.Partial("~/Views/Shared/_searchbar.cshtml", new ViewDataDictionary { { "searchType", "news" } })
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Article", FormMethod.Get))
+                {
+                    <div class="d-flex justify-content-between py-lg-3 py-2">
+                        <input type="hidden" name="catid" value="@Request.QueryString["catid"]" />
+                        <input type="hidden" id="start_date" name="start_date" value="@ViewBag.Start_Date" />
+                        <input type="hidden" id="end_date" name="end_date" value="@ViewBag.End_date" />
+
+                        <div class="flex-grow-1">
+                            <div class="d-inline-flex">
+                                <span class="align-self-baseline">
+                                    @Resources.Resources.Status:
+                                </span>
+
+                                @Html.DropDownList("Filter_Value", new List<SelectListItem>
+                                {
+                                    new SelectListItem{ Text = @Resources.Resources.All, Value = "0" },
+                                    new SelectListItem{ Text = @Resources.Resources.Active, Value = "1" },
+                                    new SelectListItem{ Text = @Resources.Resources.Inactive, Value = "2" },
+                                 },
+                                 new
+                                      {
+                                     @class = "form-control py-0 align-self-baseline",
+                                     id = "filter"
+                                 }
+                                 )
+                                @*<select name="Filter_Value" id="filter" class="form-control py-0 align-self-baseline">
+                                        <option value="0"></option>
+                                        <option value="1"></option>
+                                        <option value="2"></option>
+                                    </select>*@
+                                @*@Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                                    <input type="submit" value="@Resources.Resources.Search" class="btn btn-primary waves-effect waves-light" />*@
+                            </div>
+
+                            <div class="px-md-2 px-1 d-inline-flex">
+                                <div id="reportrange" class="selectbox">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span> <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        @Html.ActionLink(Resources.Resources.Add_News, "Add", "Article", new { catid = Request.QueryString["catid"] }, new { @class = "btn btn-success  mdi mdi-plus-box ml-1" })
+
+
+                    </div>
+                }
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                @Resources.Resources.Title
+                            </th>
+                            <th>
+                                @Resources.Resources.Category
+                            </th>
+                            @*<th>
+                                @Resources.Resources.Active
+                            </th>*@
+                            <th>
+                                @Resources.Resources.Date
+                            </th>
+                            <th>
+                                اخر تحديث من قبل
+                            </th>
+                            <th>
+                                @Resources.Resources.Status
+                            </th>
+                            <th class="text-right">@Resources.Resources.Edit</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="align-middle w-auto">
+                                    @Html.DisplayFor(modelItem => item.title)
+                                </td>
+                                <td class="align-middle w-auto">
+                                    @Html.DisplayFor(modelItem => item.category.name)
+                                </td>
+                                @*<td>
+                                    @(item.active == true ? Resources.Resources.Yes : Resources.Resources.No)
+                                </td>*@
+                                <td class="align-middle w-auto">
+                                    @(item.created_at != null ? item.created_at.Value.UIFormatedDateTime() : "")
+                                    @*@Html.DisplayFor(modelItem => item.created_at.ToString("dd-mm"))*@
+                                </td>
+                                <td>
+                                    @item.user.name  @item.user.last_name
+                                </td>
+                                <td>
+                                    <a class='@(item.active == true ? "btn-success" : "btn-danger") btn waves-effect waves-light sa-warning' data-toggle="tooltip" data-id="@item.id" data-active="@item.active" data-placement="top" title="@(item.active == true ? Resources.Resources.Yes : Resources.Resources.No)">@(item.active == true ? Resources.Resources.Active : Resources.Resources.Inactive)</a>
+                                </td>
+                                <td class="text-right">
+                                    <a href="/Article/Edit?id=@item.id&action=@ViewData["returnAction"]" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Edit"><i class="mdi mdi-circle-edit-outline"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.PageCount > 1)
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-between">
+                <div>
+                    عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.Resources.From @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action(ViewContext.RouteData.Values["action"].ToString(),
+                        new
+                             {
+                            page,
+                                 Sorting_Order = ViewBag.CurrentSortOrder,
+                            Filter_Value = ViewBag.Filter_Value,
+                            start_date = ViewBag.Start_Date,
+                            end_date = ViewBag.End_Date
+                        }))
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+        var token = $("[name='__RequestVerificationToken']").val();
+
+        $(document).ready(function () {
+
+            $(".sa-warning").click(function (e) {
+                
+                var id = $(this).data('id');
+                var active = $(this).data('active');
+                Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "هل أنت متأكد من تنفيذ هذا الإجراء؟",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/Article/ActiveInactive', { 'id': id, 'active': active })
+                            .then(function (r) {
+                                if (r.data == "Success") {
+                                    Swal.fire("Success","Success", "success")
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            });
+
+            var is_first_load = true;
+
+            var start = $('#start_date').val() == "" ? moment().subtract(6, 'days') : moment($('#start_date').val());
+            var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val())
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    $('form').submit();
+                } else {
+                    is_first_load = false;
+                }
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2020-11-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+            cb(start, end);
+
+
+            $('#search-news').select2({
+                theme: "bootstrap",
+                cacheDataSource: [],
+                delay: 500,
+                dir: "rtl",
+                placeholder: '@Resources.Resources.Search_News',
+                minimumInputLength: 3,
+                ajax: {
+                    url: '@Url.Action("SearchNews", "Article")',
+                    delay: 500,
+                    type: "post",
+                    dataType: 'json',
+                    data: function (params) {
+                        return {
+                            __RequestVerificationToken: token,
+                            q: params.term
+                        };
+                    },
+                    processResults: function (data) {
+                        console.log(data);
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.title_ar,
+                                    id: item.id,
+                                    item: item,
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $('#search-news').on('select2:select', function (e) {
+                var data = e.params.data;
+                var url = '@Url.Action("Edit","Article")';
+                url = url +"?id="+ data.item.id;
+                window.location.href = url;
+            });
+
+            $("#filter").on('change', function () {
+                $('form').submit();
+            })
+        })
+    </script>
+
+}

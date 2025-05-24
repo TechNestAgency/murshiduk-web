@@ -1,0 +1,118 @@
+﻿@model List<MurshadikCP.Models.DB.GetChatDetailsByUserID_Result>
+<div class="w-100 user-chat">
+    <div class="card">
+        <div class="p-4 border-bottom ">
+            <div class="row">
+                <div class="col-md-4 col-9">
+                    <h5 class="font-size-15 mb-1">@Model[0].fullname_from</h5>
+                    <p class="text-muted mb-0"><i class="mdi mdi-circle align-middle mr-1"></i> Active now</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="chat-conversation p-3">
+                <ul class="list-unstyled" data-simplebar style="max-height: 470px;">
+                    @foreach (var item in Model)
+                    {
+                        string[] user_ids = item.chat_ids.Split(',');
+                        long User_id_to = Convert.ToInt32(user_ids[1]);
+                        if (User_id_to != item.message_from)
+                        {
+                            <li>
+                                <div class="conversation-list">
+                                    <div class="ctext-wrap">
+                                        <div class="conversation-name">@item.fullname_from</div>
+                                        @if (item.message_type == 4)
+                                        {
+                                            <p>
+                                                <img src="@item.message" />
+                                            </p>
+                                        }
+                                        else if (item.message_type == 2)
+                                        {
+                                            <p>
+                                                <audio controls autoplay muted>
+                                                    <source src="@item.message" type="audio/@item.message.Split('.').Last()">
+                                                </audio>
+                                            </p>
+                                        }
+                                        else if (item.message_type == 3)
+                                        {
+                                            <p>
+                                                <video width="320" height="240" controls>
+                                                    <source src="@item.message" type="video/mp4">
+                                                </video>
+                                            </p>
+                                        }
+                                        else if (item.message_type == 5)
+                                        {
+                                            <p>
+                                                <embed src="@item.message" type="application/pdf" height="300px" width="100%" class="responsive">
+                                                <a href="@item.message">download</a>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                @item.message
+                                            </p>
+                                        }
+                                        <p class="chat-time mb-0"><i class="bx bx-time-five align-middle mr-1"></i> @item.created_at</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="right">
+                                <div class="conversation-list">
+                                    <div class="ctext-wrap">
+                                        <div class="conversation-name">@item.fullname_from</div>
+                                        @if (item.message_type == 4)
+                                        {
+                                            <p>
+                                                <img src="@item.message" height="320px" width="240px" />
+                                            </p>
+                                        }
+                                        else if (item.message_type == 2)
+                                        {
+                                            <p>
+                                                <audio controls autoplay muted>
+                                                    <source src="@item.message" type="audio/mp3">
+                                                </audio>
+                                            </p>
+                                        }
+                                        else if (item.message_type == 3)
+                                        {
+                                            <p>
+                                                <video width="320" height="240" controls>
+                                                    <source src="@item.message" type="video/mp4">
+                                                </video>
+                                            </p>
+                                        }
+                                        else if (item.message_type == 5)
+                                        {
+                                            <p>
+                                                <embed src="@item.message" type="application/pdf" height="300px" width="100%" class="responsive">
+                                                <a href="@item.message">download</a>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                @item.message
+                                            </p>
+                                        }
+
+                                        <p class="chat-time mb-0"><i class="bx bx-time-five align-middle mr-1"></i> @item.created_at</p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

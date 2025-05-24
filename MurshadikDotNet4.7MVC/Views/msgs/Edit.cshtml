@@ -1,0 +1,66 @@
+﻿@model MurshadikCP.Models.DB.msg
+
+@{
+    ViewBag.Title = "رسالة";
+    ViewBag.pTitle = "تعديل رسالة ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>msg</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.id)
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.attention_id, "انتباه", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("attention_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                                @Html.ValidationMessageFor(model => model.attention_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.region_id, "منطقة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("region_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                                @Html.ValidationMessageFor(model => model.region_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.skill_id, "مهارة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("skill_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                                @Html.ValidationMessageFor(model => model.skill_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.msg1, "رسالة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.msg1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.msg1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حفظ" class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>

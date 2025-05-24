@@ -1,0 +1,274 @@
+﻿
+@model MurshadikCP.Controllers.ParentSkill
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<link href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+@{
+    ViewBag.Title = Resources.Resources.Skills;
+    ViewBag.pTitle = Resources.Resources.Skills;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm(Model.skill.id == 0 ? "Create" : "Edit", "Skill", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.skill.id" />
+                    <input type="hidden" name="sid" value="@Model.skill.id" />
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.skill.name, Resources.Resources.Name_Arabic, htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                @Html.EditorFor(model => model.skill.name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.skill.name, "اسم التخصص مطلوب باللغة العربية", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.skill.description, Resources.Resources.desc_Arabic, htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                @Html.EditorFor(model => model.skill.description, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.skill.description, "الوصف بالعربية مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.skill.parent_skill, Resources.Resources.Skill, htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                @Html.DropDownList("parent_skill", null, "-- حدد المهارة --", htmlAttributes: new { @class = "form-control h-auto", @disabled = "disabled" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col col-form-label">@Resources.Resources.Text_Color</label>
+                            <div class="col">
+                                <input class="form-control" type="color" name="text_color" value="@(Model.skill == null ? "#556ee6" : Model.skill.text_color)" id="example-color-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col col-form-label">@Resources.Resources.Background_Color</label>
+                            <div class="col">
+                                <input class="form-control" type="color" name="bg_color" value="@(Model.skill == null ? "#cccccc" : Model.skill.bg_color)" id="example-color-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col col-form-label">@Resources.Resources.Select_Icon_Image</label>
+                            <div class="col">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="imgIcon" id="imageFile" onchange="document.getElementById('outputicon').src = window.URL.createObjectURL(this.files[0])" @(Model.skill.id == 0 ? Resources.Resources.required : "")>
+                                    <label class="custom-file-label" for="imageFile"> @(Model.skill.id == 0 ? "... أختر ": "")</label>
+                                    <div class="invalid-feedback">
+                                        الرجاء تحديد الصورة
+                                    </div>
+                                    <div class="card">
+                                        <img src="@(Model.skill.id == 0 ? "/assets/images/image_placeholder.jpg" : Model.skill.icon)" id="outputicon" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col col-form-label">@Resources.Resources.Select_Banner_Image</label>
+                            <div class="col">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="bannerImg" id="customFile" onchange="document.getElementById('outputbanner').src = window.URL.createObjectURL(this.files[0])" @(Model.skill.id == 0 ? "required" : "")>
+                                    <label class="custom-file-label" for="customFile"> @(Model.skill.id == 0 ? "... أختر ": "") </label>
+                                    <div class="invalid-feedback">
+                                        الرجاء تحديد الصورة
+                                    </div>
+                                    <div class="card">
+                                        <img src="@(Model.skill.id == 0 ? "/assets/images/image_placeholder.jpg" : Model.skill.banner)" id="outputbanner" class="card-img-top img-fluid" alt="banner image" style="width: 40px; height: 40px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.skill.active, "مُفعل", htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.skill.active)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حفظ" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Skill", FormMethod.Get))
+                {
+                    <div class="align-items-center form-group row">
+                        <div class="col-lg-4">
+                            @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                        </div>
+                        <input type="submit" value="بحث" class="btn btn-primary waves-effect waves-light" />
+                    </div>
+                }
+
+            <div class="table-responsive">
+                @using (Html.BeginForm("Sorting", "Skill", FormMethod.Post))
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    الاسم
+                                </th>
+                                <th>
+                                    مُفعل
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.skillList)
+                            {
+                                <tr>
+                                    <th class="align-middle">
+                                        <i class="fas fa-arrows-alt"></i>
+                                        @Html.DisplayFor(modelItem => item.name)
+                                        <input type="hidden" name="sortId" value="@item.id" />
+                                    </th>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.active)
+                                    </td>
+                                    <td>
+                                        <a href="/Skill/Index?skillId=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                        <input type="hidden" id="ids" value="@item.id" />
+                                        <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <input type="submit" value="Update Sorting" />
+                }
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-7">
+        <div class="d-flex justify-content-between">
+            <div>
+                عرض صفحة @(Model.skillList.PageCount < Model.skillList.PageNumber ? 0 : Model.skillList.PageNumber) من @Model.skillList.PageCount
+                @Html.PagedListPager(Model.skillList, Page_No => Url.Action("Index",
+                    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        if ($("#parent_skill").val() == "") {
+            $("#parent_skill").prop('disabled', false);
+        } else {
+            $("#parent_skill").prop('disabled', true);
+        }
+
+        $("tbody").sortable({
+            //items: 'tr:not(tr:first-child)',
+            cursor: 'pointer',
+            axis: 'y',
+            dropOnEmpty: false,
+            start: function (e, ui) {
+                ui.item.addClass("selected");
+            },
+            stop: function (e, ui) {
+                ui.item.removeClass("selected");
+            },
+            receive: function (e, ui) {
+                $(this).find("tbody").append(ui.item);
+            }
+        });
+        //$("#sortable").sortable();
+        $("tbody").disableSelection();
+
+        var successMessage = '@TempData["SuccessMessage"]'
+        if (successMessage != null && successMessage != '') {
+            Swal.fire({ position: "top-end", type: "success", title: "@TempData["SuccessMessage"]", showConfirmButton: !1, timer: 1500 });
+        }
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/Skill/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+
+                                var uri = window.location.toString();
+                                if (uri.indexOf("?") > 0) {
+                                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                                    window.history.replaceState({}, document.title, clean_uri);
+                                }
+
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+</script>

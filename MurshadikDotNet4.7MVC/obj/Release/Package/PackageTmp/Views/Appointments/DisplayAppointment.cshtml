@@ -1,0 +1,105 @@
+﻿@model MurshadikCP.Models.DB.appointment
+
+@{
+    ViewBag.Title = Resources.Resources.Lab_Report;
+    if (ViewBag.role == "Lab Manager")
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">@Resources.Resources.Appointment_Detail</h4>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Resources.Resources.Lab_Name</label>
+                    <div class="col-md-10">
+                        <input class="form-control" name="labname" value="@Model.lab.Name" type="text" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Resources.Resources.UserName</label>
+                    <div class="col-md-10">
+                        <input class="form-control" name="username" value='@(Model.user != null ? Model.user.name : "")' type="text" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Resources.Resources.Region</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="regionname" value="@Model.lab.city.name_ar" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Resources.Resources.Appointment_Date</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="appointmentdate" value="@Model.appointment_date" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Resources.Resources.Appointment_Time</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="appointmenttime" value="@Model.appointment_time" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Resources.Resources.Created_At</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="created_at" value="@Model.created_at" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Resources.Resources.Total_Sample</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="no_samples" value="@Model.no_samples" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.is_completed, Resources.Resources.Is_Completed, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.is_completed)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.is_sample_collected, Resources.Resources.Is_Sample_Collected, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.is_sample_collected)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.is_canceled, Resources.Resources.Cancel_By_Laboratory_User, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.is_canceled)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="/Appointments/Index/@Model.lab_id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="العودة إلى الصفحة الرئيسية"><i class="bx bx-arrow-back"></i>@Resources.Resources.Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+

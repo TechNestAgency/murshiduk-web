@@ -1,0 +1,156 @@
+﻿@model MurshadikCP.Models.DB.user
+@{
+    ViewBag.Title = "إنشاء مستخدم تعديل";
+    ViewBag.pTitle = "إنشاء مستخدم تعديل";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("UpdateUser", "Account", FormMethod.Post, new { @class = "needs-validation custom-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <label class="text-danger control-label">@ViewBag.error</label>
+                    <div class="form-horizontal">
+                        <div class="form-group row">
+                            <input type="hidden" name="id" value="@Model.id" />
+                            @Html.LabelFor(model => model.name, "اسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.name, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @class = "form-control input-mask",
+                                   @required = "required"
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.name, "اسم مطلوب", new { @class = "invalid-feedback" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.phone, "رقم الجوال", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input id="input-mask" maxlength="9" name="phone" value="@Model.phone" class="form-control input-mask" data-inputmask="'mask': '599999999'" required>
+                                @*@Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @required = "required" } })*@
+                                @Html.ValidationMessageFor(model => model.phone, "رقم الجوال مطلوب", new { @class = "invalid-feedback" })
+                                <span class="text-muted">e.g "599999999"</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.region_id, "منطقة", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("region_id", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.role_id, "دور المستخدم", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Role_id", null, htmlAttributes: new { @class = "form-control role_id h-auto" })
+                            </div>
+                        </div>
+
+                       
+                            <div class="form-group row" id="labDiv">
+                                <label class="control-label col-md-2">مختبر</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("Lab", null, htmlAttributes: new { @class = "form-control h-auto" })
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row" id="marketDiv">
+                                <label class="col-form-label col-md-2">سوق</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("Market", null, htmlAttributes: new
+                                   {
+                                       @class = "select2 form-control select2-multiple w-100 h-auto",
+                                       id = "multiMarket",
+                                       multiple = "multiple",
+                                       data_placeholder = " .... أختر",
+                                       style = "width:100%"
+                                   })
+                                </div>
+                            </div>
+                       
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="@Resources.Resources.Edit" class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", "User", null, htmlAttributes: new { @class = "btn btn-danger" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <!-- form mask -->
+    <script src="~/assets/libs/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+    <!-- form mask init -->
+    <script src="~/assets/js/pages/form-mask.init.js"></script>
+
+
+
+    @*<script src="~/assets/libs/jquery/jquery.min.js"></script>*@
+    <script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $("#labDiv").hide();
+        $("#marketDiv").hide();
+
+        if (@Model.role_id == 4)
+        {
+            $("#labDiv").show();
+        }
+        else if (@Model.role_id == 8)
+        {
+            $("#marketDiv").show();
+        }
+
+            $(".role_id").change(function () {
+            var value = $("#Role_id").val();
+            if (value == 4) {
+                        $("#labDiv").show();
+                        $("#marketDiv").hide();
+                        $("#multiMarket").prop("required", false);
+            } else if (value == 8) {
+                        $("#labDiv").hide();
+                        $("#marketDiv").show();
+                        $("#multiMarket").prop("required", true);
+            } else {
+                        $("#labDiv").hide();
+                        $("#marketDiv").hide();
+                $("#multiMarket").prop("required", false);
+            }
+        });
+
+        $(".select2").select2({
+            dir: "rtl"
+        }).val(['@Html.Raw(@ViewBag.Market_id)']).trigger('change');
+
+    });
+
+
+
+
+
+    </script>
+}
+

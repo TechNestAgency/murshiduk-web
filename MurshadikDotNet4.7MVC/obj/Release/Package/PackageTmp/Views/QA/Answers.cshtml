@@ -1,0 +1,433 @@
+﻿@model MurshadikCP.Models.DB.qa_questions
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = Model.title;
+    ViewBag.pTitle = Model.title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="text-truncate font-size-15">@Model.title</h5>
+
+                <div class="row">
+                    <div class="col-sm-9 col-12">
+                        <div class="media">
+                            <input type="hidden" name="q_id" id="q_id" value="@Model.id" />
+                            <input type="hidden" id="qa_approved" value="@(Model.is_approved == true ? Resources.Resources.Yes : Resources.Resources.No)" />
+                            <input type="hidden" id="qa_verified" value="@(Model.is_verified == true ? Resources.Resources.Yes : Resources.Resources.No)" />
+                            <div class="media-body overflow-hidden">
+                                <p class="text-muted">@Model.description</p>
+                                <p><i class="fa fa-user fa-1x"></i> @Model.user.name @Model.user.last_name
+                                <br />
+                                <i class="fa fa-phone fa-1x"></i> <span dir="ltr">+@Model.user.phone</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        @if (ViewBag.questionAttachments != null)
+                        {
+                            foreach (var item in ViewBag.questionAttachments)
+                            {
+                                <a href="javascript: void(0);" class="team-member d-inline-block">
+                                    <img src="~/Media/QA/Question/@item" alt="" class="avatar-lg m-1" />
+                                </a>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <p class="text-muted">
+                    <i class="bx bx-calendar mr-1 text-primary"></i>
+                    @Resources.Resources.DateCreated : @Model.created_at
+                </p>
+
+                <p class="text-muted">
+                    <i class="bx bx-archive mr-1 text-primary"></i>
+                    @Resources.Resources.Category: @Model.qa_category.name_ar
+                </p>
+
+                <div class="text-muted mt-4">
+                    <p>
+
+                        @{
+                            var kws = Model.keywords.Split(',');
+                            var random = new Random();
+                        }
+                        <i class="bx bx-tag mr-1 text-primary"></i>
+                        @Resources.Resources.Keywords:
+                        @foreach (var kw in kws)
+                        {
+
+                            <label class="badge text-white font-size-11" style="background-color: @String.Format(" #{0:X6}", random.Next(0x1000000));">@kw</label>
+                        }
+                    </p>
+                    <p>
+                        <i class="bx bx-award mr-1 text-primary"></i>
+                        @Resources.Resources.IsApproved: @(Model.is_approved == true ? Resources.Resources.Yes : Resources.Resources.No)
+                    </p>
+                </div>
+
+                <div class="row task-dates">
+                    <div class="col-sm-4 col-6">
+                        <div class="mt-4">
+                            <h5 class="font-size-14"><i class="bx bx-calendar-check mr-1 text-primary"></i> تاريخ الموافقة</h5>
+                            <p class="text-muted mb-0">@Model.approved_at</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row task-dates">
+                    <div class="col-sm col-6"></div>
+                    @if (!Model.is_approved)
+                    {
+                        <div class="col-sm-4 col-6">
+                            <button type="button" class="btn btn-primary waves-effect waves-light sa-isapproved_qa">
+                                <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> تمت الموافقة
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-1">جواب</h4>
+            </div>
+            @foreach (var item in Model.qa_answers)
+            {
+                <div class="card-body border-top">
+                    <p class="text-muted mb-4">@item.description</p>
+
+                    <div class="media">
+                        <div class="row">
+                            <div class="team">
+                                @foreach (var item1 in ViewBag.answerAttachments)
+                                {
+                                    if (item.id == item1.id)
+                                    {
+                                        <a href="javascript: void(0);" class="team-member d-inline-block">
+                                            <img src="~/Media/QA/Answer/@item1.file_name" alt="" class="avatar-lg m-1" />
+                                        </a>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-body overflow-hidden">
+                            <div class="team">
+                                <input type="hidden" name="ans_id" id="ans_id" value="@item.id" />
+                                <p class="team-member d-inline-block font-size-13">
+                                    <i class="fa fa-user fa-1x"></i> @item.user.name @item.user.last_name
+                                    <br />
+                                    <i class="fa fa-phone fa-1x"></i> <span dir="ltr">+@item.user.phone</span> 
+                                </p>
+                                <br />
+                                @if (!item.is_approved)
+                                {
+                                    <button type="button" class="btn btn-primary waves-effect waves-light sa-isapproved">
+                                        <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> تمت الموافقة
+                                    </button>
+                                }
+                                else
+                                {
+                                    <p class="team-member d-inline-block font-size-13">
+                                        تمت الموافقة من قبل : @(item.user1 != null ? item.user1.name + " " + item.user1.last_name : "غير مقبول")
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row task-dates">
+                                <div class="col-sm-4 col-6">
+                                    <div class="mt-4">
+                                        <h5 class="font-size-14">
+                                            <i class="bx bx-calendar mr-1 text-primary"></i>
+                                            @Resources.Resources.DateCreated
+                                        </h5>
+                                        <p class="text-muted mb-0">@item.created_at</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 col-6">
+                                    <div class="mt-4">
+                                        <h5 class="font-size-14">
+                                            <i class="bx bx-calendar-check mr-1 text-primary"></i>
+                                            تاريخ الموافقة
+                                        </h5>
+                                        <p class="text-muted mb-0">@item.approved_at</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="border-top d-flex justify-content-lg-between px-4 py-3">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item mr-3">
+                            <span class="badge badge-primary">
+                                مكتمل
+                            </span>
+
+                            @if (!item.is_approved)
+                            {
+                                <span class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Approved Pending">
+                                    @Resources.Resources.Pending
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Approved by Administrator">
+                                    تمت الموافقة
+                                </span>
+                            }
+                        </li>
+                        <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Due Date">
+                            <i class="bx bx-calendar mr-1"></i> @item.created_at
+                        </li>
+                        <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="@Resources.Resources.Ratings">
+                            <i class="bx bx-star ml-1"></i> @item.vote_count
+                        </li>
+                    </ul>
+                    <div>
+                        <a class="btn btn-danger btn-sm sa-warning-delete" data-id="@item.id" data-questionid="@item.question_id">
+                            <i class="bx bx-trash"></i> @Resources.Resources.Delete
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".sa-warning-delete").click(function (e) {
+            debugger
+            var id = $(this).data('id');
+            var questionid = $(this).data('questionid');
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/QA/Answer_delete', { 'id': id, 'question_id': questionid })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+        $(".sa-isapproved_qa").click(function (e) {
+            var id = $('#q_id').val();
+            var abc = $('#qa_approved').val();
+            if (abc == "نعم") {
+                Swal.fire({ title: "تمت الموافقة عليها بالفعل", confirmButtonColor: "#556ee6" });
+            } else {
+                Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "لن تتمكن من التراجع عن هذا!",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/QA/is_approved', { 'id': id })
+                            .then(function (r) {
+                                if (r.data == "Success") {
+                                    //window.setTimeout(function () {
+                                    //    Swal.fire("وافق!", "تمت الموافقة عليها بنجاح.", "success")
+                                    //    location.reload()
+                                    //}, 3000)
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            }
+        });
+
+        $(".sa-isverified_qa").click(function (e) {
+            var id = $('#q_id').val();
+            var abc = $('#qa_verified').val();
+            if (abc == "نعم") {
+                Swal.fire({ title: "تم التحقق منه بالفعل", confirmButtonColor: "#556ee6" });
+            } else {
+                Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "لن تتمكن من التراجع عن هذا!",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/QA/is_verified', { 'id': id })
+                            .then(function (r) {
+                                if (r.data == "Success") {
+                                    //window.setTimeout(function () {
+                                    //    Swal.fire("تم التحقق!", "تم التحقق بنجاح", "success")
+                                    //    location.reload()
+                                    //}, 3000)
+                                    location.reload()
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            }
+        });
+
+        $(".sa-isapproved").click(function (e) {
+            debugger
+            //var row = $('#ans_id').val();
+            var id = $(this).siblings('input#ans_id').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/QA/Answer_is_approved', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                //window.setTimeout(function () {
+                                //    Swal.fire("وافق!", "تمت الموافقة عليها بنجاح.", "success")
+                                //    location.reload()
+                                //}, 3000)
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+        $(".sa-isverified").click(function (e) {
+            //var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ans_id').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/QA/Answer_is_verified', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                //Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/QA/Answer_Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+</script>

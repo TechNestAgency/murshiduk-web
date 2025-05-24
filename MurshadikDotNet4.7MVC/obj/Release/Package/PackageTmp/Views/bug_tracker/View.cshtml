@@ -1,0 +1,166 @@
+﻿@model MurshadikCP.Models.DB.bug_tracker
+@{
+    ViewBag.Title = "تتبع ملاحظات النظام";
+    ViewBag.pTitle = "تتبع ملاحظات النظام";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Update", "bug_tracker", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <input type="hidden" name="id" value="@Model.id" />
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.msg, "الرسالة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <label>@Model.msg</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.image, "صورة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @if (ViewBag.isPhoto == 1)
+                                {
+                                    <img src="@(Model.image != null ? Model.image : "/assets/images/image_placeholder.jpg")" style="height: 200px; width: 200px;" />
+                                }
+                                else if (ViewBag.isPhoto == 2)
+                                {
+                                    <video width="320" height="240" controls>
+                                        <source src="@Model.image" type="video/mp4">
+                                    </video>
+                                }
+                                else
+                                {
+                                    <img src="/assets/images/image_placeholder.jpg" style="height: 200px; width: 200px;" />
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.page, "الصفحة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <label>@Model.page</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label">الحالة</label>
+                            <div class="col-md-10">
+                                <select class="form-control h-auto status_value" name="status">
+                                    <option value="انتظار">انتظار</option>
+                                    <option value="تحت المعالجة">تحت المعالجة</option>
+                                    <option value="مكتمل">مكتمل</option>
+                                    <option value="مغلق">مغلق</option>
+                                    <option value="معاد فتحه">معاد فتحه</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">ملاحظات</label>
+                            <div class="col-md-10">
+                                <textarea name="notes" rows="3" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.created_by, "اسم االمستخدم", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <label>@Model.user.name @Model.user.last_name</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حفظ" class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", null, htmlAttributes: new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+    <div class="col-12">
+
+        <div class="card">
+            <div class="card-body">
+                <h1>التاريخ</h1>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                الحالة
+                            </th>
+                            <th>
+                                ملاحظات
+                            </th>
+                            <th>
+                                تاريخ الانشاء
+                            </th>
+                            <th>
+                                العمل الذي يؤديه
+                            </th>
+                        </tr>
+
+                        @foreach (var item in ViewBag.bug_history)
+                        {
+                            <tr>
+                                <th class="align-middle">
+                                    @item.status
+                                </th>
+                                <td class="align-middle">
+                                    @item.msg
+                                </td>
+                                <td>
+                                    @item.created_at
+                                </td>
+                                <td>
+                                    @item.user.name
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        
+        //$(".status_value").val()
+        
+
+    });
+
+</script>

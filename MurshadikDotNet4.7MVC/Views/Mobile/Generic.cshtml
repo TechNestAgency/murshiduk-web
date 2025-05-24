@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600,700&display=swap&subset=arabic" rel="stylesheet">
+
+    <!-- Styles -->
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/assets/css/app-rtl.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <style>
+        html[dir=rtl] body,
+        body {
+            background-color: #FFFFFF;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .bg-color {
+            background-color: #0E6932;
+            padding-bottom: 50px;
+        }
+            html[dir=rtl] body,
+            body{
+                font-family: 'Cairo', sans-serif;
+                background-size: 400px 400px;
+            }
+
+            
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <div class="main-panel">
+            <div class="content p-3">
+                
+                <div class="bg-white p-3 round-rose">
+                    <div>
+                        @Html.Raw(ViewBag.Data)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
+
+
+
+
+

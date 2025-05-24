@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MurshadikCP.Models.DB.roles_permission>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.page_name)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.can_view)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.can_insert)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.can_update)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.can_delete)
+        </td>
+        <td>
+            @Html.ActionLink("تعديل", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Delete Permission", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}

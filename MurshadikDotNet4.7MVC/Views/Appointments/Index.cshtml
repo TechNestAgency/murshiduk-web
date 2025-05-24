@@ -1,0 +1,426 @@
+﻿@model MurshadikCP.Models.AppointmentLabViewModel
+
+@{
+    ViewBag.Title = "تعيينات";
+    if (ViewBag.role == "Lab Manager")
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+@*<link href="~/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">*@
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                            <div>
+                                <div>
+                                    <p class="mb-2">@Resources.Resources.Lab_Name : @Model.lab.Name</p>
+                                    <h5>@Resources.Resources.Address : @Model.lab.Address</h5>
+                                    <p>@Resources.Resources.Contact_Person : @Model.lab.contactperson</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="text-lg-center">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div>
+                                        <p>@Resources.Resources.Appointment_Count</p>
+                                        <h5>@Model.appointments.Count()</h5>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div>
+                                        <p>@Resources.Resources.Appointment_Booking_Count</p>
+                                        <h5>@Model.appointments.Where(x => x.is_booked).Count()</h5>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div>
+                                        <p>@Resources.Resources.Appointment_Not_Reserved</p>
+                                        <h5>@Model.appointments.Where(x => x.is_booked == false).Count()</h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group mb-4 row">
+                            <form method="get">
+                                <input type="hidden" name="id" id="lab_id" value="@Model.lab.id" />
+                                <label>@Resources.Resources.Scope_Of_Appointment</label>
+                                <div>
+                                    <div class="input-daterange input-group" data-date-format="yyyy-MM-dd" data-date-autoclose="true" data-provide="datepicker">
+                                        <input type="date" class="form-control col-4" name="startdate" value="@(ViewBag.startdate == null ? DateTime.Now.ToString("yyyy-MM-dd") : ViewBag.startdate.ToString("yyyy-MM-dd"))" id="example-date-input" autocomplete="off" required />
+                                        <input type="date" class="form-control col-4" name="enddate" value="@(ViewBag.enddate == null ? DateTime.Now.AddDays(29).ToString("yyyy-MM-dd") : ViewBag.enddate.ToString("yyyy-MM-dd"))" id="example-date-input" autocomplete="off" required />
+                                        <button type="submit" class="align-self-sm-start btn btn-primary ml-2">بحث</button>
+                                        <a class="btn btn-lg btn-link" href="/Lab/Edit?ID=@Model.lab.id" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+                                        <a href="/Account/Register?LabID=@Model.lab.id" class="btn btn-outline-primary btn-lg" data-toggle="tooltip" data-placement="top" title="إضافة مستخدم"><i class="bx bx-user-plus"></i></a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="row">
+            @foreach (var item in Model.appointments)
+            {
+                <div class="col-md-2">
+
+                    <div class="card shadow-sm mini-stats-wid @(!item.is_booked ? "bg-warning" : "bg-success text-white")">
+                        <div class="card-body pt-3 px-2">
+
+                            <div class="media-body">
+                                <p class="font-weight-bold">@DateTime.Parse(item.appointment_date.Value.ToString()).ToShortDateString()</p>
+                                <p>@DateTime.Parse(item.appointment_time.Value.ToString()).ToShortTimeString()</p>
+                                @*<p class="mb-0">@item.user ? @item.user.phone : ""</p>*@
+                                <input type="hidden" id="appointmentid" value="@item.id" />
+                                <p>@(item.user == null ? "لايوجد موعد" : item.user.name + " " + item.user.last_name) </p>
+                                <p>@(item.is_booked == true ? item.created_at.ToString() : " ") </p>
+                                @if (item.user != null && item.is_sample_collected == false)
+                                {
+                                    <button type="button" class="open-homeEvents btn btn-sm btn-@(!item.is_booked ? "link" : "primary")" data-toggle="modal" data-id=' @item.id , @DateTime.Parse(item.appointment_time.Value.ToString()).ToShortTimeString(), @item.user.name, @item.user.phone ' data-target=".CollectSampleModal">
+                                        @(item.is_booked && item.is_sample_collected == false ? "جمع العينة" : "")
+                                    </button>
+                                    <input type="hidden" id="ids" value="@item.id" />
+                                    <button type="button" class="cancelAppointment btn btn-sm btn-@(!item.is_booked ? "link" : "primary")">
+                                        @(item.is_booked && item.is_sample_collected == false ? "إلغاء الموعد" : "")
+                                    </button>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- end row -->
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    @Resources.Resources.Lab_Report
+                    <span class="badge badge-pill badge-soft-warning font-size-12">
+                        @Resources.Resources.Pending
+                    </span>
+                </h4>
+                <div class="table-responsive">
+                    <table class="table table-centered table-nowrap mb-0">
+                        <tr>
+                            <th>
+                                @Resources.Resources.Name
+                            </th>
+                            <th>
+                                @Resources.Resources.Sample_No
+                            </th>
+                            @*<th>
+                                تاريخ الطلب
+                            </th>*@
+                            <th>
+                                @Resources.Resources.Collected_Date
+                            </th>
+                            <th>
+                                @Resources.Resources.Status
+                            </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model.lab_Reports_pending)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.user.name) @Html.DisplayFor(modelItem => item.user.last_name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.sample_no) </td>
+                                @*<td>@item.created_at </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.collected_date)
+                                </td>
+                                <td>
+                                    <span class="badge badge-pill badge-soft-warning font-size-12">
+                                        انتظار
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="/Appointments/DisplayAppointment?id=@item.appointment_id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="عرض تفاصيل الموعد"><i class="bx bxs-book-open"></i></a>
+                                    <a href="/Appointments/DisplayLabReport?id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="عرض تفاصيل تقرير المعمل"><i class="bx bxs-report"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <!-- end table-responsive -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    @Resources.Resources.Lab_Report
+                    <span class="badge badge-pill badge-soft-success font-size-12">
+                         @Resources.Resources.Completed
+                    </span>
+                </h4>
+                <div class="table-responsive">
+                    <table class="table table-centered table-nowrap mb-0">
+                        <tr>
+                            <th>
+                                @Resources.Resources.Name
+                            </th>
+                            <th>
+                                @Resources.Resources.Sample_No
+                            </th>
+                            @*<th>
+                                تاريخ الطلب
+                            </th>*@
+                            <th>
+                                @Resources.Resources.Collected_Date
+                            </th>
+                            <th>
+                                @Resources.Resources.Status
+                            </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model.lab_Reports_completed)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.user.name) @Html.DisplayFor(modelItem => item.user.last_name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.sample_no) </td>
+                                @*<td>@item.created_at </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.collected_date)
+                                </td>
+                                <td>
+                                    <span class="badge badge-pill badge-soft-success font-size-12">
+                                        @Resources.Resources.Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="/Appointments/DisplayAppointment?id=@item.appointment_id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="عرض تفاصيل الموعد"><i class="bx bxs-book-open"></i></a>
+                                    <a href="/Appointments/DisplayLabReport?id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="عرض تفاصيل تقرير المعمل"><i class="bx bxs-report"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <!-- end table-responsive -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">@Resources.Resources.User_Report_Without_Appointment <span class="badge badge-pill badge-soft-success font-size-12"> @Resources.Resources.Build_Up</span></h4>
+                <h5>@Resources.Resources.For_those_users_who_do_not_have_an_appointment</h5>
+                @*@if (ViewBag.role == "Lab Manager")
+                {*@
+                    <button type="button" class="open-homeEvents btn btn-sm btn-primary" data-toggle="modal" data-target=".CollectSampleModal">
+                        @Resources.Resources.Collected_Sample
+                    </button>
+                @*}*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end row -->
+
+<div class="modal fade CollectSampleModal" tabindex="-1" role="dialog" aria-labelledby="CollectSampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="CollectSampleModalLabel">@Resources.Resources.Appointment_Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">@Resources.Resources.Name_Arabic</label>
+                    <div class="col-md-9">
+                        <input class="form-control font-weight-bold" id="name" name="name" value="" type="text" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">@Resources.Resources.Mobile_Number</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="mobile" name="mobile" value="" type="text" maxlength="12" disabled>
+                    </div>
+                </div>
+                <div class="form-group row" id="div_time">
+                    <label class="col-md-3 col-form-label">@Resources.Resources.Appointment_Time</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="time" name="time" value="" type="text" disabled>
+                    </div>
+                </div>
+                <div class="align-items-center d-flex form-group row">
+                    <label class="col-md-3 font-weight-bold">@Resources.Resources.No_Of_Sample</label>
+                    <div class="col-md-9">
+                        <input type="number" name="noofsample" class="form-control" id="noofsample" value="1" />
+                        <input type="hidden" name="eventId" id="eventId" />
+                        <span id="idHolder"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Resources.Resources.Close</button>
+                <button type="button" class="btn btn-primary sa-warning" data-dismiss="modal" id="btnsaveAppointment">@Resources.Resources.Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+<!-- End Page-content -->
+
+@section scripts{
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    @*<script src="~/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>*@
+    <script src="~/assets/js/app.js"></script>
+}
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+
+        $(document).on("click", ".open-homeEvents", function () {
+            debugger
+            var mainData = $(this).data('id');
+            if (mainData != undefined) {
+
+                var DataSplit = mainData.split(',');
+
+                $("#time").val(DataSplit[1]);
+                $("#name").val(DataSplit[2]);
+                $("#mobile").val(DataSplit[3]);
+                $("#eventId").val(DataSplit[0]);
+                $("#div_time").show();
+            } else {
+                $("#name").prop("disabled", false);
+                $("#mobile").prop("disabled", false);
+                $("#time").prop("disabled", false);
+                $("#div_time").hide();
+            }
+        });
+
+
+        var id = $("#appointmentid").val();
+        $(".sa-warning").click(function () {
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    debugger;
+                    var id = $("#eventId").val();
+                    var noOfSamples = $("#noofsample").val();
+                    if (id != "") {
+                        axios.post('/Appointments/CreateAppointment', {
+                            'id': $("#eventId").val(), 'noofsample': $("#noofsample").val()
+                            //, 'appointmentTime': $("#time").val(), 'labid': 2, 'region_id': 1
+                        })
+                            .then(function (r) {
+                                swal.fire(r.data, "success")
+                                location.reload();
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    } else {
+                        axios.post('/Appointments/CreateAppointmentForNewUser', {
+                            'noofsample': $("#noofsample").val(), 'mobile': $("#mobile").val(),
+                            'name': $("#name").val(), 'labid': $("#lab_id").val()
+                        })
+                            .then(function (r) {
+                                swal.fire(r.data, "success")
+                                location.reload();
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                }
+            });
+        });
+
+        $(".cancelAppointment").click(function () {
+            Swal.fire({
+                title: 'هل أنت متأكد من إلغاء هذا الموعد؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    debugger;
+                    //var id = $(this).data('id');
+                    var id = $("#ids").val();
+                    if (id != "") {
+                        axios.post('/Appointments/CancelAppointment', {
+                            'id': id
+                        })
+                            .then(function (r) {
+                                swal.fire(r.data, "success")
+                                location.reload();
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                }
+            });
+        });
+    });
+
+</script>

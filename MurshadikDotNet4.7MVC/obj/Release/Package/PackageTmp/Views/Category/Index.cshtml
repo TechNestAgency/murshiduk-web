@@ -1,0 +1,229 @@
+﻿@model MurshadikCP.Controllers.ParentCategory
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = Resources.Resources.Categories;
+    ViewBag.pTitle = Resources.Resources.Categories;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm(Model.Category.id == 0 ? "Add" : "Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Category.id" />
+                    <div class="form-group">
+                        <label class="col col-form-label">@Resources.Resources.Arabic_name</label>
+                        <div class="col">
+                            <input class="form-control" name="name" type="text" value="@Model.Category.name" required>
+                            <div class="invalid-feedback">
+                                يرجى تقديم اسم صالح
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col col-form-label">@Resources.Resources.Parent_Category</label>
+                        <div class="col">
+                            @Html.DropDownList("parent_category", null, "--Select Category--", htmlAttributes: new { @class = "form-control h-auto" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col col-form-label">@Resources.Resources.Text_Color</label>
+                        <div class="col">
+                            <input class="form-control" type="color" name="text_color" value="@(Model.Category == null ? "#556ee6" : Model.Category.text_color)" id="example-color-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col col-form-label">@Resources.Resources.Background_Color</label>
+                        <div class="col">
+                            <input class="form-control" type="color" name="bg_color" value="@(Model.Category == null ? "#cccccc" : Model.Category.bg_color)" id="example-color-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Category.active, Resources.Resources.Active, htmlAttributes: new { @class = "col col-form-label" })
+                        <div class="col">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Category.active, new { htmlAttributes = new { Name = "active" , @id = "active" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col col-form-label">@Resources.Resources.Description_Arabic</label>
+                        <div class="col">
+                            <textarea id="textarea" class="form-control" rows="4" name="description" required>@Model.Category.description</textarea>
+                            <div class="invalid-feedback">
+                                يرجى تقديم وصف
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col col-form-label"> @Resources.Resources.Select_Icon_Image</label>
+                        <div class="col">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="imgIcon" id="imageFile" onchange="document.getElementById('outputicon').src = window.URL.createObjectURL(this.files[0])" @(Model.Category.id == 0 ? "required" : "")>
+                                <label class="custom-file-label" for="imageFile"> @(Model.Category.id == 0 ? "... أختر ": "")</label>
+                                <div class="invalid-feedback">
+                                    الرجاء تحديد الصورة
+                                </div>
+                                <div class="card">
+                                    <img src="@(Model.Category.id == 0 ? "/assets/images/image_placeholder.jpg" : Model.Category.icon)" id="outputicon" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col col-form-label">@Resources.Resources.Select_Banner_Image</label>
+                        <div class="col">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="bannerImg" id="customFile" onchange="document.getElementById('outputbanner').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="customFile"> @(Model.Category.id == 0 ? "... أختر ": "") </label>
+                                <div class="card">
+                                    <img src="@(Model.Category.id == 0 ? "/assets/images/image_placeholder.jpg" : Model.Category.banner)" id="outputbanner" class="card-img-top img-fluid" alt="banner image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col form-check">
+                            <input id="login" type="submit" value="@Resources.Resources.Save" class="btn btn-primary" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Category", FormMethod.Get))
+                {
+                    <div class="align-items-center form-group row">
+                        <div class="col-lg-4">
+                            @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                        </div>
+                        <input type="submit" value="@Resources.Resources.Search" class="btn btn-primary waves-effect waves-light" />
+                    </div>
+                }
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                @Resources.Resources.Name
+                            </th>
+                            <th>
+                                @Resources.Resources.Active
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model.categoryList)
+                        {
+                            <tr>
+                                <th class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </th>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.active)
+                                </td>
+                                <td>
+                                    <a href="/Category/Index?catId=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                    <input type="hidden" id="ids" value="@item.id" />
+                                    <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-7">
+        <div class="d-flex justify-content-between">
+            <div>
+                عرض صفحة @(Model.categoryList.PageCount < Model.categoryList.PageNumber ? 0 : Model.categoryList.PageNumber) من @Model.categoryList.PageCount
+                @Html.PagedListPager(Model.categoryList, Page_No => Url.Action("Index",
+                    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @*<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>*@
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/Category/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+
+                                var uri = window.location.toString();
+                                if (uri.indexOf("?") > 0) {
+                                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                                    window.history.replaceState({}, document.title, clean_uri);
+                                }
+
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+
+
+
+
+</script>

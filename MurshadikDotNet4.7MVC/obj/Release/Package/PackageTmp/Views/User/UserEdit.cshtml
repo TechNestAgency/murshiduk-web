@@ -1,0 +1,56 @@
+﻿@model MurshadikCP.Models.DB.GetAllUsers_Result
+@{
+    ViewBag.Title = "UserEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <input type="hidden" value="@Model.Id" name="Id" />
+                    <h4 class="card-title">اضافة مستخدم الجديد</h4>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">الاسم</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" value="@Model.name" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-search-input" class="col-md-2 col-form-label">رقم الجوال</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" value="@Model.phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">User Role</label>
+                        <div class="col-md-10">
+                            <select class="form-control" name="rolename">
+                                <option>Select</option>
+                                <option>Large select</option>
+                                <option>Small select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-end">
+                        <div class="col-sm-9">
+                            <div class="custom-control custom-checkbox mb-4">
+                                <input type="checkbox" class="custom-control-input" name="active" checked="@Model.active" id="horizontal-customCheck">
+                                <label class="custom-control-label" for="horizontal-customCheck">Active</label>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+
+}
+

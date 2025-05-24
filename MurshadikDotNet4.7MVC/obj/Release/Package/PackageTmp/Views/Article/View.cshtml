@@ -1,0 +1,186 @@
+﻿@model MurshadikCP.Models.DB.article
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="user_id" value="@Model.user_id" />
+                    <input type="hidden" name="created_at" value="@Model.created_at" />
+                    <h4 class="card-title">إضافة خبر</h4>
+                    <input type="hidden" name="allkeywords" id="allkeywords" />
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">العنوان</label>
+                        <div class="col-md-10">
+                            <input class="form-control" name="title" type="text" value="@Model.title" placeholder="العنوان الأخبار" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">short description</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="short_description" value="@Model.short_description" placeholder="short description" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">الأخبار</label>
+                        <div class="col-md-10">
+                            <textarea id="elm1" name="description">@Model.description</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.keywords, "keywords", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("keywords", null, htmlAttributes: new
+                               {
+                                   @class = "select2 form-control select2-multiple h-auto",
+                                   id = "multiKeywords",
+                                   multiple = "multiple",
+                                   data_placeholder = " ... أختر "
+                               })
+                            @Html.ValidationMessageFor(model => model.keywords, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.active, "مُفعل", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.active)
+                                @Html.ValidationMessageFor(model => model.active, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.show_bg, "show background", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.show_bg)
+                                @Html.ValidationMessageFor(model => model.show_bg, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.show_cats, "show categories", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.show_cats)
+                                @Html.ValidationMessageFor(model => model.show_cats, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">قسم الخبر</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">صورة الخبر</label>
+                        <div class="col-md-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="imageFile" onchange="document.getElementById('outputimage').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="imageFile">@Model.image</label>
+                                <div class="card">
+                                    <img src="/Media/Images/Articles/@Model.image" id="outputimage" class="card-img-top img-fluid" alt="card-img-top" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="articleImage" value="@Model.image" />
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">معرض صور الأخبار</label>
+                        <div class="col-md-10 custom-file">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="childimage" id="customFile" onchange="document.getElementById('outputcustom').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="customFile">@ViewBag.articlecategoryimg</label>
+                                <div class="card">
+                                    <img src="/Media/Images/Articles/@ViewBag.articlecategoryimg" id="outputcustom" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            //$("#login").click(function (e) {
+            //    e.preventDefault();
+            //    debugger;
+            //    $("#allkeywords").val($(".select2").select2().val());
+            //    if ($('#title').val() != "" && $('#shortdescription').val() != "") {
+            //        $('#form').get(0).submit();
+            //    } else {
+            //        alert('title & short description are required!');
+            //        return false;
+            //    }
+            //});
+
+
+            /**/
+            $("#multiKeywords").select2().val(['@Html.Raw(@Model.keywords)']).trigger('change');
+        /**/
+
+        0 < $("#elm1").length &&
+            tinymce.init({
+                selector: "textarea#elm1",
+                directionality: 'rtl',
+                language: 'ar',
+                language_url: '../../assets/js/langs/ar.js',
+                height: 300,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor",
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+                style_formats: [
+                    { title: "Bold text", inline: "b" },
+                    { title: "Red text", inline: "span", styles: { color: "#ff0000" } },
+                    { title: "Red header", block: "h1", styles: { color: "#ff0000" } },
+                    { title: "Example 1", inline: "span", classes: "example1" },
+                    { title: "Example 2", inline: "span", classes: "example2" },
+                    { title: "Table styles" },
+                    { title: "Table row 1", selector: "tr", classes: "tablerow1" },
+                ],
+            })
+    });
+
+    </script>
+}

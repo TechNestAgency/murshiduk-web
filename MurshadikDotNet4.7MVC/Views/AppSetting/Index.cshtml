@@ -1,0 +1,254 @@
+﻿@model MurshadikCP.Models.BLL.AppSettingRepository
+
+@{
+    ViewBag.Title = "اعدادات النظام";
+    ViewBag.pTitle = "اعدادات النظام";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Add", "AppSetting", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                    <input type="hidden" name="allkeywords" id="allkeywords" />
+                    @*<input type="hidden" name="checkkeywords" id="checkkeywords" />*@
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">App Stream URL</label>
+                        <div class="col-md-10">
+                            <input id="AP_STREAM_URL" class="form-control form-control-lg" name="AP_STREAM_URL" value="@Model.AP_STREAM_URL" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">App Stream Title</label>
+                        <div class="col-md-10">
+                            <input id="AP_STREAM_TITLE" class="form-control form-control-lg" name="AP_STREAM_TITLE" value="@Model.AP_STREAM_TITLE" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">App Stream Banner</label>
+                        <div class="col-md-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="AP_STREAM_BANNER" id="customFile" onchange="document.getElementById('outputbanner').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="customFile"> @Model.AP_STREAM_BANNER </label>
+                                <div class="card">
+                                    <img src="@(Model.AP_STREAM_BANNER.IsEmpty() ? "/assets/images/image_placeholder.jpg" : Model.AP_STREAM_BANNER)" id="outputbanner" class="card-img-top img-fluid" alt="banner image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">App Advertisement Title</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_AD_TITLE" value="@Model.AP_AD_TITLE" name="AP_AD_TITLE" type="text" placeholder="APP ADVERTISEMENT TITLE" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">App Advertisement Content</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_AD_CONTENT" value="@Model.AP_AD_CONTENT" name="AP_AD_CONTENT" type="text" placeholder="APP ADVERTISEMENT CONTENT" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">App Advertisement Icon</label>
+                        <div class="col-md-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="AP_AD_ICON" id="customFile" onchange="document.getElementById('outputicon').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="customFile"> @Model.AP_AD_ICON </label>
+                                <div class="card">
+                                    <img src="@(Model.AP_AD_ICON.IsEmpty() ? "/assets/images/image_placeholder.jpg" : Model.AP_AD_ICON)" id="outputicon" class="card-img-top img-fluid" alt="Advertisement Icon image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">App Advertisement Link</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_AD_LINK" value="@Model.AP_AD_LINK" name="AP_AD_LINK" type="text" placeholder="APP ADVERTISEMENT LINK">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Terms & Conditions English</label>
+                        <div class="col-md-10">
+                            <textarea id="TERMS_EN" class="elm1" name="TERMS_EN">@Model.TERMS_EN</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Terms & Conditions Arabic</label>
+                        <div class="col-md-10">
+                            <textarea id="TERMS_AR" class="elm1" name="TERMS_AR">@Model.TERMS_AR</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">About Us English</label>
+                        <div class="col-md-10">
+                            <textarea id="ABOUT_US_EN" class="elm1" name="ABOUT_US_EN">@Model.ABOUT_US_EN</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">About Us Arabic</label>
+                        <div class="col-md-10">
+                            <textarea id="ABOUT_US_AR" class="elm1" name="ABOUT_US_AR">@Model.ABOUT_US_AR</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">System Emails</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SYSTEM_CC_EMAILS" value="@Model.AP_SYSTEM_CC_EMAILS" name="AP_SYSTEM_CC_EMAILS" type="text" placeholder="APP SYSTEM CC EMAILS" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Whatsapp</label>
+                        <div class="col-md-10">
+                            <input class="form-control" style="text-align: end;" dir="ltr" id="AP_CUSTOMER_SUPPORT_WA_NUMBER" name="AP_CUSTOMER_SUPPORT_WA_NUMBER" type="text" value="@Model.AP_CUSTOMER_SUPPORT_WA_NUMBER" placeholder="APP CUSTOMER SUPPORT Whatsapp NUMBER">
+                            <span class="text-danger">اخفاء من التطبيق</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Customer Support</label>
+                        <div class="col-md-10">
+                            <input class="form-control" style="text-align: end;" dir="ltr" id="AP_CUSTOMER_SUPPORT_NUMBER" value="@Model.AP_CUSTOMER_SUPPORT_NUMBER" name="AP_CUSTOMER_SUPPORT_NUMBER" type="text" placeholder="APP CUSTOMER SUPPORT NUMBER" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Facebook URL</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_FACEBOOK_URL" value="@Model.AP_FACEBOOK_URL" name="AP_FACEBOOK_URL" type="text" placeholder="APP FACEBOOK URL">
+                            <span class="text-danger">اخفاء من التطبيق</span>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Twitter URL</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_TWITTER_URL" value="@Model.AP_TWITTER_URL" name="AP_TWITTER_URL" type="text" placeholder="APP TWITTER URL">
+                            <span class="text-danger">اخفاء من التطبيق</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Youtube URL</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_YOUTUBE_URL" value="@Model.AP_YOUTUBE_URL" name="AP_YOUTUBE_URL" type="text" placeholder="APP Youtube URL">
+                            <span class="text-danger">اخفاء من التطبيق</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Instagram URL</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_INSTA_URL" value="@Model.AP_INSTA_URL" name="AP_INSTA_URL" type="text" placeholder="APP Instagram URL">
+                            <span class="text-danger">اخفاء من التطبيق</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Snapchat URL</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SNAP_URL" value="@Model.AP_SNAP_URL" name="AP_SNAP_URL" type="text" placeholder="APP Snapchat URL">
+                            <span class="text-danger">اخفاء من التطبيق</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Product Template</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_PRODUCT_TEMPLATE" value="@Model.AP_PRODUCT_TEMPLATE" name="AP_PRODUCT_TEMPLATE" type="text" placeholder="APP Product Template" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">APP SMS Gateway URL</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SMSGatewayURL" value="@Model.AP_SMSGatewayURL" name="AP_SMSGatewayURL" type="text" placeholder="APP SMS Gateway URL">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">APP SMS Saudi ID</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SMSSaudiID" value="@Model.AP_SMSSaudiID" name="AP_SMSSaudiID" type="text" placeholder="APP SMS Saudi ID">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">APP SMS Saudi Password</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SMSSaudiPwd" value="@Model.AP_SMSSaudiPwd" name="AP_SMSSaudiPwd" type="text" placeholder="APP SMS Saudi Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">APP SMS World ID</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SMSWorldID" value="@Model.AP_SMSWorldID" name="AP_SMSWorldID" type="text" placeholder="APP SMS World ID">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">APP SMS World Password</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SMSWorldPwd" value="@Model.AP_SMSWorldPwd" name="AP_SMSWorldPwd" type="text" placeholder="APP SMS World Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">APP SMS Gateway Sender ID</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="AP_SMSGatewaySenderID" value="@Model.AP_SMSGatewaySenderID" name="AP_SMSGatewaySenderID" type="text" placeholder="APP SMS Gateway Sender ID">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            @if (ViewBag.canInsert)
+                            {<input id="login" type="submit" value="حفظ" class="btn btn-primary" />}
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+@section scripts{
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            0 < $(".elm1").length &&
+                tinymce.init({
+                    selector: "textarea.elm1",
+                    directionality: 'rtl',
+                    language: 'ar',
+                    language_url: '../assets/js/langs/ar.js',
+                    height: 300,
+                    plugins: [
+                        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        "save table contextmenu directionality emoticons template paste textcolor",
+                    ],
+                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+                    style_formats: [
+                        { title: "Bold text", inline: "b" },
+                        { title: "Red text", inline: "span", styles: { color: "#ff0000" } },
+                        { title: "Red header", block: "h1", styles: { color: "#ff0000" } },
+                        { title: "Example 1", inline: "span", classes: "example1" },
+                        { title: "Example 2", inline: "span", classes: "example2" },
+                        { title: "Table styles" },
+                        { title: "Table row 1", selector: "tr", classes: "tablerow1" },
+                    ],
+                })
+        });
+
+    </script>
+}

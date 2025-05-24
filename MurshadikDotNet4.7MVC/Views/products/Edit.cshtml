@@ -1,0 +1,130 @@
+﻿@model MurshadikCP.Models.DB.product
+
+@{
+    ViewBag.Title = "المنتج";
+    ViewBag.pTitle = "إضافة المنتجات";
+    if (ViewBag.role == "Market")
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Edit", "products", FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>المنتج</h4>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id)
+                    @Html.HiddenFor(model => model.created_at)
+                    @Html.HiddenFor(model => model.created_by)
+                    @Html.HiddenFor(model => model.slug)
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.product_category_id, "فئة المنتج", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("product_category_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            @Html.ValidationMessageFor(model => model.product_category_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.product_name, "اسم المنتج", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.product_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.product_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="product_image" value="@Model.product_image" />
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">صورة </label>
+                        <div class="col-md-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="product_image" id="imageFile" 
+                                       onchange="document.getElementById('outputimage').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="imageFile">... أختر </label>
+                                <div class="card">
+                                    <img src="~/Media/Images/Products/@Model.product_image" id="outputimage" class="card-img-top img-fluid" alt="card-img-top" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.product_type_id, "نوع المنتج", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("product_type_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            @Html.ValidationMessageFor(model => model.product_type_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.product_origin, "أصل المنتج", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.product_origin, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.product_origin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.unit_id, "وحدة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("unit_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            @Html.ValidationMessageFor(model => model.unit_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group row">
+                        @Html.LabelFor(model => model.unit_value, "قيمةالوحدة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.unit_value, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.unit_value, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.is_active, "فعال", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.is_active)
+                                @Html.ValidationMessageFor(model => model.is_active, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="@Resources.Resources.Save" class="btn btn-primary" />
+                            @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-danger" })
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+}
+

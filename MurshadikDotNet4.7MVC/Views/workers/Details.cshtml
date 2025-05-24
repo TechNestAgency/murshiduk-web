@@ -1,0 +1,243 @@
+﻿@model MurshadikCP.Controllers.API.ApiViewModel.WorkerDetail
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = " تفاصيل العامل";
+    ViewBag.pTitle = "تفاصيل العامل";
+    ViewBag.pageTitle = "Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        .rating-symbol-background, .rating-symbol-foreground {
+            font-size: 16px;
+        }
+
+        .selectbox {
+            background: #fff;
+            color: #1d3b4a;
+            padding: 8px;
+            line-height: 18px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            border-width: 0 1px 4px;
+        }
+    </style>
+    <!-- Bootstrap Rating css -->
+    <link href="~/assets/libs/bootstrap-rating/bootstrap-rating.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card overflow-hidden">
+            <div class="bg-soft-primary">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="text-primary p-3">
+                            <h5 class="text-primary">@Resources.Resources.Welcome</h5>
+                        </div>
+                    </div>
+                    <div class="col-5 align-self-end">
+                        <img src="~/assets/images/profile-img.png" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div>
+                        <div class="avatar-md profile-user-wid mb-2">
+                            <img src="@(Model.Img!= null ? Model.Img : "/assets/images/logo.png")" alt="" class="img-thumbnail rounded-circle">
+                        </div>
+
+                        <h5>
+                            <span>
+                                @Model.Name
+                            </span>
+                            <span>
+                                <span class="mdi mdi-star text-primary"></span>
+
+                            </span>
+                        </h5>
+
+                    </div>
+
+                    <div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">معلومات شخصية</h4>
+
+
+                <div class="table-responsive">
+                    <table class="table table-nowrap mb-0">
+                        <tbody>
+                            @*<tr>
+                                <th scope="row">الاسم الكامل :</th>
+                                <td>@Model.Name</td>
+                            </tr>*@
+                            <tr>
+                                <th scope="row">الجنسية :</th>
+                                <td>@Model.NationaltyAr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">الجوال :</th>
+                                <td>@Model.Phone</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">العنوان :</th>
+                                <td>@Model.Address</td>
+                            </tr> 
+                            <tr>
+                                <th scope="row">الاجر المتوقع :</th>
+                                <td>@Model.ExpectedSalary</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">الحالة :</th>
+                                <td class='@(Model.Isbusy == true ?  "btn btn-danger waves-effect waves-light sa-warning":"btn btn-success waves-effect waves-light sa-warning")'>@(Model.Isbusy == true ? "غير متاح" : "متاح")</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-5">مجمةعة الوظائف</h4>
+                <div class="">
+                    <ul class="verti-timeline list-unstyled">
+                        @foreach (var item in Model.Jobs)
+                        {
+                            <li class="event-list active">
+
+                                <div class="media">
+
+                                    <div class="media-body">
+                                        <div>
+                                            <h5 class="font-size-15">@item.Name</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!-- end card -->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-5">مجمةعة الاعمال السابقة</h4>
+                <div class="">
+                    <ul class="verti-timeline list-unstyled">
+                        @foreach (var item in Model.Experiences)
+                        {
+                            <li class="event-list active">
+
+                                <div class="media">
+
+                                    <div class="media-body">
+                                        <div>
+                                            <h5 class="font-size-15">@item.Description</h5>
+                                            <h5 class="font-size-10">من تاريخ: @item.FromDate.ToString("dd/MM/yyyy")</h5>
+                                            <h5 class="font-size-10">الى تاريخ: @item.FromDate.ToString("dd/MM/yyyy")</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+
+@section scripts{
+    <!-- Bootstrap rating js -->
+    <script src="~/assets/libs/bootstrap-rating/bootstrap-rating.min.js"></script>
+    <script src="~/assets/js/pages/rating-init.js"></script>
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+}
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#id').val(@ViewBag.id);
+
+            var is_first_load = true;
+
+        var is_first_load = true;
+        var start = $('#start_date').val() == "" ? moment().subtract(6, 'days') : moment($('#start_date').val());
+        var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val())
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    //$('#id').val(@ViewBag.id);
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    $('form').submit();
+                } else {
+                    is_first_load = false;
+                }
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2017-01-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+            cb(start, end);
+
+    });
+
+</script>
+
+

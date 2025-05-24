@@ -1,0 +1,120 @@
+﻿@model IEnumerable<MurshadikCP.Models.DB.LabCollecctionPoint>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="align-self-center pl-md-2">
+                        @Html.ActionLink(Resources.Resources.Add, "Add", "Lab_Centers", new { lab_id = Request.QueryString["lab_id"] }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            الاسم
+                        </th>
+                        <th>
+                            رقم المختبر
+                        </th>
+                        <th>
+                            المختبر
+                        </th>
+                        <th>
+                            أيام العمل
+                        </th>
+                        <th>
+                            مُفعل
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </th>
+                            <th class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Number)
+                            </th>
+                            <th class="align-middle">
+                                @Html.DisplayFor(modelItem => item.lab.Name)
+                            </th>
+                            <th class="align-middle">
+                                @Html.DisplayFor(modelItem => item.working_days)
+                            </th>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.active)
+                            </td>
+                            <td>
+                                <a href="/Lab_Centers/Edit?ID=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                <input type="hidden" id="ids" value="@item.id" />
+                                <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <!-- Sweet Alerts js -->
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Sweet alert init js-->
+    <!--<script src="~/assets/js/pages/sweet-alerts.init.js"></script>-->
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/Lab_Centers/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+
+
+
+
+</script>
+

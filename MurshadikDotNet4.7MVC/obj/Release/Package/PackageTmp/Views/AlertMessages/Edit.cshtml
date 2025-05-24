@@ -1,0 +1,156 @@
+﻿@model MurshadikCP.Models.DB.AlertMessage
+
+@section styles{
+    <!-- Sweet Alert-->
+    <link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+@{
+    ViewBag.Title = "رسالة";
+    ViewBag.pTitle = "تعديل رسالة ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>alert message</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+
+                        @*<div class="form-group row">
+                            @Html.LabelFor(model => model.alertActionId, "نوع", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("alertActionId", null, htmlAttributes: new { @class = "form-control h-auto" })
+                                @Html.ValidationMessageFor(model => model.alertActionId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.alertHazardId, "خطر", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("alertHazardId", null, htmlAttributes: new { @class = "form-control h-auto" })
+                                @Html.ValidationMessageFor(model => model.alertHazardId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @*<div class="form-group row">
+                            @Html.LabelFor(model => model.region_id, "منطقة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("region_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                                @Html.ValidationMessageFor(model => model.region_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.city, "مدينة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("city", null, htmlAttributes: new
+                                {
+                                   @class = "select2_city select2 form-control select2-multiple h-auto",
+                                   id = "multicity",
+                                   multiple = "multiple",
+                                   data_placeholder = " .... أختر"
+                                })
+                                @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.season, "الموسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <select class="select2 select2_season form-control select2-multiple" name="multiseason" id="multiseason" multiple="multiple" data-placeholder=" .... أختر" required>
+                                    <option value="كل">كل</option>
+                                    <option value="فصل الخريف">فصل الخريف</option>
+                                    <option value="فصل الشتاء">فصل الشتاء</option>
+                                    <option value="فصل الربيع">فصل الربيع</option>
+                                    <option value="فصل الصيف"> فصل الصيف</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.season, "الموسم مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>*@
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.message, "رسالة", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @Html.TextAreaFor(model => model.message, 3, 20, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.message, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.link, "ربط", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حفظ" class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    @*<script src="~/assets/js/pages/form-element.init.js"></script>*@
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $("#region_id").change(function () {
+            var id = $(this).val();
+
+            axios.get('/WeatherNotification/bindCity?id=' + id, {
+                headers: {
+                    'Content-Type': 'html'
+                }
+            })
+                .then(function (r) {
+                    $("#city").empty();
+                    $("#city").append(r.data);
+                })
+                .catch(function (error) {
+                    swal.fire("Error", error, "error")
+                });
+        });
+
+        $(".select2").select2({ dir: "rtl" }).val(['@Html.Raw(@Model.season)']).trigger('change');
+        $(".select2_city").select2({ dir: "rtl" }).val([@Html.Raw(ViewBag.allcity)]).trigger('change');
+        
+
+
+    });
+
+
+</script>

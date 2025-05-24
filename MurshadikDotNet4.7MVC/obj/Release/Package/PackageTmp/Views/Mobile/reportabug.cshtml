@@ -1,0 +1,168 @@
+﻿@model MurshadikCP.Models.DB.bug_tracker
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600,700&display=swap&subset=arabic" rel="stylesheet">
+
+    <!-- Styles -->
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- box icon -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/assets/css/app-rtl.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <style>
+        html[dir=rtl] body,
+        body {
+            background-color: #FFFFFF;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .bg-color {
+            background-color: #0E6932;
+            padding-bottom: 50px;
+        }
+
+        html[dir=rtl] body,
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-size: 400px 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <div class="main-panel">
+            <div class="content p-3">
+
+
+
+                @using (Html.BeginForm("reportabug", "Mobile", FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="uID" value="@ViewBag.uID" />
+                    <h3 class="border-bottom py-3 text-center">@Resources.Resources.File_a_bug</h3>
+                    <div class="mb-3">
+
+
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+
+                                <div class="mb-3">
+                                    <label for="Page" class="form-label">@Resources.Resources.Page</label>
+                                    <select class="form-control h-auto" name="page" id="page">
+                                        <option value="General">@Resources.Resources.General</option>
+                                        <option value="Dashboard">@Resources.Resources.Dashboard</option>
+                                        <option value="market">@Resources.Resources.Markets</option>
+                                        <option value="murshadikzaki">@Resources.Resources.Murshadik_Zaki</option>
+                                        <option value="talabisteshara">@Resources.Resources.Talab_Isteshara</option>
+                                        <option value="QA">@Resources.Resources.QNA</option>
+                                        <option value="Tehleelzaraiya">@Resources.Resources.Agricultural_Analysis</option>
+                                        <option value="AfatShajarbun">@Resources.Resources.Aafat_Shajar_Bun</option>
+                                        <option value="attentions">@Resources.Resources.Attentions</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="msg" class="form-label">@Resources.Resources.Message</label>
+                                    <textarea rows="3" id="msg" name="msg" class="form-control" required></textarea>
+                                    <div class="invalid-feedback">
+                                        الرسالة المطلوبة
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="Image" class="form-label">@Resources.Resources.Image</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="image" id="image" onchange="document.getElementById('outputicon').src = window.URL.createObjectURL(this.files[0])">
+                                        <label class="custom-file-label" for="image"> @Resources.Resources.Select_image </label>
+                                        <div class="card">
+                                            <img src="~/assets/images/image_placeholder.jpg" id="outputicon" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input id="btnSubmit" type="submit" value="@Resources.Resources.Add" class="btn btn-primary" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="divLoader" style="display:none;" class="mt-5 pt-5 text-center">
+        <i class="bx bx-loader-circle bx-spin bx-lg"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+</body>
+</html>
+
+
+
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script>
+
+
+    $("#btnSubmit").click(function (e) {
+
+        e.preventDefault();
+        if ($('#msg').val() != "") {
+            $("#divLoader").show();
+            $(".form-horizontal").addClass("d-none");
+            $("#form").submit();
+        } else {
+            alert("الرسالة المطلوبة");
+            return false;
+        }
+        
+        //$.ajax
+        //    ({
+        //        url: '/Mobile/reportabug',
+        //        dataType: "json",
+        //        type: "POST",
+        //        contentType: 'application/json; charset=utf-8',
+        //        data: {
+        //            msg: $('#msg').val(), page: $('#page').val()
+        //        },
+        //        success: function (data) {
+        //            $("#divLoader").hide();
+        //            alert(data);
+        //        },
+        //        error: function (xhr) {
+        //            $("#divLoader").hide();
+        //            alert('error');
+        //        }
+        //    })
+    });
+</script>

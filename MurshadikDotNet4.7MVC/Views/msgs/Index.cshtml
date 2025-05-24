@@ -1,0 +1,125 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.msg>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "رسالة";
+    ViewBag.pTitle = "جميع الرسائل";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+        </div>
+        <div class="align-self-center">
+            @Html.ActionLink(" اضافة ", "Create", "msgs", null, new { @class = "btn btn-primary mdi mdi-plus-box ml-1" })
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>
+                            رسالة
+                        </th>
+                        <th>
+                            انتباه
+                        </th>
+                        <th>
+                            منطقة
+                        </th>
+                        <th>
+                            مهارة
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.msg1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.attention.name_en)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.region.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.skill.name)
+                            </td>
+                            <td>
+                                <a href="/msgs/Edit?id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                <input type="hidden" id="ids" value="@item.id" />
+                                <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/msgs/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+
+
+
+
+</script>

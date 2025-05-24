@@ -1,0 +1,191 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.municipality>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "البلدية";
+    ViewBag.pTitle = "قائمة البلدية";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Create", "municipalities", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <input type="hidden" id="municipality_id" name="municipality_id" />
+                    <div class="align-items-center form-group row">
+                        <label class="control-label">المدينة</label>
+                        <div class="col-md-3">
+                            @Html.DropDownList("city_id", null, htmlAttributes: new { @class = "form-control h-auto", required = "required" })
+                            <div class="invalid-feedback">
+                                الرجاء تحديد المدينة
+                            </div>
+                        </div>
+
+                        <label class="control-label">اسم بالانجليزية</label>
+                        <div class="col-md-3">
+                            <input type="text" name="name" id="name" class="form-control" required />
+                            <div class="invalid-feedback">
+                                اسم باللغة الإنجليزية
+                            </div>
+                        </div>
+
+                        <label class="control-label">اسم عربي</label>
+                        <div class="col-md-3">
+                            <input type="text" name="name_ar" id="name_ar" class="form-control" required />
+                            <div class="invalid-feedback">
+                                اسم باللغة العربية
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" value="حفظ" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "municipalities", FormMethod.Get))
+                {
+                    <div class="align-items-center form-group row">
+                        <input type="hidden" name="city_id" value="@Request.QueryString["city_id"]" />
+                        <div class="col-lg-4">
+                            @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                        </div>
+                        <input type="submit" value="بحث" class="btn btn-primary waves-effect waves-light" />
+                    </div>
+                }
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                مدينة
+                            </th>
+                            <th>
+                                الاسم بالانجليزية
+                            </th>
+                            <th>
+                                اسم عربي
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    <input type="hidden" id="cid" value="@item.city_id" />
+                                    @Html.DisplayFor(modelItem => item.city.name_ar)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.name_ar)
+                                </td>
+                                <td>
+                                    <a class="btn btn-lg btn-link editmunicipality" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                    <input type="hidden" id="ids" value="@item.id" />
+                                    <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="d-flex justify-content-between">
+            <div>
+                عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+                @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $(".editmunicipality").click(function (e) {
+            debugger
+            var row = $(this).closest('tr');
+            var ddlText = row.find("td:eq(0)").children().val()
+            $("#region_id").val(ddlText);
+            //$("#region_id option:selected").text(ddlText);
+            $("#name").val(row.find("td:eq(1)").text().trim());
+            $("#name_ar").val(row.find("td:eq(2)").text().trim());
+            var id = $(this).siblings('input#ids').val();
+            $("#municipality_id").val(id);
+        });
+
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/municipalities/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+
+
+
+
+</script>

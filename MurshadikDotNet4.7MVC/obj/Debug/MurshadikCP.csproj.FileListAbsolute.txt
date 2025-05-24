@@ -1,0 +1,844 @@
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\MurshadikCP.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\MurshadikCP.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\ar\MurshadikCP.resources.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\EntityFramework.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.PlatformServices.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Meilisearch.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\NPOI.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\NPOI.OpenXmlFormats.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\PagedList.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Swashbuckle.Core.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Buffers.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Memory.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Text.Json.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.ValueTuple.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Cors.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Razor.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\WebActivatorEx.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\WebGrease.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\EntityFramework.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Meilisearch.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\NPOI.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\PagedList.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Buffers.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Memory.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Text.Json.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.ValueTuple.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.Razor.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.AssemblyReference.cache
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.resources
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.ar.resources
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.GenerateResource.cache
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.CoreCompileInputs.cache
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\ar\MurshadikCP.resources.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.CopyComplete
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\csc.rsp
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\csi.rsp
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.AppContext.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Console.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Http.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.ValueTuple.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\vbc.rsp
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\Ershad\Murshadick-dashboard\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ar\MurshadikCP.resources.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.rsp
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.rsp
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.AppContext.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Console.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Http.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.ValueTuple.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.rsp
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.PlatformServices.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Meilisearch.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXmlFormats.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Swashbuckle.Core.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Buffers.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Memory.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Json.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.ValueTuple.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Cors.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Razor.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebActivatorEx.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebGrease.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Meilisearch.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Buffers.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Memory.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Json.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.ValueTuple.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Razor.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.pdb
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.AssemblyReference.cache
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.resources
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.ar.resources
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.GenerateResource.cache
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.CoreCompileInputs.cache
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\ar\MurshadikCP.resources.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.CopyComplete
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.dll
+C:\Users\Thinkpad T14s\Documents\BkrGitHub\MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll.config
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ar\MurshadikCP.resources.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe.config
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.rsp
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe.config
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.rsp
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.AppContext.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Console.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Http.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Sockets.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.ValueTuple.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe.config
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.rsp
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Meilisearch.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXmlFormats.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Owin.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Swashbuckle.Core.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Buffers.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Memory.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Json.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.ValueTuple.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Cors.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Razor.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebActivatorEx.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebGrease.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Meilisearch.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Buffers.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Memory.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Json.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.ValueTuple.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Razor.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.pdb
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.AssemblyReference.cache
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.resources
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.ar.resources
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.GenerateResource.cache
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.CoreCompileInputs.cache
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\ar\MurshadikCP.resources.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\Murshadi.C2C92204.Up2Date
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.dll
+C:\Users\ameen\Source\Repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll.config
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\MurshadikCP.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\ar\MurshadikCP.resources.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.exe.config
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csc.rsp
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.exe.config
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\csi.rsp
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.AppContext.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Collections.Immutable.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Console.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Globalization.Calendars.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Http.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Net.Sockets.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Reflection.Metadata.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.ValueTuple.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.exe.config
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\vbc.rsp
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\roslyn\VBCSCompiler.exe.config
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.PlatformServices.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.PlatformServices.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Meilisearch.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Web.Infrastructure.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXmlFormats.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Owin.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Swashbuckle.Core.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Buffers.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Memory.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Json.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.ValueTuple.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Cors.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Razor.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebActivatorEx.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebGrease.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\BouncyCastle.Crypto.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\EntityFramework.SqlServer.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\FirebaseAdmin.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Api.Gax.Rest.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Auth.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Google.Apis.Core.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\ICSharpCode.SharpZipLib.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Meilisearch.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.AspNetCore.WebUtilities.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Extensions.Primitives.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Logging.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.IdentityModel.Tokens.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Net.Http.Headers.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.Jwt.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.Practices.ServiceLocation.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Newtonsoft.Json.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OOXML.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\NPOI.OpenXml4Net.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\PagedList.Mvc.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Buffers.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Collections.Immutable.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Memory.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Formatting.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Net.Http.Json.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Numerics.Vectors.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Reflection.Metadata.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Encodings.Web.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Text.Json.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Threading.Tasks.Extensions.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.ValueTuple.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Cors.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.Owin.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Http.WebHost.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Helpers.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Mvc.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Optimization.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.Razor.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Deployment.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.Web.WebPages.Razor.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Antlr3.Runtime.pdb
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.Data.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\WebMatrix.WebData.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.AssemblyReference.cache
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.resources
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.Resources.Resources.ar.resources
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.GenerateResource.cache
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.csproj.CoreCompileInputs.cache
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\ar\MurshadikCP.resources.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\Murshadi.C2C92204.Up2Date
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.dll
+D:\Coding\.net projects\Murshiduk01\MurshadikDotNet4.7MVC\obj\Debug\MurshadikCP.pdb
+C:\Users\ameen\source\repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.CodeDom.dll
+C:\Users\ameen\source\repos\Murshiduk-MWEA\Murshiduk01\MurshadikDotNet4.7MVC\bin\System.CodeDom.xml

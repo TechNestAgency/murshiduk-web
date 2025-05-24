@@ -1,0 +1,212 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.lab>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "مختبر";
+    ViewBag.pTitle = "مختبر";
+    if (ViewBag.role == 4)
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="col-xl-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card bg-soft-warning">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                            <i class="bx bx-user"></i>
+                                        </span>
+                                    </div>
+                                    <h4 class="mb-0">إجمالي المواعيد</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div>
+                                            <h1>@ViewBag.totalappointment</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card bg-soft-success">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                            <i class="bx bx-group"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="mb-0">المواعيد المكتملة/المنتهية</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div>
+                                            <h1>@ViewBag.completed</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card bg-soft-danger">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-soft-dark  font-size-18">
+                                            <i class="bx bx-git-repo-forked"></i>
+                                        </span>
+                                    </div>
+                                    <h4 class="mb-0">المواعيد في الانتظار</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div>
+                                            <h1>@ViewBag.pending</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            الاسم
+                        </th>
+                        <th>
+                            محجوز
+                        </th>
+                        <th>
+                            انتظار
+                        </th>
+                        <th>
+                            مُفعل
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Name) (@Html.DisplayFor(modelItem => item.city.name_ar))
+                            </th>
+                            <th class="align-middle">
+                                @item.appointments.Where(x => x.is_booked == true).Count()
+                            </th>
+                            <th class="align-middle">
+                                @item.appointments.Where(x => x.is_sample_collected == true && x.is_completed == false).Count()
+                            </th>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.active)
+                            </td>
+                            <td>
+                                <a href="/Lab/Edit?ID=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                <input type="hidden" id="ids" value="@item.id" />
+                                <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+
+                                <a href="/Appointments/Index?id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="رؤية"><i class="bx bx-show"></i></a>
+
+                                @*<a href="/Lab_Centers/Index?lab_id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="مراكز المختبر"><i class="bx bx-building-house"></i></a>*@
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+        </div>
+        <div class="align-self-center">
+            @if (ViewBag.role == 1)
+            {
+                @Html.ActionLink(" اضافة ", "Add", "Lab", null, new { @class = " mdi mdi-plus-box ml-1 btn btn-primary" })
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <!-- Sweet Alerts js -->
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Sweet alert init js-->
+    <!--<script src="~/assets/js/pages/sweet-alerts.init.js"></script>-->
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/Lab/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+
+
+
+
+</script>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<MurshadikCP.Controllers.API.ApiViewModel.FarmVisitViewModel>
+
+@{
+    ViewBag.Title = "طلبات زيارات المزارع";
+
+    ViewBag.pTitle = "طلبات زيارات المزارع";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<table class="table">
+    <tr>
+        <th>
+            اسم المزرعة
+        </th>
+        @*<th>
+            وصف الزرعة
+        </th>*@
+        <th>
+            سبب طلب الزياره
+        </th>
+        <th>
+            المنطقة
+        </th>
+        <th>
+            المدينة
+        </th>
+        @*<th>
+            موقع المزرعة
+        </th>*@
+        <th>
+           حالة الطلب
+        </th>
+        <th>
+            اسم المزارع
+        </th>
+        <th>
+            تاريخ الطلب
+        </th>
+        <th>
+            تاريخ الزياره
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.PurposeOfVisit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+      
+    <td>
+        @{
+            if (item.OrderStatus !=null)
+            {
+
+            if (item.OrderStatus.stat == 2)
+            {
+                @("مرفوض");
+            }
+            else
+            {
+
+                @Html.DisplayFor(modelItem => item.OrderStatus.description);
+            }
+                
+            }
+
+        }
+    </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerName)
+        </td>
+        <td>
+            @item.OrderDate.ToString("d")
+        </td>
+        <td>
+            @item.VisitDate.ToString("d")
+        </td>
+        <td>
+           
+            @Html.ActionLink("التفاصيل", "Details", new { id=item.id }) |
+            @Html.ActionLink("أضافة تقرير", "AddReport", new { id=item.id }) |
+            @Html.ActionLink("تحديث حالة الطلب", "chageStatus", new { id=item.id}, new { @class ="m" })
+           
+        </td>
+    </tr>
+}
+
+</table>

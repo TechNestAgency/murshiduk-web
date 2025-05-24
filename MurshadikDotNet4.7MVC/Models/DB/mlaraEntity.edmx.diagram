@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1de267d66146422a8952e354ce8ca1f3" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="mlaraModel.Agriculture_Calender" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="mlaraModel.AlertHazard" Width="1.5" PointX="0.75" PointY="41" />
+        <EntityTypeShape EntityType="mlaraModel.AlertMessage" Width="1.5" PointX="3" PointY="38.75" />
+        <EntityTypeShape EntityType="mlaraModel.AlertType" Width="1.5" PointX="0.75" PointY="38.25" />
+        <EntityTypeShape EntityType="mlaraModel.app_settings" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="mlaraModel.app_stats" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="mlaraModel.app_type" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="mlaraModel.appointment" Width="1.5" PointX="10.5" PointY="48" />
+        <EntityTypeShape EntityType="mlaraModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="mlaraModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="mlaraModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="mlaraModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="mlaraModel.attention" Width="1.5" PointX="3.75" PointY="32.75" />
+        <EntityTypeShape EntityType="mlaraModel.bug_history" Width="1.5" PointX="13.5" PointY="52.875" />
+        <EntityTypeShape EntityType="mlaraModel.calldetail" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="mlaraModel.category" Width="1.5" PointX="5.75" PointY="7.375" />
+        <EntityTypeShape EntityType="mlaraModel.category_articles" Width="1.5" PointX="10.25" PointY="7.875" />
+        <EntityTypeShape EntityType="mlaraModel.city" Width="1.5" PointX="3" PointY="51.5" />
+        <EntityTypeShape EntityType="mlaraModel.commentsByUser" Width="1.5" PointX="11.25" PointY="40" />
+        <EntityTypeShape EntityType="mlaraModel.consultant_rating" Width="1.5" PointX="11.25" PointY="68" />
+        <EntityTypeShape EntityType="mlaraModel.currentweathernotificationforCity" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="mlaraModel.general_notifications" Width="1.5" PointX="11.25" PointY="44" />
+        <EntityTypeShape EntityType="mlaraModel.group_user" Width="1.5" PointX="11.25" PointY="64.375" />
+        <EntityTypeShape EntityType="mlaraModel.group" Width="1.5" PointX="3" PointY="94.5" />
+        <EntityTypeShape EntityType="mlaraModel.keyword_group" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="mlaraModel.keyword" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="mlaraModel.LabCollecctionPoint" Width="1.5" PointX="7.5" PointY="52.125" />
+        <EntityTypeShape EntityType="mlaraModel.lab" Width="1.5" PointX="5.25" PointY="51.625" />
+        <EntityTypeShape EntityType="mlaraModel.market_products" Width="1.5" PointX="15.75" PointY="44.75" />
+        <EntityTypeShape EntityType="mlaraModel.market" Width="1.5" PointX="3" PointY="43.25" />
+        <EntityTypeShape EntityType="mlaraModel.medium" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="mlaraModel.Messages_Templates_Notification" Width="1.5" PointX="10.75" PointY="5.125" />
+        <EntityTypeShape EntityType="mlaraModel.MessagesTemplate" Width="1.5" PointX="13" PointY="4.875" />
+        <EntityTypeShape EntityType="mlaraModel.messagetype" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="mlaraModel.msg" Width="1.5" PointX="6" PointY="44.25" />
+        <EntityTypeShape EntityType="mlaraModel.msg_logs" Width="1.5" PointX="17.25" PointY="36.375" />
+        <EntityTypeShape EntityType="mlaraModel.municipality" Width="1.5" PointX="5.25" PointY="48.875" />
+        <EntityTypeShape EntityType="mlaraModel.notification" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="mlaraModel.notification_class" Width="1.5" PointX="3.75" PointY="35.75" />
+        <EntityTypeShape EntityType="mlaraModel.otp" Width="1.5" PointX="11.75" PointY="14.75" />
+        <EntityTypeShape EntityType="mlaraModel.Page" Width="1.5" PointX="7.75" PointY="1" />
+        <EntityTypeShape EntityType="mlaraModel.past_experiences" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="mlaraModel.product_categories" Width="1.5" PointX="11.25" PointY="53.375" />
+        <EntityTypeShape EntityType="mlaraModel.product_subscribers" Width="1.5" PointX="16.75" PointY="40" />
+        <EntityTypeShape EntityType="mlaraModel.product_type" Width="1.5" PointX="11.25" PointY="25.5" />
+        <EntityTypeShape EntityType="mlaraModel.product" Width="1.5" PointX="13.5" PointY="44.5" />
+        <EntityTypeShape EntityType="mlaraModel.qa_answers" Width="1.5" PointX="14.25" PointY="38.375" />
+        <EntityTypeShape EntityType="mlaraModel.qa_attachments" Width="1.5" PointX="15.75" PointY="4.75" />
+        <EntityTypeShape EntityType="mlaraModel.qa_category" Width="1.5" PointX="9" PointY="30.75" />
+        <EntityTypeShape EntityType="mlaraModel.qa_questions" Width="1.5" PointX="11.25" PointY="34.125" />
+        <EntityTypeShape EntityType="mlaraModel.qa_votes" Width="1.5" PointX="11.25" PointY="59.875" />
+        <EntityTypeShape EntityType="mlaraModel.region" Width="1.5" PointX="0.75" PointY="43.75" />
+        <EntityTypeShape EntityType="mlaraModel.role" Width="1.5" PointX="6.75" PointY="36.5" />
+        <EntityTypeShape EntityType="mlaraModel.roles_permission" Width="1.5" PointX="10" PointY="1.125" />
+        <EntityTypeShape EntityType="mlaraModel.skill_user" Width="1.5" PointX="14.25" PointY="34.25" />
+        <EntityTypeShape EntityType="mlaraModel.skill" Width="1.5" PointX="12" PointY="28.75" />
+        <EntityTypeShape EntityType="mlaraModel.subscriber" Width="1.5" PointX="11.25" PointY="56.75" />
+        <EntityTypeShape EntityType="mlaraModel.unit" Width="1.5" PointX="11.25" PointY="22.5" />
+        <EntityTypeShape EntityType="mlaraModel.user_access" Width="1.5" PointX="7.5" PointY="48.75" />
+        <EntityTypeShape EntityType="mlaraModel.weather_notification" Width="1.5" PointX="6" PointY="39.875" />
+        <EntityTypeShape EntityType="mlaraModel.WeatherData" Width="1.5" PointX="0.75" PointY="16.75" />
+        <AssociationConnector Association="mlaraModel.FK_AlertMessages_AlertHazards_alertHazardId" />
+        <AssociationConnector Association="mlaraModel.FK_AlertMessages_AlertTypes_alertActionId" />
+        <AssociationConnector Association="mlaraModel.FK_AlertMessages_regions" />
+        <AssociationConnector Association="mlaraModel.FK_appointments_labs" />
+        <AssociationConnector Association="mlaraModel.FK_appointments_regions" />
+        <AssociationConnector Association="mlaraModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="mlaraModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="mlaraModel.FK_msg_attention" />
+        <AssociationConnector Association="mlaraModel.FK_category_articles_categories" />
+        <AssociationConnector Association="mlaraModel.FK_city_regions" />
+        <AssociationConnector Association="mlaraModel.FK_lab_city" />
+        <AssociationConnector Association="mlaraModel.FK_municipality_city" />
+        <AssociationConnector Association="mlaraModel.FK_group_user_groups" />
+        <AssociationConnector Association="mlaraModel.FK_groups_regions" />
+        <AssociationConnector Association="mlaraModel.FK_LabCollecctionPoint_labs" />
+        <AssociationConnector Association="mlaraModel.FK_labuser_labs" />
+        <AssociationConnector Association="mlaraModel.FK_market_products_markets" />
+        <AssociationConnector Association="mlaraModel.FK_market_products_products" />
+        <AssociationConnector Association="mlaraModel.FK_markets_regions" />
+        <AssociationConnector Association="mlaraModel.FK_product_subscribers_markets" />
+        <AssociationConnector Association="mlaraModel.FK_user_access_markets" />
+        <AssociationConnector Association="mlaraModel.FK_MessagesTemplates_Messages_Templates_Notification" />
+        <AssociationConnector Association="mlaraModel.FK_msg_logs_msg" />
+        <AssociationConnector Association="mlaraModel.FK_msg_regions" />
+        <AssociationConnector Association="mlaraModel.FK_msg_skills" />
+        <AssociationConnector Association="mlaraModel.FK_weather_notification_notification_class" />
+        <AssociationConnector Association="mlaraModel.FK_roles_permission_Page" />
+        <AssociationConnector Association="mlaraModel.FK_products_product_categories" />
+        <AssociationConnector Association="mlaraModel.FK_product_subscribers_products" />
+        <AssociationConnector Association="mlaraModel.FK_products_product_type" />
+        <AssociationConnector Association="mlaraModel.FK_products_units" />
+        <AssociationConnector Association="mlaraModel.FK_qa_answers_qa_questions" />
+        <AssociationConnector Association="mlaraModel.FK_qa_questions_qa_category" />
+        <AssociationConnector Association="mlaraModel.FK_weather_notification_regions" />
+        <AssociationConnector Association="mlaraModel.FK_skill_user_skills" />
+        <AssociationConnector Association="mlaraModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="mlaraModel.articles_galleries" Width="1.5" PointX="10.25" PointY="76" />
+        <EntityTypeShape EntityType="mlaraModel.user" Width="1.5" PointX="9" PointY="33.5" />
+        <AssociationConnector Association="mlaraModel.FK_appointments_users" />
+        <AssociationConnector Association="mlaraModel.FK_bug_history_users" />
+        <AssociationConnector Association="mlaraModel.FK_commentsByUser_Consultant" />
+        <AssociationConnector Association="mlaraModel.FK_commentsByUser_Farmer" />
+        <AssociationConnector Association="mlaraModel.FK_consultant_rating_consultant" />
+        <AssociationConnector Association="mlaraModel.FK_consultant_rating_users" />
+        <AssociationConnector Association="mlaraModel.FK_general_notifications_users" />
+        <AssociationConnector Association="mlaraModel.FK_group_user_users" />
+        <AssociationConnector Association="mlaraModel.FK_markets_users" />
+        <AssociationConnector Association="mlaraModel.FK_msg_logs_users" />
+        <AssociationConnector Association="mlaraModel.FK_product_categories_users" />
+        <AssociationConnector Association="mlaraModel.FK_product_subscribers_users" />
+        <AssociationConnector Association="mlaraModel.FK_products_users" />
+        <AssociationConnector Association="mlaraModel.FK_qa_answers_users" />
+        <AssociationConnector Association="mlaraModel.FK_qa_answers_users_approver" />
+        <AssociationConnector Association="mlaraModel.FK_qa_answers_users_verifier" />
+        <AssociationConnector Association="mlaraModel.FK_qa_questions_users" />
+        <AssociationConnector Association="mlaraModel.FK_qa_questions_users_approver" />
+        <AssociationConnector Association="mlaraModel.FK_qa_questions_users_verifier" />
+        <AssociationConnector Association="mlaraModel.FK_qa_votes_users" />
+        <AssociationConnector Association="mlaraModel.FK_users_regions" />
+        <AssociationConnector Association="mlaraModel.FK_users_roles" />
+        <AssociationConnector Association="mlaraModel.FK_skill_user_users" />
+        <AssociationConnector Association="mlaraModel.FK_subscribers_users" />
+        <AssociationConnector Association="mlaraModel.FK_labuser_users" />
+        <EntityTypeShape EntityType="mlaraModel.UserAccessTypeIdentifier" Width="1.5" PointX="3.375" PointY="16.75" />
+        <EntityTypeShape EntityType="mlaraModel.NotificationLog" Width="1.5" PointX="14.375" PointY="16.75" />
+        <EntityTypeShape EntityType="mlaraModel.lab_reports" Width="1.5" PointX="11.25" PointY="79.25" />
+        <AssociationConnector Association="mlaraModel.FK_lab_reports_users" />
+        <EntityTypeShape EntityType="mlaraModel.bug_tracker" Width="1.5" PointX="11.25" PointY="71.375" />
+        <AssociationConnector Association="mlaraModel.FK_bug_history_bug_tracker" />
+        <AssociationConnector Association="mlaraModel.FK_bug_tracker_users" />
+        <EntityTypeShape EntityType="mlaraModel.faq" Width="1.5" PointX="15.375" PointY="7.75" />
+        <EntityTypeShape EntityType="mlaraModel.chatmessage" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="mlaraModel.chat" Width="1.5" PointX="3" PointY="10.5" />
+        <AssociationConnector Association="mlaraModel.FK_chatmessages_messagetype" />
+        <AssociationConnector Association="mlaraModel.FK_chats_messagetype" />
+        <EntityTypeShape EntityType="mlaraModel.article" Width="1.5" PointX="14.25" PointY="22.875" />
+        <AssociationConnector Association="mlaraModel.FK_articles_categories" />
+        <AssociationConnector Association="mlaraModel.FK_articles_galleries_articles" />
+        <AssociationConnector Association="mlaraModel.FK_articles_users" />
+        <AssociationConnector Association="mlaraModel.FK_category_articles_articles" />
+        <EntityTypeShape EntityType="mlaraModel.group_messages" Width="1.5" PointX="13.375" PointY="11.75" />
+        <EntityTypeShape EntityType="mlaraModel.VideoCategory" Width="1.75" PointX="17.5" PointY="28.125" />
+        <EntityTypeShape EntityType="mlaraModel.VideoComment" Width="3.75" PointX="16" PointY="13" />
+        <EntityTypeShape EntityType="mlaraModel.VideoLike" Width="2.75" PointX="16.125" PointY="51.625" />
+        <EntityTypeShape EntityType="mlaraModel.Video" Width="2.75" PointX="21.5" PointY="11.875" />
+        <EntityTypeShape EntityType="mlaraModel.VideoTag" Width="2.75" PointX="16.125" PointY="48.75" />
+        <AssociationConnector Association="mlaraModel.FK_users_users" />
+        <AssociationConnector Association="mlaraModel.FK_VideoCategories_VideoCategories_ParentId" />
+        <AssociationConnector Association="mlaraModel.FK_Videos_VideoCategories_VideoCategoryId" />
+        <AssociationConnector Association="mlaraModel.FK_Videos_VideoComments_VideoCommentId" />
+        <AssociationConnector Association="mlaraModel.FK_Videos_VideoLikes_VideoLikeId" />
+        <AssociationConnector Association="mlaraModel.FK_Videos_VideoTags_VideoTagId" />
+        <AssociationConnector Association="mlaraModel.FK_VideoComments_VideoComments_ParentId" />
+        <AssociationConnector Association="mlaraModel.FK_VideoComments_Videos_VideoId" />
+        <AssociationConnector Association="mlaraModel.FK_VideoLikes_Videos_VideoId" />
+        <EntityTypeShape EntityType="mlaraModel.sysdiagram" Width="1.5" PointX="16.375" PointY="17.75" />
+        <EntityTypeShape EntityType="mlaraModel.tempuser" Width="1.5" PointX="18.375" PointY="4.75" />
+        <EntityTypeShape EntityType="mlaraModel.GetLatestProductPrice" Width="1.5" PointX="5.375" PointY="17.75" />
+        <EntityTypeShape EntityType="mlaraModel.GuidedGuideLog" Width="1.5" PointX="18.375" PointY="17.75" />
+        <EntityTypeShape EntityType="mlaraModel.UserStatusLog" Width="1.5" PointX="17.375" PointY="7.75" />
+        <EntityTypeShape EntityType="mlaraModel.FarmVisitMessage" Width="2.625" PointX="20.75" PointY="6.375" />
+        <EntityTypeShape EntityType="mlaraModel.FarmVisitOrder" Width="2.625" PointX="21.125" PointY="1.5" />
+        <EntityTypeShape EntityType="mlaraModel.FarmVisitReport" Width="2.625" PointX="24.25" PointY="4.75" />
+        <EntityTypeShape EntityType="mlaraModel.FarmVisitStatus" Width="2.625" PointX="24.375" PointY="1.125" />
+        <AssociationConnector Association="mlaraModel.FK_FarmVisitReports_FarmVisitOrders_FarmVisitOrderId" />
+        <AssociationConnector Association="mlaraModel.FK_FarmVisitStatuses_FarmVisitOrders_FarmVisitOrderId" />
+        <EntityTypeShape EntityType="mlaraModel.FarmVisitMedia" Width="1.5" PointX="28.625" PointY="2.75" />
+        <AssociationConnector Association="mlaraModel.FK_FarmVisitMedias_FarmVisitOrders_FarmVisitOrderId" />
+        <AssociationConnector Association="mlaraModel.FK_FarmVisitMedias_FarmVisitReports_FarmVisitReportId" />
+        <EntityTypeShape EntityType="mlaraModel.ConsultantsActiveHoursInDay" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="mlaraModel.ConsultantsDailyActiveHour" Width="1.5" PointX="9.375" PointY="19.75" />
+        <EntityTypeShape EntityType="mlaraModel.ConsultantsStatusLog" Width="1.5" PointX="11.375" PointY="19.75" />
+        <EntityTypeShape EntityType="mlaraModel.FarmVisitService" Width="1.5" PointX="13.375" PointY="19.75" />
+        <EntityTypeShape EntityType="mlaraModel.FarmerWorkerStatu" Width="1.5" PointX="0.75" PointY="20.75" />
+        <EntityTypeShape EntityType="mlaraModel.JobNotification" Width="1.5" PointX="2.75" PointY="20.75" />
+        <EntityTypeShape EntityType="mlaraModel.Job" Width="1.5" PointX="19.625" PointY="32.125" />
+        <EntityTypeShape EntityType="mlaraModel.Nationalty" Width="1.5" PointX="17.375" PointY="32.25" />
+        <EntityTypeShape EntityType="mlaraModel.WorkerExperience" Width="1.5" PointX="21.875" PointY="46" />
+        <EntityTypeShape EntityType="mlaraModel.WorkerJob" Width="1.5" PointX="21.875" PointY="39.125" />
+        <EntityTypeShape EntityType="mlaraModel.WorkerNotification" Width="1.5" PointX="21.875" PointY="42.875" />
+        <EntityTypeShape EntityType="mlaraModel.Worker" Width="1.5" PointX="19.625" PointY="40" />
+        <AssociationConnector Association="mlaraModel.FK_WorkerJobs_Jobs_JobId" />
+        <AssociationConnector Association="mlaraModel.FK_Workers_Nationalties_NationaltyId" />
+        <AssociationConnector Association="mlaraModel.FK_Workers_users_UserId" />
+        <AssociationConnector Association="mlaraModel.FK_WorkerExperiences_Workers_WorkerId" />
+        <AssociationConnector Association="mlaraModel.FK_WorkerJobs_Workers_WorkerId" />
+        <AssociationConnector Association="mlaraModel.FK_WorkerNotifications_Workers_WorkerId" />
+        <EntityTypeShape EntityType="mlaraModel.ClinicAppointmentHistory" Width="1.5" PointX="27.625" PointY="33.5" />
+        <EntityTypeShape EntityType="mlaraModel.ClinicAppointment" Width="1.5" PointX="24.625" PointY="34.5" />
+        <EntityTypeShape EntityType="mlaraModel.ClinicDoctor" Width="1.5" PointX="24.625" PointY="25.375" />
+        <EntityTypeShape EntityType="mlaraModel.Clinic" Width="1.5" PointX="22.375" PointY="20.875" />
+        <EntityTypeShape EntityType="mlaraModel.Doctor" Width="1.5" PointX="22.375" PointY="25.625" />
+        <EntityTypeShape EntityType="mlaraModel.DoctorRating" Width="1.5" PointX="24.625" PointY="28.75" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicAppointmentHistories_Clinics_ClinicId" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicAppointmentHistories_Doctor_DoctorId" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicAppointmentHistories_users_UserId" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicAppointments_Clinics_ClinicId" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicAppointments_Doctor_DoctorId" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicAppointments_users_UserId" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicDoctors_Clinics_ClinicId" />
+        <AssociationConnector Association="mlaraModel.FK_ClinicDoctors_Doctor_DoctorId" />
+        <AssociationConnector Association="mlaraModel.FK_DoctorRatings_Doctor_DoctorId" />
+        <AssociationConnector Association="mlaraModel.FK_Doctor_users_UserId" />
+        <EntityTypeShape EntityType="mlaraModel.ConsultationAvailablity" Width="1.5" PointX="16.375" PointY="21.75" />
+        <EntityTypeShape EntityType="mlaraModel.ConsultationAppointment" Width="1.5" PointX="14.25" PointY="28.375" />
+        <AssociationConnector Association="mlaraModel.FK_consultationAppointments_consultants" />
+        <AssociationConnector Association="mlaraModel.FK_consultationAppointments_skills" />
+        <AssociationConnector Association="mlaraModel.FK_consultationAppointments_users_callStartBy" />
+        <AssociationConnector Association="mlaraModel.FK_consultationAppointments_users_canceledBy" />
+        <AssociationConnector Association="mlaraModel.FK_consultationAppointments_users_createdBy" />
+        <EntityTypeShape EntityType="mlaraModel.ReefComponent" Width="1.5" PointX="5.375" PointY="22.875" />
+        <EntityTypeShape EntityType="mlaraModel.ReefComponentSuggestion" Width="1.5" PointX="7.625" PointY="22.875" />
+        <AssociationConnector Association="mlaraModel.FK__ReefCompo__ReefC__135DC465" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

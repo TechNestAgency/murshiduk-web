@@ -1,0 +1,134 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.GetAllUsers_Result>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = Resources.Resources.Users;//"المستخدمين";
+    ViewBag.pTitle = Resources.Resources.All_Users;//"جميع المستخدمين";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.msg != null && ViewBag.msg != "")
+        {
+            <span class="text-danger">@ViewBag.msg</span>
+        }
+
+
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+        </div>
+        <div class="align-self-center">
+            @Html.ActionLink(Resources.Resources.Add, "Register", "User", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+
+                    <tr>
+                        <th>@Resources.Resources.Name</th>
+                        <th>@Resources.Resources.UserName</th>
+                        <th>@Resources.Resources.Role</th>
+                        <th>@Resources.Resources.Active</th>
+                        <th>@Resources.Resources.Last_Login_Date</th>
+                        <th></th>
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th class="align-middle w-auto">@Html.DisplayFor(modelItem => item.name)</th>
+                            <td class="align-middle w-auto">
+                                @Html.DisplayFor(modelItem => item.phone)
+                            </td>
+                            <td class="align-middle w-auto">
+                                @Html.DisplayFor(modelItem => item.RoleName)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.active)
+                            </td>
+                            <td class="align-middle">
+                                @(item.last_login_date.HasValue ? item.last_login_date.Value.ToShortDateString() : "")
+                            </td>
+                            <td>
+                                @*<input type="hidden" id="ids" value="@item.Id" />*@
+                                <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-id="@item.Id" data-type="@(item.active == true ? "1" : "2")" data-placement="top" title=@(item.active == true ? Resources.Resources.No : Resources.Resources.Yes)><i class='@(item.active == true ? "bx bxs-user-x" : "bx bxs-user")'></i></a>
+                                <a href="~/User/UpdateUser/@item.Id" class="btn btn-lg btn-link waves-effect waves-light" data-toggle="tooltip" data-placement="top" title=@Resources.Resources.Update><i class="bx bxs-pencil"></i></a>
+                                <a href="~/User/Profile?id=@item.Id&type=1" class="btn btn-lg btn-link waves-effect waves-light" data-toggle="tooltip" data-placement="top" title=@Resources.Resources.Reset_Password><i class="bx bx-key"></i></a>
+                                @*@Html.ActionLink("تعديل", "UserEdit", new { id = item.Id })*@
+                                @*@Html.ActionLink("Block User", "Delete", new { id = item.Id })*@
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <!-- end table-responsive -->
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        if ('@ViewBag.msg' != null && '@ViewBag.msg' != "")
+        {
+            Swal.fire("success", "successfully reset the password", "success");
+        }
+
+        $(".sa-warning").click(function (e) {
+            debugger;
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            Swal.fire({
+            title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/User/Block', { 'id': id, 'type': type })
+                        .then(function (r) {
+                        if (r.data == "Success") {
+                            Swal.fire("محظور!", "تم حظر المستخدم بنجاح.", "success")
+                                location.reload();
+                        } else {
+                            swal.fire(r.data, "Something wrong!", "error")
+                            }
+                    })
+                        .catch(function (error) {
+                        swal.fire("Error", error, "error")
+                        });
+                    }
+                });
+            });
+    });
+
+
+
+
+
+</script>

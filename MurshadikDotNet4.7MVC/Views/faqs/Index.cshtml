@@ -1,0 +1,223 @@
+﻿
+@model MurshadikCP.Controllers.ParentFaqs
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<link href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+@{
+    ViewBag.Title = "الأسئلة الشائعة";
+    ViewBag.pTitle = "الأسئلة الشائعة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm(Model.faq.id == 0 ? "Create" : "Edit", "faqs", FormMethod.Post, new { id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.faq.id" />
+                    <input type="hidden" name="fid" value="@Model.faq.id" />
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.faq.question, "السؤال", htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                @Html.TextAreaFor(model => model.faq.question, 5, 35, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.faq.question, "السؤال مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.faq.answer, "الاجابة", htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                @Html.TextAreaFor(model => model.faq.answer, 5, 35, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.faq.answer, "الاجابة مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.faq.active, "مُفعل", htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.faq.active)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حفظ" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "faq", FormMethod.Get))
+                {
+                    <div class="align-items-center form-group row">
+                        <div class="col-lg-4">
+                            @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                        </div>
+                        <input type="submit" value="بحث" class="btn btn-primary waves-effect waves-light" />
+                    </div>
+                }
+
+                <div class="table-responsive">
+                    @using (Html.BeginForm("Sorting", "faqs", FormMethod.Post))
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        السؤال
+                                    </th>
+                                    <th>
+                                        مُفعل
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.faqList)
+                                {
+                                    <tr>
+                                        <th class="align-middle">
+                                            <i class="fas fa-arrows-alt"></i>
+                                            @Html.DisplayFor(modelItem => item.question)
+                                            <input type="hidden" name="sortId" value="@item.id" />
+                                        </th>
+                                        <td class="align-middle">
+                                            @Html.DisplayFor(modelItem => item.active)
+                                        </td>
+                                        <td>
+                                            <a href="/faqs/Index?faqId=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                            <input type="hidden" id="ids" value="@item.id" />
+                                            <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <input type="submit" value="Update Sorting" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-7">
+        <div class="d-flex justify-content-between">
+            <div>
+                عرض صفحة @(Model.faqList.PageCount < Model.faqList.PageNumber ? 0 : Model.faqList.PageNumber) من @Model.faqList.PageCount
+                @Html.PagedListPager(Model.faqList, Page_No => Url.Action("Index",
+                    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        if ($("#parent_faq").val() == "") {
+            $("#parent_faq").prop('disabled', false);
+        } else {
+            $("#parent_faq").prop('disabled', true);
+        }
+
+        $("tbody").sortable({
+            //items: 'tr:not(tr:first-child)',
+            cursor: 'pointer',
+            axis: 'y',
+            dropOnEmpty: false,
+            start: function (e, ui) {
+                ui.item.addClass("selected");
+            },
+            stop: function (e, ui) {
+                ui.item.removeClass("selected");
+            },
+            receive: function (e, ui) {
+                $(this).find("tbody").append(ui.item);
+            }
+        });
+        //$("#sortable").sortable();
+        $("tbody").disableSelection();
+
+        var successMessage = '@TempData["SuccessMessage"]'
+        if (successMessage != null && successMessage != '') {
+            Swal.fire({ position: "top-end", type: "success", title: "@TempData["SuccessMessage"]", showConfirmButton: !1, timer: 1500 });
+        }
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/faqs/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+
+                                var uri = window.location.toString();
+                                if (uri.indexOf("?") > 0) {
+                                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                                    window.history.replaceState({}, document.title, clean_uri);
+                                }
+
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+</script>

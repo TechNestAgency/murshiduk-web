@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MurshadikCP.Models.DB.Clinic>
+
+@{
+
+
+    ViewBag.Title = "العيادات الافتراضية";
+    ViewBag.pTitle = "العيادات";
+    if (ViewBag.role == 1)
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                           الاسم
+                        </th>
+                        <th>
+                            الوصف
+                        </th>
+                        <th>
+                           عدد الاطباء
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClinicDoctors.Count)
+                            </td>
+
+                            @*<td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>*@
+                            <td>
+                                <a href="/Clinics/Edit?ID=@item.Id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                <input type="hidden" id="ids" value="@item.Id" />
+                                <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+
+                                <a href="/Clinics/DoctorClinic?id=@item.Id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="رؤية"><i class="bx bx-show"></i></a>
+
+                                @*<a href="/Lab_Centers/Index?lab_id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="مراكز المختبر"><i class="bx bx-building-house"></i></a>*@
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            @*عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))*@
+        </div>
+        <div class="align-self-center">
+            @if (true)
+            {
+                @Html.ActionLink(" اضافة ", "Create", "Clinics", null, new { @class = " mdi mdi-plus-box ml-1 btn btn-primary" })
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,244 @@
+﻿@model MurshadikCP.Models.DB.article
+
+@{
+    ViewBag.Title = "الأخبار";
+    ViewBag.pTitle = "إضافة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Add", "Article", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4 class="card-title">إضافة خبر</h4>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">العنوان</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="title" name="title" type="text" placeholder="العنوان الأخبار" required>
+                            <div class="invalid-feedback">
+                                العنوان مطلوب
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">وصف قصير</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="shortdescription" type="text" name="short_description" placeholder="short description" required>
+                            <div class="invalid-feedback">
+                                وصف قصير مطلوب
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">الأخبار</label>
+                        <div class="col-md-10">
+                            <textarea id="elm1" name="description" required></textarea>
+                            <div class="invalid-feedback">
+                                الأخبار مطلوب
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.keywords, "الدلالية", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("keywords", null, htmlAttributes: new
+                            {
+                               @class = "select2 form-control select2-multiple h-auto",
+                               id = "multiKeywords",
+                               multiple = "multiple",
+                               data_placeholder = " .... أختر",
+                               required = "required"
+                            })
+                            @Html.ValidationMessageFor(model => model.keywords, "الدلالية مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        @Html.LabelFor(model => model.active, "مُفعل", htmlAttributes: new { @class = "control-label col-auto" })
+                        <div class="col-md-1">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.active)
+                            </div>
+                        </div>
+
+                        @Html.LabelFor(model => model.show_bg, "إظهار صورة الخلفية", htmlAttributes: new { @class = "control-label col-auto" })
+                        <div class="col-md-1">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.show_bg)
+                            </div>
+                        </div>
+
+                        @Html.LabelFor(model => model.show_cats, "إظهار الفئات", htmlAttributes: new { @class = "control-label col-auto" })
+                        <div class="col-md-1">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.show_cats)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">قسم الخبر</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control h-auto", required = "required" })
+                            <div class="invalid-feedback">
+                                قسم الخبر مطلوب
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">صورة الخبر</label>
+                        <div class="col-md-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="imageFile" onchange="document.getElementById('outputimage').src = window.URL.createObjectURL(this.files[0])" required>
+                                <label class="custom-file-label" for="imageFile"> ... أختر </label>
+                                <div class="card">
+                                    <img src="~/assets/images/image_placeholder.jpg" id="outputimage" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">معرض صور الأخبار</label>
+                        <div class="col-md-10 custom-file">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="childimage" id="customFile" onchange="document.getElementById('outputcustom').src = window.URL.createObjectURL(this.files[0])">
+                                <label class="custom-file-label" for="customFile"> ... أختر </label>
+                                <div class="card">
+                                    <img src="~/assets/images/image_placeholder.jpg" id="outputcustom" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="login" type="submit" value="حفظ" class="btn btn-primary" />
+                            @Html.ActionLink("العودة للقائمة", "Index", new { catid = Request.QueryString["catid"] }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        //$("#login").click(function (e) {
+        //    e.preventDefault();
+        //    debugger;
+        //    $("#allkeywords").val($(".select2").select2().val());
+        //    if ($('#title').val() != "" && $('#shortdescription').val() != "") {
+        //        $('#form').get(0).submit();
+        //    } else {
+        //        alert('title & short description are required!');
+        //        return false;
+        //    }
+        //});
+
+        $(".select2").select2({
+            dir: "rtl",
+            tags: true,
+            insertTag: function (data, tag) {
+                data.push(tag);
+            },
+            createTag: function (params) {
+                var term = $.trim(params.term);
+                console.log(term)
+
+                if (term === '') {
+                    return null;
+                }
+
+                return {
+                    id: term,
+                    text: term,
+                    newTag: true // add additional parameters
+                }
+            }
+        });
+
+        $('.select2').on('select2:select', function (e) {
+            debugger
+            var data = e.params.data;
+            if (data.newTag) {
+                axios.post('/keywords/AddKeywords', { 'name': data.text })
+                    .then(function (r) {
+                        console.log(r)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+                console.log(data);
+            }
+        });
+
+
+
+        //$(".select2").select2({ dir: "rtl"});
+        0 < $("#elm1").length &&
+            tinymce.init({
+                selector: "textarea#elm1",
+                directionality: 'rtl',
+                language: 'ar',
+                language_url: '../assets/js/langs/ar.js',
+                height: 600,
+                menubar: true,
+                plugins: [
+                    'advlist autolink lists link image imagetools charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                ],
+                mediaembed_max_width: 300,
+                toolbar: 'undo redo | formatselect | bold italic backcolor forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | removeformat | code | image | help',
+                setup: function (editor) {
+                    editor.on('BeforeSetContent', function (e) {
+                        console.log('BeforeSetContent: ' + e.content);
+                        if (e.content.startsWith("<table ")) {
+                            e.content = '<div class="table-responsive">' + e.content + '</div>';
+                        }
+                    });
+                },
+                content_css: '../assets/css/app.min.css',
+                image_class_list: [
+                    { title: 'Responsive', value: 'img-fluid' }
+                ],
+                automatic_uploads: true,
+                images_upload_url: '/Article/upload',
+                relative_urls: false,
+                remove_script_host: false,
+                convert_urls: true,
+            });
+    });
+
+</script>

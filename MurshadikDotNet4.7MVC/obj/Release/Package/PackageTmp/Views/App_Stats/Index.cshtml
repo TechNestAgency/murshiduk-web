@@ -1,0 +1,152 @@
+﻿@model MurshadikCP.Controllers.Parent_App_Stats
+
+@{
+    ViewBag.Title = "احصائيات التطبيق";
+    ViewBag.pTitle = "احصائيات التطبيق";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm(Model.stats.id == 0 ? "Create" : "Edit", "App_Stats", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.stats.id" />
+                    <input type="hidden" name="sid" value="@Model.stats.id" />
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.stats.stats, "احصائيات", htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                @Html.EditorFor(model => model.stats.stats, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "number" } })
+                                @Html.ValidationMessageFor(model => model.stats.stats, " مطلوب احصائيات", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.stats.title, "عنوان", htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                @Html.EditorFor(model => model.stats.title, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.stats.title, "عنوان مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col col-form-label">لون النص</label>
+                            <div class="col">
+                                <input class="form-control" type="color" name="text_color" value="@(Model.stats == null ? "#556ee6" : Model.stats.text_color)" id="example-color-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col col-form-label">لون الخلفية</label>
+                            <div class="col">
+                                <input class="form-control" type="color" name="bg_color" value="@(Model.stats == null ? "#cccccc" : Model.stats.bg_color)" id="example-color-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col col-form-label">صورة الرمز</label>
+                            <div class="col">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="imgIcon" id="imageFile" onchange="document.getElementById('outputicon').src = window.URL.createObjectURL(this.files[0])" @(Model.stats.id == 0 ? "required" : "")>
+                                    <label class="custom-file-label" for="imageFile"> @(Model.stats.id == 0 ? "... أختر ": "") </label>
+                                    <div class="invalid-feedback">
+                                        الرجاء تحديد الصورة
+                                    </div>
+                                    <div class="card">
+                                        <img src="@(Model.stats.id == 0 ? "/assets/images/image_placeholder.jpg" : Model.stats.icon)" id="outputicon" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.stats.enabled, "عرض", htmlAttributes: new { @class = "col control-label" })
+                            <div class="col">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.stats.enabled)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حفظ" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                احصائيات
+                            </th>
+                            <th>
+                                الظهور في التطبيق
+                            </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model.List)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.stats)
+                                </td>
+                                <td class="align-middle">
+                                    @(item.enabled == true ? "نعم" : "لا")
+                                </td>
+                                <td>
+                                    <a href="/App_Stats/Index?id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+    var successMessage = '@TempData["SuccessMessage"]'
+        if (successMessage != null && successMessage != '') {
+            Swal.fire({ position: "top-end", type: "success", title: "@TempData["SuccessMessage"]", showConfirmButton: !1, timer: 1500 });
+        }
+
+    });
+
+</script>
+
+

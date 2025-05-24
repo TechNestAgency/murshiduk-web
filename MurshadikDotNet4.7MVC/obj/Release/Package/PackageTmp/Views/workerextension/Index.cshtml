@@ -1,0 +1,426 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.user>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+<link href="~/assets/css/select2_mushadik.css" rel="stylesheet" />
+
+<style>
+
+    .selectbox {
+        background: #fff;
+        color: #1d3b4a;
+        padding: 8px;
+        line-height: 18px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        border-width: 0 1px 4px;
+    }
+    
+    
+</style>
+
+@{
+    ViewBag.Title = Resources.Resources.All_Consultants;
+    ViewBag.pTitle = Resources.Resources.All_Consultants;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+
+@*<div class="row">
+        <div class="col-12 offset-lg-2 py-lg-3 py-1">
+            @Html.Partial("~/Views/Shared/_searchbar.cshtml", new ViewDataDictionary { { "searchType", "workerextension" } })
+        </div>
+    </div>*@
+
+
+
+
+<div class="col-xl-12">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card bg-soft-warning">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="avatar-xs mr-3">
+                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                <i class="bx bx-user"></i>
+                            </span>
+                        </div>
+                        <h4 class="mb-0">إجمالي المرشدين</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div>
+                                <h1>@ViewBag.totalconsultant</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card bg-soft-dark">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="avatar-xs mr-3">
+                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                <i class="bx bx-group"></i>
+                            </span>
+                        </div>
+                        <h5 class="mb-0">@Resources.Resources.Pending_Approval</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div>
+                                <h1>@ViewBag.totalPendingApproval</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card bg-soft-danger">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="avatar-xs mr-3">
+                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                <i class="bx bx-git-repo-forked"></i>
+                            </span>
+                        </div>
+                        <h4 class="mb-0">متصلين حالياً</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div>
+                                <h1>@ViewBag.totalonline</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="row">
+    <div class="col-12 lg-2 py-lg-3 py-1">
+        @Html.Partial("~/Views/Shared/_searchbar.cshtml", new ViewDataDictionary { { "searchType", "workerextension" } })
+    </div>
+</div>*@
+
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "workerextension", FormMethod.Get))
+        {
+            <input type="hidden" id="start_date" name="start_date" value="@ViewBag.Start_Date" />
+            <input type="hidden" id="end_date" name="end_date" value="@ViewBag.End_date" />
+            <div class="card-body border-bottom">
+                <h3>@Resources.Resources.Search </h3>
+            </div>
+            <div class="align-items-center card-body">
+                <div class="align-items-center row">
+                    <div class="col-12">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control form-control-lg my-2 my-lg-4", @placeholder = Resources.Resources.What_are_you_looking_for_ })
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="skillApproval" class="form-label">بإنتظار الموافقة على التخصصات</label>
+                                    <select class="form-control h-auto" name="skillApproval" id="skillApproval">
+                                        <option value="0">@Resources.Resources.All</option>
+                                        <option value="1">بإنتظار الموافقة على التخصصات</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <div id="reportrange" class="selectbox d-inline-block">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span> <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="align-items-center row">
+                            @if (ViewBag.RegionManager != "Yes")
+                            {
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">@Resources.Resources.Region</label>
+                                        @Html.DropDownList("Region", null, Resources.Resources.All, htmlAttributes: new { @class = "form-control h-auto" })
+                                    </div>
+                                </div>
+                            }
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="skill" class="form-label">@Resources.Resources.Skills</label>
+                                    @Html.DropDownList("skill", null, Resources.Resources.All, htmlAttributes: new { @class = "form-control h-auto" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="active" class="form-label">@Resources.Resources.Status</label>
+                                    <select class="form-control h-auto" name="active" id="active">
+                                        <option value="0">@Resources.Resources.All</option>
+                                        <option value="1">@Resources.Resources.Active</option>
+                                        <option value="2">@Resources.Resources.Inactive</option>
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="isOnline" class="form-label">حالةالاتصال</label>
+                                    <select class="form-control h-auto" name="isOnline" id="isOnline">
+                                        <option >@Resources.Resources.All</option>
+                                        <option value="true">متصل</option>
+                                        <option value="false"> غير متصل</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="approved" class="form-label">@Resources.Resources.Approval_Status</label>
+                                    <select class="form-control h-auto" name="approved" id="approved">
+                                        <option value="0">@Resources.Resources.All</option>
+                                        <option value="1">@Resources.Resources.Approved</option>
+                                        <option value="2">@Resources.Resources.Pending_Approval</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 py-3 text-right">
+                                <input type="submit" value="@Resources.Resources.Search" class="btn btn-block btn-lg btn-success col-12 col-md-2 waves-effect waves-light" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Resources.Resources.Name
+                            </th>
+                            
+                            <th>
+                                @Resources.Resources.Skills
+                            </th>
+                            <th>
+                                @Resources.Resources.Status
+                            </th>
+                            <th>
+                                @Resources.Resources.Approval_Status
+                            </th>
+                            <th>
+                                @Resources.Resources.Date
+                            </th>
+                            <th>
+                                حالة الاتصال
+                            </th>
+                            <th>
+                                إصدار
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                    <tr class="@(item.is_approved != null && item.is_approved == true ? "bg-soft-success" : "")">
+                        <td class="align-middle">
+                            <i class="fa fa-user fa-1x"></i>
+                            @if (item.skill_user.Where(x => x.is_approved == false).Count() > 0)
+                            {
+                                <i class="fa fa-exclamation-triangle text-danger"></i>
+                            }
+                            @Html.DisplayFor(modelItem => item.name) @Html.DisplayFor(modelItem => item.last_name)
+                            <br />
+                            <i class="fa fa-globe fa-1x"></i>
+                            @Html.DisplayFor(modelItem => item.region)
+                            <br />
+                            <i class="fa fa-phone fa-1x"></i>
+                            <a href="tel:+@item.phone">
+                                <span dir="ltr">+@Html.DisplayFor(modelItem => item.phone)</span>
+                            </a>
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.skills)
+                        </td>
+                        <td class="align-middle">
+                            @(item.active == true ? "مفعل": "غير مفعل")
+                            @*@Html.DisplayFor(modelItem => item.active == true ? "مفعل" : "غير مفعل")*@
+                        </td>
+                        <td class="align-middle">
+                            @(item.is_approved == true ? "وافق" : "غير موافق")
+                        </td>
+                        <td class="align-middle">
+                            @item.created_at.ToShortDateString()
+                            @*@Html.DisplayFor(modelItem => item.created_at)*@
+                        </td>
+                        <td class="align-middle">
+                            @(item.is_online == true ? "متصل" : "غير متصل")
+                        </td>
+                        <td class="align-middle">
+                            @item.app_ver
+                        </td>
+                        <td class="align-middle">
+                            <div class="btn-group">
+                                <a href="/workerextension/Chat?id=@item.id" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="المحادثات"><i class="fa fa-comments"></i></a>
+                                <a href="/workerextension/Profile?id=@item.id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="تفاصيل"><i class="fa fa-eye"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <div>
+                عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+                @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                    new { Page_No, Filter_Value = ViewBag.Filter_Value, Filter_type = ViewBag.Filter_type, Region = ViewBag.Filter_region, skill = ViewBag.Filter_skill, active = ViewBag.Filter_active, approved = ViewBag.Filter_approved, start_date = ViewBag.Start_Date, end_date = ViewBag.End_Date, skillApproval = ViewBag.Filter_skillApproval, isOnline = ViewBag.Filter_isOnline }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+
+        var token = $("[name='__RequestVerificationToken']").val();
+
+        $(document).ready(function () {
+
+            $("#active").val(@ViewBag.Filter_active);
+            $("#approved").val(@ViewBag.Filter_approved);
+
+            var is_first_load = true;
+            var start = $('#start_date').val() == "" ? moment().subtract(6, 'days') : moment($('#start_date').val());
+            var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val())
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    $('form').submit();
+                } else {
+                    is_first_load = false;
+                }
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2017-01-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+            cb(start, end);
+
+        });
+
+        $("#isOnline").val(@ViewBag.Filter_isOnline);
+        $("#active").val(@ViewBag.Filter_active);
+        $("#skill").val("@ViewBag.Filter_skill");
+        $("#skillApproval").val(@ViewBag.Filter_skillApproval);
+
+        $('#search-workerextension').select2({
+                theme: "bootstrap",
+                cacheDataSource: [],
+                delay: 500,
+                dir: "rtl",
+                placeholder: '@Resources.Resources.Search',
+                minimumInputLength: 3,
+                ajax: {
+                    url: '@Url.Action("SearchConsultant", "workerextension")',
+                    delay: 500,
+                    type: "post",
+                    dataType: 'json',
+                    data: function (params) {
+                        return {
+                            __RequestVerificationToken: token,
+                            q: params.term
+                        };
+                    },
+                    processResults: function (data) {
+                        console.log(data);
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.name,
+                                    id: item.id,
+                                    item: item,
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $('#search-workerextension').on('select2:select', function (e) {
+                var data = e.params.data;
+                var url = '@Url.Action("Profile","workerextension")';
+                url = url +"?id="+ data.item.id;
+                window.location.href = url;
+            });
+
+            $("#filter").on('change', function () {
+                $('form').submit();
+            })
+
+
+    </script>
+
+}

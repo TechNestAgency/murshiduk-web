@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MurshadikCP.Models.DB.group>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>مجموعة</h2>
+
+<p>
+    @Html.ActionLink(Resources.Resources.Add, "Create", "Group", null, new { @class = "btn btn-success" })
+</p>
+<div class="table-responsive">
+    <table class="table table-dark table-striped table-bordered mb-0">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name_ar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.active)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.created_at)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.updated_at)
+                </th>*@
+            <th>
+                Region
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name_ar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.active)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.updated_at)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.region.name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+                    @Html.ActionLink("Delete", "Delete", "Group", new { id = item.id }, new { onclick = "return confirm('Are you sure wants to delete?');" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

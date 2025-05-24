@@ -1,0 +1,45 @@
+﻿@model MurshadikCP.Models.DB.product_categories
+
+@{
+    ViewBag.Title = "فئات المنتجات";
+    ViewBag.pTitle = "تعديل فئات المنتجات";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>فئات المنتجات</h4>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id)
+                    @Html.HiddenFor(model => model.created_at)
+                    @Html.HiddenFor(model => model.created_by)
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.name, "اسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="@Resources.Resources.Save" class="btn btn-primary" />
+                            @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>

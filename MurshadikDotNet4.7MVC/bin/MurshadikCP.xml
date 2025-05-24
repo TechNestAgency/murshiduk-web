@@ -1,0 +1,2969 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MurshadikCP</name>
+    </assembly>
+    <members>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.ConsultationAppointmetApiService.GetAvailableAppointment(System.Int64,System.DateTime)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.ConsultationAppointmetApiService.PostBookAppointment(System.Int64,System.Int64,System.String,System.DateTime,System.TimeSpan,System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.ConsultationAppointmetApiService.GetMyNextConsultationAppointments(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.ConsultationAppointmetApiService.GetMyHistoryConsultationAppointments(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.ConsultationAppointmetApiService.PutAppointmentCallDone(System.Int64,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.ConsultationAppointmetApiService.PutAppointmentCallStartBy(System.Int64,System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.ConsultationAppointmetApiService.PutCancelAppointmentAsync(System.Int64,System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="T:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService">
+            <summary>
+            Represents the interface for the Clinic API service.
+            </summary>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.GetAllDoctorsOfClinic(System.Int32)">
+            <summary>
+            Gets all doctors of a specific clinic.
+            </summary>
+            <param name="ClinicId">The ID of the clinic.</param>
+            <returns>An object representing all doctors of the clinic.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.GetAllClinic">
+            <summary>
+            Gets all clinics.
+            </summary>
+            <returns>An object representing all clinics.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.GetAvailableAppointment(System.Int32,System.DateTime)">
+            <summary>
+            Gets the available appointments for a specific clinic and date.
+            </summary>
+            <param name="ClinicId">The ID of the clinic.</param>
+            <param name="Date">The date for which to get the available appointments.</param>
+            <returns>An object representing the available appointments.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.GetAvailableAppointmentOfDoctor(System.Int32,System.DateTime,System.Int32)">
+            <summary>
+            Gets the available appointments for a specific doctor of a clinic and date.
+            </summary>
+            <param name="ClinicId">The ID of the clinic.</param>
+            <param name="Date">The date for which to get the available appointments.</param>
+            <param name="DoctorId">The ID of the doctor.</param>
+            <returns>An object representing the available appointments.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.PostBookAppointment(System.Int32,System.Int32,System.String,System.Int64)">
+            <summary>
+            Books an appointment.
+            </summary>
+            <param name="AppointmentId">The ID of the appointment.</param>
+            <param name="ClinicId">The ID of the clinic.</param>
+            <param name="BookingReason">The reason for booking the appointment.</param>
+            <param name="UserId">The ID of the user.</param>
+            <returns>A task representing the booking of the appointment.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.GetMyAppointments(System.Int64)">
+            <summary>
+            Gets the appointments of a specific user.
+            </summary>
+            <param name="UserId">The ID of the user.</param>
+            <returns>An object representing the appointments of the user.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.GetAppoinmetsHistory(System.Int64)">
+            <summary>
+            Gets the appointment history of a specific user.
+            </summary>
+            <param name="UserId">The ID of the user.</param>
+            <returns>An object representing the appointment history of the user.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.PutAppointmentCallDone(System.Int32,System.Int32)">
+            <summary>
+            Marks an appointment as done and updates the call duration.
+            </summary>
+            <param name="AppointmentId">The ID of the appointment.</param>
+            <param name="CallDuration">The duration of the call.</param>
+            <returns>An object representing the updated appointment.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.PutCancelApointmentBooking(System.Int32,System.Int64)">
+            <summary>
+            Cancels a booking for a specific appointment and user.
+            </summary>
+            <param name="AppointmentId">The ID of the appointment.</param>
+            <param name="UserId">The ID of the user.</param>
+            <returns>An object representing the canceled appointment.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.PostClinicDoctorRating(System.Int32,System.Int64,System.String,System.Int32,System.Int64)">
+            <summary>
+            Posts a rating for a clinic doctor.
+            </summary>
+            <param name="ClinicId">The ID of the clinic.</param>
+            <param name="DonctorId">The ID of the doctor.</param>
+            <param name="comment">The comment for the rating.</param>
+            <param name="rating">The rating value.</param>
+            <param name="UserId">The ID of the user.</param>
+            <returns>An object representing the posted rating.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.API.ApiServices.Interfaces.IClinicApiService.IsDoctor(System.Int64)">
+            <summary>
+            Checks if a user is a doctor.
+            </summary>
+            <param name="UserId">The ID of the user.</param>
+            <returns>An object representing the result of the check.</returns>
+        </member>
+        <member name="M:MurshadikCP.Controllers.FarmVisitServiceController.Index">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MurshadikCP.Models.ViewModels.VideoViewModelForDashboard.CategoryId">
+            <summary>
+            For Filter
+            </summary>
+        </member>
+        <member name="T:Resources.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.__of_orders_by_date">
+            <summary>
+              Looks up a localized string similar to عدد الطلبات حسب التاريخ.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources._2018_Sales">
+            <summary>
+              Looks up a localized string similar to مبيعات 2018.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.A_fresh_verification_link_has_been_sent_to_your_email_address_">
+            <summary>
+              Looks up a localized string similar to تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Aafat_Shajar_Bun">
+            <summary>
+              Looks up a localized string similar to آفات شجر بن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.About">
+            <summary>
+              Looks up a localized string similar to حول.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.About_Us">
+            <summary>
+              Looks up a localized string similar to من نحن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Account">
+            <summary>
+              Looks up a localized string similar to حسابي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Actions">
+            <summary>
+              Looks up a localized string similar to أفعال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Active">
+            <summary>
+              Looks up a localized string similar to مُفعل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Active_Profile_Consultants">
+            <summary>
+              Looks up a localized string similar to المرشدين مكتملي البيانات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add">
+            <summary>
+              Looks up a localized string similar to إضافه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New">
+            <summary>
+              Looks up a localized string similar to اضف جديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Brand">
+            <summary>
+              Looks up a localized string similar to اضف ماركة جديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Category">
+            <summary>
+              Looks up a localized string similar to  اضافة الاقسم الجديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Coupon">
+            <summary>
+              Looks up a localized string similar to أضف كود الخصم جديدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Product">
+            <summary>
+              Looks up a localized string similar to إضافة منتج الجديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Promotion">
+            <summary>
+              Looks up a localized string similar to إضافة ترويج جديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Referral">
+            <summary>
+              Looks up a localized string similar to أضف إحالة جديدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Region">
+            <summary>
+              Looks up a localized string similar to اضافة منطقة الجديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Skill">
+            <summary>
+              Looks up a localized string similar to اضافة التخصص الجديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_New_Slider">
+            <summary>
+              Looks up a localized string similar to إضافة إعلان جديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_News">
+            <summary>
+              Looks up a localized string similar to إضافة خبر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_to_Cart">
+            <summary>
+              Looks up a localized string similar to إضافه إلى عربة التسوق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Add_User">
+            <summary>
+              Looks up a localized string similar to اضافة مستخدم الجديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Adding_new_category">
+            <summary>
+              Looks up a localized string similar to إضافة قسم جديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.AddMedia">
+            <summary>
+              Looks up a localized string similar to إضافة ملف.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Address">
+            <summary>
+              Looks up a localized string similar to العنوان.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Admin_Dashboard">
+            <summary>
+              Looks up a localized string similar to لوحة تحكم المشرف.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Agricultural_Analysis">
+            <summary>
+              Looks up a localized string similar to تحاليل زراعية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All">
+            <summary>
+              Looks up a localized string similar to كل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Brands">
+            <summary>
+              Looks up a localized string similar to جميع الماركات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Categories">
+            <summary>
+              Looks up a localized string similar to جميع الاقسام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Consultants">
+            <summary>
+              Looks up a localized string similar to جميع المرشدين الزراعيين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Coupons">
+            <summary>
+              Looks up a localized string similar to كل كود الخصم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Customers">
+            <summary>
+              Looks up a localized string similar to جميع الزبائن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Experts">
+            <summary>
+              Looks up a localized string similar to  جميع المرشدين الزراعيين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Farmers">
+            <summary>
+              Looks up a localized string similar to  جميع المزارعين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_News">
+            <summary>
+              Looks up a localized string similar to جميع الأخبار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Orders">
+            <summary>
+              Looks up a localized string similar to جميع الطلبات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Products">
+            <summary>
+              Looks up a localized string similar to جميع منتجات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Products_Including_Taxes">
+            <summary>
+              Looks up a localized string similar to جميع المنتجات شاملة للضرائب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Promotions">
+            <summary>
+              Looks up a localized string similar to كل الترويج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Referrals">
+            <summary>
+              Looks up a localized string similar to كل الإحالات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Regions">
+            <summary>
+              Looks up a localized string similar to جميع المناطق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_rights_reserved_">
+            <summary>
+              Looks up a localized string similar to جميع الحقوق محفوظة..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Skills">
+            <summary>
+              Looks up a localized string similar to جميع التخصصات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Trainings">
+            <summary>
+              Looks up a localized string similar to جميع التدريبات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.All_Users">
+            <summary>
+              Looks up a localized string similar to جميع المستخدمين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Android_Downloads">
+            <summary>
+              Looks up a localized string similar to تحميلات الأندرويد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Android_Users">
+            <summary>
+              Looks up a localized string similar to مستخدمي أندرويد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Answered_Consulting">
+            <summary>
+              Looks up a localized string similar to استشارات مجابه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Answers">
+            <summary>
+              Looks up a localized string similar to الإجابات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.AnswersPendingApproval">
+            <summary>
+              Looks up a localized string similar to أجوبة بإنتظار الموافقة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Apply">
+            <summary>
+              Looks up a localized string similar to إضافة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.AppName">
+            <summary>
+              Looks up a localized string similar to مرشدك الزراعي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Appointment_Booking_Count">
+            <summary>
+              Looks up a localized string similar to حجز موعد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Appointment_Count">
+            <summary>
+              Looks up a localized string similar to إجمالي المواعيد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Appointment_Date">
+            <summary>
+              Looks up a localized string similar to تاريخ الموعد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Appointment_Detail">
+            <summary>
+              Looks up a localized string similar to تفاصيل الموعد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Appointment_Not_Reserved">
+            <summary>
+              Looks up a localized string similar to غير محجوز.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Appointment_Time">
+            <summary>
+              Looks up a localized string similar to وقت الموعد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Approval_Status">
+            <summary>
+              Looks up a localized string similar to وافق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Approve_qna">
+            <summary>
+              Looks up a localized string similar to اجراء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Approved">
+            <summary>
+              Looks up a localized string similar to وافق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.ApprovedAnswers">
+            <summary>
+              Looks up a localized string similar to الاجوبة الموافق عليها.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.ApprovedQuestions">
+            <summary>
+              Looks up a localized string similar to الاسئلة الموافق عليها.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Arabic">
+            <summary>
+              Looks up a localized string similar to العربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Arabic_name">
+            <summary>
+              Looks up a localized string similar to الإسم بالعربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Are_you_sure_you_want_to_delete_this_order_">
+            <summary>
+              Looks up a localized string similar to هل أنت متأكد من أنك تريد حذف هذا الطلب؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Are_you_sure_you_want_to_delete_this_product_">
+            <summary>
+              Looks up a localized string similar to هل أنت متأكد من أنك تريد حذف هذا المنتج؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Area">
+            <summary>
+              Looks up a localized string similar to حى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Articles">
+            <summary>
+              Looks up a localized string similar to المقالات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Attentions">
+            <summary>
+              Looks up a localized string similar to التنبيهات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Back">
+            <summary>
+              Looks up a localized string similar to العودة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Background_Color">
+            <summary>
+              Looks up a localized string similar to لون الخلفية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Bank_Transfer">
+            <summary>
+              Looks up a localized string similar to التحويل البنكي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.banned">
+            <summary>
+              Looks up a localized string similar to محظور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Be_the_First_to_Know">
+            <summary>
+              Looks up a localized string similar to نشرتنا البريدية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Beauty">
+            <summary>
+              Looks up a localized string similar to الجمال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Before_proceeding__please_check_your_email_for_a_verification_link_">
+            <summary>
+              Looks up a localized string similar to قبل المتابعة، يرجى التحقق من بريدك الإلكتروني عن رابط التحقق..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Best_Selling">
+            <summary>
+              Looks up a localized string similar to أفضل مبيعات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Billed_To">
+            <summary>
+              Looks up a localized string similar to فاتورة إلى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Billing_Information">
+            <summary>
+              Looks up a localized string similar to معلومات الدفع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Block">
+            <summary>
+              Looks up a localized string similar to حظر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.BMW_5_Series">
+            <summary>
+              Looks up a localized string similar to مثال2.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Brand">
+            <summary>
+              Looks up a localized string similar to ماركة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Brands">
+            <summary>
+              Looks up a localized string similar to الماركات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Build_Up">
+            <summary>
+              Looks up a localized string similar to انشاء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Call_Busy">
+            <summary>
+              Looks up a localized string similar to مكالمة في حال الإنشغال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Call_Finished">
+            <summary>
+              Looks up a localized string similar to مكالمة مجابة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Call_Noanswer">
+            <summary>
+              Looks up a localized string similar to مكالمة لم يتم الرد عليها.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Call_Rejected">
+            <summary>
+              Looks up a localized string similar to المكالمات المرفوضة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Campaign_sent_2_days_ago">
+            <summary>
+              Looks up a localized string similar to حملة أرسلت منذ يومين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Cancel">
+            <summary>
+              Looks up a localized string similar to إلغاء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Cancel_By_Laboratory_User">
+            <summary>
+              Looks up a localized string similar to الإلغاء من قبل مستخدم المختبر ؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Capacity">
+            <summary>
+              Looks up a localized string similar to السعة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Cart">
+            <summary>
+              Looks up a localized string similar to عربة التسوق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Cash_on_Delivery">
+            <summary>
+              Looks up a localized string similar to الدفع عند الاستلام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Categories">
+            <summary>
+              Looks up a localized string similar to الاقسام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Category">
+            <summary>
+              Looks up a localized string similar to القسم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Change_Banner_Image">
+            <summary>
+              Looks up a localized string similar to تغير صورة بانر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Change_Banner_Image_Arabic">
+            <summary>
+              Looks up a localized string similar to تغير صورة بانر العربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Change_Category_Image">
+            <summary>
+              Looks up a localized string similar to تغير صورة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Change_Category_Image_Arabic">
+            <summary>
+              Looks up a localized string similar to تغير صورة العربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Change_Personal_Information">
+            <summary>
+              Looks up a localized string similar to تعديل بياناتك الشخصية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Change_to_Expert">
+            <summary>
+              Looks up a localized string similar to التبديل لمرشد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Change_to_Farmer">
+            <summary>
+              Looks up a localized string similar to التبديل لمزارع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Chats">
+            <summary>
+              Looks up a localized string similar to Chats.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Check_your_order_details">
+            <summary>
+              Looks up a localized string similar to تحقق من تفاصيل طلبك.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Checkout">
+            <summary>
+              Looks up a localized string similar to الدفع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.choose_file">
+            <summary>
+              Looks up a localized string similar to اختيار ملف.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.City">
+            <summary>
+              Looks up a localized string similar to المدينة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.click_here_to_request_another">
+            <summary>
+              Looks up a localized string similar to انقر هنا لطلب آخر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Close">
+            <summary>
+              Looks up a localized string similar to أغلق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Code">
+            <summary>
+              Looks up a localized string similar to رمز التحقق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Collected_Date">
+            <summary>
+              Looks up a localized string similar to تاريخ الإستلام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Collected_Sample">
+            <summary>
+              Looks up a localized string similar to جمع العينة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Collection_End_Date">
+            <summary>
+              Looks up a localized string similar to تاريخ إنتهاء الجمعية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Collection_Name">
+            <summary>
+              Looks up a localized string similar to إسم الجمعية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Collection_Value">
+            <summary>
+              Looks up a localized string similar to قيمة الجمعية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Comments">
+            <summary>
+              Looks up a localized string similar to تعليقات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Complete">
+            <summary>
+              Looks up a localized string similar to إستكمال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Completed">
+            <summary>
+              Looks up a localized string similar to مكتمل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.conference_and_workshop">
+            <summary>
+              Looks up a localized string similar to الندوات و ورش العمل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Confirm_Password">
+            <summary>
+              Looks up a localized string similar to تأكيد كلمة المرور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Confirmed">
+            <summary>
+              Looks up a localized string similar to مؤكد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Confirmed_Orders">
+            <summary>
+              Looks up a localized string similar to الطلبات المؤكدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Consultant">
+            <summary>
+              Looks up a localized string similar to المرشد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Consultants">
+            <summary>
+              Looks up a localized string similar to المرشديين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Consultations">
+            <summary>
+              Looks up a localized string similar to استشارات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Consulting">
+            <summary>
+              Looks up a localized string similar to مجموع الإستشارات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Contact">
+            <summary>
+              Looks up a localized string similar to اتصل بنا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Contact_Information">
+            <summary>
+              Looks up a localized string similar to معلومات للتواصل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Contact_Person">
+            <summary>
+              Looks up a localized string similar to اسم شخص الاتصال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Contact_Us">
+            <summary>
+              Looks up a localized string similar to تواصل معنا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Count">
+            <summary>
+              Looks up a localized string similar to عد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Country">
+            <summary>
+              Looks up a localized string similar to الدولة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Coupon_and_Referrals">
+            <summary>
+              Looks up a localized string similar to  كود الخصم و الإحالات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Coupon_Code">
+            <summary>
+              Looks up a localized string similar to كود الخصم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Coupons">
+            <summary>
+              Looks up a localized string similar to كود الخصم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Create_Account">
+            <summary>
+              Looks up a localized string similar to إنشاء حساب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Create_Collection">
+            <summary>
+              Looks up a localized string similar to إنشاء الجمعية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Create_New_Account">
+            <summary>
+              Looks up a localized string similar to إنشاء حساب جديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Created_At">
+            <summary>
+              Looks up a localized string similar to تاريخ الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Created_By">
+            <summary>
+              Looks up a localized string similar to تم إضافته من قبل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Credit_Debit_Card">
+            <summary>
+              Looks up a localized string similar to الدفع بالبطاقة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Customer">
+            <summary>
+              Looks up a localized string similar to زبون.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Customers">
+            <summary>
+              Looks up a localized string similar to الزبائن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Customers_Also_Purchased">
+            <summary>
+              Looks up a localized string similar to الذين اشتروا هذا المنتج، قاموا بشراء هذه المنتجات أيضاً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Daily_Consultation">
+            <summary>
+              Looks up a localized string similar to معدل الاستشارات اليومية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Dashboard">
+            <summary>
+              Looks up a localized string similar to الرئيسية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Data_information_certified">
+            <summary>
+              Looks up a localized string similar to معلومات البيانات معتمدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Date">
+            <summary>
+              Looks up a localized string similar to التاريخ.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.DateCreated">
+            <summary>
+              Looks up a localized string similar to تاريخ الإنشاء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Deal_Of_The_Day">
+            <summary>
+              Looks up a localized string similar to عرض اليوم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Delete">
+            <summary>
+              Looks up a localized string similar to حذف.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Delivered">
+            <summary>
+              Looks up a localized string similar to تم التسليم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.desc_Arabic">
+            <summary>
+              Looks up a localized string similar to الوصف بالعربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Description">
+            <summary>
+              Looks up a localized string similar to وصف.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Description_Arabic">
+            <summary>
+              Looks up a localized string similar to وصف عربي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Details">
+            <summary>
+              Looks up a localized string similar to تفاصيل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Device_Info">
+            <summary>
+              Looks up a localized string similar to اصدار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Discount">
+            <summary>
+              Looks up a localized string similar to الخصم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Discount__">
+            <summary>
+              Looks up a localized string similar to خصم ٪.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Diseases">
+            <summary>
+              Looks up a localized string similar to أمراض.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Domain">
+            <summary>
+              Looks up a localized string similar to التخصص.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.E_Mail_Address">
+            <summary>
+              Looks up a localized string similar to الايميل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Edit">
+            <summary>
+              Looks up a localized string similar to تعديل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Edit_Brand">
+            <summary>
+              Looks up a localized string similar to تحرير ماركة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Edit_Category">
+            <summary>
+              Looks up a localized string similar to تحرير الفئة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Edit_Region">
+            <summary>
+              Looks up a localized string similar to تحرير منطقة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Edit_Skill">
+            <summary>
+              Looks up a localized string similar to تحرير التخصص.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Email">
+            <summary>
+              Looks up a localized string similar to الايميل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Email_Address_or_Phone_">
+            <summary>
+              Looks up a localized string similar to ايميل أو رقم الجوال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Email_Statistics">
+            <summary>
+              Looks up a localized string similar to إحصائيات البريد الإلكتروني.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.End_Date">
+            <summary>
+              Looks up a localized string similar to تاريخ الانتهاء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Ended">
+            <summary>
+              Looks up a localized string similar to انتهى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.English">
+            <summary>
+              Looks up a localized string similar to الإنجليزية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Enter_your_email_address">
+            <summary>
+              Looks up a localized string similar to أدخل عنوان بريدك الالكتروني.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Errors">
+            <summary>
+              Looks up a localized string similar to الأخطاء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Exclude_Brands">
+            <summary>
+              Looks up a localized string similar to استبعد ماركات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Experts">
+            <summary>
+              Looks up a localized string similar to المرشدين الزراعيين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Explore_Our_Tea">
+            <summary>
+              Looks up a localized string similar to اكتشف عالم الشاي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Fake">
+            <summary>
+              Looks up a localized string similar to غير حقيقي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Farmers">
+            <summary>
+              Looks up a localized string similar to المزارعين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Favorites">
+            <summary>
+              Looks up a localized string similar to المفضلة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.File_a_bug">
+            <summary>
+              Looks up a localized string similar to الإبلاغ عن مشكلة بالتطبيق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Filter">
+            <summary>
+              Looks up a localized string similar to تصفية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Filter_by_Brand">
+            <summary>
+              Looks up a localized string similar to تصفية حسب الماركة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Filter_by_Date">
+            <summary>
+              Looks up a localized string similar to تصفية حسب التاريخ.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Filter_by_Status">
+            <summary>
+              Looks up a localized string similar to تصفية حسب الحالة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Financial_Statistics">
+            <summary>
+              Looks up a localized string similar to الاحصائيات المالية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Followers">
+            <summary>
+              Looks up a localized string similar to المتابعون.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.For_Men">
+            <summary>
+              Looks up a localized string similar to للرجال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.For_those_users_who_do_not_have_an_appointment">
+            <summary>
+              Looks up a localized string similar to لهؤلاء المستخدمين الذين ليس لديهم موعد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.For_Women">
+            <summary>
+              Looks up a localized string similar to للنساء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Forbidden">
+            <summary>
+              Looks up a localized string similar to محظور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Forgot_Your_Password_">
+            <summary>
+              Looks up a localized string similar to نسيت كلمة المرور؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.From">
+            <summary>
+              Looks up a localized string similar to من.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.FromToPage">
+            <summary>
+              Looks up a localized string similar to عرض صفحة {0} من {1}.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Full_Name">
+            <summary>
+              Looks up a localized string similar to الإسم كاملا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Gender">
+            <summary>
+              Looks up a localized string similar to الجنس العطور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.General">
+            <summary>
+              Looks up a localized string similar to عام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.General_Collection">
+            <summary>
+              Looks up a localized string similar to جمعيات عامة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.General_Collections">
+            <summary>
+              Looks up a localized string similar to جمعيات عامة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Go_Home">
+            <summary>
+              Looks up a localized string similar to الرئيسية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Goto_Dashboard">
+            <summary>
+              Looks up a localized string similar to الرجوع للصفحه الرئيسية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Groups">
+            <summary>
+              Looks up a localized string similar to المجموعات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Has_Specification">
+            <summary>
+              Looks up a localized string similar to لديه مواصفات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Have_a_coupon_code_">
+            <summary>
+              Looks up a localized string similar to هل لديك كود الخصم؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Have_an_account_">
+            <summary>
+              Looks up a localized string similar to لديك حساب؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Heading">
+            <summary>
+              Looks up a localized string similar to عنوان.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Heading_Arabic">
+            <summary>
+              Looks up a localized string similar to العنوان بالعربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Hello_">
+            <summary>
+              Looks up a localized string similar to أهلاً بك!.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Home">
+            <summary>
+              Looks up a localized string similar to الرئيسية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.How_do_you_want_to_pay_">
+            <summary>
+              Looks up a localized string similar to كيف تريد أن تدفع؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.I_agree_to_terms_and_Conditions">
+            <summary>
+              Looks up a localized string similar to الموافقة على الشروط والاحكام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.id">
+            <summary>
+              Looks up a localized string similar to رقم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.If_you_did_not_create_an_account__no_further_action_is_required_">
+            <summary>
+              Looks up a localized string similar to إذا لم تقم بإنشاء حساب ، فلا يلزم اتخاذ أي إجراء آخر..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.If_you_did_not_receive_the_email">
+            <summary>
+              Looks up a localized string similar to إذا لم تستلم البريد الإلكتروني.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.If_you_did_not_request_a_password_reset__no_further_action_is_required_">
+            <summary>
+              Looks up a localized string similar to إذا لم تقم بطلب استعادة كلمة المرور، لا تحتاج القيام بأي إجراء..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Image">
+            <summary>
+              Looks up a localized string similar to صورة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Inactive">
+            <summary>
+              Looks up a localized string similar to غير مُفعل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Inclusive_of_VAT">
+            <summary>
+              Looks up a localized string similar to شامل الضريبه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Inquiries">
+            <summary>
+              Looks up a localized string similar to استفسارات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Invalid_signature_">
+            <summary>
+              Looks up a localized string similar to التوقيع غير سليم..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Inventory">
+            <summary>
+              Looks up a localized string similar to المخزون.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Invitations">
+            <summary>
+              Looks up a localized string similar to دعوة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.IOS_Users">
+            <summary>
+              Looks up a localized string similar to مستخدمي آي او اس.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.iphone_Downloads">
+            <summary>
+              Looks up a localized string similar to تحميلات الآيفون.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Is_Active">
+            <summary>
+              Looks up a localized string similar to مُفعل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Is_Completed">
+            <summary>
+              Looks up a localized string similar to منجز ؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Is_Exclusive">
+            <summary>
+              Looks up a localized string similar to حصري.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Is_One_Time">
+            <summary>
+              Looks up a localized string similar to هي مرة واحدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Is_Sample_Collected">
+            <summary>
+              Looks up a localized string similar to جمعت العينة ؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.IsApproved">
+            <summary>
+              Looks up a localized string similar to تمت الموافقة؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.IsVerified">
+            <summary>
+              Looks up a localized string similar to تم التحقق منه ؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Item_Price">
+            <summary>
+              Looks up a localized string similar to سعر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Item_Total">
+            <summary>
+              Looks up a localized string similar to مجموع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Keywords">
+            <summary>
+              Looks up a localized string similar to الدلالية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Kids">
+            <summary>
+              Looks up a localized string similar to للاطفال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Lab_Name">
+            <summary>
+              Looks up a localized string similar to اسم المختبر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Lab_Report">
+            <summary>
+              Looks up a localized string similar to تقرير المختبر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Lab_Report_Detail">
+            <summary>
+              Looks up a localized string similar to تفاصيل تقرير المختبر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Language">
+            <summary>
+              Looks up a localized string similar to اللغة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Last_30_Days">
+            <summary>
+              Looks up a localized string similar to قبل 30 ايام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Last_7_Days">
+            <summary>
+              Looks up a localized string similar to قبل 7 ايام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Last_Campaign_Performance">
+            <summary>
+              Looks up a localized string similar to آداء آخر حملة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Last_Login_Date">
+            <summary>
+              Looks up a localized string similar to تاريخ آخر دخول.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.LastMonth">
+            <summary>
+              Looks up a localized string similar to الشهر الماضي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.LinkedIn_Profile">
+            <summary>
+              Looks up a localized string similar to الملف الشخصي في لنكد إن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Live_broadcast_statistics">
+            <summary>
+              Looks up a localized string similar to احصائيات البث المباشر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Live_Stream">
+            <summary>
+              Looks up a localized string similar to البث المباشر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Live_Stream_Enabled">
+            <summary>
+              Looks up a localized string similar to  حالة البث المباشر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Live_Stream_URL">
+            <summary>
+              Looks up a localized string similar to اضافة الرابط.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Location">
+            <summary>
+              Looks up a localized string similar to الموقع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Log_In">
+            <summary>
+              Looks up a localized string similar to تسجيل الدخول.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Login">
+            <summary>
+              Looks up a localized string similar to تسجيل الدخول.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Login_Register_Using">
+            <summary>
+              Looks up a localized string similar to تسجيل الدخول بواسطة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Logout">
+            <summary>
+              Looks up a localized string similar to تسجيل الخروج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Luxury_Perfumes">
+            <summary>
+              Looks up a localized string similar to العطور الفاخرة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Mark_as_Blacklist">
+            <summary>
+              Looks up a localized string similar to إضافه لقائمة الحظر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Market">
+            <summary>
+              Looks up a localized string similar to سوق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Markets">
+            <summary>
+              Looks up a localized string similar to الاسواق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Media_Center">
+            <summary>
+              Looks up a localized string similar to المكتبة الرقمية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Men">
+            <summary>
+              Looks up a localized string similar to للرجال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Men_Perfumes">
+            <summary>
+              Looks up a localized string similar to للرجال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Message">
+            <summary>
+              Looks up a localized string similar to رسالة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Messages">
+            <summary>
+              Looks up a localized string similar to الرسائل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Messages_Daily">
+            <summary>
+              Looks up a localized string similar to معدل الرسائل اليومية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Messages_Today">
+            <summary>
+              Looks up a localized string similar to معدل الرسائل اليوم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Minimum_Quantity">
+            <summary>
+              Looks up a localized string similar to الحد الأدنى من الكمية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.ml">
+            <summary>
+              Looks up a localized string similar to مل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Mobile__">
+            <summary>
+              Looks up a localized string similar to رقم الجوال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Mobile_Number">
+            <summary>
+              Looks up a localized string similar to رقم الجوال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.More">
+            <summary>
+              Looks up a localized string similar to المزيد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.More_Answers">
+            <summary>
+              Looks up a localized string similar to الأسئلة الأكثر اجابات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Most_active_consultants">
+            <summary>
+              Looks up a localized string similar to المرشدين الاكثر تفاعلاً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Most_Popular">
+            <summary>
+              Looks up a localized string similar to الأكثر رواجاً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Murshadik">
+            <summary>
+              Looks up a localized string similar to مرشدك.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Murshadik_Zaki">
+            <summary>
+              Looks up a localized string similar to المرشد الذكي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.My_Account">
+            <summary>
+              Looks up a localized string similar to حسابي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.My_Orders">
+            <summary>
+              Looks up a localized string similar to طلباتي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.My_Profile">
+            <summary>
+              Looks up a localized string similar to صفحتك الخاصة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Name">
+            <summary>
+              Looks up a localized string similar to الاسم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Name_Arabic">
+            <summary>
+              Looks up a localized string similar to اسم عربي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Net_Profit">
+            <summary>
+              Looks up a localized string similar to صافي الربح.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.New">
+            <summary>
+              Looks up a localized string similar to جديد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.New_Arrivals">
+            <summary>
+              Looks up a localized string similar to جديدنا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.New_Visitors">
+            <summary>
+              Looks up a localized string similar to زوار جدد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.News">
+            <summary>
+              Looks up a localized string similar to الأخبار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.News_Category">
+            <summary>
+              Looks up a localized string similar to قسم الخبر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.News_Gallery">
+            <summary>
+              Looks up a localized string similar to معرض صور الأخبار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.News_Image">
+            <summary>
+              Looks up a localized string similar to صورة الخبر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.News_Title">
+            <summary>
+              Looks up a localized string similar to العنوان الأخبار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Next">
+            <summary>
+              Looks up a localized string similar to التالي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.No">
+            <summary>
+              Looks up a localized string similar to لا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.No_Comments_for_this_order">
+            <summary>
+              Looks up a localized string similar to لا توجد تعليقات على هذه الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.no_file_chosen">
+            <summary>
+              Looks up a localized string similar to لم يتم اختيار ملف.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.No_of_Persons">
+            <summary>
+              Looks up a localized string similar to عدد الأشخاص.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.No_Of_Sample">
+            <summary>
+              Looks up a localized string similar to عدد العينة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.No_Product_Found">
+            <summary>
+              Looks up a localized string similar to لا توجد منتجات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.No_Response">
+            <summary>
+              Looks up a localized string similar to لم يتم الرد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.None_">
+            <summary>
+              Looks up a localized string similar to لايوجد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Not_Found">
+            <summary>
+              Looks up a localized string similar to غير متوفر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Number_of_emails_sent">
+            <summary>
+              Looks up a localized string similar to عدد الإيميلات المرسلة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Offers">
+            <summary>
+              Looks up a localized string similar to مختارات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Oh_no">
+            <summary>
+              Looks up a localized string similar to انتبه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Ok">
+            <summary>
+              Looks up a localized string similar to تم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.On_Sale">
+            <summary>
+              Looks up a localized string similar to باع بأسعار مخفضة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.One_Time">
+            <summary>
+              Looks up a localized string similar to مرة واحدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Open">
+            <summary>
+              Looks up a localized string similar to فتح.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.optional">
+            <summary>
+              Looks up a localized string similar to اختياري.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order">
+            <summary>
+              Looks up a localized string similar to طلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order__">
+            <summary>
+              Looks up a localized string similar to رقم الطلب :.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order_History">
+            <summary>
+              Looks up a localized string similar to سجل الطلبات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order_Info">
+            <summary>
+              Looks up a localized string similar to معلومات الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order_placed_on">
+            <summary>
+              Looks up a localized string similar to تاريخ الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order_Status">
+            <summary>
+              Looks up a localized string similar to حالة الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order_Status_has_been_changed_successfully">
+            <summary>
+              Looks up a localized string similar to تم تغيير حالة الطلب بنجاح.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order_Summary">
+            <summary>
+              Looks up a localized string similar to ملخص الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Order_Total">
+            <summary>
+              Looks up a localized string similar to مجموع عربة التسوق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Ordered">
+            <summary>
+              Looks up a localized string similar to تم الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Orders">
+            <summary>
+              Looks up a localized string similar to الطلبات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Orders_this_month">
+            <summary>
+              Looks up a localized string similar to  الطلبات هذا الشهر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Orders_Today">
+            <summary>
+              Looks up a localized string similar to طلبات اليوم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Other_Info">
+            <summary>
+              Looks up a localized string similar to معلومات اخرى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Our_Products">
+            <summary>
+              Looks up a localized string similar to منتجاتنا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Our_Users">
+            <summary>
+              Looks up a localized string similar to مستخدمينا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Out_for_Shipment">
+            <summary>
+              Looks up a localized string similar to تم الشحن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Out_of_Stock">
+            <summary>
+              Looks up a localized string similar to  غير متوفر حاليآ.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Out_Of_Total_Number">
+            <summary>
+              Looks up a localized string similar to من اجمالي الزوار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Page">
+            <summary>
+              Looks up a localized string similar to صفحه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Page_Expired">
+            <summary>
+              Looks up a localized string similar to الصفحة منتهية الصلاحية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Parent_Category">
+            <summary>
+              Looks up a localized string similar to القسم الرئيسي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Parent_Product">
+            <summary>
+              Looks up a localized string similar to المنتج الأم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Password">
+            <summary>
+              Looks up a localized string similar to كلمة المرور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Password_Required">
+            <summary>
+              Looks up a localized string similar to الرجاء إدخال كلمة المرور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.paymen_Cooperativets">
+            <summary>
+              Looks up a localized string similar to جمعياتي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Payment_Information">
+            <summary>
+              Looks up a localized string similar to بيانات الدفع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Payment_Mode">
+            <summary>
+              Looks up a localized string similar to طريقة الدفع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Payment_Source_Updated_Successfully">
+            <summary>
+              Looks up a localized string similar to تم تحديث مصدر الدفع بنجاح.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Payment_Type">
+            <summary>
+              Looks up a localized string similar to نوع الدفع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Payments">
+            <summary>
+              Looks up a localized string similar to المدفوعات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Pending">
+            <summary>
+              Looks up a localized string similar to انتظار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Pending_Approval">
+            <summary>
+              Looks up a localized string similar to إنتظار الموافقة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Pending_Consultations">
+            <summary>
+              Looks up a localized string similar to استشارات قيد الإنتظار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Pending_Items">
+            <summary>
+              Looks up a localized string similar to غير مكتمل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Perfumes">
+            <summary>
+              Looks up a localized string similar to العطور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Person">
+            <summary>
+              Looks up a localized string similar to أشخاص.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Personal_Collection">
+            <summary>
+              Looks up a localized string similar to جمعيات خاصة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Personal_Collections">
+            <summary>
+              Looks up a localized string similar to جمعيات خاصة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Personal_Consultation">
+            <summary>
+              Looks up a localized string similar to إستشاره حضوريه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Personal_Consultations">
+            <summary>
+              Looks up a localized string similar to إستشارات حضوريه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Phone">
+            <summary>
+              Looks up a localized string similar to التليفون.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Phone__">
+            <summary>
+              Looks up a localized string similar to رقم الجوال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Phone___to_Connect">
+            <summary>
+              Looks up a localized string similar to رقم الهاتف للتواصل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Phone_Consultation">
+            <summary>
+              Looks up a localized string similar to إستشاره هاتفيه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Phone_Consultations">
+            <summary>
+              Looks up a localized string similar to إستشارات هاتفيه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Phone_Number">
+            <summary>
+              Looks up a localized string similar to رقم الهاتف.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Planting">
+            <summary>
+              Looks up a localized string similar to نباتات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Please_click_the_button_below_to_verify_your_email_address_">
+            <summary>
+              Looks up a localized string similar to يرجى النقر على الزر أدناه للتحقق من عنوان بريدك الإلكتروني..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Price">
+            <summary>
+              Looks up a localized string similar to السعر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Price__high_to_low">
+            <summary>
+              Looks up a localized string similar to من الاعلى الى الاقل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Price__low_to_high">
+            <summary>
+              Looks up a localized string similar to من الاقل إلى أعلى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Print">
+            <summary>
+              Looks up a localized string similar to طباعة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Print_All">
+            <summary>
+              Looks up a localized string similar to طباعة الكل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Print_Inactive">
+            <summary>
+              Looks up a localized string similar to طباعة غير مُفعل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Print_Orders">
+            <summary>
+              Looks up a localized string similar to طباعة الطلبات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.print_with_price">
+            <summary>
+              Looks up a localized string similar to طباعة مع السعر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Print_without_Price">
+            <summary>
+              Looks up a localized string similar to طباعة بدون سعر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Privacy_Policy">
+            <summary>
+              Looks up a localized string similar to سياسة الخصوصية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Processing">
+            <summary>
+              Looks up a localized string similar to تحت المعالجه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product">
+            <summary>
+              Looks up a localized string similar to منتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Brands">
+            <summary>
+              Looks up a localized string similar to الماركة المنتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Categories">
+            <summary>
+              Looks up a localized string similar to فئات المنتجه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Gallery">
+            <summary>
+              Looks up a localized string similar to معرض المنتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Image">
+            <summary>
+              Looks up a localized string similar to صورة المنتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Name">
+            <summary>
+              Looks up a localized string similar to اسم المنتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Name_Arabic">
+            <summary>
+              Looks up a localized string similar to اسم المنتج عربي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Origin">
+            <summary>
+              Looks up a localized string similar to أصل المنتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Product_Type">
+            <summary>
+              Looks up a localized string similar to نوع المنتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Products">
+            <summary>
+              Looks up a localized string similar to منتجات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Products_Sold">
+            <summary>
+              Looks up a localized string similar to المنتجات المباعة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Profit__">
+            <summary>
+              Looks up a localized string similar to الربح ٪.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Promotion">
+            <summary>
+              Looks up a localized string similar to ترويج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Promotions">
+            <summary>
+              Looks up a localized string similar to ترويج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Publish">
+            <summary>
+              Looks up a localized string similar to نشر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Purchase_price">
+            <summary>
+              Looks up a localized string similar to سعر الشراء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Purchaser">
+            <summary>
+              Looks up a localized string similar to مشتر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.QNA">
+            <summary>
+              Looks up a localized string similar to اسأل عن نبات/آفة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Quantity">
+            <summary>
+              Looks up a localized string similar to الكمية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Questions">
+            <summary>
+              Looks up a localized string similar to الأسئلة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Rating_By_Answer">
+            <summary>
+              Looks up a localized string similar to الأجوبة الأعلى تقييماً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Rating_By_Question">
+            <summary>
+              Looks up a localized string similar to الأسئلة الأعلى تقييماً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Ratings">
+            <summary>
+              Looks up a localized string similar to التقييمات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Reference_ID">
+            <summary>
+              Looks up a localized string similar to رقم المرجع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Referral">
+            <summary>
+              Looks up a localized string similar to إحالة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Referrer_Share">
+            <summary>
+              Looks up a localized string similar to حصة الإحالة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Refunded">
+            <summary>
+              Looks up a localized string similar to الغاء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Regards">
+            <summary>
+              Looks up a localized string similar to مع التحية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Region">
+            <summary>
+              Looks up a localized string similar to منطقة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Regions">
+            <summary>
+              Looks up a localized string similar to المناطق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Register">
+            <summary>
+              Looks up a localized string similar to تسجيل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Regular_Price">
+            <summary>
+              Looks up a localized string similar to سعر عادي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Rejected">
+            <summary>
+              Looks up a localized string similar to مرفوض.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Rejected_Orders">
+            <summary>
+              Looks up a localized string similar to الطلبات المرفوضة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Related_Products">
+            <summary>
+              Looks up a localized string similar to قد يعجبك أيضاً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Remember_Me">
+            <summary>
+              Looks up a localized string similar to تذكرني.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Report">
+            <summary>
+              Looks up a localized string similar to تقرير.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Report_Type">
+            <summary>
+              Looks up a localized string similar to نوع التقرير.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Reports">
+            <summary>
+              Looks up a localized string similar to تقارير.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Request_Sent">
+            <summary>
+              Looks up a localized string similar to تم إرسال الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.request_to_join_group">
+            <summary>
+              Looks up a localized string similar to طلب الإنضمام للجمعيه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.required">
+            <summary>
+              Looks up a localized string similar to مطلوب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Reset_Password">
+            <summary>
+              Looks up a localized string similar to استعادة كلمة المرور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Reset_Password_Notification">
+            <summary>
+              Looks up a localized string similar to تنبيه استعادة كلمة المرور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Resume">
+            <summary>
+              Looks up a localized string similar to السيرة الذاتية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Returned">
+            <summary>
+              Looks up a localized string similar to معاد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Returned_Orders">
+            <summary>
+              Looks up a localized string similar to الطلبات المعاد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Revenue">
+            <summary>
+              Looks up a localized string similar to الإيرادات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Review_and_Ratings">
+            <summary>
+              Looks up a localized string similar to مراجعة وتصنيفات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Review_your_order">
+            <summary>
+              Looks up a localized string similar to مراجعة الطلب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Role">
+            <summary>
+              Looks up a localized string similar to الدور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Sales_Price">
+            <summary>
+              Looks up a localized string similar to سعر مخفض.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Sample_No">
+            <summary>
+              Looks up a localized string similar to رقم العينة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.SAR">
+            <summary>
+              Looks up a localized string similar to ر.س.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Save">
+            <summary>
+              Looks up a localized string similar to حفظ.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Scope_Of_Appointment">
+            <summary>
+              Looks up a localized string similar to نطاق الموعد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Search">
+            <summary>
+              Looks up a localized string similar to بحث.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Search_Customers">
+            <summary>
+              Looks up a localized string similar to البحث عن الزبائن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Search_News">
+            <summary>
+              Looks up a localized string similar to البحث عن الاخبار.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Search_Products">
+            <summary>
+              Looks up a localized string similar to البحث عن المنتجات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Banner_Image">
+            <summary>
+              Looks up a localized string similar to اختر صورة بانر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Banner_Image_Arabic">
+            <summary>
+              Looks up a localized string similar to اختر صورة بانر العربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Brand">
+            <summary>
+              Looks up a localized string similar to اختر ماركة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Category_Icon">
+            <summary>
+              Looks up a localized string similar to اختر ايقونة القسم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Category_Image">
+            <summary>
+              Looks up a localized string similar to اختر صورة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Category_Image_Arabic">
+            <summary>
+              Looks up a localized string similar to اختر صورة العربية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Icon_Image">
+            <summary>
+              Looks up a localized string similar to اختر ايقونة القسم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_image">
+            <summary>
+              Looks up a localized string similar to اختر الصورة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Product">
+            <summary>
+              Looks up a localized string similar to اختر المنتج.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Purchaser">
+            <summary>
+              Looks up a localized string similar to اختر المشتري.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Referral">
+            <summary>
+              Looks up a localized string similar to اختر إحالة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Slider_Image">
+            <summary>
+              Looks up a localized string similar to اختر صورة جديدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Select_Variant">
+            <summary>
+              Looks up a localized string similar to اختر متغير.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Send">
+            <summary>
+              Looks up a localized string similar to إرسال.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Send_Password_Reset_Link">
+            <summary>
+              Looks up a localized string similar to أرسل رابط استعادة كلمة المرور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Send_Promotion_Message">
+            <summary>
+              Looks up a localized string similar to إرسال رسالة ترويجية.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Server_Error">
+            <summary>
+              Looks up a localized string similar to خطأ في الإستضافة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Service_Unavailable">
+            <summary>
+              Looks up a localized string similar to الخدمة غير متوفرة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Settings">
+            <summary>
+              Looks up a localized string similar to إعدادات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Shipped">
+            <summary>
+              Looks up a localized string similar to تم الشحن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Shipped_To">
+            <summary>
+              Looks up a localized string similar to تم شحنها إلى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Shipping">
+            <summary>
+              Looks up a localized string similar to رسوم الشحن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Shipping_Cost">
+            <summary>
+              Looks up a localized string similar to رسوم الشحن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Shipping_Information">
+            <summary>
+              Looks up a localized string similar to معلومات الشحن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Shop">
+            <summary>
+              Looks up a localized string similar to العطور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Size">
+            <summary>
+              Looks up a localized string similar to الحجم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Skill">
+            <summary>
+              Looks up a localized string similar to تخصص.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Skills">
+            <summary>
+              Looks up a localized string similar to التخصصات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Skip_Now">
+            <summary>
+              Looks up a localized string similar to تخطي الآن.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Sliders">
+            <summary>
+              Looks up a localized string similar to مساحه اعلانيه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Slug">
+            <summary>
+              Looks up a localized string similar to رخوي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Soil_Electric_Conductivity">
+            <summary>
+              Looks up a localized string similar to التوصيل الكهربائي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Soil_Ph">
+            <summary>
+              Looks up a localized string similar to الأس الهيدروجيني.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Sold">
+            <summary>
+              Looks up a localized string similar to المباعة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Sort_By">
+            <summary>
+              Looks up a localized string similar to ترتيب حسب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Specifications">
+            <summary>
+              Looks up a localized string similar to مواصفات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Start_Date">
+            <summary>
+              Looks up a localized string similar to تاريخ البدء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Status">
+            <summary>
+              Looks up a localized string similar to الحالة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Stock">
+            <summary>
+              Looks up a localized string similar to مخزون.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Sub_Heading">
+            <summary>
+              Looks up a localized string similar to عنوان فرعي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Sub_Heading_Arabic">
+            <summary>
+              Looks up a localized string similar to العنوان الفرعي عربي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Subscribe">
+            <summary>
+              Looks up a localized string similar to اشتراك.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Subscribers">
+            <summary>
+              Looks up a localized string similar to مشتركين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Subscriptions">
+            <summary>
+              Looks up a localized string similar to الاشتراكات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Subtotal">
+            <summary>
+              Looks up a localized string similar to المجموع الفرعي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.System">
+            <summary>
+              Looks up a localized string similar to إعدادات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Talab_Isteshara">
+            <summary>
+              Looks up a localized string similar to طلب إستشارة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Tasks">
+            <summary>
+              Looks up a localized string similar to المهام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Terms_and_Conditions">
+            <summary>
+              Looks up a localized string similar to جديد الشروط والأحكام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Tesla_Model_S">
+            <summary>
+              Looks up a localized string similar to مثال1.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Text_Color">
+            <summary>
+              Looks up a localized string similar to لون النص.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.This_action_is_unauthorized_">
+            <summary>
+              Looks up a localized string similar to عملية غير مصرّح بها..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.This_Month">
+            <summary>
+              Looks up a localized string similar to هذا الشهر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.This_password_reset_link_will_expire_in__count_minutes_">
+            <summary>
+              Looks up a localized string similar to ستنتهي صلاحية رابط استعادة كلمة المرور خلال :count دقيقة..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.This_Week">
+            <summary>
+              Looks up a localized string similar to هذالاسبوع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.This_Year">
+            <summary>
+              Looks up a localized string similar to هذا العام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Time">
+            <summary>
+              Looks up a localized string similar to الساعه.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Title">
+            <summary>
+              Looks up a localized string similar to العنوان.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.To">
+            <summary>
+              Looks up a localized string similar to إلى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Today">
+            <summary>
+              Looks up a localized string similar to اليوم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Today_Consultation">
+            <summary>
+              Looks up a localized string similar to معدل الاستشارات اليوم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Toggle_navigation">
+            <summary>
+              Looks up a localized string similar to إظهار/إخفاء القائمة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Too_Many_Attempts_">
+            <summary>
+              Looks up a localized string similar to عدد كبير من المحاولات..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Too_Many_Requests">
+            <summary>
+              Looks up a localized string similar to طلبات كثيرة جدًا.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Top_Experts">
+            <summary>
+              Looks up a localized string similar to المرشدين الاكثر تفاعلاً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Top_Product">
+            <summary>
+              Looks up a localized string similar to المنتج الأعلى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Top_Products">
+            <summary>
+              Looks up a localized string similar to المنتجات الأعلى.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.TopRatingConsultant">
+            <summary>
+              Looks up a localized string similar to المرشديين الاعلى تقييماً.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Total">
+            <summary>
+              Looks up a localized string similar to مجموع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.total_downloads_in_last_6_years">
+            <summary>
+              Looks up a localized string similar to إجمالي التحميلات في آخر 6 سنوات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.total_earnings_in_last_ten_quarters">
+            <summary>
+              Looks up a localized string similar to إجمالي الأرباح في الربع الأخير من العام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Total_Number">
+            <summary>
+              Looks up a localized string similar to الإجمالي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Total_Orders">
+            <summary>
+              Looks up a localized string similar to جميع الطلبات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Total_Purchase">
+            <summary>
+              Looks up a localized string similar to إجمالي المشتريات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Total_Sample">
+            <summary>
+              Looks up a localized string similar to مجموع العينات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.total_subscriptions_in_last_7_days">
+            <summary>
+              Looks up a localized string similar to مجموع الاشتراكات في آخر 7 أيام.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Total_users">
+            <summary>
+              Looks up a localized string similar to اجمالي المستخدمين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.TotalAnswers">
+            <summary>
+              Looks up a localized string similar to إجمالي الاجابات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.TotalQuestions">
+            <summary>
+              Looks up a localized string similar to إجمالي الاسئلة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Track_Order">
+            <summary>
+              Looks up a localized string similar to تتبع شحنتك.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Trainer">
+            <summary>
+              Looks up a localized string similar to مدرب.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Trainings">
+            <summary>
+              Looks up a localized string similar to الندوات و ورش العمل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Type_your_message_here___">
+            <summary>
+              Looks up a localized string similar to اكتتب رسالتك هنا ...
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Unauthorized">
+            <summary>
+              Looks up a localized string similar to غير مصرّح.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Unauthorized_Access">
+            <summary>
+              Looks up a localized string similar to دخول غير مرخص.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Unblock">
+            <summary>
+              Looks up a localized string similar to رفع الحظر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Under_Implementation">
+            <summary>
+              Looks up a localized string similar to قيد التنفيذ.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Under_Processing_Consulting">
+            <summary>
+              Looks up a localized string similar to استشارات تحت المعالجة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Undo_Blacklist">
+            <summary>
+              Looks up a localized string similar to رفع الحظر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Unisex">
+            <summary>
+              Looks up a localized string similar to للجنسين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Unit">
+            <summary>
+              Looks up a localized string similar to وحدة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Update">
+            <summary>
+              Looks up a localized string similar to تحديث.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Update_Cart">
+            <summary>
+              Looks up a localized string similar to تحديث العربة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Update_Offers_Image">
+            <summary>
+              Looks up a localized string similar to تحديث عروض الصور.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Updated_minutes_ago">
+            <summary>
+              Looks up a localized string similar to تم التحديث قبل دقائق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.User_Report_Without_Appointment">
+            <summary>
+              Looks up a localized string similar to تقرير المستخدم بدون موعد.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.UserName">
+            <summary>
+              Looks up a localized string similar to الاسم المستخدم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.UserName_Required">
+            <summary>
+              Looks up a localized string similar to الرجاء إدخال رقم الهاتف المحمول.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Users">
+            <summary>
+              Looks up a localized string similar to مستخدمين.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Variants">
+            <summary>
+              Looks up a localized string similar to متغيرات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.VAT">
+            <summary>
+              Looks up a localized string similar to ضريبة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Verify">
+            <summary>
+              Looks up a localized string similar to تحقق.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Verify_Email_Address">
+            <summary>
+              Looks up a localized string similar to التحقق من عنوان البريد الإلكتروني.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Verify_Your_Email_Address">
+            <summary>
+              Looks up a localized string similar to تحقق من عنوان البريد الإلكتروني الخاص بك.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.View_All">
+            <summary>
+              Looks up a localized string similar to عرض الكل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.View_all_members">
+            <summary>
+              Looks up a localized string similar to عرض جميع الأعضاء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.View_All_Products">
+            <summary>
+              Looks up a localized string similar to عرض جميع المنتجات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.View_Details">
+            <summary>
+              Looks up a localized string similar to عرض التفاصيل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.View_more_details">
+            <summary>
+              Looks up a localized string similar to مزيد من التفاصيل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Visited">
+            <summary>
+              Looks up a localized string similar to زائر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Weather_Identifier">
+            <summary>
+              Looks up a localized string similar to معرف المدينة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Website_Visitors">
+            <summary>
+              Looks up a localized string similar to زيارات الموقع.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Welcome">
+            <summary>
+              Looks up a localized string similar to اهلاً بك في مرشدك الزراعي.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.What_are_you_looking_for_">
+            <summary>
+              Looks up a localized string similar to ما الذي تبحث عنه؟.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Whats_on_your_mind">
+            <summary>
+              Looks up a localized string similar to ماذا تفكر.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Whoops_">
+            <summary>
+              Looks up a localized string similar to عذراً!.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Women">
+            <summary>
+              Looks up a localized string similar to للنساء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Women_Perfumes">
+            <summary>
+              Looks up a localized string similar to للنساء.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Working_Hours">
+            <summary>
+              Looks up a localized string similar to أيام العمل / ساعات.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.WorkTiming">
+            <summary>
+              Looks up a localized string similar to وقت العمل.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Wrong_City">
+            <summary>
+              Looks up a localized string similar to مدينة خاطئة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.WrongLogin">
+            <summary>
+              Looks up a localized string similar to اسم المستخدم أو كلمة المرور غير صحيحة.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Yes">
+            <summary>
+              Looks up a localized string similar to نعم.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Yesterday">
+            <summary>
+              Looks up a localized string similar to يوم امس.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.You_are_not_authorized_to_access_this_page_">
+            <summary>
+              Looks up a localized string similar to أنت غير مفوض لدخول هذه الصفحة!.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.You_are_receiving_this_email_because_we_received_a_password_reset_request_for_your_account_">
+            <summary>
+              Looks up a localized string similar to لقد استلمت هذا الإيميل لأننا استقبلنا طلباً لاستعادة كلمة مرور حسابك..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.You_must_select_at_least_one_category_">
+            <summary>
+              Looks up a localized string similar to اختر فئة واحدة على الأقل..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.You_saved">
+            <summary>
+              Looks up a localized string similar to قمت بحفظها.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Your_email_address_is_not_verified_">
+            <summary>
+              Looks up a localized string similar to بريدك الإلكتروني غير موثّق..
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Your_Message">
+            <summary>
+              Looks up a localized string similar to رسالتك.
+            </summary>
+        </member>
+        <member name="P:Resources.Resources.Your_Shipping_Address">
+            <summary>
+              Looks up a localized string similar to العنوان الشحن.
+            </summary>
+        </member>
+    </members>
+</doc>

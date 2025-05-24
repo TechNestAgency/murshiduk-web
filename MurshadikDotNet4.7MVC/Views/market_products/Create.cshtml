@@ -1,0 +1,71 @@
+﻿@model MurshadikCP.Models.DB.market_products
+
+@{
+    ViewBag.Title = "سوق";
+    ViewBag.pTitle = "إضافة سوق";
+    if (ViewBag.role == "Market")
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>منتج السوق</h4>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @*<input type="hidden" name="product_id" value="@Model.product_id" />*@
+                    <input type="hidden" name="market_id" value="@Model.market_id" />
+                    @Html.HiddenFor(model => model.price_date)
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.market_id, "اسم المركز ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("market_id", null, htmlAttributes: new { @class = "form-control h-auto", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.market_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.product_id, "اسم المنتج", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col">
+                            @Html.DropDownList("product_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            @Html.ValidationMessageFor(model => model.product_id, "", new { @class = "text-danger" })
+                        </div>
+                        @*<div class="col-1">
+                            <a href="/products/Create" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="اضافة منتجات">اضافة</a>
+                        </div>*@
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.price, "السعر", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value=@Resources.Resources.Add class="btn btn-primary" />
+                            @Html.ActionLink(Resources.Resources.Back, "Index", new { MarketID = Model.market_id, ProductID = Model.product_id }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>

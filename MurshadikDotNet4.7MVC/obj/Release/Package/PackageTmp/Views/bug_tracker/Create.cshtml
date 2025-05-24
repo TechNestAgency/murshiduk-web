@@ -1,0 +1,66 @@
+﻿@model MurshadikCP.Models.DB.bug_tracker
+
+@{
+    ViewBag.Title = "bug tracker";
+    ViewBag.pTitle = "bug tracker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Create", "bug_tracker", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="page" value="@Request.QueryString["page"].ToString()" />
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.msg, "message", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.msg, 3, 20, htmlAttributes: new { @class = "form-control", required = "required" })
+                                @*@Html.EditorFor(model => model.msg, new { htmlAttributes = new { @class = "form-control", required = "required", @textarea = "Textarea", @rows = 4 } })*@
+                                @Html.ValidationMessageFor(model => model.msg, "الرجاء تحديد المنطقة", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Image</label>
+                            <div class="col-md-10">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="image" id="image" onchange="document.getElementById('outputicon').src = window.URL.createObjectURL(this.files[0])">
+                                    <label class="custom-file-label" for="image"> ... أختر </label>
+                                    <div class="card">
+                                        <img src="~/assets/images/image_placeholder.jpg" id="outputicon" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="@Resources.Resources.Add" class="btn btn-primary" />
+                                @*@Html.ActionLink(Resources.Resources.Back, "Index", null, htmlAttributes: new { @class = "btn btn-primary" })*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+}

@@ -1,0 +1,318 @@
+﻿@model MurshadikCP.Models.DB.market
+
+@{
+    ViewBag.Title = "سوق";
+    ViewBag.pTitle = "عرض الاسواق ";
+    if (ViewBag.role == "Market")
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-xl-8 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="media p-5">
+                    <div class="avatar-md mr-4">
+                        <span class="avatar-title rounded-circle bg-light text-danger font-size-16">
+                            <img src="@Model.market_image" alt="" class="card-img-top img-fluid" height="30">
+                        </span>
+                    </div>
+
+                    <div class="media-body">
+                        <h5 class="font-size-15"><a href="#" class="text-dark">@Model.marketname</a></h5>
+                        <p class="mb-2">@Model.address</p>
+                        <p class="mb-2">@Model.region.name_ar</p>
+                        <p class="mb-2">قريب في   @Model.open_at  فتح في  @Model.close_at</p>
+                        <p class="mb-2">@Model.contact_person</p>
+                        <p class="mb-2">@Model.phone</p>
+                    </div>
+                    <div>
+                        <a href="/markets/Edit?id=@Model.id" class="btn btn-outline-primary btn-lg" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="bx bx-pencil"></i></a>
+                        <a href="/Account/Register?MarketID=@Model.id" class="btn btn-outline-primary btn-lg" data-toggle="tooltip" data-placement="top" title="إضافة مستخدم"><i class="bx bx-user-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="MyPartial" class="col-xl-4 col-12">
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="media">
+                            <div class="media-body align-self-center">
+                                <div>
+                                    <form method="get">
+                                        <div class="form-group row">
+                                            <input type="hidden" name="id" id="MarketID" value="@Model.id" />
+                                            <input type="text" name="search" id="search" value="@ViewBag.searching" class="col-5 form-control h-auto mr-2" placeholder="search ..." />
+                                            <button type="submit" value="Search" class="btn btn-primary mr-1">Search</button>
+                                            <label class="mr-2 mt-2 control-label">المنتج</label>
+                                            @Html.DropDownList("products", null, htmlAttributes: new { @class = "form-control col mr-2 h-auto" })
+                                            <input type="text" name="unitprice" id="unitprice" class="col-1 form-control h-auto" placeholder="قيمةالوحدة" />
+                                            <a class="btn btn-primary sa-warning">أضف المنتج في السوق</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end row -->
+
+<div class="row">
+    @{
+        Int64? product_id = 0;
+    }
+    @foreach (var item in Model.market_products.OrderByDescending(x => x.price_date).Select(m => new { m.product_id, m.product, m.price, m.unit_value, m.created_at }).Distinct().OrderByDescending(x => x.product_id))
+    {
+        if (item.product_id != product_id)
+        {
+            <div class="col-xl-2 col-sm-6">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="text-center">
+                            <a href="/market_products/Index?ProductID=@item.product_id&MarketID=@Model.id">
+                                <img src="~/Media/Images/Products/@Html.DisplayFor(modelItem => item.product.product_image)" alt="" style="height:100px;" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <a href="/market_products/Index?ProductID=@item.product_id&MarketID=@Model.id" class="text-dark">
+                                <h5 class="mb-3">
+                                    @Html.DisplayFor(modelItem => item.product.product_name)
+                                </h5>
+                                <h5> @item.product.product_categories.name</h5>
+                                <h5> @item.price س.ر</h5>
+                                <h5> @item.unit_value @item.product.unit.name </h5>
+                                <h5> @(item.created_at != null ? item.created_at.Value.ToShortDateString() : "")  </h5>
+                            </a>
+                            <div class="input-group input-group-lg">
+                                <input type="text" class="form-control floatValueAllow" id="txtPrice-@item.product_id" name="txtPrice">
+
+                                <div class="btn-group mt-4 mt-md-0">
+                                    <button class="btn btn-primary putPrice" type="button" data-product-id="@item.product_id" data-market-id="@Model.id" data-old-price="@item.price">✔</button>
+                                    <button class="btn btn-danger sa-delete" type="button" data-product-id="@item.product_id" data-market-id="@Model.id"><i class="mdi mdi-delete"></i></button>
+                                    <button class="btn btn-primary sa-product" type="button" data-marketid="@Model.id" data-productid="@item.product_id"><i class="bx bx-line-chart"></i></button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            product_id = item.product_id;
+        }
+    }
+
+</div>
+
+
+
+@section scripts{
+    <!-- apexcharts -->
+    @*<script src="~/assets/libs/apexcharts/apexcharts.min.js"></script>*@
+    <script src="~/assets/libs/chart.js/Chart.bundle.min.js"></script>
+    <script src="~/assets/js/pages/dashboard.js"></script>
+
+    @*<script src="~/assets/js/pages/tasklist.init.js"></script>*@
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+<script>
+
+    function arabicToEnglishNumerics(valueToChange) {
+        var Obj = {
+            "٠": "0",
+            "١": "1",
+            "٢": "2",
+            "٣": "3",
+            "٤": "4",
+            "٥": "5",
+            "٦": "6",
+            "٧": "7",
+            "٨": "8",
+            "٩": "9",
+            "،": ".",
+            ",": "."
+        };
+
+        return valueToChange.replace(/٠|١|٢|٣|٤|٥|٦|٧|,|٨|،|٩/gi, function (x) {
+            return Obj[x];
+        })
+    }
+
+    
+
+    //function checkNumericValues(val) {
+    //    var obj
+    //}
+
+</script>
+<script>
+    $(document).ready(function () {
+        //$(".floatValueAllow").inputFilter(function (value) {
+        //    return /^-?\d*[.,]?\d*$/.test(value);
+        //});
+
+        $(".sa-product").click(function (e) {
+            var marketid = $(this).data('marketid');
+            var productid = $(this).data('productid');
+            debugger;
+            $.ajax({
+                url: '@Url.Action("RefillMarketProductChart", "markets")',
+                dataType: "html",
+                type: "GET",
+                data: { "marketid": marketid, "productid": productid },
+                    contentType: "application/html; charset=utf-8",
+                    success: function (result) {
+                        $("#MyPartial").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+        });
+
+
+            
+
+
+
+        $(".putPrice").click(function (e) {
+            debugger
+            var productid = $(this).data('product-id');
+            var marketid = $(this).data('market-id');
+            var oldprice = $(this).data('old-price');
+            var price = $('#txtPrice-' + productid).val();
+            var englishPrice = arabicToEnglishNumerics(price);
+            if (price != "") {
+                Swal.fire({
+                    title: 'هل أنت متأكد من إضافة السعر في هذا المنتج؟',
+                    text: "لن تتمكن من التراجع عن هذا!",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/market_products/CreateMarketProduct', { 'MarketID': marketid, 'ProductID': productid, 'Price': englishPrice, 'OldPrice': oldprice })
+                            .then(function (r) {
+                                if (r.data == "Success") {
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            } else {
+                swal.fire("مطلوب", "الرجاء إدخال السعر أولاً ثم انقر فوق", "error")
+            }
+
+        });
+
+        $(".sa-warning").click(function (e) {
+            debugger;
+            var productid = $("#products").val();
+            var marketid = $("#MarketID").val();
+            var unitPrice = $("#unitprice").val();
+            if (unitPrice != null && unitPrice != "") {
+                Swal.fire({
+                    title: 'هل أنت متأكد من إضافة هذا المنتج في السوق؟',
+                    text: "لن تتمكن من التراجع عن هذا!",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/market_products/CreateMarketProduct', { 'MarketID': marketid, 'ProductID': productid, 'unitPrice': arabicToEnglishNumerics(unitPrice) })
+                            .then(function (r) {
+                                if (r.data == "Success") {
+                                    Swal.fire("خلقت!", "تم اضافة المنتج بنجاح!", "success")
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            } else { alert("فضلاً ادخل قيمة الوحده ثم اضغط اضافة لإضافة المنتج في السوق"); }
+        });
+
+        $(".sa-delete").click(function (e) {
+            var productid = $(this).data('product-id');
+            var marketid = $(this).data('market-id');
+            Swal.fire({
+                title: 'هل أنت متأكد أنك تريد حذف هذا المنتج في هذا السوق؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/markets/DeleteMarketProduct', { 'marketid': marketid, 'productid': productid })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("إزالة", "تمت إزالة المنتج بنجاح في هذا السوق!", "success")
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+    });
+
+</script>

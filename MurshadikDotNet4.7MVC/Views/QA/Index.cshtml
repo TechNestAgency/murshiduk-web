@@ -1,0 +1,361 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.qa_questions>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+
+
+@{
+    ViewBag.Title = Resources.Resources.QNA;
+    ViewBag.pTitle = Resources.Resources.QNA;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .selectbox {
+        background: #fff;
+        color: #1d3b4a;
+        padding: 8px;
+        line-height: 18px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        border-width: 0 1px 4px;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            @foreach (var statCard in ViewBag.StatsCards as List<MurshadikCP.Models.StatsCardModel>)
+            {
+                <div class="col-sm-3">
+                    @Html.Partial("Components/StatsCard", statCard)
+                </div>
+
+            }
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="">
+            @using (Html.BeginForm("Index", "QA", FormMethod.Get))
+            {
+                <input type="hidden" id="start_date" name="start_date" value="@ViewBag.Start_Date" />
+                <input type="hidden" id="end_date" name="end_date" value="@ViewBag.End_date" />
+                <div class="card">
+                    <div class="card-body border-bottom">
+                        <h3>@Resources.Resources.Search </h3>
+                    </div>
+                    <div class="align-items-center card-body">
+                        <div class="align-items-center row">
+                            <div class="col-12">
+                                <div class="row align-items-center">
+                                    <div class="col-md-9">
+                                        @Html.TextBox("Search_Data", ViewBag.Filter_Value as string, new { @class = "form-control form-control-lg my-2 my-lg-4", @placeholder = Resources.Resources.What_are_you_looking_for_ })
+                                    </div>
+                                    @*<div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label for="approvalWaiting" class="form-label">بإنتظار الموافقة على الأجوبة</label>
+                                            <select class="form-control h-auto" name="approvalWaiting" id="approvalWaiting">
+                                                <option value="0">@Resources.Resources.All</option>
+                                                <option value="1">بإنتظار الموافقة على الأجوبة</option>
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-3 text-right">
+                                        <div id="reportrange" class="selectbox d-inline-block">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="align-items-center row">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="criteria" class="form-label">@Resources.Resources.Status</label>
+                                            <select class="form-control h-auto" name="criteria" id="criteria">
+                                                <option value="0">@Resources.Resources.All</option>
+                                                <option value="1">الأسئلة الموافق عليها</option>
+                                                <option value="2">الأجوبة الموافق عليها</option>
+                                                <option value="3">أجوبة بإنتظار الموافقة</option>
+                                                <option value="4">الاسئلة بانتظار الموافقة</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="category" class="form-label">@Resources.Resources.Category</label>
+                                            <select class="form-control h-auto" name="category" id="category">
+                                                <option value="0">@Resources.Resources.All</option>
+                                                <option value="1">@Resources.Resources.Diseases</option>
+                                                <option value="2">@Resources.Resources.Planting</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="sorting" class="form-label">@Resources.Resources.Sort_By</label>
+                                            <select class="form-control h-auto" name="sorting" id="sorting">
+                                                <option value="0">@Resources.Resources.All</option>
+                                                <option value="1">@Resources.Resources.Rating_By_Question</option>
+                                                <option value="2">@Resources.Resources.More_Answers</option>
+                                                <option value="3">@Resources.Resources.Rating_By_Answer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 py-3 text-right">
+                                        <input type="submit" value="@Resources.Resources.Search" class="btn btn-block btn-lg btn-success col-12 col-md-2 waves-effect waves-light" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="table-responsive">
+                <table class="table project-list-table table-nowrap table-centered table-borderless">
+                    <thead>
+                        <tr>
+                            @*<th scope="col" style="width: 100px">#</th>*@
+                            <th scope="col">@Resources.Resources.Title</th>
+                            <th scope="col">@Resources.Resources.Category</th>
+                            <th scope="col">@Resources.Resources.Answers</th>
+                            <th scope="col">@Resources.Resources.Ratings </th>
+                            <th scope="col">تقييم الأجوبة</th>
+                            <th scope="col">@Resources.Resources.Date</th>
+                            <th scope="col">@Resources.Resources.Status</th>
+
+                            <th scope="col">@Resources.Resources.Approve_qna</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="/QA/Answers?id=@item.id" class="text-dark">
+                                        <h5 class="font-size-14">@item.title</h5>
+                                        <p class="mb-0">@item.description.Substring(0, item.description.Length > 50 ? 50 : item.description.Length) </p>
+                                        @Resources.Resources.UserName : @item.user.name  @item.user.last_name
+                                    </a>
+                                    @if (item.qa_answers.Count() > 0)
+                                    {
+                                        foreach (var answers in item.qa_answers)
+                                        {
+                                            if (answers.is_approved == false && answers.is_verified == false)
+                                            {
+                                                <p class="text-danger">@Resources.Resources.New  *</p>
+                                                break;
+                                            }
+                                        }
+
+                                    }
+                                </td>
+                                <td>@item.qa_category.name_ar</td>
+                                <td><span class="success">@item.qa_answers.Count()</span></td>
+                                <td><span class="success">@item.vote_count</span></td>
+                                <td><span class="success">@(item.qa_answers.Count() > 0 ? item.qa_answers.Select(x => x.vote_count).Max() : 0)</span></td>
+                                <td>@(item.created_at != null ? item.created_at.Value.ToShortDateString() : "")</td>
+                                <td><span class="@(item.is_approved == true ? "badge badge-primary" : "badge badge-warning") font-size-14">@(item.is_approved == true ? Resources.Resources.Approved : Resources.Resources.Pending)</span></td>
+                                <td>
+                                    <input type="hidden" id="ids" value="@item.id" />
+                                    <a class="btn btn-lg btn-link sa-isapproved" data-toggle="tooltip" data-placement="top" title="الموافقة على السؤال؟"><i class="bx bx-pencil"></i></a>
+                                    <a class="btn btn-lg btn-link sa-warning" data-toggle="tooltip" data-placement="top" title="حذف السؤال؟"><i class="bx bx-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value, criteria = ViewBag.Filter_criteria, category = ViewBag.Filter_category, sorting = ViewBag.Filter_sorting, start_date = ViewBag.Start_Date, end_date = ViewBag.End_Date }))
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var is_first_load = true;
+        var start = $('#start_date').val() == "" ? moment().subtract(6, 'days') : moment($('#start_date').val());
+        var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val())
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    $('form').submit();
+                } else {
+                    is_first_load = false;
+                }
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2017-01-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+            cb(start, end);
+
+        $(".sa-isapproved").click(function (e) {
+            var id = $(this).siblings('input#ids').val();
+            var abc = $(this).closest('tr', 'font-size-14')[0].cells[3].innerText;
+            if (abc == "وافق") {
+                Swal.fire({ title: "تمت الموافقة عليها بالفعل", confirmButtonColor: "#556ee6" });
+            } else {
+                Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "لن تتمكن من التراجع عن هذا!",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/QA/is_approved', { 'id': id })
+                            .then(function (r) {
+                                if (r.data.status) {
+                                    Swal.fire({ title: "", text: r.data.message, type: "success", confirmButtonText: "@Resources.Resources.Ok" }).then(function (x) {
+                                        location.reload()
+                                    })
+                                } else {
+                                    swal.fire("@Resources.Resources.Errors", r.data.message, "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            }
+        });
+
+        $(".sa-isverified").click(function (e) {
+            var id = $(this).siblings('input#ids').val();
+            var abc = $(this).closest('tr', 'font-size-14')[0].cells[3].innerText;
+            if (abc == "وافق") {
+                Swal.fire({ title: "تم التحقق منه بالفعل", confirmButtonColor: "#556ee6" });
+            } else {
+                Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "لن تتمكن من التراجع عن هذا!",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/QA/is_verified', { 'id': id })
+                            .then(function (r) {
+                                if (r.data == "Success") {
+                                    Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+            }
+        });
+
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/QA/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else if (r.data == "Answers Exists against this question") {
+                                swal.fire(r.data, "Answer Exists!", "error")
+                            }
+                            else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+    });
+
+    $("#criteria").val(@ViewBag.Filter_criteria);
+    $("#category").val(@ViewBag.Filter_category);
+    $("#sorting").val(@ViewBag.Filter_sorting);
+
+</script>

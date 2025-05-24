@@ -1,0 +1,328 @@
+﻿@model MurshadikCP.Controllers.ParentKeyword
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "الدلالية";
+    ViewBag.pTitle = "الدلالية";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm(Model.Keyword.id == 0 ? "Create" : "Edit", "keywords", FormMethod.Post, new { @class = "needs-validation float-left", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <div class="align-items-center form-group row">
+                            <input type="hidden" name="keyword_id" value="@Model.Keyword.id" />
+                            <label class="align-self-md-end control-label m-3">الدلالية</label>
+                            <div class="">
+                                <input type="text" name="keyword1" id="keyword1" value="@Model.Keyword.keyword1" class="form-control" required />
+                                <div class="invalid-feedback">
+                                    الدلالية مطلوب
+                                </div>
+                            </div>
+                            <div>
+                                <input type="submit" value="حفظ" class="btn btn-primary m-2" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                @using (Html.BeginForm("Index", "keywords", FormMethod.Get))
+                {
+                    <div class="align-items-center form-group row">
+                        <a href="#" class="btn btn-primary waves-effect waves-light m-2 col" data-toggle="modal" data-target=".bs-example-modal-center"> أضف مجموعة الكلمات الرئيسية <i class="mdi mdi-plus-box ml-1"></i></a>
+                        <div class="col">
+                            @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                        </div>
+                        <input type="submit" value="بحث" class="btn btn-primary waves-effect waves-light" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-5">
+        
+        <div class="card">
+            <div class="card-body">
+                
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                الدلالية
+                            </th>
+                            <th>
+                                تاريخ الإنشاء
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model.keywordList)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.keyword1)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.created_at)
+                                </td>
+                                <td>
+                                    <a href="/Keywords/Index?keyword_id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                    <input type="hidden" id="ids" value="@item.id" />
+                                    <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th class="w-lg">
+                                فئة الإخطار
+                            </th>
+                            <th class="w-lg text-wrap">
+                                الدلالية
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model.keywordGroupList)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.keyword_group_name)
+                                </td>
+                                <td class="text-break text-wrap align-middle">
+                                    @Html.DisplayFor(modelItem => item.group_keywords)
+                                </td>
+                                <td>
+                                    <button type="button" class="open-homeEvents btn btn-sm btn-primary" data-toggle="modal"
+                                            data-id='@item.id' data-keywords="@item.group_keywords" data-groupname="@item.keyword_group_name" data-target=".bs-example-modal-center">
+                                        تعديل
+                                    </button>
+
+                                    <input type="hidden" id="ids" value="@item.id" />
+                                    <a class="btn btn-lg btn-link waves-effect waves-light sa-warning-keywordGroup" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-5">
+        <div class="d-flex justify-content-between">
+            <div>
+                عرض صفحة @(Model.keywordList.PageCount < Model.keywordList.PageNumber ? 0 : Model.keywordList.PageNumber) من @Model.keywordList.PageCount
+                @Html.PagedListPager(Model.keywordList, Page_No => Url.Action("Index",
+                    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+                <form class="needs-validation" novalidate>
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0">الكلمات الدالة</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="allkeyword" id="allkeyword" />
+                        <input type="hidden" name="keyword_group_id" id="keyword_group_id" />
+                        <div class="row">
+                            <label class="control-label col-md-3">فئة الإخطار :</label>
+                            <div class="col-9">
+                                <input type="text" name="keyword_group_name" id="keyword_group_name" class="form-control h1" required />
+                                <div class="invalid-feedback">
+                                    اسم المجموعة مطلوب
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3">الدالة</label>
+                            <div class="col-9">
+                                @Html.DropDownList("keywords_Name", null, htmlAttributes: new
+                                    {
+                                       @class = "select2 select2-keywords form-control select2-multiple w-100 h-auto",
+                                       id = "keywords",
+                                       multiple = "multiple",
+                                       data_placeholder = " .... أختر",
+                                       style = "width:100%",
+                                       required = "required"
+                                    })
+                                <div class="invalid-feedback">
+                                    Please choose keywords ... 
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="savekeywordGroup" type="submit">حفظ</button>
+                    </div>
+                    </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+@section scripts{
+    @*<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>*@
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $(".select2").select2({
+            dir: "rtl"
+        });
+
+        $(document).on("click", ".open-homeEvents", function () {
+            debugger
+            var mainData = $(this).data('id');
+            var keywords = $(this).data('keywords').split(",");
+            var keyword_group = $(this).data('groupname');
+            if (mainData != undefined) {
+                $("#keyword_group_id").val(mainData);
+                $("#keyword_group_name").val(keyword_group);
+                $(".select2").select2({
+                    dir: "rtl"
+                }).val(keywords);
+                $('.select2').trigger('change');
+            }
+        });
+
+
+
+        $(".sa-warning").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/keywords/Delete', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+        $(".sa-warning-keywordGroup").click(function (e) {
+            var row = $(this).closest('tr');
+            var id = $(this).siblings('input#ids').val();
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/keywords/DeleteKeywordGroup', { 'id': id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                row.remove();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+        
+
+        $("#savekeywordGroup").click(function (e) {
+            debugger
+            var keyword_group_Name = $("#keyword_group_name").val();
+            $("#allkeyword").val($("#keywords").select2().val());
+            if (keyword_group_Name != "" && $("#allkeyword").val() != "") {
+                axios.post('/keywords/AddKeywordGroup', { 'keyword_group_name': keyword_group_Name, 'keywords': $("#allkeyword").val(), 'keyword_group_id': $("#keyword_group_id").val() })
+                    .then(function (r) {
+                        if (r.data == "Success") {
+                            Swal.fire("تم إدخاله بنجاح", "success")
+                            $('.bs-example-modal-center').modal('toggle');
+                            //$('#notification_class_id').trigger("chosen:updated");
+                            //location.reload();
+                        } else {
+                            swal.fire(r.data, "Something wrong!", "error")
+                        }
+                    })
+                    .catch(function (error) {
+                        swal.fire("Error", error, "error")
+                    });
+            } else { swal.fire("Error", "Please fill required fields!", "error")}
+        });
+    });
+
+</script>

@@ -1,0 +1,10 @@
+﻿@model MurshadikCP.Models.DB.weather_notification
+
+@*<option value=""> -- Select City -- </option>*@
+@if (ViewBag.City != null)
+{
+    foreach (var item in ViewBag.City)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}

@@ -1,0 +1,54 @@
+﻿@model MurshadikCP.Models.DB.FarmVisitReport
+
+@{
+    ViewBag.Title = "إضافة تقرير";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("AddReport", "FarmVisitOrder", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+
+{
+
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>إضافة تقرير</h4>
+    <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        <label class = "control-label col-md-2">التقرير</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, 5, 20, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+@{ 
+    <input  hidden value="@Model.FarmVisitOrderId" name="id"/>
+}
+<div class="col-md-10 form-group">
+    <label class="control-label col-md-2">ارفاق ملف</label>
+    <input name="file" type="file" asp-for="Upload" />
+</div>
+    @{ 
+        if (!string.IsNullOrEmpty(ViewBag.validate))
+        {
+        <center>
+            <h5 class="alert-danger">@ViewBag.validate</h5>
+            </center>
+        }
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-primary m-5" />
+        </div>
+    </div>
+   </div>
+}
+
+<div>
+    @Html.ActionLink("رجوع", "Index")
+</div>

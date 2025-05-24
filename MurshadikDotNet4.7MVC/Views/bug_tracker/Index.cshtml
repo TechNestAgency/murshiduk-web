@@ -1,0 +1,223 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.bug_tracker>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "تتبع ملاحظات النظام";
+    ViewBag.pTitle = "تتبع ملاحظات النظام";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .selectbox {
+        background: #fff;
+        color: #1d3b4a;
+        padding: 8px;
+        line-height: 18px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        border-width: 0 1px 4px;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            @foreach (var statCard in ViewBag.StatsCards as List<MurshadikCP.Models.StatsCardModel>)
+            {
+                <div class="col-sm-4">
+                    @Html.Partial("Components/StatsCard", statCard)
+                </div>
+
+            }
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="">
+            @using (Html.BeginForm("Index", "bug_tracker", FormMethod.Get))
+            {
+                <input type="hidden" id="start_date" name="start_date" value="@ViewBag.Start_Date" />
+                <input type="hidden" id="end_date" name="end_date" value="@ViewBag.End_date" />
+                <div class="card">
+                    <div class="card-body border-bottom">
+                        <h3>@Resources.Resources.Search </h3>
+                    </div>
+                    <div class="align-items-center card-body">
+                        <div class="align-items-center row">
+                            <div class="col-12">
+                                <div class="align-items-center row">
+
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="Status" class="form-label">@Resources.Resources.Status</label>
+                                            <select class="form-control h-auto" name="Status" id="Status">
+                                                <option value="0">@Resources.Resources.All</option>
+                                                <option value="Pending">انتظار</option>
+                                                <option value="تحت المعالجة">تحت المعالجة</option>
+                                                <option value="مكتمل">مكتمل</option>
+                                                <option value="مغلق">مغلق</option>
+                                                <option value="معاد فتحه">معاد فتحه</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="Page" class="form-label">@Resources.Resources.Page</label>
+                                            <select class="form-control h-auto" name="Page" id="Page">
+                                                <option value="0">@Resources.Resources.All</option>
+                                                <option value="General">@Resources.Resources.General</option>
+                                                <option value="Dashboard">@Resources.Resources.Dashboard</option>
+                                                <option value="market">@Resources.Resources.Markets</option>
+                                                <option value="Lab">مختبر</option>
+                                                <option value="murshadikzaki">@Resources.Resources.Murshadik_Zaki</option>
+                                                <option value="talabisteshara">@Resources.Resources.Talab_Isteshara</option>
+                                                <option value="QA">@Resources.Resources.QNA</option>
+                                                <option value="Tehleelzaraiya">@Resources.Resources.Agricultural_Analysis</option>
+                                                <option value="AfatShajarbun">@Resources.Resources.Aafat_Shajar_Bun</option>
+                                                <option value="attentions">@Resources.Resources.Attentions</option>
+                                                <option value="bug_tracker">تتبع ملاحظات النظام</option>
+                                                <option value="AlertMessages">الرسائل الارشادية الطقس</option>
+                                                <option value="Article">الأخبار</option>
+                                                <option value="workerextension">المرشدين الزراعيين</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <div id="reportrange" class="selectbox d-inline-block">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 py-3 text-right">
+                                        <input type="submit" value="@Resources.Resources.Search" class="btn btn-block btn-lg btn-success col-12 col-md-2 waves-effect waves-light" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            الرسالة
+                        </th>
+                        <th>
+                            الصفحة
+                        </th>
+                        <th>
+                            الحالة
+                        </th>
+                        <th>
+                            تاريخ الانشاء
+                        </th>
+                        <th>
+                            تم الانشاء من قبل
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+
+                                <a href="/bug_tracker/View?id=@item.id"><i class="fa fa-@(item.type == 1 ? "globe" : "mobile") fa-1x"></i> @item.msg</a>@*@Html.DisplayFor(modelItem => item.msg)*@
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.page)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.status)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.created_at)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.user.name)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value, Status = ViewBag.Filter_status, page = ViewBag.Filter_page, start_date = ViewBag.Start_Date, end_date = ViewBag.End_Date }))
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+}
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var is_first_load = true;
+        var start = $('#start_date').val() == "" ? moment().subtract(6, 'days') : moment($('#start_date').val());
+        var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val())
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    $('form').submit();
+                } else {
+                    is_first_load = false;
+                }
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2017-01-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+            cb(start, end);
+    });
+
+    $("#Status").val("@ViewBag.Filter_status");
+    $("#Page").val("@ViewBag.Filter_page");
+
+</script>

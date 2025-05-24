@@ -1,0 +1,122 @@
+﻿@model List<MurshadikCP.Models.DB.faq>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQS</title>
+    <link rel="stylesheet" href="/assets/css/icons.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: #666;
+            font-size: 1em;
+            background: #fff;
+            line-height: 1.6em;
+            text-align: right;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #container {
+            width: 60%;
+            margin: 0 20%;
+            overflow: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        i {
+            margin-left: 1em;
+        }
+
+        .faq li {
+            padding: 1.25em;
+        }
+
+            .faq li.q {
+                font-weight: bold;
+                font-size: 100%;
+                border-bottom: 1px #ccc solid;
+                cursor: pointer;
+            }
+
+            .faq li.a {
+                font-weight: normal;
+                color: #777777;
+                background: #fafafa;
+                display: none;
+            }
+
+        img {
+            margin-right: .5em;
+        }
+
+        footer {
+            height: 6em;
+            padding: 2em;
+            margin-top: 2em;
+        }
+
+        @@media (max-width: 800px) {
+            #container
+
+        {
+            width: 100%;
+            margin: 0%;
+        }
+
+        .faq li.a {
+            width: 85%;
+            margin-right: 5%;
+        }
+        }
+    </style>
+    <script src="/assets/libs/jquery/jquery.min.js"></script>
+    <script>
+
+        var speed = "500";
+
+        $(document).ready(function () {
+            $('li.q').on("click", function () {
+                $(this).next()
+                    .slideToggle(speed)
+                    .siblings('li.a')
+                    .slideUp();
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <h1>الأسئلة الشائعة</h1>
+
+        <ul class="faq">
+            @foreach (var item in Model)
+            {
+                <li class="q"><i class="bx bx-chevron-left"></i>@item.question</li>
+                <li class="a">@item.answer</li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

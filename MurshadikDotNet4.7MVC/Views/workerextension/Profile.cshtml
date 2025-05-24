@@ -1,0 +1,402 @@
+﻿@model MurshadikCP.Controllers.ParentUser
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "الملف الشخصي";
+    ViewBag.pTitle = "الملف الشخصي";
+    ViewBag.pageTitle = "Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        .rating-symbol-background, .rating-symbol-foreground {
+            font-size: 16px;
+        }
+
+        .selectbox {
+            background: #fff;
+            color: #1d3b4a;
+            padding: 8px;
+            line-height: 18px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            border-width: 0 1px 4px;
+        }
+    </style>
+    <!-- Bootstrap Rating css -->
+    <link href="~/assets/libs/bootstrap-rating/bootstrap-rating.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card overflow-hidden">
+            <div class="bg-soft-primary">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="text-primary p-3">
+                            <h5 class="text-primary">@Resources.Resources.Welcome</h5>
+                        </div>
+                    </div>
+                    <div class="col-5 align-self-end">
+                        <img src="~/assets/images/profile-img.png" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div>
+                        <div class="avatar-md profile-user-wid mb-2">
+                            <img src="@(Model.User.avatar != null ? Model.User.avatar : "/assets/images/logo.png")" alt="" class="img-thumbnail rounded-circle">
+                        </div>
+
+                        <h5>
+                            <span>
+                                @Model.User.name @Model.User.last_name
+                            </span>
+                            <span>
+                                <span class="mdi mdi-star text-primary"></span>
+                                <span class="badge badge-info">
+                                    @(Model.User.consultant_rating.Count() > 0 ? String.Format("{0:0.00}", Model.User.consultant_rating.Average(x => x.rating)) : "0.0")
+                                </span>
+                            </span>
+                        </h5>
+                        <p class="mb-0 ml-2">@(Model.User.role != null ? Model.User.role.name_ar : "Not Set Yet")</p>
+                        <p class="mb-0 ml-2">أخر ظهور : @ViewBag.LastSeen</p>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div class="mt-1 ml-2">
+                                <a href="/workerextension/Edit?id=@Model.User.id" class="btn btn-primary waves-effect waves-light btn-sm">تعديل الملف الشخصي <i class="bx bx-edit-alt ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">معلومات شخصية</h4>
+
+                <p class="text-muted mb-4">@Model.User.profile</p>
+                <div class="table-responsive">
+                    <table class="table table-nowrap mb-0">
+                        <tbody>
+                            <tr>
+                                <th scope="row">الاسم الكامل :</th>
+                                <td>@Model.User.name @Model.User.last_name</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">الجوال :</th>
+                                <td>@Model.User.phone</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">البلد :</th>
+                                <td>@Model.User.country</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">وظيفة :</th>
+                                <td>@(Model.User.role != null ? Model.User.role.name_ar : "Not Set Yet")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">إصدار :</th>
+                                <td>@Model.User.app_ver</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-5">التخصص</h4>
+                <div class="">
+                    <ul class="verti-timeline list-unstyled">
+                        @foreach (var item in Model.User.skill_user)
+                        {
+                            <li class="event-list active">
+                                <div class="event-timeline-dot">
+                                    @if (item.is_approved)
+                                    {<i class="bx bx-check-double bx-fade-right text-success"></i>}
+                                    else
+                                    { <i class="bx bx-time-five bx-fade-right text-warning"></i>}
+                                </div>
+                                <div class="media">
+                                    <div class="mr-3">
+                                        @if (item.is_approved)
+                                        {<i class="bx bx-server h4 text-success"></i>}
+                                        else
+                                        { <i class="bx bx-server h4 text-warning"></i>}
+                                    </div>
+                                    <div class="media-body">
+                                        <div>
+                                            <h5 class="font-size-15">@item.skill.name</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!-- end card -->
+    </div>
+    <div class="col-xl-8">
+        @using (Html.BeginForm("Profile", "workerextension", FormMethod.Get))
+        {
+        <div class="row">
+            <div class="col-md-12 text-right pb-3">
+
+                <input type="hidden" id="start_date" name="start_date" value="@ViewBag.Start_Date" />
+                <input type="hidden" id="end_date" name="end_date" value="@ViewBag.End_date" />
+                <input type="hidden" id="profile_id" name="id" value="@ViewBag.id" />
+                <div id="reportrange" class="selectbox d-inline-block">
+                    <i class="fa fa-calendar"></i>&nbsp;
+                    <span></span> <i class="fa fa-caret-down"></i>
+                </div>
+
+
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <a href="/QA/Index?user_id=@Model.User.id">
+                                        <p class="text-muted font-weight-medium">@Resources.Resources.Answers</p>
+                                        <h4 class="mb-0">@ViewBag.Answers</h4>
+                                    </a>
+                                </div>
+
+                                <div class="mini-stat-icon avatar-sm align-self-center rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-check-circle font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="text-muted font-weight-medium">رسالة</p>
+                                    <h4 class="mb-0">@ViewBag.Chatmessages</h4>
+                                </div>
+
+                                <div class="avatar-sm align-self-center mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-package font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="text-muted font-weight-medium">@Resources.Resources.Call_Finished</p>
+                                    <h4 class="mb-0">@ViewBag.callfinished</h4>
+                                </div>
+
+                                <div class="avatar-sm align-self-center mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-hourglass font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+              
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    @*both busy and rejected need to check from application bassam/tariq*@
+                                    <p class="text-muted font-weight-medium">@Resources.Resources.Call_Busy</p>
+                                    <h4 class="mb-0">@ViewBag.callrejected</h4>
+                                </div>
+
+                                <div class="avatar-sm align-self-center mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-hourglass font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="text-muted font-weight-medium">@Resources.Resources.Call_Noanswer</p>
+                                    <h4 class="mb-0">@ViewBag.callnoanswer</h4>
+                                </div>
+
+                                <div class="avatar-sm align-self-center mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-hourglass font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="text-muted font-weight-medium">عدد الساعات النشطة </p>
+                                    <h4 class="mb-0">@ViewBag.onlinHours</h4>
+                                </div>
+
+                                <div class="avatar-sm align-self-center mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-hourglass font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">تقييم</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <tbody>
+                                @foreach (var item in Model.consultant_Ratings)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <img class="rounded-circle avatar-sm" src="@(item.user1.avatar == null ? "/assets/images/users/avatar-2.jpg" : item.user1.avatar)" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">@item.user1.name @item.user1.last_name</a></h5>
+                                            <input type="hidden" class="rating" data-filled="mdi mdi-star text-primary" data-empty="mdi mdi-star-outline text-primary" data-fractions="2" value="@item.rating" disabled />
+                                            <p>@item.comment</p>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        عرض صفحة @(Model.consultant_Ratings.PageCount < Model.consultant_Ratings.PageNumber ? 0 : Model.consultant_Ratings.PageNumber) من @Model.consultant_Ratings.PageCount
+                        @Html.PagedListPager(Model.consultant_Ratings, Page_No => Url.Action("Profile",
+                                 new { Page_No, id = Model.User.id, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue, start_date = ViewBag.Start_Date, end_date = ViewBag.End_Date }))
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<!-- end row -->
+
+
+@section scripts{
+    <!-- Bootstrap rating js -->
+    <script src="~/assets/libs/bootstrap-rating/bootstrap-rating.min.js"></script>
+    <script src="~/assets/js/pages/rating-init.js"></script>
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+}
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#id').val(@ViewBag.id);
+
+            var is_first_load = true;
+
+        var is_first_load = true;
+        var start = $('#start_date').val() == "" ? moment().subtract(6, 'days') : moment($('#start_date').val());
+        var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val())
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    //$('#id').val(@ViewBag.id);
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    $('form').submit();
+                } else {
+                    is_first_load = false;
+                }
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2017-01-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+            cb(start, end);
+
+    });
+
+</script>
+
+

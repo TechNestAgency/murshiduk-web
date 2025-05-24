@@ -1,0 +1,689 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meilisearch</name>
+    </assembly>
+    <members>
+        <member name="T:Meilisearch.MeiliSearchHealth">
+            <summary>
+            Deserialized response of the MeiliSearch health.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeiliSearchHealth.Status">
+            <summary>
+            Gets or sets health of MeiliSearch server.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.MeiliSearchVersion">
+            <summary>
+            Deserialized response of the MeiliSearch version.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeiliSearchVersion.CommitSha">
+            <summary>
+            Gets or sets commit SHA for MeiliSearch.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeiliSearchVersion.CommitDate">
+            <summary>
+            Gets or sets build date of the current version.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeiliSearchVersion.Version">
+            <summary>
+            Gets or sets information about MeiliSearch version.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.DocumentQuery">
+            <summary>
+            Document Query for MeiliSearch class.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.DocumentQuery.Offset">
+            <summary>
+            Gets or sets the offset.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.DocumentQuery.Limit">
+            <summary>
+            Gets or sets the limit.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.DocumentQuery.AttributesToRetrieve">
+            <summary>
+            Gets or sets the attributes to retrieve.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.DumpStatus">
+            <summary>
+            Dump Status of the actions done.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.DumpStatus.Uid">
+            <summary>
+            Gets or sets unique dump identifier.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.DumpStatus.Status">
+            <summary>
+            Gets or sets state of the operation.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.DumpStatus.StartedAt">
+            <summary>
+            Gets or sets started at of the operation.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.DumpStatus.FinishedAt">
+            <summary>
+            Gets or sets finished at of the operation.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.MeilisearchApiError">
+            <summary>
+            Error sent by MeiliSearch API.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.MeilisearchApiError.#ctor(Meilisearch.MeilisearchApiErrorContent)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.MeilisearchApiError"/> class.
+            Handler Exception received from MeiliSearch API.
+            </summary>
+            <param name="apiError">Specific error message from Meilisearch Api.</param>
+        </member>
+        <member name="M:Meilisearch.MeilisearchApiError.#ctor(System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.MeilisearchApiError"/> class.
+            Handler Exception when Meilisearch API doesn't send a response message.
+            </summary>
+            <param name="statusCode">Status code from http response message.</param>
+            <param name="reasonPhrase">Reason Phrase from http response message.</param>
+        </member>
+        <member name="P:Meilisearch.MeilisearchApiError.ErrorCode">
+            <summary>
+            Gets or sets the errorCode return by MeilisearchApi.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.MeilisearchApiErrorContent">
+            <summary>
+            Error sent by MeiliSearch API.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeilisearchApiErrorContent.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeilisearchApiErrorContent.ErrorCode">
+            <summary>
+            Gets or sets the errorCode.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeilisearchApiErrorContent.ErrorType">
+            <summary>
+            Gets or sets the errorType.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.MeilisearchApiErrorContent.ErrorLink">
+            <summary>
+            Gets or sets the errorLink.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.MeilisearchCommunicationError">
+            <summary>
+            Error sent when trying to connecting to MeiliSearch.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.MeilisearchCommunicationError.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.MeilisearchCommunicationError"/> class.
+            Handler Exception for MeilisearchCommunicationError with message and inner exception.
+            </summary>
+            <param name="message">Custom error message.</param>
+            <param name="innerException">Inner exception.</param>
+        </member>
+        <member name="T:Meilisearch.MeilisearchTimeoutError">
+            <summary>
+            Error sent when request not processed in expected time.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.MeilisearchTimeoutError.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.MeilisearchTimeoutError"/> class.
+            Handler Exception for MeilisearchTimeoutError with message.
+            </summary>
+            <param name="message">Custom error message.</param>
+        </member>
+        <member name="T:Meilisearch.Index">
+            <summary>
+            MeiliSearch index to search and manage documents.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.Index.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.Index"/> class.
+            Initializes with the UID (mandatory) and the primary key.
+            </summary>
+            <param name="uid">Unique index identifier.</param>
+            <param name="primaryKey">Documents primary key.</param>
+        </member>
+        <member name="P:Meilisearch.Index.Uid">
+            <summary>
+            Gets unique identifier of the index.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Index.PrimaryKey">
+            <summary>
+            Gets primary key of the documents.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.Index.FetchInfo">
+            <summary>
+            Fetch the info of the index.
+            </summary>
+            <returns>An instance of the index fetch.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.FetchPrimaryKey">
+            <summary>
+            Fetch the primary key of the index.
+            </summary>
+            <returns>Primary key of the fetched index.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.UpdateIndex(System.String)">
+            <summary>
+            Changes the primary key of the index.
+            </summary>
+            <param name="primarykeytoChange">Primary key set.</param>
+            <returns>Index with the updated Primary Key.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.Delete">
+            <summary>
+            Deletes the index.
+            It's not a recovery delete. You will also lose the documents within the index.
+            </summary>
+            <returns>Returns the updateID of this async operation.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.AddDocuments``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Add documents.
+            </summary>
+            <param name="documents">Documents to add.</param>
+            <param name="primaryKey">Primary key for the documents.</param>
+            <typeparam name="T">Type of the document. Even though documents are schemaless in MeiliSearch, making it typed helps in compile time.</typeparam>
+            <returns>Returns the updateID of this async operation.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.UpdateDocuments``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Update documents.
+            </summary>
+            <param name="documents">Documents to update.</param>
+            <param name="primaryKey">Primary key for the documents.</param>
+            <typeparam name="T">Type of document. Even though documents are schemaless in MeiliSearch, making it typed helps in compile time.</typeparam>
+            <returns>Returns the updateID of this async operation.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.GetDocument``1(System.String)">
+            <summary>
+            Get document by its ID.
+            </summary>
+            <param name="documentId">Document identifier.</param>
+            <typeparam name="T">Type of the document.</typeparam>
+            <returns>Returns the document, with the according type if the object is available.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.GetDocument``1(System.Int32)">
+            <summary>
+            Get document by its ID.
+            </summary>
+            <param name="documentId">Document Id for query.</param>
+            <typeparam name="T">Type to return for document.</typeparam>
+            <returns>Type if the object is availble.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.GetDocuments``1(Meilisearch.DocumentQuery)">
+            <summary>
+            Get documents with the allowed Query Parameters.
+            </summary>
+            <param name="query">Query parameters. Supports limit, offset and attributes to retrieve.</param>
+            <typeparam name="T">Type of the document.</typeparam>
+            <returns>Returns the list of documents.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.DeleteOneDocument(System.String)">
+            <summary>
+            Delete one document.
+            </summary>
+            <param name="documentId">Document identifier.</param>
+            <returns>Returns the updateID of this async operation.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.DeleteOneDocument(System.Int32)">
+            <summary>
+            Delete one document by its ID.
+            </summary>
+            <param name="documentId">document ID.</param>
+            <returns>Update Status with ID to look for document.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.DeleteDocuments(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Delete documents in batch.
+            </summary>
+            <param name="documentIds">List of documents identifier.</param>
+            <returns>Returns the updateID of this async operation.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.DeleteDocuments(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Delete documents in batch.
+            </summary>
+            <param name="documentIds">List of document Id.</param>
+            <returns>Update status with ID to look for progress of update.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.DeleteAllDocuments">
+            <summary>
+            Delete all the documents in the index.
+            </summary>
+            <returns>Returns the updateID of this async operation.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.GetAllUpdateStatus">
+            <summary>
+            Gets the update status of all the asynchronous operations.
+            </summary>
+            <returns>Returns a list of the operations status.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.GetUpdateStatus(System.Int32)">
+            <summary>
+            Get Update Status by Status Id.
+            </summary>
+            <param name="updateId">UpdateId for the operation.</param>
+            <returns>Return the current status of the operation.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.Search``1(System.String,Meilisearch.SearchQuery)">
+            <summary>
+            Search documents according to search parameters.
+            </summary>
+            <param name="query">Query Parameter with Search.</param>
+            <param name="searchAttributes">Attributes to search.</param>
+            <typeparam name="T">Type parameter to return.</typeparam>
+            <returns>Returns Enumerable of items.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.WaitForPendingUpdate(System.Int32,System.Double,System.Int32)">
+            <summary>
+            Waits until the asynchronous task was done.
+            </summary>
+            <param name="updateId">Unique identifier of the asynchronous task.</param>
+            <param name="timeoutMs">Timeout in millisecond.</param>
+            <param name="intervalMs">Interval in millisecond between each check.</param>
+            <returns>Returns the status of asynchronous task.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.GetSettings">
+            <summary>
+            Gets all the settings of an index.
+            </summary>
+            <returns>Returns all the settings.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.UpdateSettings(Meilisearch.Settings)">
+            <summary>
+            Updates all the settings of an index.
+            The settings that are not passed in parameter are not overwritten.
+            </summary>
+            <param name="settings">Settings object.</param>
+            <returns>Returns the updateID of the asynchronous task.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.ResetSettings">
+            <summary>
+            Resets all the settings to their default values.
+            </summary>
+            <returns>Returns the updateID of the asynchronous task.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.GetStats">
+            <summary>
+            Get stats.
+            </summary>
+            <returns>Return index stats.</returns>
+        </member>
+        <member name="M:Meilisearch.Index.WithHttpClient(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes the Index with HTTP client. Only for internal usage.
+            </summary>
+            <param name="client">HTTP client from the base client.</param>
+            <returns>The same object with the initialization.</returns>
+        </member>
+        <member name="T:Meilisearch.IndexStats">
+            <summary>
+            Wrapper for index stats.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.IndexStats.NumberOfDocuments">
+            <summary>
+            Gets or sets the total number of documents.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.IndexStats.IsIndexing">
+            <summary>
+            Gets or sets a value indicating whether the index is currently indexing.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.IndexStats.FieldDistribution">
+            <summary>
+            Gets or sets field distribution.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.MeilisearchClient">
+            <summary>
+            Typed client for MeiliSearch.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.MeilisearchClient"/> class.
+            Default client for Meilisearch API.
+            </summary>
+            <param name="url">URL to connect to meilisearch client.</param>
+            <param name="apiKey">API key for the usage.</param>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.#ctor(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.MeilisearchClient"/> class.
+            Custom client for Meilisearch API. Use it with proper Http Client Factory.
+            </summary>
+            <param name="client">Injects the reusable Httpclient.</param>
+            <param name="apiKey">API Key for MeilisearchClient. Best practice is to use HttpClient default header rather than this parameter.</param>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.GetVersion">
+            <summary>
+            Gets the current MeiliSearch version. For more details on response.
+            https://docs.meilisearch.com/reference/api/version.html#get-version-of-meilisearch.
+            </summary>
+            <returns>Returns the MeiliSearch version with commit and build version.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.Index(System.String)">
+            <summary>
+            Create a local reference to an index identified by UID, without doing an HTTP call.
+            Calling this method doesn't create an index in the MeiliSearch instance, but grants access to all the other methods in the Index class.
+            </summary>
+            <param name="uid">Unique Id.</param>
+            <returns>Returns an Index instance.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.CreateIndex(System.String,System.String)">
+            <summary>
+            Creates and index with an UID and a primary key.
+            BEWARE : Throws error if the index already exist. Use GetIndex before using Create.
+            </summary>
+            <param name="uid">Unique Id.</param>
+            <param name="primaryKey">Primary key for documents.</param>
+            <returns>Returns Index.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.GetAllIndexes">
+            <summary>
+            Gets all the Indexes for the instance. Throws error if the index does not exist.
+            </summary>
+            <returns>Return Enumerable of Index.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.GetIndex(System.String)">
+            <summary>
+            Gets and index with the unique ID.
+            </summary>
+            <param name="uid">UID of the index.</param>
+            <returns>Returns Index or Null if the index does not exist.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.GetOrCreateIndex(System.String,System.String)">
+            <summary>
+            Gets the index instance or creates the index if it does not exist.
+            </summary>
+            <param name="uid">Unique Id.</param>
+            <param name="primaryKey">Primary key for documents.</param>
+            <returns>Returns Index.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.GetStats">
+            <summary>
+            Gets stats of all indexes.
+            </summary>
+            <returns>Returns stats of all indexes.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.Health">
+            <summary>
+            Gets health state of the server.
+            </summary>
+            <returns>Returns whether server is healthy or throw an error.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.IsHealthy">
+            <summary>
+            Gets health state of the server.
+            </summary>
+            <returns>Returns whether server is healthy or not.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.CreateDump">
+            <summary>
+            Creates Dump process.
+            </summary>
+            <returns>Returns dump creation status with uid and processing status.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.GetDumpStatus(System.String)">
+            <summary>
+            Gets a dump creation status.
+            </summary>
+            <param name="uid">unique dump identifier.</param>
+            <returns>Returns dump creation status with uid and processing status.</returns>
+        </member>
+        <member name="M:Meilisearch.MeilisearchClient.DeleteIndex(System.String)">
+            <summary>
+            Deletes the index.
+            It's not a recovery delete. You will also lose the documents within the index.
+            </summary>
+            <param name="uid">unique dump identifier.</param>
+            <returns>Returns the status of delete operation.</returns>
+        </member>
+        <member name="T:Meilisearch.MeilisearchMessageHandler">
+            <summary>
+            Typed http request for MeiliSearch.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.MeilisearchMessageHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meilisearch.MeilisearchMessageHandler"/> class.
+            Default message handler for Meilisearch API.
+            </summary>
+            <param name="innerHandler">InnerHandler.</param>
+        </member>
+        <member name="M:Meilisearch.MeilisearchMessageHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            Try to override SendAsync.
+            </summary>
+            <param name="request">Request.</param>
+            <param name="cancellationToken">Cancellation Token.</param>
+            <returns>Return HttpResponseMessage.</returns>
+        </member>
+        <member name="T:Meilisearch.ObjectExtensions">
+            <summary>
+            MeiliSearch objects manipulation.
+            </summary>
+        </member>
+        <member name="M:Meilisearch.ObjectExtensions.AsDictionary(System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Transforms an MeiliSearch object into a dictionary.
+            </summary>
+            <param name="source">Object to transform.</param>
+            <param name="bindingAttr">Binding flags.</param>
+            <returns>Returns a dictionary.</returns>
+        </member>
+        <member name="M:Meilisearch.ObjectExtensions.RemoveNullValues``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Iterates through Ienumerable and removes null keys.
+            </summary>
+            <param name="objectToTransform">Object to transform.</param>
+            <typeparam name="T">The element type of the IEnumerable.</typeparam>
+            <returns>Returns the same IEnumerable with null keys removed. </returns>
+        </member>
+        <member name="T:Meilisearch.SearchQuery">
+            <summary>
+            Search Query for MeiliSearch class.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.Q">
+            <summary>
+            Gets or sets query string.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.Offset">
+            <summary>
+            Gets or sets offset for the Query.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.Limit">
+            <summary>
+            Gets or sets limits the number of results.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.Filter">
+            <summary>
+            Gets or sets the filter to apply to the query.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.AttributesToRetrieve">
+            <summary>
+            Gets or sets attributes to retrieve.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.AttributesToCrop">
+            <summary>
+            Gets or sets attributes to crop.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.CropLength">
+            <summary>
+            Gets or sets length used to crop field values.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.AttributesToHighlight">
+            <summary>
+            Gets or sets attributes to highlight.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.FacetsDistribution">
+            <summary>
+            Gets or sets the facets distribution for the query.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchQuery.Matches">
+            <summary>
+            Gets or sets matches. It defines whether an object that contains information about the matches should be returned or not.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.SearchResult`1">
+            <summary>
+            Wrapper for Search Results.
+            </summary>
+            <typeparam name="T">Hit type.</typeparam>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.Hits">
+            <summary>
+            Gets or sets the total count of search results.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.Offset">
+            <summary>
+            Gets or sets the offset of the initial search.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.Limit">
+            <summary>
+            Gets or sets the limit of the initial search.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.Query">
+            <summary>
+            Gets or sets the query sent.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.FacetsDistribution">
+            <summary>
+            Gets or sets the facets distribution.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.ExhaustiveFacetsCount">
+            <summary>
+            Gets or sets a value indicating whether the facets distribution is exhaustive or not.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.NbHits">
+            <summary>
+            Gets or sets the nbHits returned by the search.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.SearchResult`1.ExhaustiveNbHits">
+            <summary>
+            Gets or sets a value indicating whether the nbHits number returned by the search is exhaustive or not.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.Settings">
+            <summary>
+            Setttings of an index.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Settings.RankingRules">
+            <summary>
+            Gets or sets the ranking rules.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Settings.DistinctAttribute">
+            <summary>
+            Gets or sets the distinct attribute.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Settings.SearchableAttributes">
+            <summary>
+            Gets or sets the searchable attributes.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Settings.DisplayedAttributes">
+            <summary>
+            Gets or sets the displayed attributes.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Settings.StopWords">
+            <summary>
+            Gets or sets the stop-words list.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Settings.Synonyms">
+            <summary>
+            Gets or sets the synonyms list.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Settings.FilterableAttributes">
+            <summary>
+            Gets or sets the attributes for faceting.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.Stats">
+            <summary>
+            Wrapper for index stats.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Stats.DatabaseSize">
+            <summary>
+            Gets or sets database size.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Stats.LastUpdate">
+            <summary>
+            Gets or sets last update timestamp.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.Stats.Indexes">
+            <summary>
+            Gets or sets index stats.
+            </summary>
+        </member>
+        <member name="T:Meilisearch.UpdateStatus">
+            <summary>
+            Update Status of the actions done.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.UpdateStatus.UpdateId">
+            <summary>
+            Gets or sets update ID for the operation.
+            </summary>
+        </member>
+        <member name="P:Meilisearch.UpdateStatus.Status">
+            <summary>
+            Gets or sets state of the operation.
+            </summary>
+        </member>
+    </members>
+</doc>

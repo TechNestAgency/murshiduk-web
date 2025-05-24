@@ -1,0 +1,244 @@
+﻿@model MurshadikCP.Models.DB.user
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" class="needs-validation" novalidate>
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="avatar-md mb-4">
+                                <img src="@(Model.avatar != null ? Model.avatar : "/assets/images/logo.png")" alt="" class="img-thumbnail rounded-circle">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="formrow-name-input">الإسم كاملا</label>
+                                <input type="text" class="form-control" name="name" value="@Model.name" id="formrow-name-input" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="formrow-phone-input">رقم الهاتف</label>
+                                <input type="tel" class="form-control" name="phone" value="@Model.phone" id="formrow-phone-input" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="formrow-country-input">الدولة</label>
+                                <input type="text" class="form-control" name="country" value="@Model.country" id="formrow-country-input" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            التخصص
+                                        </th>
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach (var item in Model.skill_user)
+                                    {
+                                        <tr>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.skill.name)
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-danger btn-lg btn-link waves-effect waves-light text-white sa-warning" data-toggle="tooltip" data-placement="top" title="حذف" data-uid="@item.user_id" data-skillid="@item.skill_id"><i class="mdi mdi-trash-can"></i></a>
+                                                @if (Model.is_approved != null && Model.is_approved == true && item.is_approved == false)
+                                                {
+                                                    <a class="btn btn-success btn-lg btn-link text-white sa-approved" data-toggle="tooltip" data-placement="top" title="وافق" data-uid="@item.user_id" data-skillid="@item.skill_id"><i class="bx bx-check-double"></i></a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="formrow-inputprofile">السيرة الذاتية</label>
+                                <textarea rows="5" class="form-control" name="profile" id="formrow-inputprofile" required>@Model.profile</textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="formrow-inputRegion">منطقة</label>
+                                @Html.DropDownList("region", null, htmlAttributes: new { @id = "formrow-inputRegion h-auto", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-lg-8 mt-4">
+                            <button type="submit" class="btn btn-primary w-md">تحديث</button>
+                            @if (Model.is_approved == true)
+                            {
+                                if (Model.active)
+                                {
+                                    <a href="/workerextension/block?id=@Model.id" class="btn btn-danger w-md">حظر</a>
+                                    <a href="/workerextension/delete?id=@Model.id" class="btn btn-danger w-md">حذف</a>
+                                }
+                                else
+                                {
+                                    <a href="/workerextension/unblock?id=@Model.id" class="btn btn-warning w-md">رفع الحظر</a>
+                                }
+                            }
+                            else
+                            {
+                                if (Model.active)
+                                {
+                                    <a href="/workerextension/delete?id=@Model.id" class="btn btn-danger w-md">حذف</a>
+                                }
+                                    <a href="/workerextension/Approved?id=@Model.id" class="btn btn-success w-md">قبول</a>
+                            }
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">التبديل لمزارع</h4>
+                <form method="post" action="/workerextension/changeProfession/">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="@Model.id" name="id" />
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="formrow-inputRole">المحترفين</label>
+                                @Html.DropDownList("role", null, htmlAttributes: new { @id = "formrow-inputRole", @class = "form-control h-auto" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary m-4 w-md">تبديل</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    @*<script src="~/assets/js/pages/form-element.init.js"></script>*@
+
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $(".sa-approved").click(function (e) {
+            debugger
+            var uid = $(this).data('uid');
+            var skill_id = $(this).data('skillid');
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/workerextension/UserApprovedSkill', { 'uid': uid, 'skill_id': skill_id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("وافق !", "تمت الموافقة على المهارات!", "success")
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+        $(".sa-warning").click(function (e) {
+            var uid = $(this).data('uid');
+            var skill_id = $(this).data('skillid');
+            Swal.fire({
+                title: 'هل أنت واثق ؟',
+                text: "لن تتمكن من التراجع عن هذا!",
+                type: "warning",
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                confirmButtonColor: "#34c38f",
+                cancelButtonColor: "#f46a6a",
+                showCancelButton: true,
+                showCloseButton: true
+            }).then(function (t) {
+                if (t.value) {
+                    axios.post('/workerextension/UserSkill_Delete', { 'uid': uid, 'skill_id': skill_id })
+                        .then(function (r) {
+                            if (r.data == "Success") {
+                                Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                                location.reload();
+                            } else {
+                                swal.fire(r.data, "Something wrong!", "error")
+                            }
+                        })
+                        .catch(function (error) {
+                            swal.fire("Error", error, "error")
+                        });
+                }
+            });
+        });
+
+
+
+
+        $(".select2").select2({
+            dir: "rtl"
+        }).val(['@Html.Raw(@Model.skills)']).trigger('change');
+    });
+
+</script>

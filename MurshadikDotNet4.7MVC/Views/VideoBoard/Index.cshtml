@@ -1,0 +1,382 @@
+﻿@model List<MurshadikCP.Models.ViewModels.VideoViewModelForDashboard>
+
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+<link href="~/assets/css/select2_mushadik.css" rel="stylesheet" />
+
+@{
+
+    ViewBag.Title = " المقاطع الإرشادية";
+
+    ViewBag.pTitle = "مقاطع الفيديو ";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .selectbox {
+        background: #fff;
+        color: #1d3b4a;
+        padding: 8px;
+        line-height: 18px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        border-width: 0 1px 4px;
+    }
+</style>
+
+<div class="container-flud">
+    @using (Html.BeginForm("Index", "VideoBoard", FormMethod.Get))
+    {
+
+        <input type="hidden" id="start_date" name="start_date" value="@ViewBag.start_date" />
+        <input type="hidden" id="end_date" name="end_date" value="@ViewBag.end_date" />
+        <div class="align-items-center form-group row">
+            <div class="form-group col-lg-4">
+                <label class="col col-form-label">@Resources.Resources.Date</label>
+                <div class="col">
+                    <div id="reportrange" class="selectbox d-inline-block">
+                        <i class="fa fa-calendar"></i>&nbsp;
+                        <span></span> <i class="fa fa-caret-down"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-4">
+                <label class="col col-form-label">@Resources.Resources.Category</label>
+                <div class="col">
+                    @Html.DropDownList("DepartmentId", null, "--كل الاقسام--", htmlAttributes: new { @class = "form-control h-auto" })
+                </div>
+            </div>
+
+            <div class="form-group col-lg-4">
+                <label class="col col-form-label">@Resources.Resources.Murshadik</label>
+                <div class="col">
+                    @Html.DropDownList("UserId", null, "--كل المرشدين--", htmlAttributes: new { @class = "form-control h-auto" })
+                </div>
+            </div>
+
+            <div class="form-group col-lg-9">
+                <div class="col">
+                    @Html.TextBox("SearshValue", ViewBag.SearshValue as string, new { @class = "form-control form-control-lg my-2 my-lg-4", @placeholder = Resources.Resources.What_are_you_looking_for_ })
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <input type="submit" value="@Resources.Resources.Search" class="btn btn-block btn-lg btn-success waves-effect waves-light" id="searchBtn"/>
+            </div>
+        </div>
+    }
+
+    <div class="row ">
+        <div class="col-4" style="height:auto">
+            <div style="        width: 98%;
+        background: #f8f8fb;
+        overflow-y: scroll;
+        min-height: 500px;
+        max-height: 800px;
+        direction: ltr;
+        height: calc(73vh - 16px);">
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                               @* <a id="sortTable" class="btn btn-block btn-lg selectbox d-inline-block" >مقاطع إرشادية<i class="bx bx-sort-up"></i></a>*@
+                                <table class="table " id="videoTable">
+                                    @*<thead>
+                                        <th>
+                                            <i class=""></i>
+                                        </th>
+                                    </thead>*@
+
+                                    @{int index = 0;
+
+                                        var data  = Model.OrderByDescending(o => o.IsActive);
+                                     }
+
+                                    
+                                    @foreach (var item in data)
+                                    {
+                                        <tr>
+                                            <td style="cursor:pointer" class="align-middle " Onclick="func('@item.Location','@item.Category','@item.Department','@item.Title','@item.ConsultantName','@item.ConsultantPhone','@item.Id','@item.IsActive','@item.CreatAt.ToString("dd/MM/yyyy")','@item.CommentCount','@item.LikeCount')">
+                                                <div class="row">
+                                                    <div class="col" style="display: flex; flex-direction: column; justify-content: space-evenly;">
+                                                        @{
+                                                            if (!item.IsActive.Equals(1))
+                                                            {
+                                                                <span class="badge badge-pill badge-danger"> انتظار الموافقة</span>
+                                                            }
+                                                        }
+                                                        <h4 class="small-title">@item.CreatAt.ToString("dd/MM/yyyy")</h4>
+                                                    </div>
+                                                    <div class="col">
+                                                        <video id="VideoPlayer" src='~/@item.Location'
+                                                               width="200" height="100">
+                                                            <span class="badge badge-danger">4</span>
+                                                        </video>
+                                                    </div>
+                                                </div>
+
+
+                                                @* <h4 class="small-title">@item.CreatAt.ToString("dd/MM/yyyy")</h4>*@
+                                                <h4 class="small">@Html.DisplayFor(modelItem => item.Title)</h4>
+                                            </td>
+                                        </tr>
+                                        index++;
+                                    }
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <video id="videoPlayer" controls="true"
+                   width="100%" height="380px">
+                <source id='mp4Source' src='' type="video/mp4" />
+                <source id='oggSource' src='' type="video/ogg" />
+            </video>
+            <div class="row">
+                <div class=" col-6">
+
+                    <div class="align-items-center form-group ">
+                        <label>عنوان المقطع :</label>
+                        <label id="videoTitile"></label>
+                    </div>
+                    <div class="align-items-center form-group ">
+                        <label> تاريخ إنشاء المقطع : </label>
+                        <label id="CreatAt"></label>
+                    </div>
+                    <div class="align-items-center form-group ">
+                        <label> التصنيف : </label>
+                        <label id="videoCategory"></label>
+                    </div>
+                    <div class="align-items-center form-group ">
+                        <label> قسم : </label>
+                        <label id="videoDepartment"></label>
+                    </div>
+                </div>
+                <div col-6">
+                    <div class="align-items-center form-group ">
+                        <label> اسم صاحب المقطع : </label>
+                        <label id="ConsultantName"></label>
+                    </div>
+                    <div class="align-items-center form-group ">
+                        <label> رقم صاحب المقطع : </label>
+                        <label id="ConsultantPhone"></label>
+                    </div>
+                    <div class="align-items-center form-group ">
+                        <label> عدد التعليقات : </label>
+                        <label id="CommentCount"></label>
+                    </div>
+                    <div class="align-items-center form-group ">
+                        <label> تسجيلات الاعجاب : </label>
+                        <label id="LikeCount"></label>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-group ">
+                <input type="hidden" id="videoId" />
+                <input type="hidden" id="videoStatusId" />
+                <a id="Active" class="btn btn-success waves-effect waves-light sa-warning"
+                   data-toggle="tooltip"
+                   data-placement="top"
+                   data-active="active"
+                   
+                   title="">نشر المقطع</a>
+                <a id="DeActive" class="btn btn-danger waves-effect waves-light sa-warning"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    data-active="active"
+                  
+                    title=""> إلغاء نشر المقطع</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+  
+        $(document).ready(function () {
+            var is_first_load = true;
+            //console.log("------------------------------- Start value --------------------");
+            //console.log($('#start_date').val().format('MMMM D, YYYY') + "--------------------------------------" + $('#start_date').val().format('MMMM D, YYYY'));
+            //console.log("------------------------------- End value --------------------");
+
+            console.log("-----------------------------------------------------------------------------------------------");
+            var start = $('#start_date').val() == "" ? moment("2017-01-01") : moment($('#start_date').val(), 'DD-MM-YYYY');
+            var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val(), 'DD-MM-YYYY');
+
+
+            console.log("------------------------------- Start value --------------------");
+            console.log(start.format('MMMM D, YYYY') + "--------------------------------------" + end.format('MMMM D, YYYY'));
+            console.log("------------------------------- End value --------------------");
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    //$('form').submit();
+                } else {
+                    is_first_load = false;
+
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                }
+            }
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2017-01-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+            cb(start, end);
+        });
+
+
+
+</script>
+<script>
+
+    function func(Location, Category, Department, Title, ConsultantName, ConsultantPhone, Id, IsActive, CreatAt, CommentCount, LikeCount) {
+
+        var Active = document.getElementById('Active');
+        var Deactive = document.getElementById('DeActive');
+
+        document.getElementById('videoTitile').innerHTML = Title;
+        document.getElementById('CreatAt').innerHTML = CreatAt;
+        document.getElementById('videoCategory').innerHTML = Category;
+        document.getElementById('videoDepartment').innerHTML = Department;
+        document.getElementById('ConsultantName').innerHTML = ConsultantName;
+        document.getElementById('ConsultantPhone').innerHTML = ConsultantPhone;
+        document.getElementById('videoId').value = Id;
+        document.getElementById('videoStatusId').value = IsActive;
+        document.getElementById('CommentCount').innerHTML = CommentCount;
+        document.getElementById('LikeCount').innerHTML = LikeCount;
+
+        if (IsActive == '1') {
+            Active.style.visibility = "hidden"
+            Deactive.style.visibility = "visible";
+        } else {
+
+            Active.style.visibility = "visible";
+            Deactive.style.visibility = "hidden";
+        }
+
+        var player = document.getElementById('videoPlayer');
+        var mp4Vid = document.getElementById('mp4Source');
+        player.pause();
+        mp4Vid.src = "../" + Location;
+        player.load();
+        player.play();
+        console.log(arguments);
+    }
+
+</script>
+
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $(".sa-warning").click(function (e) {
+                var id = $('#videoId').val();
+                var videoStatusId = $('#videoStatusId').val();
+                if (videoStatusId=='1') {
+                    videoStatusId = '2';
+                } else if (videoStatusId == '2') {
+                    videoStatusId = '1';
+                }
+                if (videoStatusId != null && id != null) {
+                    console.log("get me 2", videoStatusId);
+                    Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "هل أنت متأكد من تنفيذ هذا الإجراء؟",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                    }).then(function (t) {
+
+                        if (t.value){
+                            axios.post('/VideoBoard/ActiveVideo', { 'videoId': id, 'videoStatusId': videoStatusId})
+                                .then(function (r){
+                                    console.log(r);
+                                    if (r.data == "Success") {
+                                    console.log("success");
+                                        Swal.fire({ title: "", text: r.data.message, type: "success", confirmButtonText: "@Resources.Resources.Ok" }).then(function (x) {
+                                            location.reload()
+                                        });
+                                    } else {
+                                            swal.fire(r.data, "Something wrong!", "error")
+                                    }
+                                }).catch(function (error) {
+                                    swal.fire("Error", error, "error")
+
+                                });
+
+
+                        }
+                    });
+                }
+            });
+        });
+</script>
+
+
+@if (Model.Count != 0)
+{
+<script>
+
+        window.onload = (event) => {
+               func('@Model[0].Location', '@Model[0].Category', '@Model[0].Department', '@Model[0].Title', '@Model[0].ConsultantName', '@Model[0].ConsultantPhone', '@Model[0].Id','@Model[0].IsActive','@Model[0].CreatAt.ToString("dd/MM/yyyy")','@Model[0].CommentCount','@Model[0].LikeCount')
+               console.log('you know me', @Model.Count)
+
+            }
+</script>}
+
+
+

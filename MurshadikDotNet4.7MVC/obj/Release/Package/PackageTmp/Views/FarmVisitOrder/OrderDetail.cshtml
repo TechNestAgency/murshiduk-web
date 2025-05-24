@@ -1,0 +1,134 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    @Html.Partial("~/Views/Shared/_title_meta.cshtml")
+    @Html.Partial("~/Views/Shared/_head_css.cshtml")
+   
+    <meta name="viewport" content="width=device-width" />
+    <title>OrderDetail</title>
+</head>
+<body>
+    @model MurshadikCP.Controllers.API.ApiViewModel.FarmVisitViewModel
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-8 m-5">
+        <div class="card">
+            <div class="card-body">
+
+
+                <div class="m-5">
+
+                    <center>
+
+                        <h2>تفاصيل الموعد </h2>
+                        <h2>@Model.FarmName </h2>
+                    </center>
+                </div>
+
+                <div>
+                    <h2 style="color:red">عزيزي المزارع تم حجز موعدكم:</h2>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-4">
+
+                            <dl class="dl-horizontal">
+
+
+                                <dt>
+                                    اسم المزارع
+                                </dt>
+
+                                <dd class="form-control">
+                                    @Html.DisplayFor(model => model.FarmerName)
+                                </dd>
+
+
+
+                                <dt>
+                                    موقع المزرعة
+                                </dt>
+
+                                <dd class="form-control">
+                                    @Html.DisplayFor(model => model.City)
+                                </dd>
+
+
+                            </dl>
+                        </div>
+                        <div class="col-4">
+                            <dl class="dl-horizontal">
+
+
+
+                                <dt>
+                                    رقم الطلب
+                                </dt>
+
+                                <dd class="form-control">
+                                    @Html.DisplayFor(model => model.id)
+                                </dd>
+
+                                <dt>
+                                    تاريخ الزيارة
+                                </dt>
+
+                                <dd class="form-control">
+                                    @Html.DisplayFor(model => model.VisitDate)
+                                </dd>
+
+
+                                <dt class="d-flex justify-content-center">
+                                    الموقع على الخريطة
+                                </dt>
+
+                                <dd class="d-flex justify-content-center">
+                                    <a href="@Model.Location" target="_blank">انتقل للموقع </a>
+                                </dd>
+
+
+
+                            </dl>
+                        </div><div class="col-4">
+                            <dl class="dl-horizontal">
+
+                                <dt>
+                                    فرع الوزارة
+                                </dt>
+
+                                <dd class="form-control">
+                                    @Html.DisplayFor(model => model.Region)
+                                </dd>
+
+                            </dl>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+            </div>
+        </div>
+        <div class="col-2">
+
+        </div>
+       
+
+
+        </div>
+
+
+
+
+            @Html.Partial("~/Views/Shared/_vendor_scripts.cshtml")
+</body>
+</html>

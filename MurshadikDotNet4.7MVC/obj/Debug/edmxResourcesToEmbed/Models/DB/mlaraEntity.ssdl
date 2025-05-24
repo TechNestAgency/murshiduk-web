@@ -1,0 +1,3418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mlaraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agriculture_Calender">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="file_name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="500" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlertHazards">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name_ar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="created_at" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlertMessages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="link" Type="nvarchar(max)" />
+    <Property Name="alertActionId" Type="int" />
+    <Property Name="alertHazardId" Type="int" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="city" Type="nvarchar" MaxLength="500" />
+    <Property Name="city_id" Type="int" />
+    <Property Name="season" Type="nvarchar" MaxLength="500" />
+    <Property Name="created_at" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="created_by" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlertTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name_ar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="created_at" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="app_settings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ap_key" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ap_value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="added_by" Type="bigint" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="app_stats">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stats" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="icon" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="text_color" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="bg_color" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="enabled" Type="bit" Nullable="false" />
+    <Property Name="total" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="app_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="appointments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lab_id" Type="bigint" Nullable="false" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="appointment_date" Type="date" />
+    <Property Name="appointment_time" Type="time" Precision="7" />
+    <Property Name="is_booked" Type="bit" Nullable="false" />
+    <Property Name="is_canceled" Type="bit" Nullable="false" />
+    <Property Name="is_sample_collected" Type="bit" Nullable="false" />
+    <Property Name="no_samples" Type="int" Nullable="false" />
+    <Property Name="is_completed" Type="bit" Nullable="false" />
+    <Property Name="cancel_by" Type="bigint" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="updated_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="articles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_id" Type="bigint" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="short_description" Type="nvarchar(max)" />
+    <Property Name="keywords" Type="nvarchar(max)" />
+    <Property Name="show_bg" Type="bit" Nullable="false" />
+    <Property Name="show_cats" Type="bit" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="deleted_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="articles_galleries">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="article_id" Type="bigint" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="attention">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_en" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="name_ar" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bug_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bug_id" Type="bigint" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="msg" Type="nvarchar" MaxLength="500" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="bug_tracker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="msg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="500" />
+    <Property Name="page" Type="nvarchar" MaxLength="500" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="created_by" Type="bigint" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="calldetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="type" Type="int" />
+    <Property Name="user_to" Type="bigint" Nullable="false" />
+    <Property Name="user_from" Type="bigint" Nullable="false" />
+    <Property Name="call_id" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" />
+    <Property Name="parent_category" Type="bigint" />
+    <Property Name="icon" Type="nvarchar" MaxLength="255" />
+    <Property Name="bg_color" Type="nvarchar" MaxLength="255" />
+    <Property Name="text_color" Type="nvarchar" MaxLength="255" />
+    <Property Name="banner" Type="nvarchar" MaxLength="255" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="category_articles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="articles_id" Type="bigint" Nullable="false" />
+    <Property Name="category_id" Type="bigint" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="chatmessages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="message_type" Type="int" Nullable="false" />
+    <Property Name="chat_ids" Type="nvarchar" MaxLength="255" />
+    <Property Name="message_from" Type="int" />
+    <Property Name="message_to" Type="int" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="chats">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chat_ids" Type="nvarchar" MaxLength="255" />
+    <Property Name="last_message" Type="nvarchar(max)" />
+    <Property Name="message_type" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="name_en" Type="nvarchar" MaxLength="255" />
+    <Property Name="name_ar" Type="nvarchar" MaxLength="255" />
+    <Property Name="weather_identifier" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ClinicAppointmentHistories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorId" Type="bigint" Nullable="false" />
+    <Property Name="CustmerId" Type="bigint" />
+    <Property Name="ClinicId" Type="int" />
+    <Property Name="AppointmentDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="AppointmentTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="CallDuration" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="BookingResone" Type="nvarchar(max)" />
+    <Property Name="IsBooked" Type="bit" Nullable="false" />
+    <Property Name="IsCanceled" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ClinicAppointments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorId" Type="bigint" Nullable="false" />
+    <Property Name="CustmerId" Type="bigint" />
+    <Property Name="ClinicId" Type="int" />
+    <Property Name="AppointmentDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="AppointmentTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="CallDuration" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="BookingResone" Type="nvarchar(max)" />
+    <Property Name="IsBooked" Type="bit" Nullable="false" />
+    <Property Name="IsCanceled" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ClinicDoctors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClinicId" Type="int" Nullable="false" />
+    <Property Name="DoctorId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clinics">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Img" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreateBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="commentsByUser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="consultantId" Type="bigint" Nullable="false" />
+    <Property Name="Rating" Type="float" Nullable="false" />
+    <Property Name="farmerId" Type="bigint" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="consultant_rating">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="consultant_id" Type="bigint" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="comment" Type="nvarchar" MaxLength="500" />
+    <Property Name="rating" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ConsultantsActiveHoursInDay">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="Hours" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsultantsDailyActiveHours">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="Hours" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsultantsStatusLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsrId" Type="bigint" Nullable="false" />
+    <Property Name="IsOnline" Type="bit" Nullable="false" />
+    <Property Name="StartTime" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="EndTime" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsultationAppointments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="consultantId" Type="bigint" Nullable="false" />
+    <Property Name="skillId" Type="bigint" Nullable="false" />
+    <Property Name="appointmentDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="appointmentTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="createdAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="isCanceled" Type="bit" Nullable="false" />
+    <Property Name="canceledBy" Type="bigint" />
+    <Property Name="callStartBy" Type="bigint" />
+    <Property Name="callDuration" Type="int" Nullable="false" />
+    <Property Name="callStartAt" Type="datetime" />
+    <Property Name="cancelReason" Type="nvarchar(max)" />
+    <Property Name="bookingReason" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ConsultationAvailablity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="startTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="workingHours" Type="int" Nullable="false" />
+    <Property Name="duration" Type="int" Nullable="false" />
+    <Property Name="workingDays" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="currentweathernotificationforCity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_id" Type="bigint" Nullable="false" />
+    <Property Name="link" Type="nvarchar" MaxLength="500" />
+    <Property Name="title" Type="nvarchar" MaxLength="500" />
+    <Property Name="region_id" Type="bigint" Nullable="false" />
+    <Property Name="city_id" Type="int" Nullable="false" />
+    <Property Name="message" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="alert_hazard_id" Type="int" Nullable="false" />
+    <Property Name="alert_type_id" Type="int" Nullable="false" />
+    <Property Name="notification_at" Type="datetime" Nullable="false" />
+    <Property Name="from_date" Type="datetime" />
+    <Property Name="to_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="WorkingDays" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="WorkingHours" Type="int" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreateBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoctorRatings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="DoctorId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreateBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="faqs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="answer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sort" Type="int" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="bigint" Nullable="false" />
+    <Property Name="updated_at" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="bigint" />
+  </EntityType>
+  <EntityType Name="FarmerWorkerStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkerId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FarmVisitMedias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" />
+    <Property Name="Extention" Type="nvarchar(max)" />
+    <Property Name="FileCategory" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="FarmVisitOrderId" Type="bigint" />
+    <Property Name="FarmVisitReportId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="FarmVisitMessages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FarmOrderId" Type="bigint" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FarmVisitOrders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FarmName" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="PurposeOfVisit" Type="nvarchar(max)" />
+    <Property Name="RegionId" Type="bigint" Nullable="false" />
+    <Property Name="CityId" Type="bigint" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" />
+    <Property Name="VisitStausId" Type="nvarchar(max)" />
+    <Property Name="FarmerId" Type="bigint" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="VisitDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FarmVisitReports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="FarmVisitOrderId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="FarmVisitServices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FarmVisitStatuses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="FarmVisitOrderId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="general_notifications">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="1000" />
+    <Property Name="image" Type="nvarchar" MaxLength="1000" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="group_messages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="message_type" Type="int" Nullable="false" />
+    <Property Name="group_id" Type="int" />
+    <Property Name="message_from" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="group_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="group_id" Type="bigint" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="groups">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="name_ar" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GuidedGuideLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="consultantId" Type="bigint" Nullable="false" />
+    <Property Name="guideAlert" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="cities" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="skills" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="regonId" Type="bigint" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="RecipientsCount" Type="int" />
+  </EntityType>
+  <EntityType Name="JobNotifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="keyword_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="keyword_group_name" Type="nvarchar" MaxLength="500" />
+    <Property Name="group_keywords" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="keywords">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="keyword" Type="nvarchar" MaxLength="255" />
+    <Property Name="keyword_count" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="lab_reports">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lab_id" Type="int" Nullable="false" />
+    <Property Name="appointment_id" Type="bigint" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="region_id" Type="bigint" Nullable="false" />
+    <Property Name="collected_date" Type="datetime" Nullable="false" />
+    <Property Name="reported_date" Type="datetime" Nullable="false" />
+    <Property Name="collected_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="reported_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="sample_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="soil_electric_conductivity" Type="float" />
+    <Property Name="soil_ph" Type="float" />
+    <Property Name="soil_calcium_carbonate" Type="float" />
+    <Property Name="soil_potasium_ppm" Type="float" />
+    <Property Name="soil_phosphorus_ppm" Type="float" />
+    <Property Name="soil_sand" Type="float" />
+    <Property Name="soil_salt" Type="float" />
+    <Property Name="soil_clay" Type="float" />
+    <Property Name="soil_texture_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="soil_notes" Type="nvarchar(max)" />
+    <Property Name="soil_recommendations" Type="nvarchar(max)" />
+    <Property Name="water_ph" Type="float" />
+    <Property Name="water_electric_conductivity" Type="float" />
+    <Property Name="water_carbonate" Type="float" />
+    <Property Name="water_chloride" Type="float" />
+    <Property Name="water_salts" Type="float" />
+    <Property Name="water_recommendation" Type="nvarchar(max)" />
+    <Property Name="water_notes" Type="nvarchar(max)" />
+    <Property Name="reporttype" Type="tinyint" />
+    <Property Name="extra1" Type="nvarchar(max)" />
+    <Property Name="extra2" Type="nvarchar(max)" />
+    <Property Name="extra3" Type="nvarchar(max)" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LabCollecctionPoint">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" MaxLength="255" />
+    <Property Name="latlang" Type="nvarchar" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="lab_id" Type="bigint" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="contactperson" Type="nvarchar" MaxLength="255" />
+    <Property Name="open_at" Type="time" Precision="7" />
+    <Property Name="close_at" Type="time" Precision="7" />
+    <Property Name="working_days" Type="nvarchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="labs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="latlang" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="city_id" Type="int" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="contactperson" Type="nvarchar" MaxLength="255" />
+    <Property Name="open_at" Type="time" Precision="7" />
+    <Property Name="close_at" Type="time" Precision="7" />
+    <Property Name="working_days" Type="nvarchar" MaxLength="255" />
+    <Property Name="max_appointment_per_day" Type="int" />
+    <Property Name="appointment_interval" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="market_products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="market_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="price_date" Type="datetime" />
+    <Property Name="unit_value" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="markets">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="marketname" Type="nvarchar" MaxLength="500" />
+    <Property Name="location" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="open_at" Type="time" Precision="7" />
+    <Property Name="close_at" Type="time" Precision="7" />
+    <Property Name="contact_person" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="market_image" Type="nvarchar" MaxLength="255" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="media">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="file_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="file_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_internal_file" Type="bit" Nullable="false" />
+    <Property Name="keywords" Type="nvarchar(max)" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="regions" Type="nvarchar(max)" />
+    <Property Name="skills" Type="nvarchar" MaxLength="500" />
+    <Property Name="related_to" Type="nvarchar" MaxLength="250" />
+    <Property Name="seasons" Type="nvarchar" MaxLength="255" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Messages_Templates_Notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessagesTemplates">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="body" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="notification_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="messagetype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="msg">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="attention_id" Type="int" Nullable="false" />
+    <Property Name="region_id" Type="bigint" Nullable="false" />
+    <Property Name="skill_id" Type="bigint" Nullable="false" />
+    <Property Name="msg" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="msg_logs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="msg_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="send_date" Type="datetime" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="municipality">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="name_ar" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Nationalties">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NameArabic" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="text" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="type_id" Type="bigint" />
+    <Property Name="link" Type="nvarchar" MaxLength="500" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="notification_class">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="notification_class" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="NotificationLogs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="log_type" Type="int" Nullable="false" />
+    <Property Name="log_message" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="is_processed" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="otp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="otp" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="attempts" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageName" Type="nvarchar" MaxLength="255" />
+    <Property Name="PageName_Ar" Type="nvarchar" MaxLength="255" />
+    <Property Name="Display_Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Parent_page" Type="int" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="should_display" Type="bit" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="past_experiences">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="farmer_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="farmer_photo" Type="nvarchar" MaxLength="255" />
+    <Property Name="banner" Type="nvarchar" MaxLength="255" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_promoted" Type="bit" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="product_categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="product_subscribers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="market_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="on_increase" Type="int" Nullable="false" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="product_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="product_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="product_image" Type="nvarchar" MaxLength="255" />
+    <Property Name="product_type_id" Type="bigint" />
+    <Property Name="product_origin" Type="nvarchar" MaxLength="255" />
+    <Property Name="slug" Type="nvarchar" MaxLength="255" />
+    <Property Name="unit_id" Type="int" />
+    <Property Name="unit_value" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="qa_answers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question_id" Type="bigint" />
+    <Property Name="title" Type="nvarchar(max)" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="is_approved" Type="bit" Nullable="false" />
+    <Property Name="is_verified" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="approved_by" Type="bigint" />
+    <Property Name="verified_by" Type="bigint" />
+    <Property Name="approved_at" Type="datetime" />
+    <Property Name="verified_at" Type="datetime" />
+    <Property Name="vote_count" Type="bigint" />
+  </EntityType>
+  <EntityType Name="qa_attachments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="media_id" Type="bigint" />
+    <Property Name="type_id" Type="bigint" />
+    <Property Name="type" Type="bit" />
+  </EntityType>
+  <EntityType Name="qa_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="name_ar" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="qa_questions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="qa_category_id" Type="bigint" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="keywords" Type="nvarchar(max)" />
+    <Property Name="is_approved" Type="bit" Nullable="false" />
+    <Property Name="is_verified" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="approved_by" Type="bigint" />
+    <Property Name="verified_by" Type="bigint" />
+    <Property Name="approved_at" Type="datetime" />
+    <Property Name="verified_at" Type="datetime" />
+    <Property Name="vote_count" Type="bigint" />
+  </EntityType>
+  <EntityType Name="qa_votes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="type_id" Type="bigint" />
+    <Property Name="type" Type="bit" />
+    <Property Name="is_up_vote" Type="bit" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReefComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="icon" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ReefComponentSuggestions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ReefComponentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="regions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="name_ar" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_en" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="name_ar" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="roles_permission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+    <Property Name="page_id" Type="int" Nullable="false" />
+    <Property Name="can_view" Type="bit" Nullable="false" />
+    <Property Name="can_insert" Type="bit" Nullable="false" />
+    <Property Name="can_update" Type="bit" Nullable="false" />
+    <Property Name="can_delete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="skill_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="skill_id" Type="bigint" Nullable="false" />
+    <Property Name="is_approved" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="skills">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="parent_skill" Type="bigint" />
+    <Property Name="icon" Type="nvarchar" MaxLength="255" />
+    <Property Name="bg_color" Type="nvarchar" MaxLength="255" />
+    <Property Name="text_color" Type="nvarchar" MaxLength="255" />
+    <Property Name="banner" Type="nvarchar" MaxLength="255" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="menu_sort" Type="bigint" Nullable="false" />
+    <Property Name="for_farmer" Type="bit" />
+  </EntityType>
+  <EntityType Name="subscribers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="deleted_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mlara.dbo.tempuser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tempuser">
+    <Key>
+      <PropertyRef Name="Phone" />
+      <PropertyRef Name="Phone_Type" />
+      <PropertyRef Name="Active" />
+      <PropertyRef Name="Date_Created" />
+      <PropertyRef Name="Temp" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone_Type" Type="int" Nullable="false" />
+    <Property Name="Active" Type="int" Nullable="false" />
+    <Property Name="Date_Created" Type="datetime" Nullable="false" />
+    <Property Name="Temp" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="units">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="user_access">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="bigint" Nullable="false" />
+    <Property Name="labid" Type="bigint" />
+    <Property Name="marketid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="UserAccessTypeIdentifiers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="type_value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone_verified_at" Type="datetime" />
+    <Property Name="role_id" Type="bigint" Nullable="false" />
+    <Property Name="user_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="device_token" Type="nvarchar(max)" />
+    <Property Name="app_type" Type="int" Nullable="false" />
+    <Property Name="region_id" Type="bigint" Nullable="false" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="255" />
+    <Property Name="firebase_token" Type="nvarchar(max)" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="country" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="region" Type="nvarchar" MaxLength="255" />
+    <Property Name="skills" Type="nvarchar(max)" />
+    <Property Name="governorate" Type="nvarchar" MaxLength="255" />
+    <Property Name="municipality" Type="nvarchar" MaxLength="255" />
+    <Property Name="linked_in" Type="nvarchar(max)" />
+    <Property Name="profile" Type="nvarchar(max)" />
+    <Property Name="chatId" Type="nvarchar(max)" />
+    <Property Name="rating" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="prefix" Type="nvarchar" MaxLength="255" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="app_ver" Type="nvarchar" MaxLength="255" />
+    <Property Name="is_online" Type="bit" Nullable="false" />
+    <Property Name="is_profile_completed" Type="bit" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="city_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_approved" Type="bit" Nullable="false" />
+    <Property Name="is_group_admin" Type="bit" Nullable="false" />
+    <Property Name="can_post" Type="bit" Nullable="false" />
+    <Property Name="is_weather_notification_enabled" Type="bit" Nullable="false" />
+    <Property Name="is_market_notification_enabled" Type="bit" Nullable="false" />
+    <Property Name="last_login_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserStatusLogs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Is_Online" Type="bit" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideoCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="sort" Type="bigint" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideoComments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="CommentBy" Type="bigint" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="CommentReplyAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CommentReplyBy" Type="bigint" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="VideoId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideoLikes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="VideoId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="LikeStatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Videos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="VideoCategoryId" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" />
+    <Property Name="RejectReason" Type="nvarchar(max)" />
+    <Property Name="VideoStatusId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="VideoCommentId" Type="bigint" />
+    <Property Name="VideoLikeId" Type="bigint" />
+    <Property Name="VideoTagId" Type="bigint" />
+    <Property Name="Extension" Type="varchar" MaxLength="10" />
+    <Property Name="RejectedBy" Type="bigint" />
+    <Property Name="RejectedAt" Type="datetime" />
+    <Property Name="ApprovedBy" Type="bigint" />
+    <Property Name="ApprovedAt" Type="datetime" />
+    <Property Name="DepartmentId" Type="bigint" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsHidden" Type="bit" />
+  </EntityType>
+  <EntityType Name="VideoTags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TagName" Type="nvarchar(max)" />
+    <Property Name="VideoId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="weather_notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="notification_class_id" Type="bigint" />
+    <Property Name="title_ar" Type="nvarchar" MaxLength="500" />
+    <Property Name="title_en" Type="nvarchar" MaxLength="500" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="link" Type="nvarchar" MaxLength="500" />
+    <Property Name="link_title" Type="nvarchar" MaxLength="500" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="city" Type="nvarchar(max)" />
+    <Property Name="season" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="WeatherData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="city_id" Type="bigint" />
+    <Property Name="weather" Type="nvarchar(max)" />
+    <Property Name="city_identifier" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="WorkerExperiences">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="FromDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ToDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="bigint" Nullable="false" />
+    <Property Name="WorkerId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkerJobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="WorkerId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkerNotifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="WorkerId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IDNumber" Type="bigint" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="CityId" Type="bigint" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Isbusy" Type="bit" Nullable="false" />
+    <Property Name="ExpectedSalary" Type="int" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CteatedBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="bigint" Nullable="false" />
+    <Property Name="NationaltyId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mlara.dbo.GetLatestProductPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GetLatestProductPrices">
+    <Key>
+      <PropertyRef Name="image" />
+    </Key>
+    <Property Name="product_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="unit" Type="nvarchar" MaxLength="255" />
+    <Property Name="unit_value" Type="nvarchar" MaxLength="50" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="price_date" Type="datetime" />
+    <Property Name="category" Type="nvarchar" MaxLength="255" />
+    <Property Name="image" Type="nvarchar" MaxLength="278" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ReefCompo__ReefC__135DC465">
+    <End Role="ReefComponent" Type="Self.ReefComponent" Multiplicity="1" />
+    <End Role="ReefComponentSuggestions" Type="Self.ReefComponentSuggestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReefComponent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReefComponentSuggestions">
+        <PropertyRef Name="ReefComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlertMessages_AlertHazards_alertHazardId">
+    <End Role="AlertHazards" Type="Self.AlertHazards" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AlertMessages" Type="Self.AlertMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlertHazards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AlertMessages">
+        <PropertyRef Name="alertHazardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlertMessages_AlertTypes_alertActionId">
+    <End Role="AlertTypes" Type="Self.AlertTypes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AlertMessages" Type="Self.AlertMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlertTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AlertMessages">
+        <PropertyRef Name="alertActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlertMessages_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="0..1" />
+    <End Role="AlertMessages" Type="Self.AlertMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AlertMessages">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_appointments_labs">
+    <End Role="labs" Type="Self.labs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="appointments" Type="Self.appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="labs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="appointments">
+        <PropertyRef Name="lab_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_appointments_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="0..1" />
+    <End Role="appointments" Type="Self.appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="appointments">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_appointments_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="appointments" Type="Self.appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="appointments">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_articles_categories">
+    <End Role="categories" Type="Self.categories" Multiplicity="1" />
+    <End Role="articles" Type="Self.articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="articles">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_articles_galleries_articles">
+    <End Role="articles" Type="Self.articles" Multiplicity="1" />
+    <End Role="articles_galleries" Type="Self.articles_galleries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="articles_galleries">
+        <PropertyRef Name="article_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_articles_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="articles" Type="Self.articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="articles">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bug_history_bug_tracker">
+    <End Role="bug_tracker" Type="Self.bug_tracker" Multiplicity="0..1" />
+    <End Role="bug_history" Type="Self.bug_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bug_tracker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bug_history">
+        <PropertyRef Name="bug_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bug_history_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="bug_history" Type="Self.bug_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bug_history">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bug_tracker_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="bug_tracker" Type="Self.bug_tracker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bug_tracker">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_category_articles_articles">
+    <End Role="articles" Type="Self.articles" Multiplicity="1" />
+    <End Role="category_articles" Type="Self.category_articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="category_articles">
+        <PropertyRef Name="articles_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_category_articles_categories">
+    <End Role="categories" Type="Self.categories" Multiplicity="1" />
+    <End Role="category_articles" Type="Self.category_articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="category_articles">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_chatmessages_messagetype">
+    <End Role="messagetype" Type="Self.messagetype" Multiplicity="1" />
+    <End Role="chatmessages" Type="Self.chatmessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="messagetype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="chatmessages">
+        <PropertyRef Name="message_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_chats_messagetype">
+    <End Role="messagetype" Type="Self.messagetype" Multiplicity="1" />
+    <End Role="chats" Type="Self.chats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="messagetype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="chats">
+        <PropertyRef Name="message_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_city_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="city" Type="Self.city" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="city">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicAppointmentHistories_Clinics_ClinicId">
+    <End Role="Clinics" Type="Self.Clinics" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClinicAppointmentHistories" Type="Self.ClinicAppointmentHistories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinics">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicAppointmentHistories">
+        <PropertyRef Name="ClinicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicAppointmentHistories_Doctor_DoctorId">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="ClinicAppointmentHistories" Type="Self.ClinicAppointmentHistories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicAppointmentHistories">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicAppointments_Clinics_ClinicId">
+    <End Role="Clinics" Type="Self.Clinics" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClinicAppointments" Type="Self.ClinicAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinics">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicAppointments">
+        <PropertyRef Name="ClinicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicAppointments_Doctor_DoctorId">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="ClinicAppointments" Type="Self.ClinicAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicAppointments">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicDoctors_Clinics_ClinicId">
+    <End Role="Clinics" Type="Self.Clinics" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClinicDoctors" Type="Self.ClinicDoctors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinics">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicDoctors">
+        <PropertyRef Name="ClinicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicDoctors_Doctor_DoctorId">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClinicDoctors" Type="Self.ClinicDoctors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicDoctors">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_commentsByUser_Consultant">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="commentsByUser" Type="Self.commentsByUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commentsByUser">
+        <PropertyRef Name="consultantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_commentsByUser_Farmer">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="commentsByUser" Type="Self.commentsByUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commentsByUser">
+        <PropertyRef Name="farmerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultant_rating_consultant">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="consultant_rating" Type="Self.consultant_rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="consultant_rating">
+        <PropertyRef Name="consultant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultant_rating_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="consultant_rating" Type="Self.consultant_rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="consultant_rating">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultationAppointments_consultants">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ConsultationAppointments" Type="Self.ConsultationAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ConsultationAppointments">
+        <PropertyRef Name="consultantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultationAppointments_skills">
+    <End Role="skills" Type="Self.skills" Multiplicity="1" />
+    <End Role="ConsultationAppointments" Type="Self.ConsultationAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="skills">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ConsultationAppointments">
+        <PropertyRef Name="skillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultationAppointments_users_callStartBy">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="ConsultationAppointments" Type="Self.ConsultationAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ConsultationAppointments">
+        <PropertyRef Name="callStartBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultationAppointments_users_canceledBy">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="ConsultationAppointments" Type="Self.ConsultationAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ConsultationAppointments">
+        <PropertyRef Name="canceledBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultationAppointments_users_createdBy">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="ConsultationAppointments" Type="Self.ConsultationAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ConsultationAppointments">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_users_UserId">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorRatings_Doctor_DoctorId">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DoctorRatings" Type="Self.DoctorRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DoctorRatings">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FarmVisitMedias_FarmVisitOrders_FarmVisitOrderId">
+    <End Role="FarmVisitOrders" Type="Self.FarmVisitOrders" Multiplicity="0..1" />
+    <End Role="FarmVisitMedias" Type="Self.FarmVisitMedias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FarmVisitOrders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FarmVisitMedias">
+        <PropertyRef Name="FarmVisitOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FarmVisitMedias_FarmVisitReports_FarmVisitReportId">
+    <End Role="FarmVisitReports" Type="Self.FarmVisitReports" Multiplicity="0..1" />
+    <End Role="FarmVisitMedias" Type="Self.FarmVisitMedias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FarmVisitReports">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FarmVisitMedias">
+        <PropertyRef Name="FarmVisitReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FarmVisitReports_FarmVisitOrders_FarmVisitOrderId">
+    <End Role="FarmVisitOrders" Type="Self.FarmVisitOrders" Multiplicity="0..1" />
+    <End Role="FarmVisitReports" Type="Self.FarmVisitReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FarmVisitOrders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FarmVisitReports">
+        <PropertyRef Name="FarmVisitOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FarmVisitStatuses_FarmVisitOrders_FarmVisitOrderId">
+    <End Role="FarmVisitOrders" Type="Self.FarmVisitOrders" Multiplicity="0..1" />
+    <End Role="FarmVisitStatuses" Type="Self.FarmVisitStatuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FarmVisitOrders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FarmVisitStatuses">
+        <PropertyRef Name="FarmVisitOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_general_notifications_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="general_notifications" Type="Self.general_notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="general_notifications">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_user_groups">
+    <End Role="groups" Type="Self.groups" Multiplicity="1" />
+    <End Role="group_user" Type="Self.group_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_user">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_user_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="group_user" Type="Self.group_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_user">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_groups_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="1" />
+    <End Role="groups" Type="Self.groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="groups">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lab_city">
+    <End Role="city" Type="Self.city" Multiplicity="1" />
+    <End Role="labs" Type="Self.labs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="labs">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lab_reports_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="lab_reports" Type="Self.lab_reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lab_reports">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabCollecctionPoint_labs">
+    <End Role="labs" Type="Self.labs" Multiplicity="1" />
+    <End Role="LabCollecctionPoint" Type="Self.LabCollecctionPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="labs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LabCollecctionPoint">
+        <PropertyRef Name="lab_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_labuser_labs">
+    <End Role="labs" Type="Self.labs" Multiplicity="0..1" />
+    <End Role="user_access" Type="Self.user_access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="labs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_access">
+        <PropertyRef Name="labid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_labuser_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="user_access" Type="Self.user_access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_access">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_market_products_markets">
+    <End Role="markets" Type="Self.markets" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="market_products" Type="Self.market_products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="markets">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="market_products">
+        <PropertyRef Name="market_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_market_products_products">
+    <End Role="products" Type="Self.products" Multiplicity="0..1" />
+    <End Role="market_products" Type="Self.market_products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="market_products">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_markets_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="0..1" />
+    <End Role="markets" Type="Self.markets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="markets">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_markets_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="markets" Type="Self.markets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="markets">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MessagesTemplates_Messages_Templates_Notification">
+    <End Role="Messages_Templates_Notification" Type="Self.Messages_Templates_Notification" Multiplicity="1" />
+    <End Role="MessagesTemplates" Type="Self.MessagesTemplates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Messages_Templates_Notification">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MessagesTemplates">
+        <PropertyRef Name="notification_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_msg_attention">
+    <End Role="attention" Type="Self.attention" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="msg" Type="Self.msg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="attention">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg">
+        <PropertyRef Name="attention_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_msg_logs_msg">
+    <End Role="msg" Type="Self.msg" Multiplicity="1" />
+    <End Role="msg_logs" Type="Self.msg_logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="msg">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg_logs">
+        <PropertyRef Name="msg_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_msg_logs_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="msg_logs" Type="Self.msg_logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg_logs">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_msg_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="1" />
+    <End Role="msg" Type="Self.msg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_msg_skills">
+    <End Role="skills" Type="Self.skills" Multiplicity="1" />
+    <End Role="msg" Type="Self.msg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="skills">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg">
+        <PropertyRef Name="skill_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_municipality_city">
+    <End Role="city" Type="Self.city" Multiplicity="1" />
+    <End Role="municipality" Type="Self.municipality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="municipality">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_categories_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="product_categories" Type="Self.product_categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_categories">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_subscribers_markets">
+    <End Role="markets" Type="Self.markets" Multiplicity="0..1" />
+    <End Role="product_subscribers" Type="Self.product_subscribers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="markets">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_subscribers">
+        <PropertyRef Name="market_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_subscribers_products">
+    <End Role="products" Type="Self.products" Multiplicity="0..1" />
+    <End Role="product_subscribers" Type="Self.product_subscribers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_subscribers">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_subscribers_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="product_subscribers" Type="Self.product_subscribers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_subscribers">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_product_categories">
+    <End Role="product_categories" Type="Self.product_categories" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="product_category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_product_type">
+    <End Role="product_type" Type="Self.product_type" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="product_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_units">
+    <End Role="units" Type="Self.units" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="units">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_answers_qa_questions">
+    <End Role="qa_questions" Type="Self.qa_questions" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="qa_answers" Type="Self.qa_answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qa_questions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_answers">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_answers_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="qa_answers" Type="Self.qa_answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_answers">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_answers_users_approver">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="qa_answers" Type="Self.qa_answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_answers">
+        <PropertyRef Name="approved_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_answers_users_verifier">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="qa_answers" Type="Self.qa_answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_answers">
+        <PropertyRef Name="verified_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_questions_qa_category">
+    <End Role="qa_category" Type="Self.qa_category" Multiplicity="0..1" />
+    <End Role="qa_questions" Type="Self.qa_questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qa_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_questions">
+        <PropertyRef Name="qa_category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_questions_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="qa_questions" Type="Self.qa_questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_questions">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_questions_users_approver">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="qa_questions" Type="Self.qa_questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_questions">
+        <PropertyRef Name="approved_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_questions_users_verifier">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="qa_questions" Type="Self.qa_questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_questions">
+        <PropertyRef Name="verified_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_qa_votes_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="qa_votes" Type="Self.qa_votes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="qa_votes">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_roles_permission_Page">
+    <End Role="Page" Type="Self.Page" Multiplicity="1" />
+    <End Role="roles_permission" Type="Self.roles_permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Page">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roles_permission">
+        <PropertyRef Name="page_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_skill_user_skills">
+    <End Role="skills" Type="Self.skills" Multiplicity="1" />
+    <End Role="skill_user" Type="Self.skill_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="skills">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="skill_user">
+        <PropertyRef Name="skill_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_skill_user_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="skill_user" Type="Self.skill_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="skill_user">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subscribers_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="subscribers" Type="Self.subscribers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="subscribers">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_access_markets">
+    <End Role="markets" Type="Self.markets" Multiplicity="0..1" />
+    <End Role="user_access" Type="Self.user_access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="markets">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_access">
+        <PropertyRef Name="marketid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_users">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="users1" Type="Self.users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VideoCategories_VideoCategories_ParentId">
+    <End Role="VideoCategories" Type="Self.VideoCategories" Multiplicity="0..1" />
+    <End Role="VideoCategories1" Type="Self.VideoCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VideoCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VideoCategories1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VideoComments_VideoComments_ParentId">
+    <End Role="VideoComments" Type="Self.VideoComments" Multiplicity="0..1" />
+    <End Role="VideoComments1" Type="Self.VideoComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VideoComments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VideoComments1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VideoComments_Videos_VideoId">
+    <End Role="Videos" Type="Self.Videos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VideoComments" Type="Self.VideoComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VideoComments">
+        <PropertyRef Name="VideoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VideoLikes_Videos_VideoId">
+    <End Role="Videos" Type="Self.Videos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VideoLikes" Type="Self.VideoLikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VideoLikes">
+        <PropertyRef Name="VideoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videos_VideoCategories_VideoCategoryId">
+    <End Role="VideoCategories" Type="Self.VideoCategories" Multiplicity="1" />
+    <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VideoCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="VideoCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videos_VideoTags_VideoTagId">
+    <End Role="VideoTags" Type="Self.VideoTags" Multiplicity="0..1" />
+    <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VideoTags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="VideoTagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_weather_notification_notification_class">
+    <End Role="notification_class" Type="Self.notification_class" Multiplicity="0..1" />
+    <End Role="weather_notification" Type="Self.weather_notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="notification_class">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="weather_notification">
+        <PropertyRef Name="notification_class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_weather_notification_regions">
+    <End Role="regions" Type="Self.regions" Multiplicity="0..1" />
+    <End Role="weather_notification" Type="Self.weather_notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="weather_notification">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkerExperiences_Workers_WorkerId">
+    <End Role="Workers" Type="Self.Workers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkerExperiences" Type="Self.WorkerExperiences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkerExperiences">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkerJobs_Jobs_JobId">
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkerJobs" Type="Self.WorkerJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkerJobs">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkerJobs_Workers_WorkerId">
+    <End Role="Workers" Type="Self.Workers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkerJobs" Type="Self.WorkerJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkerJobs">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkerNotifications_Workers_WorkerId">
+    <End Role="Workers" Type="Self.Workers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkerNotifications" Type="Self.WorkerNotifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkerNotifications">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Workers_Nationalties_NationaltyId">
+    <End Role="Nationalties" Type="Self.Nationalties" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nationalties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Workers">
+        <PropertyRef Name="NationaltyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Workers_users_UserId">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Workers">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AutoGenerateAppointmentForOneMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ClinicAppointmentProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DoctorId" Type="int" Mode="In" />
+    <Parameter Name="AppointmentDate" Type="datetime2" Mode="In" />
+  </Function>
+  <Function Name="DeleteUserByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="fun_GetAllMyLabAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="bigint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="appointment_date" Type="date" />
+          <Property Name="appointment_time" Type="time" Precision="7" />
+          <Property Name="is_booked" Type="bit" Nullable="false" />
+          <Property Name="is_canceled" Type="bit" Nullable="false" />
+          <Property Name="is_completed" Type="bit" Nullable="false" />
+          <Property Name="lab_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fun_GetCategoryTreeIDs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="catid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="bigint" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fun_GetConsultantSkills" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="bigint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fun_GetLatestProductPrices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="market_id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="unit" Type="nvarchar" MaxLength="255" />
+          <Property Name="unit_value" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price_date" Type="datetime" />
+          <Property Name="category" Type="nvarchar" MaxLength="255" />
+          <Property Name="Category_id" Type="bigint" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="278" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fun_GetLatestProductPricesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="market_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="market_id" Type="bigint" />
+          <Property Name="marketname" Type="nvarchar" MaxLength="500" />
+          <Property Name="unit" Type="nvarchar" MaxLength="255" />
+          <Property Name="unit_value" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price_date" Type="datetime" />
+          <Property Name="category" Type="nvarchar" MaxLength="255" />
+          <Property Name="image" Type="nvarchar" MaxLength="278" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fun_GetLatestProductPricesbyYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="market_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="bigint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="product_id" Type="bigint" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price_date" Type="datetime" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fun_getOnlineHours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+    <Parameter Name="Date_From" Type="date" Mode="In" />
+    <Parameter Name="Date_To" Type="date" Mode="In" />
+    <Parameter Name="User_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fun_getUserOnlineOfflineHours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date_From" Type="date" Mode="In" />
+    <Parameter Name="Date_To" Type="date" Mode="In" />
+    <Parameter Name="User_id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID" Type="int" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Is_Online" Type="bit" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Online_Offline_Hours" Type="float" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GeneralReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GenerateAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lab_id" Type="int" Mode="In" />
+    <Parameter Name="appointment_Date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="get_totalOnlineHours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date_From" Type="date" Mode="In" />
+    <Parameter Name="Date_To" Type="date" Mode="In" />
+    <Parameter Name="User_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetChatDetailsByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_from" Type="bigint" Mode="In" />
+    <Parameter Name="user_to" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="GetChatListByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="GETConsultantREPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GETLabREPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GETMARKETREPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetMaxProductIDByMarketID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="market_id" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="GetTop5ConsultantCalling" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="region_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTop5ConsultantRating" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Region_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateKeywordCountZero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="mlaraModelStoreContainer">
+    <EntitySet Name="Agriculture_Calender" EntityType="Self.Agriculture_Calender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlertHazards" EntityType="Self.AlertHazards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlertMessages" EntityType="Self.AlertMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlertTypes" EntityType="Self.AlertTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="app_settings" EntityType="Self.app_settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="app_stats" EntityType="Self.app_stats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="app_type" EntityType="Self.app_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="appointments" EntityType="Self.appointments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="articles" EntityType="Self.articles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="articles_galleries" EntityType="Self.articles_galleries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="attention" EntityType="Self.attention" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bug_history" EntityType="Self.bug_history" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bug_tracker" EntityType="Self.bug_tracker" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="calldetails" EntityType="Self.calldetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category_articles" EntityType="Self.category_articles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chatmessages" EntityType="Self.chatmessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chats" EntityType="Self.chats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClinicAppointmentHistories" EntityType="Self.ClinicAppointmentHistories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClinicAppointments" EntityType="Self.ClinicAppointments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClinicDoctors" EntityType="Self.ClinicDoctors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clinics" EntityType="Self.Clinics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="commentsByUser" EntityType="Self.commentsByUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="consultant_rating" EntityType="Self.consultant_rating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsultantsActiveHoursInDay" EntityType="Self.ConsultantsActiveHoursInDay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsultantsDailyActiveHours" EntityType="Self.ConsultantsDailyActiveHours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsultantsStatusLog" EntityType="Self.ConsultantsStatusLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsultationAppointments" EntityType="Self.ConsultationAppointments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsultationAvailablity" EntityType="Self.ConsultationAvailablity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="currentweathernotificationforCity" EntityType="Self.currentweathernotificationforCity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorRatings" EntityType="Self.DoctorRatings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="faqs" EntityType="Self.faqs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmerWorkerStatus" EntityType="Self.FarmerWorkerStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmVisitMedias" EntityType="Self.FarmVisitMedias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmVisitMessages" EntityType="Self.FarmVisitMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmVisitOrders" EntityType="Self.FarmVisitOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmVisitReports" EntityType="Self.FarmVisitReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmVisitServices" EntityType="Self.FarmVisitServices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmVisitStatuses" EntityType="Self.FarmVisitStatuses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="general_notifications" EntityType="Self.general_notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="group_messages" EntityType="Self.group_messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="group_user" EntityType="Self.group_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GuidedGuideLog" EntityType="Self.GuidedGuideLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobNotifications" EntityType="Self.JobNotifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="keyword_group" EntityType="Self.keyword_group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="keywords" EntityType="Self.keywords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lab_reports" EntityType="Self.lab_reports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LabCollecctionPoint" EntityType="Self.LabCollecctionPoint" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="labs" EntityType="Self.labs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="market_products" EntityType="Self.market_products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="markets" EntityType="Self.markets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="media" EntityType="Self.media" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages_Templates_Notification" EntityType="Self.Messages_Templates_Notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MessagesTemplates" EntityType="Self.MessagesTemplates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="messagetype" EntityType="Self.messagetype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msg" EntityType="Self.msg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msg_logs" EntityType="Self.msg_logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="municipality" EntityType="Self.municipality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nationalties" EntityType="Self.Nationalties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notification" EntityType="Self.notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notification_class" EntityType="Self.notification_class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotificationLogs" EntityType="Self.NotificationLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="otp" EntityType="Self.otp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="past_experiences" EntityType="Self.past_experiences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_categories" EntityType="Self.product_categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_subscribers" EntityType="Self.product_subscribers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_type" EntityType="Self.product_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="qa_answers" EntityType="Self.qa_answers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="qa_attachments" EntityType="Self.qa_attachments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="qa_category" EntityType="Self.qa_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="qa_questions" EntityType="Self.qa_questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="qa_votes" EntityType="Self.qa_votes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReefComponent" EntityType="Self.ReefComponent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReefComponentSuggestions" EntityType="Self.ReefComponentSuggestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="regions" EntityType="Self.regions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles_permission" EntityType="Self.roles_permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="skill_user" EntityType="Self.skill_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="skills" EntityType="Self.skills" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subscribers" EntityType="Self.subscribers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="units" EntityType="Self.units" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_access" EntityType="Self.user_access" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccessTypeIdentifiers" EntityType="Self.UserAccessTypeIdentifiers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserStatusLogs" EntityType="Self.UserStatusLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideoCategories" EntityType="Self.VideoCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideoComments" EntityType="Self.VideoComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideoLikes" EntityType="Self.VideoLikes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideoTags" EntityType="Self.VideoTags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="weather_notification" EntityType="Self.weather_notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WeatherData" EntityType="Self.WeatherData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkerExperiences" EntityType="Self.WorkerExperiences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkerJobs" EntityType="Self.WorkerJobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkerNotifications" EntityType="Self.WorkerNotifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tempuser" EntityType="Self.tempuser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tempuser].[Name] AS [Name], 
+    [tempuser].[Phone] AS [Phone], 
+    [tempuser].[Phone_Type] AS [Phone_Type], 
+    [tempuser].[Active] AS [Active], 
+    [tempuser].[Date_Created] AS [Date_Created], 
+    [tempuser].[Temp] AS [Temp]
+    FROM [dbo].[tempuser] AS [tempuser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GetLatestProductPrices" EntityType="Self.GetLatestProductPrices" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GetLatestProductPrices].[product_name] AS [product_name], 
+    [GetLatestProductPrices].[unit] AS [unit], 
+    [GetLatestProductPrices].[unit_value] AS [unit_value], 
+    [GetLatestProductPrices].[price] AS [price], 
+    [GetLatestProductPrices].[price_date] AS [price_date], 
+    [GetLatestProductPrices].[category] AS [category], 
+    [GetLatestProductPrices].[image] AS [image]
+    FROM [dbo].[GetLatestProductPrices] AS [GetLatestProductPrices]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__ReefCompo__ReefC__135DC465" Association="Self.FK__ReefCompo__ReefC__135DC465">
+      <End Role="ReefComponent" EntitySet="ReefComponent" />
+      <End Role="ReefComponentSuggestions" EntitySet="ReefComponentSuggestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlertMessages_AlertHazards_alertHazardId" Association="Self.FK_AlertMessages_AlertHazards_alertHazardId">
+      <End Role="AlertHazards" EntitySet="AlertHazards" />
+      <End Role="AlertMessages" EntitySet="AlertMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlertMessages_AlertTypes_alertActionId" Association="Self.FK_AlertMessages_AlertTypes_alertActionId">
+      <End Role="AlertTypes" EntitySet="AlertTypes" />
+      <End Role="AlertMessages" EntitySet="AlertMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlertMessages_regions" Association="Self.FK_AlertMessages_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="AlertMessages" EntitySet="AlertMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_appointments_labs" Association="Self.FK_appointments_labs">
+      <End Role="labs" EntitySet="labs" />
+      <End Role="appointments" EntitySet="appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_appointments_regions" Association="Self.FK_appointments_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="appointments" EntitySet="appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_appointments_users" Association="Self.FK_appointments_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="appointments" EntitySet="appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_articles_categories" Association="Self.FK_articles_categories">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="articles" EntitySet="articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_articles_galleries_articles" Association="Self.FK_articles_galleries_articles">
+      <End Role="articles" EntitySet="articles" />
+      <End Role="articles_galleries" EntitySet="articles_galleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_articles_users" Association="Self.FK_articles_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="articles" EntitySet="articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bug_history_bug_tracker" Association="Self.FK_bug_history_bug_tracker">
+      <End Role="bug_tracker" EntitySet="bug_tracker" />
+      <End Role="bug_history" EntitySet="bug_history" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bug_history_users" Association="Self.FK_bug_history_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="bug_history" EntitySet="bug_history" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bug_tracker_users" Association="Self.FK_bug_tracker_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="bug_tracker" EntitySet="bug_tracker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_category_articles_articles" Association="Self.FK_category_articles_articles">
+      <End Role="articles" EntitySet="articles" />
+      <End Role="category_articles" EntitySet="category_articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_category_articles_categories" Association="Self.FK_category_articles_categories">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="category_articles" EntitySet="category_articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_chatmessages_messagetype" Association="Self.FK_chatmessages_messagetype">
+      <End Role="messagetype" EntitySet="messagetype" />
+      <End Role="chatmessages" EntitySet="chatmessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_chats_messagetype" Association="Self.FK_chats_messagetype">
+      <End Role="messagetype" EntitySet="messagetype" />
+      <End Role="chats" EntitySet="chats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_city_regions" Association="Self.FK_city_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="city" EntitySet="city" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicAppointmentHistories_Clinics_ClinicId" Association="Self.FK_ClinicAppointmentHistories_Clinics_ClinicId">
+      <End Role="Clinics" EntitySet="Clinics" />
+      <End Role="ClinicAppointmentHistories" EntitySet="ClinicAppointmentHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicAppointmentHistories_Doctor_DoctorId" Association="Self.FK_ClinicAppointmentHistories_Doctor_DoctorId">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="ClinicAppointmentHistories" EntitySet="ClinicAppointmentHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicAppointments_Clinics_ClinicId" Association="Self.FK_ClinicAppointments_Clinics_ClinicId">
+      <End Role="Clinics" EntitySet="Clinics" />
+      <End Role="ClinicAppointments" EntitySet="ClinicAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicAppointments_Doctor_DoctorId" Association="Self.FK_ClinicAppointments_Doctor_DoctorId">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="ClinicAppointments" EntitySet="ClinicAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicDoctors_Clinics_ClinicId" Association="Self.FK_ClinicDoctors_Clinics_ClinicId">
+      <End Role="Clinics" EntitySet="Clinics" />
+      <End Role="ClinicDoctors" EntitySet="ClinicDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicDoctors_Doctor_DoctorId" Association="Self.FK_ClinicDoctors_Doctor_DoctorId">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="ClinicDoctors" EntitySet="ClinicDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_commentsByUser_Consultant" Association="Self.FK_commentsByUser_Consultant">
+      <End Role="users" EntitySet="users" />
+      <End Role="commentsByUser" EntitySet="commentsByUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_commentsByUser_Farmer" Association="Self.FK_commentsByUser_Farmer">
+      <End Role="users" EntitySet="users" />
+      <End Role="commentsByUser" EntitySet="commentsByUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultant_rating_consultant" Association="Self.FK_consultant_rating_consultant">
+      <End Role="users" EntitySet="users" />
+      <End Role="consultant_rating" EntitySet="consultant_rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultant_rating_users" Association="Self.FK_consultant_rating_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="consultant_rating" EntitySet="consultant_rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultationAppointments_consultants" Association="Self.FK_consultationAppointments_consultants">
+      <End Role="users" EntitySet="users" />
+      <End Role="ConsultationAppointments" EntitySet="ConsultationAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultationAppointments_skills" Association="Self.FK_consultationAppointments_skills">
+      <End Role="skills" EntitySet="skills" />
+      <End Role="ConsultationAppointments" EntitySet="ConsultationAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultationAppointments_users_callStartBy" Association="Self.FK_consultationAppointments_users_callStartBy">
+      <End Role="users" EntitySet="users" />
+      <End Role="ConsultationAppointments" EntitySet="ConsultationAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultationAppointments_users_canceledBy" Association="Self.FK_consultationAppointments_users_canceledBy">
+      <End Role="users" EntitySet="users" />
+      <End Role="ConsultationAppointments" EntitySet="ConsultationAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultationAppointments_users_createdBy" Association="Self.FK_consultationAppointments_users_createdBy">
+      <End Role="users" EntitySet="users" />
+      <End Role="ConsultationAppointments" EntitySet="ConsultationAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_users_UserId" Association="Self.FK_Doctor_users_UserId">
+      <End Role="users" EntitySet="users" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorRatings_Doctor_DoctorId" Association="Self.FK_DoctorRatings_Doctor_DoctorId">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="DoctorRatings" EntitySet="DoctorRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FarmVisitMedias_FarmVisitOrders_FarmVisitOrderId" Association="Self.FK_FarmVisitMedias_FarmVisitOrders_FarmVisitOrderId">
+      <End Role="FarmVisitOrders" EntitySet="FarmVisitOrders" />
+      <End Role="FarmVisitMedias" EntitySet="FarmVisitMedias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FarmVisitMedias_FarmVisitReports_FarmVisitReportId" Association="Self.FK_FarmVisitMedias_FarmVisitReports_FarmVisitReportId">
+      <End Role="FarmVisitReports" EntitySet="FarmVisitReports" />
+      <End Role="FarmVisitMedias" EntitySet="FarmVisitMedias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FarmVisitReports_FarmVisitOrders_FarmVisitOrderId" Association="Self.FK_FarmVisitReports_FarmVisitOrders_FarmVisitOrderId">
+      <End Role="FarmVisitOrders" EntitySet="FarmVisitOrders" />
+      <End Role="FarmVisitReports" EntitySet="FarmVisitReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FarmVisitStatuses_FarmVisitOrders_FarmVisitOrderId" Association="Self.FK_FarmVisitStatuses_FarmVisitOrders_FarmVisitOrderId">
+      <End Role="FarmVisitOrders" EntitySet="FarmVisitOrders" />
+      <End Role="FarmVisitStatuses" EntitySet="FarmVisitStatuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_general_notifications_users" Association="Self.FK_general_notifications_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="general_notifications" EntitySet="general_notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_user_groups" Association="Self.FK_group_user_groups">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="group_user" EntitySet="group_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_user_users" Association="Self.FK_group_user_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="group_user" EntitySet="group_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_groups_regions" Association="Self.FK_groups_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lab_city" Association="Self.FK_lab_city">
+      <End Role="city" EntitySet="city" />
+      <End Role="labs" EntitySet="labs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lab_reports_users" Association="Self.FK_lab_reports_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="lab_reports" EntitySet="lab_reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabCollecctionPoint_labs" Association="Self.FK_LabCollecctionPoint_labs">
+      <End Role="labs" EntitySet="labs" />
+      <End Role="LabCollecctionPoint" EntitySet="LabCollecctionPoint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_labuser_labs" Association="Self.FK_labuser_labs">
+      <End Role="labs" EntitySet="labs" />
+      <End Role="user_access" EntitySet="user_access" />
+    </AssociationSet>
+    <AssociationSet Name="FK_labuser_users" Association="Self.FK_labuser_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="user_access" EntitySet="user_access" />
+    </AssociationSet>
+    <AssociationSet Name="FK_market_products_markets" Association="Self.FK_market_products_markets">
+      <End Role="markets" EntitySet="markets" />
+      <End Role="market_products" EntitySet="market_products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_market_products_products" Association="Self.FK_market_products_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="market_products" EntitySet="market_products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_markets_regions" Association="Self.FK_markets_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="markets" EntitySet="markets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_markets_users" Association="Self.FK_markets_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="markets" EntitySet="markets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MessagesTemplates_Messages_Templates_Notification" Association="Self.FK_MessagesTemplates_Messages_Templates_Notification">
+      <End Role="Messages_Templates_Notification" EntitySet="Messages_Templates_Notification" />
+      <End Role="MessagesTemplates" EntitySet="MessagesTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_msg_attention" Association="Self.FK_msg_attention">
+      <End Role="attention" EntitySet="attention" />
+      <End Role="msg" EntitySet="msg" />
+    </AssociationSet>
+    <AssociationSet Name="FK_msg_logs_msg" Association="Self.FK_msg_logs_msg">
+      <End Role="msg" EntitySet="msg" />
+      <End Role="msg_logs" EntitySet="msg_logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_msg_logs_users" Association="Self.FK_msg_logs_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="msg_logs" EntitySet="msg_logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_msg_regions" Association="Self.FK_msg_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="msg" EntitySet="msg" />
+    </AssociationSet>
+    <AssociationSet Name="FK_msg_skills" Association="Self.FK_msg_skills">
+      <End Role="skills" EntitySet="skills" />
+      <End Role="msg" EntitySet="msg" />
+    </AssociationSet>
+    <AssociationSet Name="FK_municipality_city" Association="Self.FK_municipality_city">
+      <End Role="city" EntitySet="city" />
+      <End Role="municipality" EntitySet="municipality" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_categories_users" Association="Self.FK_product_categories_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="product_categories" EntitySet="product_categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_subscribers_markets" Association="Self.FK_product_subscribers_markets">
+      <End Role="markets" EntitySet="markets" />
+      <End Role="product_subscribers" EntitySet="product_subscribers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_subscribers_products" Association="Self.FK_product_subscribers_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="product_subscribers" EntitySet="product_subscribers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_subscribers_users" Association="Self.FK_product_subscribers_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="product_subscribers" EntitySet="product_subscribers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_product_categories" Association="Self.FK_products_product_categories">
+      <End Role="product_categories" EntitySet="product_categories" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_product_type" Association="Self.FK_products_product_type">
+      <End Role="product_type" EntitySet="product_type" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_units" Association="Self.FK_products_units">
+      <End Role="units" EntitySet="units" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_users" Association="Self.FK_products_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_answers_qa_questions" Association="Self.FK_qa_answers_qa_questions">
+      <End Role="qa_questions" EntitySet="qa_questions" />
+      <End Role="qa_answers" EntitySet="qa_answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_answers_users" Association="Self.FK_qa_answers_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="qa_answers" EntitySet="qa_answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_answers_users_approver" Association="Self.FK_qa_answers_users_approver">
+      <End Role="users" EntitySet="users" />
+      <End Role="qa_answers" EntitySet="qa_answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_answers_users_verifier" Association="Self.FK_qa_answers_users_verifier">
+      <End Role="users" EntitySet="users" />
+      <End Role="qa_answers" EntitySet="qa_answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_questions_qa_category" Association="Self.FK_qa_questions_qa_category">
+      <End Role="qa_category" EntitySet="qa_category" />
+      <End Role="qa_questions" EntitySet="qa_questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_questions_users" Association="Self.FK_qa_questions_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="qa_questions" EntitySet="qa_questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_questions_users_approver" Association="Self.FK_qa_questions_users_approver">
+      <End Role="users" EntitySet="users" />
+      <End Role="qa_questions" EntitySet="qa_questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_questions_users_verifier" Association="Self.FK_qa_questions_users_verifier">
+      <End Role="users" EntitySet="users" />
+      <End Role="qa_questions" EntitySet="qa_questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_qa_votes_users" Association="Self.FK_qa_votes_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="qa_votes" EntitySet="qa_votes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_roles_permission_Page" Association="Self.FK_roles_permission_Page">
+      <End Role="Page" EntitySet="Page" />
+      <End Role="roles_permission" EntitySet="roles_permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_skill_user_skills" Association="Self.FK_skill_user_skills">
+      <End Role="skills" EntitySet="skills" />
+      <End Role="skill_user" EntitySet="skill_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_skill_user_users" Association="Self.FK_skill_user_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="skill_user" EntitySet="skill_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subscribers_users" Association="Self.FK_subscribers_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="subscribers" EntitySet="subscribers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_access_markets" Association="Self.FK_user_access_markets">
+      <End Role="markets" EntitySet="markets" />
+      <End Role="user_access" EntitySet="user_access" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_regions" Association="Self.FK_users_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_roles" Association="Self.FK_users_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_users" Association="Self.FK_users_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="users1" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VideoCategories_VideoCategories_ParentId" Association="Self.FK_VideoCategories_VideoCategories_ParentId">
+      <End Role="VideoCategories" EntitySet="VideoCategories" />
+      <End Role="VideoCategories1" EntitySet="VideoCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VideoComments_VideoComments_ParentId" Association="Self.FK_VideoComments_VideoComments_ParentId">
+      <End Role="VideoComments" EntitySet="VideoComments" />
+      <End Role="VideoComments1" EntitySet="VideoComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VideoComments_Videos_VideoId" Association="Self.FK_VideoComments_Videos_VideoId">
+      <End Role="Videos" EntitySet="Videos" />
+      <End Role="VideoComments" EntitySet="VideoComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VideoLikes_Videos_VideoId" Association="Self.FK_VideoLikes_Videos_VideoId">
+      <End Role="Videos" EntitySet="Videos" />
+      <End Role="VideoLikes" EntitySet="VideoLikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videos_VideoCategories_VideoCategoryId" Association="Self.FK_Videos_VideoCategories_VideoCategoryId">
+      <End Role="VideoCategories" EntitySet="VideoCategories" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videos_VideoTags_VideoTagId" Association="Self.FK_Videos_VideoTags_VideoTagId">
+      <End Role="VideoTags" EntitySet="VideoTags" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_weather_notification_notification_class" Association="Self.FK_weather_notification_notification_class">
+      <End Role="notification_class" EntitySet="notification_class" />
+      <End Role="weather_notification" EntitySet="weather_notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_weather_notification_regions" Association="Self.FK_weather_notification_regions">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="weather_notification" EntitySet="weather_notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkerExperiences_Workers_WorkerId" Association="Self.FK_WorkerExperiences_Workers_WorkerId">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="WorkerExperiences" EntitySet="WorkerExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkerJobs_Jobs_JobId" Association="Self.FK_WorkerJobs_Jobs_JobId">
+      <End Role="Jobs" EntitySet="Jobs" />
+      <End Role="WorkerJobs" EntitySet="WorkerJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkerJobs_Workers_WorkerId" Association="Self.FK_WorkerJobs_Workers_WorkerId">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="WorkerJobs" EntitySet="WorkerJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkerNotifications_Workers_WorkerId" Association="Self.FK_WorkerNotifications_Workers_WorkerId">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="WorkerNotifications" EntitySet="WorkerNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Workers_Nationalties_NationaltyId" Association="Self.FK_Workers_Nationalties_NationaltyId">
+      <End Role="Nationalties" EntitySet="Nationalties" />
+      <End Role="Workers" EntitySet="Workers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Workers_users_UserId" Association="Self.FK_Workers_users_UserId">
+      <End Role="users" EntitySet="users" />
+      <End Role="Workers" EntitySet="Workers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

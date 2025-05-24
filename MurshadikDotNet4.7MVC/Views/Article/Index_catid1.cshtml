@@ -1,0 +1,100 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.article>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+@*<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />*@
+@{
+    ViewBag.Title = ViewBag.ptitle;
+    ViewBag.pTitle = ViewBag.ptitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Article", FormMethod.Get))
+                {
+                    <div class="align-items-center form-group row">
+                        <input type="hidden" name="catid" value="@Request.QueryString["catid"]" />
+                        <div class="col-lg-4">
+                            @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                        </div>
+                        <input type="submit" value="بحث" class="btn btn-primary waves-effect waves-light" />
+                        <div class="align-self-center pl-md-2">
+                            @Html.ActionLink(" اضافة ", "Add", "Article", new { catid = Request.QueryString["catid"] }, new { @class = "btn btn-primary  mdi mdi-plus-box ml-1" })
+                        </div>
+                    </div>
+                }
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th class="w-50">
+                                العنوان
+                            </th>
+                            <th class="w-25">
+                                وصف قصير
+                            </th>
+                            <th class="w-25">
+                                قسم الخبر
+                            </th>
+                            <th>
+                                تاريخ
+                            </th>
+                            <th>تعديل</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="align-middle w-auto">
+                                    @Html.DisplayFor(modelItem => item.title)
+                                </td>
+                                <td class="align-middle w-auto">
+                                    @Html.DisplayFor(modelItem => item.short_description)
+                                </td>
+                                <td class="align-middle w-auto">
+                                    @Html.DisplayFor(modelItem => item.category.name)
+                                </td>
+                                <td class="align-middle w-auto">
+                                    @Html.DisplayFor(modelItem => item.created_at)
+                                </td>
+                                <td>
+                                    <a href="/Article/Edit?id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                    @*<input type="hidden" id="ids" value="@item.id" />
+                                        <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>*@
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="d-flex justify-content-between">
+            <div>
+                عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+                @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value, catid = Request.QueryString["catid"] }))
+            </div>
+            @*<div class="align-self-center">
+                    @Html.ActionLink(Resources.Resources.Add, "Add", "Article", new { catid = Request.QueryString["catid"] }, new { @class = "btn btn-primary" })
+                </div>*@
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/assets/js/app.js"></script>
+}

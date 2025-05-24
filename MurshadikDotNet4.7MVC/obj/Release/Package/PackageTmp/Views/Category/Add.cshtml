@@ -1,0 +1,120 @@
+﻿@model MurshadikCP.Models.DB.category
+
+@{
+    ViewBag.Title = "إضافة";
+    ViewBag.pTitle = "اضافة قسم";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Add", "Category", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">اسم عربي</label>
+                        <div class="col-md-10">
+                            <input class="form-control" name="name" type="text" required>
+                            <div class="invalid-feedback">
+                                يرجى تقديم اسم صالح
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">القسم الرئيسي</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("parent_category", null, "--Select Category--", htmlAttributes: new { @class = "form-control h-auto" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">لون النص</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="color" name="text_color" value="#556ee6" id="example-color-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">لون الخلفية</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="color" name="bg_color" value="#cccccc" id="example-color-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.active, "مُفعل", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.active)
+                                @Html.ValidationMessageFor(model => model.active, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">الوصف بالعربية</label>
+                        <div class="col-md-10">
+                            <textarea id="textarea" class="form-control" rows="4" name="description" required></textarea>
+                            <div class="invalid-feedback">
+                                يرجى تقديم وصف
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">اختر ايقونة القسم</label>
+                        <div class="col-md-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="imgIcon" id="imageFile" onchange="document.getElementById('outputicon').src = window.URL.createObjectURL(this.files[0])" required>
+                                <label class="custom-file-label" for="imageFile"> ... أختر </label>
+                                <div class="invalid-feedback">
+                                    الرجاء تحديد الصورة
+                                </div>
+                                <div class="card">
+                                    <img src="~/assets/images/image_placeholder.jpg" id="outputicon" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">اختر صورة بانر</label>
+                        <div class="col-md-10 custom-file">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="bannerImg" id="customFile" onchange="document.getElementById('outputbanner').src = window.URL.createObjectURL(this.files[0])" required>
+                                <label class="custom-file-label" for="customFile"> ... أختر </label>
+                                <div class="invalid-feedback">
+                                    الرجاء تحديد الصورة
+                                </div>
+                                <div class="card">
+                                    <img src="~/assets/images/image_placeholder.jpg" id="outputbanner" class="card-img-top img-fluid" alt="banner image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="login" type="submit" value=@Resources.Resources.Add class="btn btn-primary" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+
+}

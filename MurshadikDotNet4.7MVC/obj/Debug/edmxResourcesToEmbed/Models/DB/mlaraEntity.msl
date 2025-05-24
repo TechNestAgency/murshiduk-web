@@ -1,0 +1,1660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mlaraModelStoreContainer" CdmEntityContainer="mlaraEntities">
+    <EntitySetMapping Name="Agriculture_Calender">
+      <EntityTypeMapping TypeName="mlaraModel.Agriculture_Calender">
+        <MappingFragment StoreEntitySet="Agriculture_Calender">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlertHazards">
+      <EntityTypeMapping TypeName="mlaraModel.AlertHazard">
+        <MappingFragment StoreEntitySet="AlertHazards">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlertMessages">
+      <EntityTypeMapping TypeName="mlaraModel.AlertMessage">
+        <MappingFragment StoreEntitySet="AlertMessages">
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="season" ColumnName="season" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="alertHazardId" ColumnName="alertHazardId" />
+          <ScalarProperty Name="alertActionId" ColumnName="alertActionId" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlertTypes">
+      <EntityTypeMapping TypeName="mlaraModel.AlertType">
+        <MappingFragment StoreEntitySet="AlertTypes">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="app_settings">
+      <EntityTypeMapping TypeName="mlaraModel.app_settings">
+        <MappingFragment StoreEntitySet="app_settings">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="added_by" ColumnName="added_by" />
+          <ScalarProperty Name="ap_value" ColumnName="ap_value" />
+          <ScalarProperty Name="ap_key" ColumnName="ap_key" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="app_stats">
+      <EntityTypeMapping TypeName="mlaraModel.app_stats">
+        <MappingFragment StoreEntitySet="app_stats">
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="enabled" ColumnName="enabled" />
+          <ScalarProperty Name="bg_color" ColumnName="bg_color" />
+          <ScalarProperty Name="text_color" ColumnName="text_color" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="stats" ColumnName="stats" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="app_type">
+      <EntityTypeMapping TypeName="mlaraModel.app_type">
+        <MappingFragment StoreEntitySet="app_type">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appointments">
+      <EntityTypeMapping TypeName="mlaraModel.appointment">
+        <MappingFragment StoreEntitySet="appointments">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="cancel_by" ColumnName="cancel_by" />
+          <ScalarProperty Name="is_completed" ColumnName="is_completed" />
+          <ScalarProperty Name="no_samples" ColumnName="no_samples" />
+          <ScalarProperty Name="is_sample_collected" ColumnName="is_sample_collected" />
+          <ScalarProperty Name="is_canceled" ColumnName="is_canceled" />
+          <ScalarProperty Name="is_booked" ColumnName="is_booked" />
+          <ScalarProperty Name="appointment_time" ColumnName="appointment_time" />
+          <ScalarProperty Name="appointment_date" ColumnName="appointment_date" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="lab_id" ColumnName="lab_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="mlaraModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="mlaraModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="mlaraModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="mlaraModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="attentions">
+      <EntityTypeMapping TypeName="mlaraModel.attention">
+        <MappingFragment StoreEntitySet="attention">
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name_en" ColumnName="name_en" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bug_history">
+      <EntityTypeMapping TypeName="mlaraModel.bug_history">
+        <MappingFragment StoreEntitySet="bug_history">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="bug_id" ColumnName="bug_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="calldetails">
+      <EntityTypeMapping TypeName="mlaraModel.calldetail">
+        <MappingFragment StoreEntitySet="calldetails">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="call_id" ColumnName="call_id" />
+          <ScalarProperty Name="user_from" ColumnName="user_from" />
+          <ScalarProperty Name="user_to" ColumnName="user_to" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="mlaraModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="banner" ColumnName="banner" />
+          <ScalarProperty Name="text_color" ColumnName="text_color" />
+          <ScalarProperty Name="bg_color" ColumnName="bg_color" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="parent_category" ColumnName="parent_category" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="category_articles">
+      <EntityTypeMapping TypeName="mlaraModel.category_articles">
+        <MappingFragment StoreEntitySet="category_articles">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="articles_id" ColumnName="articles_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="mlaraModel.city">
+        <MappingFragment StoreEntitySet="city">
+          <ScalarProperty Name="weather_identifier" ColumnName="weather_identifier" />
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name_en" ColumnName="name_en" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commentsByUsers">
+      <EntityTypeMapping TypeName="mlaraModel.commentsByUser">
+        <MappingFragment StoreEntitySet="commentsByUser">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="farmerId" ColumnName="farmerId" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="consultantId" ColumnName="consultantId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consultant_rating">
+      <EntityTypeMapping TypeName="mlaraModel.consultant_rating">
+        <MappingFragment StoreEntitySet="consultant_rating">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="consultant_id" ColumnName="consultant_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="currentweathernotificationforCities">
+      <EntityTypeMapping TypeName="mlaraModel.currentweathernotificationforCity">
+        <MappingFragment StoreEntitySet="currentweathernotificationforCity">
+          <ScalarProperty Name="to_date" ColumnName="to_date" />
+          <ScalarProperty Name="from_date" ColumnName="from_date" />
+          <ScalarProperty Name="notification_at" ColumnName="notification_at" />
+          <ScalarProperty Name="alert_type_id" ColumnName="alert_type_id" />
+          <ScalarProperty Name="alert_hazard_id" ColumnName="alert_hazard_id" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="general_notifications">
+      <EntityTypeMapping TypeName="mlaraModel.general_notifications">
+        <MappingFragment StoreEntitySet="general_notifications">
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_user">
+      <EntityTypeMapping TypeName="mlaraModel.group_user">
+        <MappingFragment StoreEntitySet="group_user">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="mlaraModel.group">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="keyword_group">
+      <EntityTypeMapping TypeName="mlaraModel.keyword_group">
+        <MappingFragment StoreEntitySet="keyword_group">
+          <ScalarProperty Name="group_keywords" ColumnName="group_keywords" />
+          <ScalarProperty Name="keyword_group_name" ColumnName="keyword_group_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="keywords">
+      <EntityTypeMapping TypeName="mlaraModel.keyword">
+        <MappingFragment StoreEntitySet="keywords">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="keyword_count" ColumnName="keyword_count" />
+          <ScalarProperty Name="keyword1" ColumnName="keyword" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LabCollecctionPoints">
+      <EntityTypeMapping TypeName="mlaraModel.LabCollecctionPoint">
+        <MappingFragment StoreEntitySet="LabCollecctionPoint">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="working_days" ColumnName="working_days" />
+          <ScalarProperty Name="close_at" ColumnName="close_at" />
+          <ScalarProperty Name="open_at" ColumnName="open_at" />
+          <ScalarProperty Name="contactperson" ColumnName="contactperson" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="lab_id" ColumnName="lab_id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="latlang" ColumnName="latlang" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="labs">
+      <EntityTypeMapping TypeName="mlaraModel.lab">
+        <MappingFragment StoreEntitySet="labs">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="appointment_interval" ColumnName="appointment_interval" />
+          <ScalarProperty Name="max_appointment_per_day" ColumnName="max_appointment_per_day" />
+          <ScalarProperty Name="working_days" ColumnName="working_days" />
+          <ScalarProperty Name="close_at" ColumnName="close_at" />
+          <ScalarProperty Name="open_at" ColumnName="open_at" />
+          <ScalarProperty Name="contactperson" ColumnName="contactperson" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="latlang" ColumnName="latlang" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="market_products">
+      <EntityTypeMapping TypeName="mlaraModel.market_products">
+        <MappingFragment StoreEntitySet="market_products">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="unit_value" ColumnName="unit_value" />
+          <ScalarProperty Name="price_date" ColumnName="price_date" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="market_id" ColumnName="market_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="markets">
+      <EntityTypeMapping TypeName="mlaraModel.market">
+        <MappingFragment StoreEntitySet="markets">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="market_image" ColumnName="market_image" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="contact_person" ColumnName="contact_person" />
+          <ScalarProperty Name="close_at" ColumnName="close_at" />
+          <ScalarProperty Name="open_at" ColumnName="open_at" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="marketname" ColumnName="marketname" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="media">
+      <EntityTypeMapping TypeName="mlaraModel.medium">
+        <MappingFragment StoreEntitySet="media">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="seasons" ColumnName="seasons" />
+          <ScalarProperty Name="related_to" ColumnName="related_to" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="regions" ColumnName="regions" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="is_internal_file" ColumnName="is_internal_file" />
+          <ScalarProperty Name="file_type" ColumnName="file_type" />
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages_Templates_Notification">
+      <EntityTypeMapping TypeName="mlaraModel.Messages_Templates_Notification">
+        <MappingFragment StoreEntitySet="Messages_Templates_Notification">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessagesTemplates">
+      <EntityTypeMapping TypeName="mlaraModel.MessagesTemplate">
+        <MappingFragment StoreEntitySet="MessagesTemplates">
+          <ScalarProperty Name="notification_id" ColumnName="notification_id" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messagetypes">
+      <EntityTypeMapping TypeName="mlaraModel.messagetype">
+        <MappingFragment StoreEntitySet="messagetype">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msgs">
+      <EntityTypeMapping TypeName="mlaraModel.msg">
+        <MappingFragment StoreEntitySet="msg">
+          <ScalarProperty Name="msg1" ColumnName="msg" />
+          <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="attention_id" ColumnName="attention_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msg_logs">
+      <EntityTypeMapping TypeName="mlaraModel.msg_logs">
+        <MappingFragment StoreEntitySet="msg_logs">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="send_date" ColumnName="send_date" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="msg_id" ColumnName="msg_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="municipalities">
+      <EntityTypeMapping TypeName="mlaraModel.municipality">
+        <MappingFragment StoreEntitySet="municipality">
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notifications">
+      <EntityTypeMapping TypeName="mlaraModel.notification">
+        <MappingFragment StoreEntitySet="notification">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notification_class">
+      <EntityTypeMapping TypeName="mlaraModel.notification_class">
+        <MappingFragment StoreEntitySet="notification_class">
+          <ScalarProperty Name="notification_class1" ColumnName="notification_class" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="otps">
+      <EntityTypeMapping TypeName="mlaraModel.otp">
+        <MappingFragment StoreEntitySet="otp">
+          <ScalarProperty Name="attempts" ColumnName="attempts" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="otp1" ColumnName="otp" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="mlaraModel.Page">
+        <MappingFragment StoreEntitySet="Page">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="should_display" ColumnName="should_display" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Parent_page" ColumnName="Parent_page" />
+          <ScalarProperty Name="Display_Name" ColumnName="Display_Name" />
+          <ScalarProperty Name="PageName_Ar" ColumnName="PageName_Ar" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="past_experiences">
+      <EntityTypeMapping TypeName="mlaraModel.past_experiences">
+        <MappingFragment StoreEntitySet="past_experiences">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_promoted" ColumnName="is_promoted" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="banner" ColumnName="banner" />
+          <ScalarProperty Name="farmer_photo" ColumnName="farmer_photo" />
+          <ScalarProperty Name="farmer_name" ColumnName="farmer_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_categories">
+      <EntityTypeMapping TypeName="mlaraModel.product_categories">
+        <MappingFragment StoreEntitySet="product_categories">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_subscribers">
+      <EntityTypeMapping TypeName="mlaraModel.product_subscribers">
+        <MappingFragment StoreEntitySet="product_subscribers">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="on_increase" ColumnName="on_increase" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="market_id" ColumnName="market_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_type">
+      <EntityTypeMapping TypeName="mlaraModel.product_type">
+        <MappingFragment StoreEntitySet="product_type">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="mlaraModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="unit_value" ColumnName="unit_value" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="product_origin" ColumnName="product_origin" />
+          <ScalarProperty Name="product_type_id" ColumnName="product_type_id" />
+          <ScalarProperty Name="product_image" ColumnName="product_image" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qa_answers">
+      <EntityTypeMapping TypeName="mlaraModel.qa_answers">
+        <MappingFragment StoreEntitySet="qa_answers">
+          <ScalarProperty Name="vote_count" ColumnName="vote_count" />
+          <ScalarProperty Name="verified_at" ColumnName="verified_at" />
+          <ScalarProperty Name="approved_at" ColumnName="approved_at" />
+          <ScalarProperty Name="verified_by" ColumnName="verified_by" />
+          <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_verified" ColumnName="is_verified" />
+          <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qa_attachments">
+      <EntityTypeMapping TypeName="mlaraModel.qa_attachments">
+        <MappingFragment StoreEntitySet="qa_attachments">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="media_id" ColumnName="media_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qa_category">
+      <EntityTypeMapping TypeName="mlaraModel.qa_category">
+        <MappingFragment StoreEntitySet="qa_category">
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qa_questions">
+      <EntityTypeMapping TypeName="mlaraModel.qa_questions">
+        <MappingFragment StoreEntitySet="qa_questions">
+          <ScalarProperty Name="vote_count" ColumnName="vote_count" />
+          <ScalarProperty Name="verified_at" ColumnName="verified_at" />
+          <ScalarProperty Name="approved_at" ColumnName="approved_at" />
+          <ScalarProperty Name="verified_by" ColumnName="verified_by" />
+          <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_verified" ColumnName="is_verified" />
+          <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="qa_category_id" ColumnName="qa_category_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qa_votes">
+      <EntityTypeMapping TypeName="mlaraModel.qa_votes">
+        <MappingFragment StoreEntitySet="qa_votes">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_up_vote" ColumnName="is_up_vote" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regions">
+      <EntityTypeMapping TypeName="mlaraModel.region">
+        <MappingFragment StoreEntitySet="regions">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="mlaraModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name_ar" ColumnName="name_ar" />
+          <ScalarProperty Name="name_en" ColumnName="name_en" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles_permission">
+      <EntityTypeMapping TypeName="mlaraModel.roles_permission">
+        <MappingFragment StoreEntitySet="roles_permission">
+          <ScalarProperty Name="can_delete" ColumnName="can_delete" />
+          <ScalarProperty Name="can_update" ColumnName="can_update" />
+          <ScalarProperty Name="can_insert" ColumnName="can_insert" />
+          <ScalarProperty Name="can_view" ColumnName="can_view" />
+          <ScalarProperty Name="page_id" ColumnName="page_id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skill_user">
+      <EntityTypeMapping TypeName="mlaraModel.skill_user">
+        <MappingFragment StoreEntitySet="skill_user">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+          <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skills">
+      <EntityTypeMapping TypeName="mlaraModel.skill">
+        <MappingFragment StoreEntitySet="skills">
+          <ScalarProperty Name="for_farmer" ColumnName="for_farmer" />
+          <ScalarProperty Name="menu_sort" ColumnName="menu_sort" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="banner" ColumnName="banner" />
+          <ScalarProperty Name="text_color" ColumnName="text_color" />
+          <ScalarProperty Name="bg_color" ColumnName="bg_color" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="parent_skill" ColumnName="parent_skill" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subscribers">
+      <EntityTypeMapping TypeName="mlaraModel.subscriber">
+        <MappingFragment StoreEntitySet="subscribers">
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="units">
+      <EntityTypeMapping TypeName="mlaraModel.unit">
+        <MappingFragment StoreEntitySet="units">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_access">
+      <EntityTypeMapping TypeName="mlaraModel.user_access">
+        <MappingFragment StoreEntitySet="user_access">
+          <ScalarProperty Name="marketid" ColumnName="marketid" />
+          <ScalarProperty Name="labid" ColumnName="labid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="weather_notification">
+      <EntityTypeMapping TypeName="mlaraModel.weather_notification">
+        <MappingFragment StoreEntitySet="weather_notification">
+          <ScalarProperty Name="season" ColumnName="season" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="link_title" ColumnName="link_title" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="title_en" ColumnName="title_en" />
+          <ScalarProperty Name="title_ar" ColumnName="title_ar" />
+          <ScalarProperty Name="notification_class_id" ColumnName="notification_class_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeatherDatas">
+      <EntityTypeMapping TypeName="mlaraModel.WeatherData">
+        <MappingFragment StoreEntitySet="WeatherData">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="city_identifier" ColumnName="city_identifier" />
+          <ScalarProperty Name="weather" ColumnName="weather" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="mlaraModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="articles_galleries">
+      <EntityTypeMapping TypeName="mlaraModel.articles_galleries">
+        <MappingFragment StoreEntitySet="articles_galleries">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="mlaraModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="last_login_date" ColumnName="last_login_date" />
+          <ScalarProperty Name="is_market_notification_enabled" ColumnName="is_market_notification_enabled" />
+          <ScalarProperty Name="is_weather_notification_enabled" ColumnName="is_weather_notification_enabled" />
+          <ScalarProperty Name="can_post" ColumnName="can_post" />
+          <ScalarProperty Name="is_group_admin" ColumnName="is_group_admin" />
+          <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+          <ScalarProperty Name="city_code" ColumnName="city_code" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_profile_completed" ColumnName="is_profile_completed" />
+          <ScalarProperty Name="is_online" ColumnName="is_online" />
+          <ScalarProperty Name="app_ver" ColumnName="app_ver" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="chatId" ColumnName="chatId" />
+          <ScalarProperty Name="profile" ColumnName="profile" />
+          <ScalarProperty Name="linked_in" ColumnName="linked_in" />
+          <ScalarProperty Name="municipality" ColumnName="municipality" />
+          <ScalarProperty Name="governorate" ColumnName="governorate" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="firebase_token" ColumnName="firebase_token" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="app_type" ColumnName="app_type" />
+          <ScalarProperty Name="device_token" ColumnName="device_token" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="phone_verified_at" ColumnName="phone_verified_at" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccessTypeIdentifiers">
+      <EntityTypeMapping TypeName="mlaraModel.UserAccessTypeIdentifier">
+        <MappingFragment StoreEntitySet="UserAccessTypeIdentifiers">
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="type_value" ColumnName="type_value" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationLogs">
+      <EntityTypeMapping TypeName="mlaraModel.NotificationLog">
+        <MappingFragment StoreEntitySet="NotificationLogs">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_processed" ColumnName="is_processed" />
+          <ScalarProperty Name="log_message" ColumnName="log_message" />
+          <ScalarProperty Name="log_type" ColumnName="log_type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lab_reports">
+      <EntityTypeMapping TypeName="mlaraModel.lab_reports">
+        <MappingFragment StoreEntitySet="lab_reports">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="extra3" ColumnName="extra3" />
+          <ScalarProperty Name="extra2" ColumnName="extra2" />
+          <ScalarProperty Name="extra1" ColumnName="extra1" />
+          <ScalarProperty Name="reporttype" ColumnName="reporttype" />
+          <ScalarProperty Name="water_notes" ColumnName="water_notes" />
+          <ScalarProperty Name="water_recommendation" ColumnName="water_recommendation" />
+          <ScalarProperty Name="water_salts" ColumnName="water_salts" />
+          <ScalarProperty Name="water_chloride" ColumnName="water_chloride" />
+          <ScalarProperty Name="water_carbonate" ColumnName="water_carbonate" />
+          <ScalarProperty Name="water_electric_conductivity" ColumnName="water_electric_conductivity" />
+          <ScalarProperty Name="water_ph" ColumnName="water_ph" />
+          <ScalarProperty Name="soil_recommendations" ColumnName="soil_recommendations" />
+          <ScalarProperty Name="soil_notes" ColumnName="soil_notes" />
+          <ScalarProperty Name="soil_texture_type" ColumnName="soil_texture_type" />
+          <ScalarProperty Name="soil_clay" ColumnName="soil_clay" />
+          <ScalarProperty Name="soil_salt" ColumnName="soil_salt" />
+          <ScalarProperty Name="soil_sand" ColumnName="soil_sand" />
+          <ScalarProperty Name="soil_phosphorus_ppm" ColumnName="soil_phosphorus_ppm" />
+          <ScalarProperty Name="soil_potasium_ppm" ColumnName="soil_potasium_ppm" />
+          <ScalarProperty Name="soil_calcium_carbonate" ColumnName="soil_calcium_carbonate" />
+          <ScalarProperty Name="soil_ph" ColumnName="soil_ph" />
+          <ScalarProperty Name="soil_electric_conductivity" ColumnName="soil_electric_conductivity" />
+          <ScalarProperty Name="sample_no" ColumnName="sample_no" />
+          <ScalarProperty Name="reported_by" ColumnName="reported_by" />
+          <ScalarProperty Name="collected_by" ColumnName="collected_by" />
+          <ScalarProperty Name="reported_date" ColumnName="reported_date" />
+          <ScalarProperty Name="collected_date" ColumnName="collected_date" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="appointment_id" ColumnName="appointment_id" />
+          <ScalarProperty Name="lab_id" ColumnName="lab_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bug_tracker">
+      <EntityTypeMapping TypeName="mlaraModel.bug_tracker">
+        <MappingFragment StoreEntitySet="bug_tracker">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="page" ColumnName="page" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faqs">
+      <EntityTypeMapping TypeName="mlaraModel.faq">
+        <MappingFragment StoreEntitySet="faqs">
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chatmessages">
+      <EntityTypeMapping TypeName="mlaraModel.chatmessage">
+        <MappingFragment StoreEntitySet="chatmessages">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="message_to" ColumnName="message_to" />
+          <ScalarProperty Name="message_from" ColumnName="message_from" />
+          <ScalarProperty Name="chat_ids" ColumnName="chat_ids" />
+          <ScalarProperty Name="message_type" ColumnName="message_type" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chats">
+      <EntityTypeMapping TypeName="mlaraModel.chat">
+        <MappingFragment StoreEntitySet="chats">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="message_type" ColumnName="message_type" />
+          <ScalarProperty Name="last_message" ColumnName="last_message" />
+          <ScalarProperty Name="chat_ids" ColumnName="chat_ids" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="articles">
+      <EntityTypeMapping TypeName="mlaraModel.article">
+        <MappingFragment StoreEntitySet="articles">
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="show_cats" ColumnName="show_cats" />
+          <ScalarProperty Name="show_bg" ColumnName="show_bg" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="short_description" ColumnName="short_description" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_messages">
+      <EntityTypeMapping TypeName="mlaraModel.group_messages">
+        <MappingFragment StoreEntitySet="group_messages">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="message_from" ColumnName="message_from" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="message_type" ColumnName="message_type" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoCategories">
+      <EntityTypeMapping TypeName="mlaraModel.VideoCategory">
+        <MappingFragment StoreEntitySet="VideoCategories">
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoComments">
+      <EntityTypeMapping TypeName="mlaraModel.VideoComment">
+        <MappingFragment StoreEntitySet="VideoComments">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CommentReplyBy" ColumnName="CommentReplyBy" />
+          <ScalarProperty Name="CommentReplyAt" ColumnName="CommentReplyAt" />
+          <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoLikes">
+      <EntityTypeMapping TypeName="mlaraModel.VideoLike">
+        <MappingFragment StoreEntitySet="VideoLikes">
+          <ScalarProperty Name="LikeStatus" ColumnName="LikeStatus" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="mlaraModel.Video">
+        <MappingFragment StoreEntitySet="Videos">
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="ApprovedAt" ColumnName="ApprovedAt" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="RejectedAt" ColumnName="RejectedAt" />
+          <ScalarProperty Name="RejectedBy" ColumnName="RejectedBy" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="VideoTagId" ColumnName="VideoTagId" />
+          <ScalarProperty Name="VideoLikeId" ColumnName="VideoLikeId" />
+          <ScalarProperty Name="VideoCommentId" ColumnName="VideoCommentId" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="VideoStatusId" ColumnName="VideoStatusId" />
+          <ScalarProperty Name="RejectReason" ColumnName="RejectReason" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="VideoCategoryId" ColumnName="VideoCategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoTags">
+      <EntityTypeMapping TypeName="mlaraModel.VideoTag">
+        <MappingFragment StoreEntitySet="VideoTags">
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="mlaraModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tempusers">
+      <EntityTypeMapping TypeName="mlaraModel.tempuser">
+        <MappingFragment StoreEntitySet="tempuser">
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Phone_Type" ColumnName="Phone_Type" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AutoGenerateAppointmentForOneMonth" FunctionName="mlaraModel.Store.AutoGenerateAppointmentForOneMonth" />
+    <EntitySetMapping Name="GetLatestProductPrices">
+      <EntityTypeMapping TypeName="mlaraModel.GetLatestProductPrice">
+        <MappingFragment StoreEntitySet="GetLatestProductPrices">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="price_date" ColumnName="price_date" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="unit_value" ColumnName="unit_value" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetTop5ConsultantRating" FunctionName="mlaraModel.Store.GetTop5ConsultantRating">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.GetTop5ConsultantRating_Result">
+          <ScalarProperty Name="consultant_id" ColumnName="consultant_id" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTop5ConsultantCalling" FunctionName="mlaraModel.Store.GetTop5ConsultantCalling">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.GetTop5ConsultantCalling_Result">
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Message_From_Count" ColumnName="Message_From_Count" />
+          <ScalarProperty Name="QA_Answers_Count" ColumnName="QA_Answers_Count" />
+          <ScalarProperty Name="TotalCallsCount" ColumnName="TotalCallsCount" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="mlaraModel.Store.GetAllUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.GetAllUsers_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="last_login_date" ColumnName="last_login_date" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fun_GetCategoryTreeIDs" FunctionName="mlaraModel.Store.fun_GetCategoryTreeIDs" />
+    <FunctionImportMapping FunctionImportName="GeneralReport" FunctionName="mlaraModel.Store.GeneralReport" />
+    <FunctionImportMapping FunctionImportName="fun_GetConsultantSkills" FunctionName="mlaraModel.Store.fun_GetConsultantSkills" />
+    <FunctionImportMapping FunctionImportName="GETLabREPORT" FunctionName="mlaraModel.Store.GETLabREPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.GETLabREPORT_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="no_of_Samples" ColumnName="no_of_Samples" />
+          <ScalarProperty Name="no_of_Samples_collected_sent" ColumnName="no_of_Samples_collected_sent" />
+          <ScalarProperty Name="no_of_reserved_appointment_sample_didnt_recieve" ColumnName="no_of_reserved_appointment_sample_didnt_recieve" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GETMARKETREPORT" FunctionName="mlaraModel.Store.GETMARKETREPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.GETMARKETREPORT_Result">
+          <ScalarProperty Name="number_of_updated_products" ColumnName="number_of_updated_products" />
+          <ScalarProperty Name="Market" ColumnName="Market" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fun_getUserOnlineOfflineHours" FunctionName="mlaraModel.Store.fun_getUserOnlineOfflineHours">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.fun_getUserOnlineOfflineHours_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Is_Online" ColumnName="Is_Online" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Online_Offline_Hours" ColumnName="Online_Offline_Hours" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="GuidedGuideLogs">
+      <EntityTypeMapping TypeName="mlaraModel.GuidedGuideLog">
+        <MappingFragment StoreEntitySet="GuidedGuideLog">
+          <ScalarProperty Name="RecipientsCount" ColumnName="RecipientsCount" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="regonId" ColumnName="regonId" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="cities" ColumnName="cities" />
+          <ScalarProperty Name="guideAlert" ColumnName="guideAlert" />
+          <ScalarProperty Name="consultantId" ColumnName="consultantId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="fun_GetAllMyLabAppointment" FunctionName="mlaraModel.Store.fun_GetAllMyLabAppointment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.fun_GetAllMyLabAppointment_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="appointment_date" ColumnName="appointment_date" />
+          <ScalarProperty Name="appointment_time" ColumnName="appointment_time" />
+          <ScalarProperty Name="is_booked" ColumnName="is_booked" />
+          <ScalarProperty Name="is_canceled" ColumnName="is_canceled" />
+          <ScalarProperty Name="is_completed" ColumnName="is_completed" />
+          <ScalarProperty Name="lab_name" ColumnName="lab_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_totalOnlineHours" FunctionName="mlaraModel.Store.get_totalOnlineHours" />
+    <EntitySetMapping Name="UserStatusLogs">
+      <EntityTypeMapping TypeName="mlaraModel.UserStatusLog">
+        <MappingFragment StoreEntitySet="UserStatusLogs">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Is_Online" ColumnName="Is_Online" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetChatListByID" FunctionName="mlaraModel.Store.GetChatListByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.GetChatListByID_Result">
+          <ScalarProperty Name="message_to" ColumnName="message_to" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetChatDetailsByUserID" FunctionName="mlaraModel.Store.GetChatDetailsByUserID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.GetChatDetailsByUserID_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="message_type" ColumnName="message_type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="fullname_from" ColumnName="fullname_from" />
+          <ScalarProperty Name="fullname_to" ColumnName="fullname_to" />
+          <ScalarProperty Name="chat_ids" ColumnName="chat_ids" />
+          <ScalarProperty Name="message_from" ColumnName="message_from" />
+          <ScalarProperty Name="message_to" ColumnName="message_to" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fun_GetLatestProductPrices" FunctionName="mlaraModel.Store.fun_GetLatestProductPrices">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.fun_GetLatestProductPrices_Result">
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="unit_value" ColumnName="unit_value" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="price_date" ColumnName="price_date" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="FarmVisitMessages">
+      <EntityTypeMapping TypeName="mlaraModel.FarmVisitMessage">
+        <MappingFragment StoreEntitySet="FarmVisitMessages">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="FarmOrderId" ColumnName="FarmOrderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FarmVisitOrders">
+      <EntityTypeMapping TypeName="mlaraModel.FarmVisitOrder">
+        <MappingFragment StoreEntitySet="FarmVisitOrders">
+          <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="FarmerId" ColumnName="FarmerId" />
+          <ScalarProperty Name="VisitStausId" ColumnName="VisitStausId" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="PurposeOfVisit" ColumnName="PurposeOfVisit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FarmName" ColumnName="FarmName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FarmVisitReports">
+      <EntityTypeMapping TypeName="mlaraModel.FarmVisitReport">
+        <MappingFragment StoreEntitySet="FarmVisitReports">
+          <ScalarProperty Name="FarmVisitOrderId" ColumnName="FarmVisitOrderId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FarmVisitStatuses">
+      <EntityTypeMapping TypeName="mlaraModel.FarmVisitStatus">
+        <MappingFragment StoreEntitySet="FarmVisitStatuses">
+          <ScalarProperty Name="FarmVisitOrderId" ColumnName="FarmVisitOrderId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FarmVisitMedias">
+      <EntityTypeMapping TypeName="mlaraModel.FarmVisitMedia">
+        <MappingFragment StoreEntitySet="FarmVisitMedias">
+          <ScalarProperty Name="FarmVisitReportId" ColumnName="FarmVisitReportId" />
+          <ScalarProperty Name="FarmVisitOrderId" ColumnName="FarmVisitOrderId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileCategory" ColumnName="FileCategory" />
+          <ScalarProperty Name="Extention" ColumnName="Extention" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsultantsActiveHoursInDays">
+      <EntityTypeMapping TypeName="mlaraModel.ConsultantsActiveHoursInDay">
+        <MappingFragment StoreEntitySet="ConsultantsActiveHoursInDay">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsultantsDailyActiveHours">
+      <EntityTypeMapping TypeName="mlaraModel.ConsultantsDailyActiveHour">
+        <MappingFragment StoreEntitySet="ConsultantsDailyActiveHours">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsultantsStatusLogs">
+      <EntityTypeMapping TypeName="mlaraModel.ConsultantsStatusLog">
+        <MappingFragment StoreEntitySet="ConsultantsStatusLog">
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="UsrId" ColumnName="UsrId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FarmVisitServices">
+      <EntityTypeMapping TypeName="mlaraModel.FarmVisitService">
+        <MappingFragment StoreEntitySet="FarmVisitServices">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FarmerWorkerStatus">
+      <EntityTypeMapping TypeName="mlaraModel.FarmerWorkerStatu">
+        <MappingFragment StoreEntitySet="FarmerWorkerStatus">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobNotifications">
+      <EntityTypeMapping TypeName="mlaraModel.JobNotification">
+        <MappingFragment StoreEntitySet="JobNotifications">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="mlaraModel.Job">
+        <MappingFragment StoreEntitySet="Jobs">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nationalties">
+      <EntityTypeMapping TypeName="mlaraModel.Nationalty">
+        <MappingFragment StoreEntitySet="Nationalties">
+          <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkerExperiences">
+      <EntityTypeMapping TypeName="mlaraModel.WorkerExperience">
+        <MappingFragment StoreEntitySet="WorkerExperiences">
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkerJobs">
+      <EntityTypeMapping TypeName="mlaraModel.WorkerJob">
+        <MappingFragment StoreEntitySet="WorkerJobs">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkerNotifications">
+      <EntityTypeMapping TypeName="mlaraModel.WorkerNotification">
+        <MappingFragment StoreEntitySet="WorkerNotifications">
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workers">
+      <EntityTypeMapping TypeName="mlaraModel.Worker">
+        <MappingFragment StoreEntitySet="Workers">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ExpectedSalary" ColumnName="ExpectedSalary" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NationaltyId" ColumnName="NationaltyId" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CteatedBy" ColumnName="CteatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Isbusy" ColumnName="Isbusy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="fun_GetLatestProductPricesByUser" FunctionName="mlaraModel.Store.fun_GetLatestProductPricesByUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="mlaraModel.fun_GetLatestProductPricesByUser_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="market_id" ColumnName="market_id" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="unit_value" ColumnName="unit_value" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="price_date" ColumnName="price_date" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="marketname" ColumnName="marketname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ClinicAppointmentHistories">
+      <EntityTypeMapping TypeName="mlaraModel.ClinicAppointmentHistory">
+        <MappingFragment StoreEntitySet="ClinicAppointmentHistories">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
+          <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+          <ScalarProperty Name="BookingResone" ColumnName="BookingResone" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CallDuration" ColumnName="CallDuration" />
+          <ScalarProperty Name="AppointmentTime" ColumnName="AppointmentTime" />
+          <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+          <ScalarProperty Name="ClinicId" ColumnName="ClinicId" />
+          <ScalarProperty Name="CustmerId" ColumnName="CustmerId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClinicAppointments">
+      <EntityTypeMapping TypeName="mlaraModel.ClinicAppointment">
+        <MappingFragment StoreEntitySet="ClinicAppointments">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
+          <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+          <ScalarProperty Name="BookingResone" ColumnName="BookingResone" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CallDuration" ColumnName="CallDuration" />
+          <ScalarProperty Name="AppointmentTime" ColumnName="AppointmentTime" />
+          <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+          <ScalarProperty Name="ClinicId" ColumnName="ClinicId" />
+          <ScalarProperty Name="CustmerId" ColumnName="CustmerId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClinicDoctors">
+      <EntityTypeMapping TypeName="mlaraModel.ClinicDoctor">
+        <MappingFragment StoreEntitySet="ClinicDoctors">
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="ClinicId" ColumnName="ClinicId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clinics">
+      <EntityTypeMapping TypeName="mlaraModel.Clinic">
+        <MappingFragment StoreEntitySet="Clinics">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="mlaraModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="WorkingHours" ColumnName="WorkingHours" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="WorkingDays" ColumnName="WorkingDays" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorRatings">
+      <EntityTypeMapping TypeName="mlaraModel.DoctorRating">
+        <MappingFragment StoreEntitySet="DoctorRatings">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ClinicAppointmentProc" FunctionName="mlaraModel.Store.ClinicAppointmentProc" />
+    <EntitySetMapping Name="ConsultationAvailablities">
+      <EntityTypeMapping TypeName="mlaraModel.ConsultationAvailablity">
+        <MappingFragment StoreEntitySet="ConsultationAvailablity">
+          <ScalarProperty Name="workingDays" ColumnName="workingDays" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="workingHours" ColumnName="workingHours" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsultationAppointments">
+      <EntityTypeMapping TypeName="mlaraModel.ConsultationAppointment">
+        <MappingFragment StoreEntitySet="ConsultationAppointments">
+          <ScalarProperty Name="bookingReason" ColumnName="bookingReason" />
+          <ScalarProperty Name="cancelReason" ColumnName="cancelReason" />
+          <ScalarProperty Name="callStartAt" ColumnName="callStartAt" />
+          <ScalarProperty Name="callDuration" ColumnName="callDuration" />
+          <ScalarProperty Name="callStartBy" ColumnName="callStartBy" />
+          <ScalarProperty Name="canceledBy" ColumnName="canceledBy" />
+          <ScalarProperty Name="isCanceled" ColumnName="isCanceled" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="appointmentTime" ColumnName="appointmentTime" />
+          <ScalarProperty Name="appointmentDate" ColumnName="appointmentDate" />
+          <ScalarProperty Name="skillId" ColumnName="skillId" />
+          <ScalarProperty Name="consultantId" ColumnName="consultantId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReefComponents">
+      <EntityTypeMapping TypeName="mlaraModel.ReefComponent">
+        <MappingFragment StoreEntitySet="ReefComponent">
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReefComponentSuggestions">
+      <EntityTypeMapping TypeName="mlaraModel.ReefComponentSuggestion">
+        <MappingFragment StoreEntitySet="ReefComponentSuggestions">
+          <ScalarProperty Name="ReefComponentId" ColumnName="ReefComponentId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

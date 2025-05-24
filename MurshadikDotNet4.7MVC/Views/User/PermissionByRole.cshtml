@@ -1,0 +1,212 @@
+﻿@model IEnumerable<MurshadikCP.Models.DB.Page>
+
+@{
+    ViewBag.Title = "PermissionByRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="hidden" id="roleid" value="@ViewBag.roleid" />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                اسم الصفحة
+                            </th>
+                            <th>
+                                <input type="checkbox" id="checkAllView" class="checkbox" />
+                                view
+                            </th>
+                            <th>
+                                <input type="checkbox" id="checkAllInsert" class="checkbox" />
+                                insert
+                            </th>
+                            <th>
+                                <input type="checkbox" id="checkAllEdit" class="checkbox" />
+                                edit
+                            </th>
+                            <th>
+                                <input type="checkbox" id="checkAllDelete" class="checkbox" />
+                                delete
+                            </th>
+                        </tr>
+                        @*@using (Html.BeginForm("RolePermission", "User", FormMethod.Post))
+                        {*@
+                            @*//<input type="hidden" name="roleid" value="1" />
+                            //@Html.AntiForgeryToken()*@
+
+                            @foreach (var item in Model)
+                            {
+                                <tbody>
+
+                                    <tr id="@item.id">
+                                        <td class="align-middle">
+                                            <label>@item.id - @item.PageName_Ar</label>
+                                        </td>
+                                        <td class="align-middle">
+                                            <input type="checkbox" name="page[@item.id]['view']" data-id="@item.id" class="checkbox View" />
+                                        </td>
+                                        <td class="align-middle">
+                                            <input type="checkbox" name="page" data-id="@item.id" class="checkbox Insert" />
+                                        </td>
+                                        <td class="align-middle">
+                                            <input type="checkbox" name="page" data-id="@item.id" class="checkbox Edit" />
+                                        </td>
+                                        <td class="align-middle">
+                                            <input type="checkbox" name="page" data-id="@item.id" class="checkbox Delete" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        @*}*@
+                        </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="d-flex justify-content-between">
+            <div>
+                <button id="btnSubmit" value="@Resources.Resources.Save" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @*<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+        <script src="~/assets/js/pages/form-validation.init.js"></script>*@
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $("#checkAllView").click(function () {
+            $('.View').not(this).prop('checked', this.checked);
+        });
+
+        $("#checkAllInsert").click(function () {
+            $('.Insert').not(this).prop('checked', this.checked);
+        });
+
+        $("#checkAllEdit").click(function () {
+            $('.Edit').not(this).prop('checked', this.checked);
+        });
+
+        $("#checkAllDelete").click(function () {
+            $('.Delete').not(this).prop('checked', this.checked);
+        });
+
+        $("#btnSubmit").click(function () {
+            $("form").submit();
+        });
+
+        $("#btnSubmit").click(function () {
+            debugger
+            
+            var permissionList = []; 
+            //$('table > tbody  > tr').each(function (index, tr) {
+            //    console.log(index);
+            //    console.log(tr);
+            //    if (index > 0) {
+            //        var td_value = $(this).find(".checkbox").html();
+            //        var value = cells[0].innerHTML;
+            //    }
+            //});
+
+
+
+            $('table [type="checkbox"]').each(function (i, chk) {
+                //var count = i++;
+                //var row_id = $(this).attr("data-id");
+                //var final_name; 
+                if (i > 3) {
+                    if (chk.checked) {
+                        permissionList.push(chk.name + ',' + chk.closest('tr').children[0].innerText);
+                        
+                    }
+                }
+                
+            });
+            axios.post('/User/RolePermission', { 'roleid': $("#roleid").val(), 'permissionlist': permissionList })
+                .then(function (r) {
+                    if (r.data == "success") {
+                        Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+                    } else {
+                        swal.fire(r.data, "Something wrong!", "error")
+                    }
+                })
+                .catch(function (error) {
+                    swal.fire("Error", error, "error")
+                })
+            alert('successfully');
+
+        });
+
+        //$(".editCity").click(function (e) {
+        //    debugger
+        //    var row = $(this).closest('tr');
+        //    var ddlText = row.find("td:eq(0)").children().val()
+        //    $("#region_id").val(ddlText);
+        //    //$("#region_id option:selected").text(ddlText);
+        //    $("#name_en").val(row.find("td:eq(1)").text().trim());
+        //    $("#name_ar").val(row.find("td:eq(2)").text().trim());
+        //    var id = $(this).siblings('input#ids').val();
+        //    $("#city_id").val(id);
+        //});
+
+
+        //$(".sa-warning").click(function (e) {
+        //    var row = $(this).closest('tr');
+        //    var id = $(this).siblings('input#ids').val();
+        //    Swal.fire({
+        //        title: 'هل أنت واثق ؟',
+        //        text: "لن تتمكن من التراجع عن هذا!",
+        //        type: "warning",
+        //        confirmButtonText: 'نعم',
+        //        cancelButtonText: 'لا',
+        //        confirmButtonColor: "#34c38f",
+        //        cancelButtonColor: "#f46a6a",
+        //        showCancelButton: true,
+        //        showCloseButton: true
+        //    }).then(function (t) {
+        //        if (t.value) {
+        //            axios.post('/cities/Delete', { 'id': id })
+        //                .then(function (r) {
+        //                    if (r.data == "Success") {
+        //                        Swal.fire("تم الحذف!", "تم حذف ملفك.", "success")
+        //                        row.remove();
+        //                    } else {
+        //                        swal.fire(r.data, "Something wrong!", "error")
+        //                    }
+        //                })
+        //                .catch(function (error) {
+        //                    swal.fire("Error", error, "error")
+        //                });
+        //        }
+        //    });
+        //});
+    });
+
+
+
+
+
+</script>

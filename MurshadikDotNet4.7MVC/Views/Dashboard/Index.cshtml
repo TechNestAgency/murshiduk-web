@@ -1,0 +1,547 @@
+﻿
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = Resources.Resources.Admin_Dashboard;//"لوحة القيادة";
+    ViewBag.pTitle = "لوحة القيادة";
+    ViewBag.pageTitle = (ViewBag.ModeName == Contants.LAYOUT_VERTICAL) ? "Murshadik" : "Layouts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        .selectbox {
+            background: #fff;
+            color: #1d3b4a;
+            padding: 8px;
+            line-height: 18px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            border-width: 0 1px 4px;
+        }
+
+        .rating-symbol-background, .rating-symbol-foreground {
+            font-size: 16px;
+        }
+    </style>
+    <!-- Bootstrap Rating css -->
+    <link href="~/assets/libs/bootstrap-rating/bootstrap-rating.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+@Html.AntiForgeryToken()
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Dashboard", FormMethod.Get))
+                {
+                    <div class="d-flex justify-content-between py-lg-3 py-2">
+                        <input type="hidden" id="start_date" name="start_date" value="@ViewBag.Start_Date" />
+                        <input type="hidden" id="end_date" name="end_date" value="@ViewBag.End_date" />
+                        <input type="hidden" id="Region_id" name="Region_id" value="@ViewBag.Region_id" />
+                        <div class="px-md-2 px-1 d-inline-flex">
+                            <div id="reportrange" class="selectbox">
+                                <i class="fa fa-calendar"></i>&nbsp;
+                                <span></span> <i class="fa fa-caret-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @if (ViewBag.NotShow != null && ViewBag.NotShow != true)
+    {
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-sm-3 col-xl-2">
+                    <a href="~/workerextension/Index">
+                        <div class="card bg-soft-warning">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                            <i class="bx bx-user"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="mb-0">@Resources.Resources.Consultants</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <h1>@ViewBag.TopConsultant</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3 col-xl-2">
+                    <a href="~/Farmers/Index">
+                        <div class="card bg-soft-dark">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                            <i class="bx bx-group"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="mb-0">@Resources.Resources.Farmers</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <h1>@ViewBag.TopFarmers</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3 col-xl-2">
+                    <a href="#">
+                        <div class="card bg-soft-pink">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                            <i class="bx bx-message-square-dots"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="mb-0">@Resources.Resources.Messages</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <h1>@ViewBag.msgs</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3 col-xl-2">
+                    <a href="~/QA/Index">
+                        <div class="card bg-soft-secondary">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark font-size-18">
+                                            <i class="bx bx-question-mark"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="mb-0">@Resources.Resources.Questions</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <h1>@ViewData["Question"]</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3 col-xl-2">
+                    <a href="~/QA/Index">
+                        <div class="card bg-soft-info">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                            <i class="bx bxs-like"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="mb-0">@Resources.Resources.Answers</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <h1>@ViewData["Answer"]</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3 col-xl-2">
+                    <a href="~/Article/Index">
+                        <div class="card bg-soft-danger">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs mr-3">
+                                        <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                            <i class="bx bx-news"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="mb-0">@Resources.Resources.News</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <h1>@ViewData["Article"]</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@* Calls Charts *@
+<div class="row">
+    <div class="col-lg-4 col-12">
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h5 class="card-title">@Resources.Resources.Daily_Consultation </h5>
+            </div>
+            <div class="card-body">
+                <canvas id="consultationsToday" width="712" height="356" class="chartjs-render-monitor" style="display: block; height: 178px; width: 356px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8 col-12">
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h5 class="card-title">@Resources.Resources.Today_Consultation</h5>
+            </div>
+            <div class="card-body ">
+                <canvas id="dailyConsultationsChart" height="410" width="1542" class="chartjs-render-monitor" style="display: block; height: 205px; width: 771px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Messages Charts *@
+<div class="row">
+    <div class="col-lg-4 col-12">
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h5 class="card-title">
+                    @Resources.Resources.Messages_Today
+                </h5>
+            </div>
+            <div class="card-body">
+                <canvas id="messagesToday" width="712" height="356" class="chartjs-render-monitor" style="display: block; height: 178px; width: 356px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8 col-12">
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h5 class="card-title">
+                    @Resources.Resources.Messages_Daily
+                </h5>
+            </div>
+            <div class="card-body ">
+                <canvas id="dailyMessagesChart" height="410" width="1542" class="chartjs-render-monitor" style="display: block; height: 205px; width: 771px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Users Charts *@
+<div class="row">
+    <div class="col-lg-4 col-12">
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h5 class="card-title">
+                    @Resources.Resources.IOS_Users
+                </h5>
+            </div>
+            <div class="card-body ">
+                <canvas id="IOS" width="712" height="356" class="chartjs-render-monitor" style="display: block; height: 205px; width: 771px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-12">
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h5 class="card-title">
+                    @Resources.Resources.Android_Users
+                </h5>
+            </div>
+            <div class="card-body ">
+                <canvas id="Android" width="712" height="356" class="chartjs-render-monitor" style="display: block; height: 205px; width: 771px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-12">
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h5 class="card-title">
+                    @Resources.Resources.All_Users
+                </h5>
+            </div>
+            <div class="card-body ">
+                <canvas id="UsersByMonth" width="712" height="356" class="chartjs-render-monitor" style="display: block; height: 205px; width: 771px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+@if (ViewBag.NotShow != null && ViewBag.NotShow != true)
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="align-self-center card-title">
+                            @Resources.Resources.Filter
+                        </h5>
+                        <div class="row">
+                            <label class="align-self-center col-sm-4">@Resources.Resources.Region : </label>
+                            @*@Html.DropDownListFor("Region", null, new { @class = "form-control h-auto"})*@
+                            @Html.DropDownList("Region",null, htmlAttributes: new { @class = "form-control h-auto col-sm-8" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body border-bottom">
+                    <h5 class="align-self-center card-title">
+                        @Resources.Resources.Most_active_consultants
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="media mb-4">
+                        @foreach (var item in ViewBag.topRatingByCalling)
+                        {
+                            <div class="me-3">
+                                <img class="media-object rounded-circle avatar-xs" alt="" src=@item.avatar>
+                            </div>
+                            <div class="media-body">
+                                <a href="workerextension/Profile?id=@item.id"><h5 class="font-size-13 mb-1 p-2">@item.fullname</h5></a>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-12">
+            <div class="card">
+                <div class="card-body border-bottom">
+                    <h5 class="align-self-center card-title">
+                        @Resources.Resources.TopRatingConsultant
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="media mb-4">
+                        @foreach (var item in ViewBag.Top5Consultant)
+                        {
+                            <div class="me-3">
+                                <img class="media-object rounded-circle avatar-xs" alt="" src=@item.avatar>
+                            </div>
+                            <div class="media-body">
+                                <a href="workerextension/Profile?id=@item.consultant_id">
+                                    <h5 class="font-size-13 mb-1 p-2 pl-3">@item.fullname</h5>
+                                </a>
+                                <div class="rating-star pl-3">
+                                    <input type="hidden" class="rating" data-filled="mdi mdi-star text-primary" data-empty="mdi mdi-star-outline text-muted" data-readonly="" value="@item.rating">
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@section scripts{
+    <script src="~/assets/js/app.js"></script>
+    <!-- Bootstrap rating js -->
+    <script src="~/assets/libs/bootstrap-rating/bootstrap-rating.min.js"></script>
+    <script src="~/assets/libs/chart.js/Chart.bundle.min.js"></script>
+    <script src="~/assets/js/pages/rating-init.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+    <script src="~/assets/js/pages/dashboard.js"></script>
+
+
+    <script>
+
+        var token = $("[name='__RequestVerificationToken']").val();
+
+        $(document).ready(function () {
+
+            $("#Region").val(@ViewBag.Region_id);
+
+            var is_first_load = true;
+
+            var start = $('#start_date').val() == "" ? moment().subtract(6, 'days') : moment($('#start_date').val());
+            var end = $('#end_date').val() == "" ? moment() : moment($('#end_date').val())
+
+            function cb(start, end) {
+                console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'), "changed")
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                if (!is_first_load) {
+                    $('#start_date').val(start.toISOString());
+                    $('#end_date').val(end.toISOString());
+                    $('form').submit();
+                } else {
+                    is_first_load = false;
+                }
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                    '@Resources.Resources.All': [moment("2020-11-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+            //console.log(start.toISOString());
+            //console.log(startDate.toISOString());
+            cb(start, end);
+
+            $("#Region").change(function () {
+                if ($("#Region").val() != "") {
+                    $("#Region_id").val($("#Region").val());
+                    $('form').submit();
+                }
+            });
+
+        });
+
+
+
+
+        var daysPastArray = [];
+        var monthsPastArray = [];
+
+        var currentDate = moment().startOf('day');
+        var startDate = moment().startOf('day').subtract(6, 'days');
+
+        while (startDate <= currentDate) {
+            daysPastArray.push(moment(startDate).format('D-MMM'))
+            monthsPastArray.push(moment(startDate).format('MMM'))
+            startDate = moment(startDate).add(1, 'days');
+        }
+
+        $(document).ready(function () {
+            murshadik.initDashboardPageCharts();
+            
+            murshadik.lineChart(
+                'consultationsToday',
+                '#6cb2eb',
+                @Html.Raw(Json.Encode(ViewBag.callsDataForChart.Keys)),
+                @Html.Raw(Json.Encode(ViewBag.callsDataForChart.Values)),
+                "Total استشارة",
+                false,
+                'end'
+            );
+          
+            murshadik.lineChart(
+                'IOS',
+                '#6cb2eb',
+                @Html.Raw(Json.Encode(ViewBag.Iphone.Keys)),
+                @Html.Raw(Json.Encode(ViewBag.Iphone.Values)),
+                "Total مستخدم جديد",
+                false,
+                'end'
+            );
+
+            murshadik.lineChart(
+                'Android',
+                '#6cb2eb',
+                @Html.Raw(Json.Encode(ViewBag.Android.Keys)),
+                @Html.Raw(Json.Encode(ViewBag.Android.Values)),
+                "Total مستخدم جديد",
+                false,
+                'end'
+            );
+
+            murshadik.lineChart(
+                'UsersByMonth',
+                '#6cb2eb',
+                @Html.Raw(Json.Encode(ViewBag.AllUsersData.Keys)),
+                @Html.Raw(Json.Encode(ViewBag.AllUsersData.Values)),
+                "Total استشارة",
+                false,
+                'end'
+            );
+
+            murshadik.barChart(
+                'dailyConsultationsChart',
+                @Html.Raw(Json.Encode(ViewBag.callsToday.Keys)),
+                @Html.Raw(Json.Encode(ViewBag.callsToday.Values)),
+                "Total استشارة",
+                false,
+                'end'
+            );
+
+            murshadik.lineChart(
+                'messagesToday',
+                '#6cb2eb',
+                @Html.Raw(Json.Encode(ViewBag.messagesDataForChart.Keys)),
+                @Html.Raw(Json.Encode(ViewBag.messagesDataForChart.Values)),
+                "مجموع الرسائل",
+                false,
+                'end'
+            );
+
+            murshadik.barChart(
+                'dailyMessagesChart',
+                @Html.Raw(Json.Encode(ViewBag.messagesToday.Keys)),
+                @Html.Raw(Json.Encode(ViewBag.messagesToday.Values)),
+                "مجموع الرسائل",
+                false,
+                'end'
+
+            );
+
+        });
+    </script>
+}
+
+<script src="https://code.iconify.design/2/2.0.0-rc.4/iconify.min.js"></script>

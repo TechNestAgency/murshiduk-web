@@ -1,0 +1,591 @@
+﻿@{
+    ViewBag.Title = Resources.Resources.Reports;
+    ViewBag.pTitle = Resources.Resources.Reports;
+    ViewBag.pageTitle = (ViewBag.ModeName == Contants.LAYOUT_VERTICAL) ? "Murshadik" : "Layouts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+
+@*@if (TempData != null)
+    {<h1 class="text-danger">@TempData["message"]</h1>}*@
+@using (Html.BeginForm("Index", "Report", FormMethod.Get, new { id = "frmGeneral" }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-title">
+                    <div class="pl-3 py-2">
+                        <h2>تقارير عامة</h2>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex py-lg-3 py-2">
+                        <div class="col-md-3">
+                            <label for="example-date-input">من</label>
+                            <div>
+                                <input class="form-control" type="date" name="Start_Date" value="@ViewBag.Start_Date" id="example-date-input" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="example-date-input">إلى</label>
+                            <div>
+                                <input class="form-control" type="date" name="End_date" value="@ViewBag.End_date" id="example-date-input" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="General" class="btn btn-primary ml-2">اصدار التقرير</button>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="row">
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-warning">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bx-user"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Farmers</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.farmersCount</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-dark">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bx-group"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Consultants</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.consultantCount</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-pink">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bx-message-square-dots"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Messages</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.message</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-secondary">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark font-size-18">
+                                                <i class="bx bx-question-mark"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">Calls</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.calls</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-info">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bxs-like"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Questions</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.questions</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-danger">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bx-news"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Answers</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.answers</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="row">
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-info">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark font-size-18">
+                                                <i class="bx bx-user"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Markets</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.MarketsCount</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-danger">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bx-group"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Products</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.ProductsCount</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-primary">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bx-message-square-dots"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Lab_Name</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.LabCount</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-success">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark font-size-18">
+                                                <i class="bx bx-question-mark"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Appointment_Booking_Count</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.bookedappointmentsCount</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-warning">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bxs-like"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.Reports</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.TotalReports</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3 col-xl-2">
+
+                            <div class="card bg-soft-pink">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-xs mr-3">
+                                            <span class="avatar-title rounded-circle bg-dark  font-size-18">
+                                                <i class="bx bx-news"></i>
+                                            </span>
+                                        </div>
+                                        <h5 class="mb-0">@Resources.Resources.News</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <h1>@ViewBag.NewsCount</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                <div class="pl-3 py-2">
+                    <h2>تقارير المرشدين</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="col-12">
+                    <div class="d-flex py-lg-3 py-2">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="example-date-input">من</label>
+                                <div>
+                                    <input class="form-control" type="date" name="Start_Date1" value="@ViewBag.Start_Date1" id="start_date1" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="example-date-input">إلى</label>
+                                <div>
+                                    <input class="form-control" type="date" name="End_date1" value="@ViewBag.End_date1" id="end_date1" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">@Resources.Resources.Region</label>
+                                @Html.ListBox("Region", null, htmlAttributes: new { @class = "form-control h-auto select", @id = "region_consultant" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="skill" class="form-label">@Resources.Resources.Skills</label>
+                                @Html.ListBox("skill", null, htmlAttributes: new { @class = "form-control h-auto select", @id = "skill" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex py-lg-3 py-2">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="Status" class="form-label">@Resources.Resources.Status</label>
+                                <select class="form-control h-auto" name="Status" id="Status_consultant">
+                                    <option value="0">@Resources.Resources.All</option>
+                                    <option value="1">@Resources.Resources.Active</option>
+                                    <option value="2">@Resources.Resources.Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="approved" class="form-label">@Resources.Resources.Approval_Status</label>
+                                <select class="form-control h-auto" name="approved" id="approved">
+                                    <option value="0">@Resources.Resources.All</option>
+                                    <option value="1">@Resources.Resources.Approved</option>
+                                    <option value="2">@Resources.Resources.Pending_Approval</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="apptype" class="form-label">App Type</label>
+                                <select class="form-control h-auto" name="apptype" id="apptype">
+                                    <option value="0">@Resources.Resources.All</option>
+                                    <option value="1">@Resources.Resources.IOS_Users</option>
+                                    <option value="2">@Resources.Resources.Android_Users</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button id="AllConsultant" class="btn btn-primary test ml-4" data-type="consultant">اصدار التقرير</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                <div class="pl-3 py-2">
+                    <h2>تقارير الأسواق</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="col-12">
+                    <div class="d-flex py-lg-3 py-2">
+                        <div class="col-md-3">
+                            <label for="example-date-input">من</label>
+                            <div>
+                                <input class="form-control" type="date" name="Start_Date2" value="@ViewBag.Start_Date2" id="start_date2" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="example-date-input">إلى</label>
+                            <div>
+                                <input class="form-control" type="date" name="End_date2" value="@ViewBag.End_date2" id="end_date2" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">@Resources.Resources.Region</label>
+                                @Html.ListBox("Region", null, htmlAttributes: new { @class = "form-control h-auto select", @id = "region" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="Status" class="form-label">@Resources.Resources.Status</label>
+                                <select class="form-control h-auto" name="Status" id="Status">
+                                    <option value="0">@Resources.Resources.All</option>
+                                    <option value="1">@Resources.Resources.Active</option>
+                                    <option value="2">@Resources.Resources.Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button id="Market" class="btn btn-primary test ml-4" data-type="market">اصدار التقرير</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                <div class="pl-3 py-2">
+                    <h2>تقارير مختبرات التحاليل</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="col-12">
+                    <div class="d-flex py-lg-3 py-2">
+                        <div class="col-md-3">
+                            <label for="example-date-input">من</label>
+                            <div>
+                                <input class="form-control" type="date" name="Start_Date3" value="@ViewBag.Start_Date3" id="start_date3" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="example-date-input">إلى</label>
+                            <div>
+                                <input class="form-control" type="date" name="End_date3" value="@ViewBag.End_date3" id="end_date3" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">@Resources.Resources.Region</label>
+                                @Html.ListBox("Region", null, htmlAttributes: new { @class = "form-control h-auto select", @id = "Region_lab" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button id="Lab" class="btn btn-primary test ml-4" data-type="lab">اصدار التقرير</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <!-- bs custom file input plugin -->
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+    <script>
+
+        $(".select").select2({
+            placeholder: "الكل",
+            multiple: true,
+
+
+        })
+
+        $(".test").click(function () {
+            debugger
+            var type = $(this).data('type');
+            var startDate = ""; var endDate = ""; var region = ""; var status = 0;
+            if (type == "market") {
+                startDate = $('#start_date2').val();
+                endDate = $('#end_date2').val();
+                region = $('#region').val();
+                //region = $('#region').val() == "" ? 0 : $('#region').val();
+                status = $('#Status').val() == "" ? 0 : $('#Status').val();
+            }
+            else if (type == "lab") {
+                startDate = $('#start_date3').val();
+                endDate = $('#end_date3').val();
+                region = $('#Region_lab').val();
+                //region = $('#Region_lab').val() == "" ? 0 : $('#Region_lab').val();
+            }
+            else if (type == "consultant") {
+                startDate = $('#start_date1').val(); endDate = $('#end_date1').val();
+                region = $('#region_consultant').val();
+                //region = $('#region_consultant').val() == "" ? 0 : $('#region_consultant').val();
+
+                status = $('#Status_consultant').val() == "" ? 0 : $('#Status_consultant').val();
+            }
+
+            var skill = $("#skill").val();
+            //var skill = skill = $("#skill").val() == "" ? 0 : $("#skill").val();
+
+            var approved = $("#approved").val();
+            var apptype = $("#apptype").val();
+
+            if (startDate != "" && endDate != "") {
+                if (endDate >= startDate) {
+                    $.ajax({
+                        url: '/Report/GenerateExcel',
+                        type: "POST",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({ modelData: "dttt", startDate: startDate, endDate: endDate, Region: region, Status: status, Type: type, Skill: skill, Approved: approved, AppType: apptype }),
+                        success: function (tempfileName) {
+                            if (tempfileName != null && tempfileName != "") {
+                                window.location = "/Report/download?tempfileName=" + tempfileName;
+                            } else {
+                                swal.fire("البيانات غير متوفرة", "لاتوجد بيانات متاحة بالتاريخ الذي تم اختياره", "error")
+                            }
+                        },
+                        error: function (data) {
+                            swal.fire("Error", "هنالك خطأ ما !", "error")
+                        }
+                    });
+                } else {
+                    swal.fire("Error", "From Date greater than To Date", "error")
+                }
+
+            } else {
+                swal.fire("Error", "Required Fields From Date & To Date", "error")
+            }
+        });
+    </script>
+}
+
+<script src="https://code.iconify.design/2/2.0.0-rc.4/iconify.min.js"></script>
+
+

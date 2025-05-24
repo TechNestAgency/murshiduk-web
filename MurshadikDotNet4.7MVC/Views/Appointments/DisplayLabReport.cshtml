@@ -1,0 +1,264 @@
+﻿@model MurshadikCP.Models.DB.lab_reports
+
+@{
+    ViewBag.Title = Resources.Resources.Lab_Report_Detail;
+    if (ViewBag.role == "Lab Manager")
+    {
+        Layout = "~/Views/Shared/Layouts/_layout_horizontal.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Update", "Appointments", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden" name="id" value="@Model.id" />
+                    <input type="hidden" name="appointment_id" value="@Model.appointment_id" />
+                    <h4 class="card-title">@Resources.Resources.Lab_Report_Detail</h4>
+                    <p name="sample_no">@Model.sample_no</p>
+
+                    @*<div class="form-group row">
+                        <label class="col-md-2 col-form-label">@Resources.Resources.Report_Type</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("reporttype", null, htmlAttributes: new { @class = "form-control h-auto" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">@Resources.Resources.Soil_Electric_Conductivity</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_electric_conductivity" name="soil_electric_conductivity" value="@Model.soil_electric_conductivity" type="number" pattern="^\d+(\.\d+)?$">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label"> @Resources.Resources.Soil_Ph </label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_ph" name="soil_ph" value="@Model.soil_ph" type="number" pattern="^\d+(\.\d+)?$">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">كربونات</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_calcium_carbonate" type="number" pattern="^\d+(\.\d+)?$" name="soil_calcium_carbonate" value="@Model.soil_calcium_carbonate">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">بوتاسيوم</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_potasium_ppm" type="number" pattern="^\d+(\.\d+)?$" name="soil_potasium_ppm" value="@Model.soil_potasium_ppm">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">فسفور</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_phosphorus_ppm" type="number" pattern="^\d+(\.\d+)?$" name="soil_phosphorus_ppm" value="@Model.soil_phosphorus_ppm">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">رمل</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_sand" type="number" pattern="^\d+(\.\d+)?$" name="soil_sand" value="@Model.soil_sand">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">سلت</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_salt" type="number" pattern="^\d+(\.\d+)?$" name="soil_salt" value="@Model.soil_salt">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">طين</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_clay" type="number" pattern="^\d+(\.\d+)?$" name="soil_clay" value="@Model.soil_clay">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">نوع القوام</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="soil_texture_type" type="text" name="soil_texture_type" value="@Model.soil_texture_type">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">ملاحظات</label>
+                        <div class="col-md-10">
+                            <textarea id="textarea_soil_notes" class="form-control" rows="4" name="soil_notes">@Model.soil_notes</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">توصيات</label>
+                        <div class="col-md-10">
+                            <textarea id="textarea_soil_recommendations" class="form-control" rows="4" name="soil_recommendations">@Model.soil_recommendations</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">مياه الأس الهيدروجيني</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="water_ph" name="water_ph" value="@Model.water_ph" type="number" pattern="^\d+(\.\d+)?$">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">توصيل الماء الكهربائي</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" pattern="^\d+(\.\d+)?$" id="water_electric_conductivity" name="water_electric_conductivity" value="@Model.water_electric_conductivity">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">كربونات الماء</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" pattern="^\d+(\.\d+)?$" id="water_carbonate" name="water_carbonate" value="@Model.water_carbonate">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">كلوريد الماء</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" pattern="^\d+(\.\d+)?$" id="water_chloride" name="water_chloride" value="@Model.water_chloride">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">أملاح الماء</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" pattern="^\d+(\.\d+)?$" id="water_salts" name="water_salts" value="@Model.water_salts">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">توصيات المياه</label>
+                        <div class="col-md-10">
+                            <textarea id="textarea_water_recommendation" class="form-control" rows="4" name="water_recommendation">@Model.water_recommendation</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">ملاحظات الماء</label>
+                        <div class="col-md-10">
+                            <textarea id="textarea_water_notes" class="form-control" rows="4" name="water_notes">@Model.water_notes</textarea>
+                        </div>
+                    </div>*@
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label"> رفع التقرير</label>
+                        <div class="col-md-10 custom-file">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="labreportpdf" id="customFile" accept="application/pdf" required>
+                                <label class="custom-file-label" id="pdflabel" for="customFile"> @(Model.extra1 == null ? "... أختر" : Model.extra1) </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="btnSave" type="submit" value="حفظ" class="btn btn-primary" />
+                            <a href="/Appointments/Index/@Model.lab_id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="العودة إلى الصفحة الرئيسية"><i class="bx bx-arrow-back"></i>خلف</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    @*<script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#reporttype').on('change', function () {
+                var reporttype = $("#reporttype").val();
+                if (reporttype == 1) {
+                    $("#soil_electric_conductivity").attr("required", "required");
+                    $("#soil_ph").attr("required", "required");
+                    $("#soil_calcium_carbonate").attr("required", "required");
+                    $("#soil_potasium_ppm").attr("required", "required");
+                    $("#soil_phosphorus_ppm").attr("required", "required");
+                    $("#soil_sand").attr("required", "required");
+                    $("#soil_salt").attr("required", "required");
+                    $("#soil_clay").attr("required", "required");
+                    $("#soil_texture_type").attr("required", "required");
+                    $("#textarea_soil_notes").attr("required", "required");
+                    $("#textarea_soil_recommendations").attr("required", "required");
+
+                    $("#water_ph").attr("required", "required");
+                    $("#water_electric_conductivity").attr("required", "required");
+                    $("#water_carbonate").attr("required", "required");
+                    $("#water_chloride").attr("required", "required");
+                    $("#water_salts").attr("required", "required");
+                    $("#textarea_water_recommendation").attr("required", "required");
+                    $("#textarea_water_notes").attr("required", "required");
+                }
+                if (reporttype == 2) {
+                    $("#soil_electric_conductivity").attr("required", "required");
+                    $("#soil_ph").attr("required", "required");
+                    $("#soil_calcium_carbonate").attr("required", "required");
+                    $("#soil_potasium_ppm").attr("required", "required");
+                    $("#soil_phosphorus_ppm").attr("required", "required");
+                    $("#soil_sand").attr("required", "required");
+                    $("#soil_salt").attr("required", "required");
+                    $("#soil_clay").attr("required", "required");
+                    $("#soil_texture_type").attr("required", "required");
+                    $("#textarea_soil_notes").attr("required", "required");
+                    $("#textarea_soil_recommendations").attr("required", "required");
+
+                    $("#water_ph").removeAttr("required");
+                    $("#water_electric_conductivity").removeAttr("required");
+                    $("#water_carbonate").removeAttr("required");
+                    $("#water_chloride").removeAttr("required");
+                    $("#water_salts").removeAttr("required");
+                    $("#textarea_water_recommendation").removeAttr("required");
+                    $("#textarea_water_notes").removeAttr("required");
+                }
+                if (reporttype == 3) {
+                    $("#soil_electric_conductivity").removeAttr("required");
+                    $("#soil_ph").removeAttr("required");
+                    $("#soil_calcium_carbonate").removeAttr("required");
+                    $("#soil_potasium_ppm").removeAttr("required");
+                    $("#soil_phosphorus_ppm").removeAttr("required");
+                    $("#soil_sand").removeAttr("required");
+                    $("#soil_salt").removeAttr("required");
+                    $("#soil_clay").removeAttr("required");
+                    $("#soil_texture_type").removeAttr("required");
+                    $("#textarea_soil_notes").removeAttr("required");
+                    $("#textarea_soil_recommendations").removeAttr("required");
+
+                    $("#water_ph").attr("required", "required");
+                    $("#water_electric_conductivity").attr("required", "required");
+                    $("#water_carbonate").attr("required", "required");
+                    $("#water_chloride").attr("required", "required");
+                    $("#water_salts").attr("required", "required");
+                    $("#textarea_water_recommendation").attr("required", "required");
+                    $("#textarea_water_notes").attr("required", "required");
+                }
+            });
+
+            
+        });
+
+    </script>*@
+}

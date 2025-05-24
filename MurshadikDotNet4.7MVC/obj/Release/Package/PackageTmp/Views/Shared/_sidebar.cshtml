@@ -1,0 +1,237 @@
+﻿<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+    <div data-simplebar class="h-100">
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                @if (ViewData["menu"] != null)
+                {
+                    var currentUser = ViewBag.currentUser as MurshadikCP.Models.UserInfo;
+
+                    foreach (MurshadikCP.Models.MenuModel pg in ViewData["menu"] as List<MurshadikCP.Models.MenuModel>)
+                    {
+                        
+                        
+                        if (currentUser.canView(pg.id) && pg.ShouldDisplay())
+                        {
+                            <li>
+                                @if (pg.has_childern)
+                                {
+                                    <a href="@Url.Action("Index", pg.route)" class="has-arrow">
+                                        <i class="@pg.icon"></i>
+                                        <span>@pg.display_name</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        @foreach (MurshadikCP.Models.MenuModel cp in pg.children as List<MurshadikCP.Models.MenuModel>)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action(cp.route, pg.route)">@cp.display_name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Index", pg.route)" class="waves-effect">
+                                        <i class="@pg.icon"></i>
+                                        <span>@pg.display_name</span>
+                                    </a>
+                                }
+                            </li>
+                        }
+
+                    }
+                }
+                else
+                {
+                    if (Session["Menu"] != null)
+                    {
+                        foreach (MurshadikCP.Models.DB.roles_permission item in Session["Menu"] as List<MurshadikCP.Models.DB.roles_permission>)
+                        {
+
+                            <li>
+                                @if (item.Page.Parent_page == null)
+                                {
+                                    if (item.Page.PageName_Ar == "المفكرة الزراعية")
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+                                    else if (item.Page.PageName_Ar == "تقويم أخبار الزراعة")
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+                                    else if (item.Page.PageName_Ar == "الإرشاد الزراعي")
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+                                    else if (item.Page.PageName_Ar == "المنتجات الزراعية")
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+                                    else if (item.Page.PageName_Ar == "المكتبة الرقمية")
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+                                    else if (item.Page.PageName_Ar == "أسئلة وأجوبة إرشادية")
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+                                    else if (item.Page.PageName_Ar == "التجارب الناجحة")
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Index", item.Page.PageName)" class="waves-effect">
+                                            <i class="@item.Page.Icon"></i>
+                                            <span>@item.Page.PageName_Ar</span>
+                                        </a>
+                                    }
+
+                                }
+                            </li>
+                        }
+                    }
+                }
+
+                @*<li>
+                        <a href="@Url.Action("Index","Article")" class=" waves-effect">
+                            <i class="mdi mdi-desktop-mac-dashboard"></i>
+                            <span>الرئيسية</span>
+                        </a>
+                    </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="bx bx-home-circle"></i>
+                                    <span>Dashboards</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="@Url.Action("Index","Dashboard")">الرئيسية</a></li>
+                                    <li><a href="#">البث المباشر</a></li>
+                                    <li><a href="#">تقارير</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-news"></i>
+                                    <span>الأخبار</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="@Url.Action("Index", "Article")">الأخبار</a></li>
+                                    <li><a href="@Url.Action("Index", "Article")">المفكرة الزراعية</a></li>
+                                    <li><a href="@Url.Action("Index", "Article")">تقويم أخبار الزراعة</a></li>
+                                    <li><a href="@Url.Action("Index", "Article")">الإرشاد الزراعي</a></li>
+                                    <li><a href="@Url.Action("Index", "Article")">المنتجات الزراعية</a></li>
+                                    <li><a href="@Url.Action("Index", "Article")">المكتبة الرقمية</a></li>
+                                    <li><a href="@Url.Action("Index", "Article")">أسئلة وأجوبة إرشادية</a></li>
+                                    <li><a href="@Url.Action("Index", "Article")">التجارب الناجحة</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("Index","Lab")" class=" waves-effect">
+                                    <i class="bx bx-test-tube"></i>
+                                    <span>مختبر</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="mdi mdi-shopping"></i>
+                                    <span>الأسواق</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="@Url.Action("Index","markets")">الأسواق</a></li>
+                                    <li><a href="@Url.Action("Index","product_categories")">فئة المنتج</a></li>
+                                    <li><a href="@Url.Action("Index","product_type")">نوع المنتج</a></li>
+                                    <li><a href="@Url.Action("Index","products")">المنتجات</a></li>
+                                    <li><a href="@Url.Action("Index","units")">وحدة</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("Index","WeatherNotification")" class=" waves-effect">
+                                    <i class="mdi mdi-weather-lightning-rainy"></i>
+                                    <span>حالة الطقس</span>
+                                </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="@Url.Action("Index","Medias")" class=" waves-effect">
+                                    <i class="bx bx-news"></i>
+                                    <span>ملف</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bxs-dashboard"></i>
+                                    <span>Lookups</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="@Url.Action("Index","Category")">الاقسام</a></li>
+                                    <li><a href="@Url.Action("Index","Region")">المناطق</a></li>
+                                    <li><a href="@Url.Action("Index","Skill")">التخصصات</a></li>
+                                    <li><a href="@Url.Action("Index","Keywords")">الدلالية</a></li>
+                                    <li><a href="@Url.Action("Index","cities")">مدينة</a></li>
+                                    <li><a href="@Url.Action("Index","attentions")">التنبيهات</a></li>
+                                    <li><a href="@Url.Action("Index","msgs")">الرسائل</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-user-circle"></i>
+                                    <span>مستخدمين</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="@Url.Action("Index","User")">مستخدمين</a></li>
+                                    <li><a href="@Url.Action("Index", "workerextension")">المزارعين</a></li>
+                                    <li><a href="@Url.Action("Index", "Farmers")">المرشدين الزراعيين</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-user-circle"></i>
+                                    <span>إعدادات</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="@Url.Action("Index","AppSetting")">إعدادات</a></li>
+                                    <li><a href="@Url.Action("Index", "App_Stats")">احصائيات التطبيق</a></li>
+                                </ul>
+                            </li>*@
+
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->

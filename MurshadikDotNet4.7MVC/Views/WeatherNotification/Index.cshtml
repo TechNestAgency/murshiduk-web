@@ -1,0 +1,116 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Models.DB.weather_notification>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+
+@{
+    ViewBag.Title = "حالة الطقس";
+    ViewBag.pTitle = "جميع حالة الطقس";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.Filter_Value }))
+        </div>
+        <div class="align-self-center">
+            @Html.ActionLink(Resources.Resources.Add, "Create", "WeatherNotification", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm("Index", "WeatherNotification", FormMethod.Get))
+            {
+                <div class="align-items-center form-group row">
+                    <div class="col-lg-4">
+                        @Html.TextBox("Search_Data", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                    </div>
+                    <input type="submit" value="بحث" class="btn btn-primary waves-effect waves-light" />
+                </div>
+            }
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            Class
+                        </th>
+                        <th>
+                            العنوان
+                        </th>
+                        <th>
+                            Title English
+                        </th>
+                        <th>
+                            رسالة الإرشادية
+                        </th>
+                        <th>
+                            رابط النشرة الإعلانية
+                        </th>
+                        <th>
+                            عنوان النشرة الإرشادية
+                        </th>
+                        <th>
+                            منطقة
+                        </th>
+                        <th>
+                            مدينة
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.notification_class.notification_class1)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.title_ar)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.title_en)
+                            </td>
+                            <td class="align-middle text-break">
+                                @Html.DisplayFor(modelItem => item.message)
+                            </td>
+                            <td class="align-middle text-break">
+                                @Html.DisplayFor(modelItem => item.link)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.link_title)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.region.name_ar)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.city)
+                            </td>
+                            <td>
+                                <a href="/WeatherNotification/Edit?id=@item.id" class="btn btn-lg btn-link" data-toggle="tooltip" data-placement="top" title="تعديل"><i class="mdi mdi-circle-edit-outline"></i></a>
+
+                                @*<input type="hidden" id="ids" value="@item.id" />
+                            <a class="btn btn-lg btn-link waves-effect waves-light sa-warning" data-toggle="tooltip" data-placement="top" title="حذف"><i class="mdi mdi-trash-can"></i></a>*@
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/assets/js/app.js"></script>
+}
+
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>

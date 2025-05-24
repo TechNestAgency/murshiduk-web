@@ -1,0 +1,240 @@
+﻿@model MurshadikCP.Models.DB.weather_notification
+
+@section styles{
+    <!-- Sweet Alert-->
+    <link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+
+@{
+    ViewBag.Title = "إخطار الطقس";
+    ViewBag.pTitle = "إضافة إخطار الطقس";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Create", "WeatherNotification", FormMethod.Post, new { id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4 class="card-title">إضافة إخطار الطقس</h4>
+                    <input type="hidden" name="allcity" id="allcity" />
+                    <input type="hidden" name="allseason" id="allseason" />
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.notification_class_id, "فئة الإخطار", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("notification_class_id", null, htmlAttributes: new { @class = "form-control h-auto", required = "required" })
+                            @Html.ValidationMessageFor(model => model.notification_class_id, "", new { @class = "invalid-feedback" })
+                        </div>
+                        <div class="col-md-2">
+                            <a href="#" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"> إضافة فئة الإخطار <i class="mdi mdi-plus-box ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.title_ar, "العنوان ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.title_ar, new { htmlAttributes = new { @class = "form-control", required = "required", maxlength = "50" } })
+                            @Html.ValidationMessageFor(model => model.title_ar, "العنوان مطلوب", new { @class = "invalid-feedback" })
+                            <span class="text-danger">max length 50 characters</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.title_en, "العنوان باللغة الإنجليزية ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.title_en, new { htmlAttributes = new { @class = "form-control", required = "required", maxlength = "50" } })
+                            @Html.ValidationMessageFor(model => model.title_en, "العنوان باللغة الإنجليزية مطلوب", new { @class = "invalid-feedback" })
+                            <span class="text-danger">max length 50 characters</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.message, "رسالة ارشادية ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <textarea id="message" name="message" rows="5" class="form-control" required maxlength="178"></textarea>
+                            @Html.ValidationMessageFor(model => model.message, "رسالة ارشادية مطلوب", new { @class = "invalid-feedback" })
+                            <span class="text-danger">max length 178 characters</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.link, "رابط النشرة الإعلانية", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.link, "رابط النشرة الإعلانية مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.link_title, "عنوان رابط النشرة الإعلانية", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.link_title, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.link_title, "عنوان رابط النشرة الإعلانية مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.region_id, "منطقة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.region_id, ViewBag.region_id as SelectList, "-- Select Region --", htmlAttributes: new { @class = "form-control h-auto", @id = "region_id", required = "required" })
+                            @Html.ValidationMessageFor(model => model.region_id, "منطقة مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.city, "مدينة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.city, new SelectList(""), null, new { @class = "select2_city select2 form-control select2-multiple h-auto", multiple = "multiple", required = "required" })
+                            @Html.ValidationMessageFor(model => model.city, "مدينة مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.season, "الموسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="select2 select2_season form-control select2-multiple" name="multiseason" id="multiseason" multiple="multiple" data-placeholder=" .... أختر" required>
+                                <option value="كل">كل</option>
+                                <option value="فصل الخريف">فصل الخريف</option>
+                                <option value="فصل الشتاء">فصل الشتاء</option>
+                                <option value="فصل الربيع">فصل الربيع</option>
+                                <option value="فصل الصيف"> فصل الصيف</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.season, "الموسم مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="Save" type="submit" value="حفظ" class="btn btn-primary" />
+                            @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+<div class="col-sm-6 col-md-4 col-xl-3">
+    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0">Weather Class</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label class="control-label col-md-3">فئة الإخطار :</label>
+                        <div class="col-9">
+                            <input type="text" name="ClassName" id="className" class="form-control h1" required />
+                            <input type="button" id="saveClass" class="btn btn-primary" value="@Resources.Resources.Save" />
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    @*<script src="~/assets/js/pages/form-element.init.js"></script>*@
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $("#region_id").change(function () {
+            var id = $(this).val();
+
+            axios.get('/WeatherNotification/bindCity?id=' + id, {
+                headers: {
+                    'Content-Type': 'html'
+                }
+            })
+                .then(function (r) {
+                    $("#city").empty();
+                    $("#city").append(r.data);
+                })
+                .catch(function (error) {
+                    swal.fire("Error", error, "error")
+                });
+        });
+
+
+        //$("#Save").click(function (e) {
+        //    e.preventDefault();
+
+        //    $("#allcity").val($(".select2_city").select2().val());
+        //    $("#allseason").val($(".select2_season").select2().val());
+        //    $('#form').get(0).submit();
+        //});
+
+
+
+
+        $(".select2").select2(
+            //{
+            //tags: true
+            //,
+            //insertTag: function (data, tag) {
+            //    data.push(tag);
+            //},
+            //createTag: function (params) {
+            //    var term = $.trim(params.term);
+            //    console.log(term)
+
+            //    if (term === '') {
+            //        return null;
+            //    }
+
+            //    return {
+            //        id: term,
+            //        text: term,
+            //        newTag: true // add additional parameters
+            //    }
+            //}
+            //}
+        );
+
+        $("#saveClass").click(function (e) {
+            var className = $("#className").val();
+
+            axios.post('/WeatherNotification/AddClass', { 'className': className })
+                .then(function (r) {
+                    if (r.data == "Success") {
+                        Swal.fire("تم إدخاله بنجاح", "success")
+                        $('.bs-example-modal-center').modal('toggle');
+                        $('#notification_class_id').trigger("chosen:updated");
+                        location.reload();
+                    } else {
+                        swal.fire(r.data, "Something wrong!", "error")
+                    }
+                })
+                .catch(function (error) {
+                    swal.fire("Error", error, "error")
+                });
+        });
+    });
+
+
+</script>

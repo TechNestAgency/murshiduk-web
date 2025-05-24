@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Controllers.OTPEntity>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "OTP List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+
+                    <tr>
+                        <th>phone No</th>
+                        <th>OTP</th>
+                        <th>Created At</th>
+                        <th>Attempts</th>
+                        
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th class="align-middle w-auto">@Html.DisplayFor(modelItem => item.phone)</th>
+                            <td class="align-middle w-auto">
+                                @Html.DisplayFor(modelItem => item.otp)
+                            </td>
+                            <td class="align-middle w-auto">
+                                @Html.DisplayFor(modelItem => item.created_at)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.attempts)
+                            </td>
+                            
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <!-- end table-responsive -->
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="d-flex justify-content-between">
+        <div>
+            عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+        </div>
+    </div>
+</div>

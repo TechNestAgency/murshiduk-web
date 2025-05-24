@@ -1,0 +1,99 @@
+﻿@model MurshadikCP.Controllers.ParentChat
+
+@{
+    ViewBag.Title = "Chat";
+    ViewBag.pTitle = "Chat";
+    ViewBag.pageTitle = "Skote";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-lg-flex">
+    <div class="chat-leftsidebar mr-lg-4">
+        <div class="">
+            <div class="py-4 border-bottom">
+                <div class="media">
+                    <div class="align-self-center mr-3">
+                        <img src="@Model.User.avatar" class="avatar-xs rounded-circle" alt="">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="font-size-15 mt-0 mb-1">@Model.User.name @Model.User.last_name</h5>
+                        <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle mr-1"></i> Active</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-box chat-search-box py-4">
+                <div class="position-relative">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <i class="bx bx-search-alt search-icon"></i>
+                </div>
+            </div>
+
+            <div class="chat-leftsidebar-nav">
+                <div class="tab-content py-4">
+                    <div class="tab-pane show active" id="chat">
+                        <div>
+                            <h5 class="font-size-14 mb-3">Recent</h5>
+                            <ul class="list-unstyled chat-list" data-simplebar style="max-height: 410px;">
+                                @foreach (var item in Model.To_Chats)
+                                {
+
+                                    <li class="active">
+                                        <a href="javascript:void(0);" class="sa-warning" data-id="@Model.User.id" data-toid="@item.message_to">
+                                            <div class="media">
+                                                <div class="align-self-center mr-3">
+                                                    <i class="mdi mdi-circle font-size-10"></i>
+                                                </div>
+                                                <div class="align-self-center mr-3">
+                                                    <img src="@item.avatar" class="rounded-circle avatar-xs" alt="">
+                                                </div>
+
+                                                <div class="media-body overflow-hidden">
+                                                    <h5 class="text-truncate font-size-14 mb-1">@item.fullname</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="MyPartial" class="w-100">
+    </div>
+
+</div>
+<!-- end row -->
+
+@section scripts{
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $(".sa-warning").click(function (e) {
+            var from_id = $(this).data('id');
+            var to_id = $(this).data('toid');
+
+            $.ajax({
+                url: '@Url.Action("RefillChatDetails", "workerextension")',
+                dataType: "html",
+                type: "GET",
+                data: { "from_id" : from_id, "to_id" : to_id },
+                    contentType: "application/html; charset=utf-8",
+                    success: function (result) {
+                        $("#MyPartial").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+        });
+    });
+</script>

@@ -1,0 +1,181 @@
+﻿@model MurshadikCP.Models.DB.article
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600,700&display=swap&subset=arabic" rel="stylesheet">
+
+    <!-- Styles -->
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/assets/css/app-rtl.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <style>
+        html[dir=rtl] body,
+        body {
+            background-color: #FFFFFF;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /*#article {
+            margin-top: -50px;
+        }*/
+
+        .bg-color {
+            background-color: #0E6932;
+            padding-bottom: 50px;
+        }
+            html[dir=rtl] body,
+            body{
+                @*background: url(@(Model.image == null ? "../../Media/Images/logo.png" : "../../" + Model.image)) no-repeat top right fixed;*@
+                font-family: 'Cairo', sans-serif;
+                background-size: 400px 400px;
+            }
+
+            #article{
+                margin-top: 0%
+            }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <div class="main-panel">
+            <div class="content p-3">
+                @if (Model.image == null)
+                {
+                    <div class="text-center bg-color">
+                        <img src="~/assets/images/logo.png" alt="" class="py-4 text-center">
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center">
+                        <img src="../../@Model.image" alt="" class="w-100">
+                    </div>
+                }
+
+                <div class="bg-white round-rose" id="article">
+
+                    <h4 class="py-4">@Model.title @Request.QueryString["val"]</h4>
+                    
+                    <div>
+                        @Html.Raw(Model.description)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<script src="~/assets/js/app.js">
+
+        </script>*@
+    <script src="~/assets/libs/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.showCategoryInApp').click(function () {
+
+                if (window.webkit != undefined) {
+                    if (window.webkit.messageHandlers.showParentCategoryDetailsMessageHandler != undefined) {
+                        window.webkit.
+                            messageHandlers
+                            .showParentCategoryDetailsMessageHandler
+                            .postMessage(
+                                {
+                                    catID: $(this).data('cat-id'),
+                                    catTitle: $(this).data('cat-title')
+                                }
+                            );
+                    }
+                }
+
+                if (window.showParentCategoryDetailsMessageHandler != undefined) {
+                    window.showParentCategoryDetailsMessageHandler
+                        .postMessage(
+                            JSON.stringify({
+                                catID: $(this).data('cat-id'),
+                                catTitle: $(this).data('cat-title')
+                            })
+                        );
+                }
+
+                // window.webkit.messageHandlers.showParentCategoryDetailsMessageHandler.postMessage({catID: $(this).data('cat-id'), catTitle: $(this).data('cat-title')});
+            })
+
+            $("img").click(function () {
+
+                if (window.webkit != undefined) {
+                    if (window.webkit.messageHandlers.showImageDetailsMessageHandler != undefined) {
+                        window.webkit.
+                            messageHandlers
+                            .showImageDetailsMessageHandler
+                            .postMessage(
+                                {
+                                    imagePath: $(this).attr('src')
+                                }
+                            );
+                    }
+                }
+
+                if (window.showImage != undefined) {
+                    window
+                        .showImage
+                        .postMessage($(this).attr('src'));
+                }
+
+                // window.webkit.messageHandlers.showImageDetailsMessageHandler.postMessage({imagePath: $(this).attr('src')});
+            });
+
+            $('.joinNowInApp').click(function () {
+
+                if (window.webkit != undefined) {
+                    if (window.webkit.messageHandlers.joinNowMessageHandler != undefined) {
+                        window.webkit.
+                            messageHandlers
+                            .joinNowMessageHandler
+                            .postMessage(
+                                {
+                                    trainingID: $(this).data('training-id')
+                                }
+                            );
+                    }
+                }
+
+                if (window.joinNowMessageHandler != undefined) {
+                    window.joinNowMessageHandler
+                        .postMessage(
+                            JSON.stringify({
+                                trainingID: $(this).data('training-id')
+                            })
+                        );
+                }
+            })
+        })
+
+        function hideJoinNow() {
+            $('#joinNowInApp').addClass('d-none');
+
+            return true;
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+

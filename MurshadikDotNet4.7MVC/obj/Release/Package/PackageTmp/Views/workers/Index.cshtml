@@ -1,0 +1,299 @@
+﻿@model PagedList.IPagedList<MurshadikCP.Controllers.Dashboard.DashboardViewModel.WorkerViewModel>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+<link href="~/assets/css/select2_mushadik.css" rel="stylesheet" />
+
+<style>
+
+    .selectbox {
+        background: #fff;
+        color: #1d3b4a;
+        padding: 8px;
+        line-height: 18px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        border-width: 0 1px 4px;
+    }
+</style>
+
+@{
+
+    ViewBag.Title = "الايدي العاملة";
+
+    ViewBag.pTitle = "الايدي العاملة ";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Workers", FormMethod.Get))
+        {
+            <input type="hidden" id="startDate" name="startDate" value="@ViewBag.startDate" />
+            <input type="hidden" id="endDate" name="endDate" value="@ViewBag.endDate" />
+            <div class="align-items-center card-body">
+                <div class="align-items-center row">
+                    <div class="col-12">
+                        <div class="row align-items-center">
+                            <div class="col-md-9">
+                                @Html.TextBox("searchData", ViewBag.CurrentFilter as string, new { @class = "form-control form-control-lg my-2 my-lg-4", @placeholder = Resources.Resources.What_are_you_looking_for_ })
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <div id="reportrange" class="selectbox d-inline-block">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span> <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="align-items-center row">
+
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">@Resources.Resources.Region</label>
+                                    @Html.DropDownList("Region", null, Resources.Resources.All, htmlAttributes: new { @class = "form-control h-auto" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">الوظيفة</label>
+                                    @Html.DropDownList("Jobs", null, Resources.Resources.All, htmlAttributes: new { @class = "form-control h-auto" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="active" class="form-label">@Resources.Resources.Status</label>
+                                    <select class="form-control h-auto" name="isBusy" id="isBusy">
+                                        <option value="0">@Resources.Resources.All</option>
+                                        <option value="1">غير متاح</option>
+                                        <option value="2">متاح</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 py-3 text-right">
+                                <label class="form-label"> </label>
+                                <input type="submit" value="@Resources.Resources.Search" class="btn btn-block btn-lg btn-success waves-effect waves-light" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Resources.Resources.Name
+                    </th>
+                    <th>
+                        @Resources.Resources.Region
+                    </th>
+                    <th>
+                        @Resources.Resources.Mobile_Number
+                    </th>
+                    <th>
+                        الوظائف
+                    </th>
+                    <th>
+                       الحالة
+                    </th>
+                   
+                   
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Rejon)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Job)
+                        </td>
+
+
+
+                        <td>
+                            <a class='@(item.IsBusy == true ?  "btn btn-danger waves-effect waves-light sa-warning":"btn btn-success waves-effect waves-light sa-warning")' data-toggle="tooltip" data-placement="top" data-active="@item.IsBusy" title="@(item.IsBusy == true ? "غير متاح" : "متاح")">@(item.IsBusy == true ? "غير متاح" : "متاح")</a>
+
+                        </td>
+
+                        <td class="align-middle">
+                            <div class="btn-group">
+                                <a href="/Workers/Details?WorkerId=@item.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="تفاصيل"><i class="fa fa-eye"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between">
+    <div>
+        عرض صفحة @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) من @Model.PageCount
+        @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+            new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, searchData = ViewBag.FilterValue, Region = ViewBag.FilterRegion, isBusy = ViewBag.IsBusy, Jobs = ViewBag.FilterJobs, startDate = ViewBag.startDate, endDate = ViewBag.endDate }))
+    </div>
+</div>
+@section scripts{
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+
+        var token = $("[name='__RequestVerificationToken']").val();
+        var showSwal = false;@*@Json.Encode(@TempData.ContainsKey(Constants.SuccessMessageKey));*@
+
+
+        $(document).ready(function () {
+            if (showSwal) {
+                    Swal.fire("محظور!", "@TempData.Peek(Constants.SuccessMessageKey)" , "success")
+            }
+
+                var is_first_load = true;
+                var start = moment();
+                var end = moment();
+
+                function cb(start, end) {
+                    console.log(start.toISOString() + ' - ' + end.format('MMMM D, YYYY'),"changed")
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                    if (!is_first_load) {
+                    $('#startDate').val(start.toISOString());
+                    $('#endDate').val(end.toISOString());
+                    $('form').submit();
+                    } else {
+                        is_first_load = false;
+                    }
+                }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                maxDate: moment(),
+                showDropdowns: true,
+                parentEl: '.main-panel',
+                opens: "right",
+                locale: {
+                        "separator": " - ",
+                    "applyLabel": "@Resources.Resources.Ok",
+                    "cancelLabel": "@Resources.Resources.Cancel",
+                    "fromLabel": "@Resources.Resources.From",
+                    "toLabel": "@Resources.Resources.To",
+                    "customRangeLabel": "@Resources.Resources.More"
+                },
+                ranges: {
+                        '@Resources.Resources.All': [moment("2017-01-01"), moment()],
+                    '@Resources.Resources.Today': [moment(), moment()],
+                    '@Resources.Resources.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resources.Resources.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resources.Resources.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resources.Resources.This_Month': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.Resources.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+            }, cb);
+
+                cb(start, end);
+
+
+
+            @*$(".sa-warning").click(function (e) {
+                    var row = $(this).closest('tr');
+                    var id = $(this).siblings('input#ids').val();
+                    var active = $(this).data('active');
+                    Swal.fire({
+                    title: 'هل أنت واثق ؟',
+                    text: "هل أنت متأكد من تنفيذ هذا الإجراء؟",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                    }).then(function (t) {
+                        if (t.value) {
+                            axios.post('/Farmers/Block', { 'id': id, 'active': active } )
+                            .then(function (r) {
+                                if (r.data.status) {
+                                    Swal.fire({ title: "", text: r.data.message, type: "success", confirmButtonText: "@Resources.Resources.Ok" }).then(function (x) {
+                                        location.reload()
+                                    })
+                                } else {
+                                    swal.fire("@Resources.Resources.Errors", r.data.message, "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                            }
+                        });
+                    });*@
+
+            $(".sa-warning-consultant").click(function (e) {
+                        var row = $(this).closest('tr');
+                        var id = $(this).siblings('input#ids').val();
+                        Swal.fire({
+                        title: 'هل أنت واثق ؟',
+                    text: "لن تتمكن من التراجع عن هذا!",
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                        }).then(function (t) {
+                            if (t.value) {
+                                axios.post('/Farmers/ChangeRole', { 'id': id })
+                            .then(function (r) {
+                                    if (r.data == "Success") {
+                                        Swal.fire("محظور!", "هل أنت متأكد من تغيير وضع هذا المزارع كمستشار؟", "success")
+                                        //row.remove();
+                                    } else {
+                                        swal.fire(r.data, "Something wrong!", "error")
+                                    }
+                                })
+                            .catch(function (error) {
+                                    swal.fire("Error", error, "error")
+                            });
+                                }
+                            });
+                        });
+        });
+
+
+    
+        $("#isBusy").val("@ViewBag.isBusy");
+        $("#startDate").val("@ViewBag.startDate");
+        $("#endDate").val("@ViewBag.endDate");
+
+    </script>
+}

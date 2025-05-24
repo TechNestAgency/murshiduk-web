@@ -1,0 +1,138 @@
+﻿@model MurshadikCP.Models.DB.market
+
+@{
+    ViewBag.Title = "سوق";
+    ViewBag.pTitle = "إضافة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/assets/libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Create", "markets", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>إضافة سوق</h4>
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">المنطقة</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("region_id", null, htmlAttributes: new { @class = "form-control h-auto" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.marketname, "اسم المركز", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.marketname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.marketname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.location, "الموقع", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.address, "العنوان", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4">
+                            @Html.LabelFor(model => model.open_at, "وقت", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-lg-10">
+                                <div class="input-daterange input-group" data-provide="datepicker">
+                                    <input id="open_at" type="text" name="open_at" class="form-control timepicker" placeholder="فتح المركز" data-provide="timepicker">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                    </div>
+                                    <input id="close_at" type="text" name="close_at" class="form-control timepicker" placeholder="اغلاق المركز" data-provide="timepicker">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.contact_person, "المسؤول", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.contact_person, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.contact_person, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.phone, "رقم الهاتف", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">صورة سوق</label>
+                            <div class="col-md-10">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="image" id="imageFile" onchange="document.getElementById('outputimage').src = window.URL.createObjectURL(this.files[0])" required>
+                                    <label class="custom-file-label" for="imageFile"> ... أختر </label>
+                                    <div class="card">
+                                        <img src="~/assets/images/image_placeholder.jpg" id="outputimage" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.is_active, "مُفعل", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.is_active)
+                                    @Html.ValidationMessageFor(model => model.is_active, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value=@Resources.Resources.Add class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+}
+

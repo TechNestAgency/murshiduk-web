@@ -1,0 +1,268 @@
+﻿@model MurshadikCP.Models.DB.medium
+
+@{
+    ViewBag.Title = Resources.Resources.Add;
+    ViewBag.pTitle = "إضافة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                @using (Html.BeginForm("Create", "Medias", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4 class="card-title">إضافة ملف</h4>
+                    @*<input type="hidden" name="allkeywords" id="allkeywords" />
+                    <input type="hidden" name="allregions" id="allregions" />
+                    <input type="hidden" name="allskills" id="allskills" />*@
+
+                    <div class="form-group row">
+                        <label class="col-md-2 control-label">العنوان</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="title" name="title" type="text" placeholder="العنوان ملف" required>
+                            <div class="invalid-feedback">
+                                العنوان مطلوب
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.keywords, "الكلمات الدلالية", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("keywords", null, htmlAttributes: new
+                            {
+                               @class = "select2_keywords select2 form-control select2-multiple h-auto",
+                               id = "multiKeywords",
+                               multiple = "multiple",
+                               data_placeholder = " .... أختر",
+                               required = "required"
+                            })
+                            @Html.ValidationMessageFor(model => model.keywords, "الدلالية مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.DropDownList("keyword_template", null, htmlAttributes: new { @class = "form-control h-auto", id = "keyword_template" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 control-label">نوع الملف</label>
+                        <div class="col-md-10">
+                            <select class="form-control h-auto" name="file_type" id="filetype">
+                                <option value="file">File</option>
+                                <option value="link">Link</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="imagefile">
+                        <label class="col-md-2 control-label">ملف</label>
+                        <div class="col-md-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="imageFile" onchange="document.getElementById('outputimage').src = window.URL.createObjectURL(this.files[0])" multiple>
+                                <label class="custom-file-label" for="imageFile"> ... أختر </label>
+                                <div class="card">
+                                    <img src="~/assets/images/image_placeholder.jpg" id="outputimage" class="card-img-top img-fluid" alt="icon image" style="width: 40px; height: 40px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="filelink">
+                        <label class="col-md-2 control-label">رابط الملف</label>
+                        <div class="col-md-10">
+                            <input class="form-control" parsley-type="url" type="url" id="link" name="link" placeholder="رابط الملف">
+                            <div class="invalid-feedback">
+                                رابط الملف مطلوب
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="from-group row mb-3">
+                        @Html.LabelFor(model => model.description, "وصف", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <textarea rows="3" class="form-control" id="description" name="description" placeholder="وصف الصورة" required></textarea>
+                            @Html.ValidationMessageFor(model => model.description, "وصف مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.regions, "منطقة", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("regions", null, htmlAttributes: new
+                            {
+                               @class = "select2_regions select2 form-control select2-multiple h-auto",
+                               id = "multiregions",
+                               multiple = "multiple",
+                               data_placeholder = " .... أختر",
+                               required = "required"
+                            })
+                            @*@Html.ValidationMessageFor(model => model.keywords, "", new { @class = "invalid-feedback" })*@
+                            @Html.ValidationMessageFor(model => model.regions, "منطقة مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.skills, "التخصصات", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("skills", null, htmlAttributes: new
+                            {
+                               @class = "select2_skills select2 form-control select2-multiple h-auto",
+                               id = "multiskills",
+                               multiple = "multiple",
+                               data_placeholder = " .... أختر",
+                               required = "required"
+                            })
+                            @*@Html.ValidationMessageFor(model => model.keywords, "", new { @class = "invalid-feedback" })*@
+                            @Html.ValidationMessageFor(model => model.skills, "التخصصات مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.related_to, "هل ترتبط في:", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="form-control h-auto" name="related_to">
+                                <option value="0">كل</option>
+                                <option value="آفة">آفة</option>
+                                <option value="زراعة">زراعة</option>
+                                <option value="سماد">سماد</option>
+                                <option value=" مكافحة الآفات"> مكافحة الآفات</option>
+                                <option value="المياه والتربة"> المياه والتربة</option>
+                                <option value="العناية بالنبات"> العناية بالنبات</option>
+                                <option value="أسئلة شائعة"> أسئلة شائعة</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.related_to, "هل ترتبط في مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.seasons, "الموسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="select2 select2_season form-control select2-multiple h-auto" name="multiseason" id="multiseason" multiple="multiple" data-placeholder=" .... أختر">
+                                <option value="كل">كل</option>
+                                <option value="فصل الخريف">فصل الخريف</option>
+                                <option value="فصل الشتاء">فصل الشتاء</option>
+                                <option value="فصل الربيع">فصل الربيع</option>
+                                <option value="فصل الصيف"> فصل الصيف</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.seasons, "الموسم مطلوب", new { @class = "invalid-feedback" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="Save" type="submit" value="@Resources.Resources.Add" class="btn btn-primary" />
+                            @Html.ActionLink(Resources.Resources.Back, "Index", null, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="~/assets/js/pages/form-element.init.js"></script>
+
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#filelink").hide();
+        $("#filetype").change(function () {
+            var filetype = $('#filetype').val();
+            if (filetype == "file") {
+                $("#imagefile").show();
+                $("#filelink").hide();
+            } else {
+                $("#imagefile").hide();
+                $("#filelink").show();
+            }
+        });
+
+
+
+        //$("#Save").click(function (e) {
+        //    e.preventDefault();
+
+        //    $("#allkeywords").val($(".select2_keywords").select2().val());
+        //    $("#allregions").val($(".select2_regions").select2().val());
+        //    $("#allskills").val($(".select2_skills").select2().val());
+        //    var filetype = $('#filetype').val();
+        //    if (filetype != "file") {
+        //        if ($("#link").val() == "") {
+        //            alert("please put file link then click on save button!");
+        //        } else {
+        //            $('#form').get(0).submit();
+        //        }
+        //    } else {
+        //        if ($("#imageFile").val() != "") {
+        //            $('#form').get(0).submit();
+        //        }
+        //    }
+
+        //});
+
+        $(".select2").select2({
+            dir: "rtl",
+            tags: true,
+            insertTag: function (data, tag) {
+                data.push(tag);
+            },
+            createTag: function (params) {
+                var term = $.trim(params.term);
+                console.log(term)
+
+                if (term === '') {
+                    return null;
+                }
+
+                return {
+                    id: term,
+                    text: term,
+                    newTag: true // add additional parameters
+                }
+            }
+        });
+
+        $('.select2').on('select2:select', function (e) {
+            var data = e.params.data;
+            if (data.newTag) {
+                axios.post('/keywords/AddKeywords', { 'name': data.text })
+                    .then(function (r) {
+                        console.log(r)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+                console.log(data);
+            }
+        });
+
+        $('#keyword_template').change(function () {
+            $("#multiKeywords").select2().val(this.value.split(',')).trigger('change');
+        });
+
+    });
+
+</script>

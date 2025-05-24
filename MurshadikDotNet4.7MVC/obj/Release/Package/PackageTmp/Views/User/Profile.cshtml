@@ -1,0 +1,92 @@
+﻿@model MurshadikCP.Models.ChangePasswordViewModel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("ResetPassword_V2", "Account", FormMethod.Post, new { @class = "needs-validation custom-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    if (ViewBag.Error != "" && ViewBag.Error != null)
+                    {
+                        <span class="text-danger">@ViewBag.Error</span>
+                    }
+                    <input type="hidden" name="Mobile" value="@Model.Mobile" />
+                    <div class="form-horizontal">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model, "اسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @class = "form-control input-mask",
+                                   @required = "required"
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.Name, "اسم مطلوب", new { @class = "invalid-feedback" })
+
+                            </div>
+                        </div>
+                        @if (ViewBag.ResetPassword == "0")
+                        {
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.OldPassword, "كلمة المرور القديمة", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.OldPassword, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.OldPassword, "كلمة المرور القديمة مطلوب", new { @class = "invalid-feedback" })
+                                </div>
+                            </div>
+                        }
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.NewPassword, "كلمة المرور", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NewPassword, new { htmlAttributes = new { @class = "form-control", @required = "required", @id = "pass2" } })
+                                @Html.ValidationMessageFor(model => model.NewPassword, "كلمة المرور مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model, "إعادة كلمة المرور", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="password" name="ConfirmPassword" class="form-control" required data-parsley-equalto="#pass2" placeholder="Re-Type Password" />
+                                @*@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @required = "required" } })*@
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "إعادة كلمة المرور مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="@Resources.Resources.Edit" class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", "User", null, htmlAttributes: new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <!-- form mask -->
+    <script src="~/assets/libs/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+    <!-- form mask init -->
+    <script src="~/assets/js/pages/form-mask.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+}
+
+@*<script src="~/assets/libs/jquery/jquery.min.js"></script>*@

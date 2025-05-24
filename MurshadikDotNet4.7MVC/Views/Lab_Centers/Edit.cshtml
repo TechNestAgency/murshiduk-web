@@ -1,0 +1,163 @@
+﻿@model MurshadikCP.Models.DB.LabCollecctionPoint
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Add", "Lab_Centers", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @*@Html.ValidationSummary(true, "", new { @class = "invalid-feedback" })*@
+                        @Html.HiddenFor(model => model.id)
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Name, "اسم", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "Name", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Name, "اسم مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Number, "رقم المعمل", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Number, "رقم المعمل مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.lab_id, "مختبر", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("lab_id", null, htmlAttributes: new { @class = "form-control h-auto", @required = "required" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Address, "عنوان", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.phone, "عنوان مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.phone, "رقم الهاتف", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.phone, "رقم الهاتف مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.email, "البريد الإلكتروني", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.contactperson, "أشخاص الاتصال", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.contactperson, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.contactperson, "البريد الإلكتروني مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4">
+                            @Html.LabelFor(model => model.open_at, "وقت", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-lg-10">
+                                <div class="input-daterange input-group" data-provide="datepicker">
+                                    <input id="open_at" type="text" name="open_at" value="@Model.open_at" class="form-control timepicker" placeholder="فتح في" data-provide="timepicker" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                    </div>
+                                    <input id="close_at" type="text" name="close_at" value="@Model.close_at" class="form-control timepicker" placeholder="قريب في" data-provide="timepicker" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.working_days, "أيام العمل", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <select class="select2 form-control select2-multiple" name="working_days" multiple="multiple" data-placeholder=" .... أختر" required>
+                                    <option value="الأحد">الأحد</option>
+                                    <option value="الاثنين">الاثنين</option>
+                                    <option value="الثلاثاء">الثلاثاء</option>
+                                    <option value="الأربعاء">الأربعاء</option>
+                                    <option value="الخميس">الخميس</option>
+                                    <option value="الجمعة">الجمعة</option>
+                                    <option value="السبت">السبت</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.working_days, "أيام العمل مطلوب", new { @class = "invalid-feedback" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.active, "مُفعل", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.active)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value=@Resources.Resources.Add class="btn btn-primary" />
+                                @Html.ActionLink(Resources.Resources.Back, "Index", new { lab_id = ViewBag.labid }, htmlAttributes: new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/js/pages/form-validation.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <script src="~/assets/libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+}
+
+
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $(".timepicker").timepicker();
+
+        $(".select2").select2({
+            dir: "rtl"
+        }).val([@Html.Raw(ViewBag.day)]).trigger('change');
+
+    });
+
+</script>
+
+
+

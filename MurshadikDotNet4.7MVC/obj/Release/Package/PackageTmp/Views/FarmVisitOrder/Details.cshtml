@@ -1,0 +1,141 @@
+﻿@model MurshadikCP.Controllers.API.ApiViewModel.FarmVisitViewModel
+
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>تفاصيل طلب الزيارة</h2>
+
+<div>
+    
+    <hr />
+    <div class="row">
+        <div class="col-6">
+              
+            <dl class="dl-horizontal">
+                <dt>
+                    اسم المزرعة
+
+                </dt>
+                <dd class="form-control">
+                    @Html.DisplayFor(model => model.FarmName)
+
+                </dd>
+
+                @*<dt>
+                    الوصف
+                </dt>
+
+                <dd class="form-control text-body">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>*@
+
+                <dt>
+                    سبب الزيارة
+                </dt>
+
+                <dd class="form-control">
+                    @Html.DisplayFor(model => model.PurposeOfVisit)
+                </dd>
+
+                <dt>
+                    المنطقة
+                </dt>
+
+                <dd class="form-control">
+                    @Html.DisplayFor(model => model.Region)
+                </dd>
+
+                <dt>
+                    المدينة
+                </dt>
+
+                <dd class="form-control">
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+
+                <dt>
+                    موقع المزرعة
+                </dt>
+
+                <dd class="form-control">
+                    <a href="@Model.Location" target="_blank">انتقل للموقع </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-6">
+            <dl class="dl-horizontal">
+             
+
+               
+
+                <dt>
+                    حالة الزيارة
+                </dt>
+
+                <dd class="form-control">
+                   @{
+                    if (Model.OrderStatus !=null)
+                    {
+
+                    if (Model.OrderStatus.stat == 2)
+                    {
+                    @("مرفوض");
+                    }
+                    else
+                    {
+
+                    @Html.DisplayFor(model => model.OrderStatus.description);
+                    }
+
+                    }
+
+                    }
+                </dd>
+
+                <dt>
+                    صاحب المزرعة
+                </dt>
+
+                <dd class="form-control">
+                    @Html.DisplayFor(model => model.FarmerName)
+                </dd>
+
+                <dt>
+                    تاريخ الطلب
+                </dt>
+
+                <dd class="form-control">
+                    @Html.DisplayFor(model => model.OrderDate)
+                </dd>
+
+                <dt>
+                    تاريخ الزيارة
+                </dt>
+
+                <dd class="form-control">
+                    @Html.DisplayFor(model => model.VisitDate)
+                </dd>
+                <dt>
+                    صور المزرعة
+                </dt>
+
+                <dd>
+                    @{
+                        foreach (var item in Model.Medias)
+                        {
+                            <img src="~/Media/FarmVisitOrderMedia/@item.FileName" alt="Sample Photo" class="avatar-xl" />
+                        }
+                    }
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    
+</div>
+<p>
+   @* @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("رجوع", "Index")
+</p>

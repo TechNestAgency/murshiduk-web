@@ -1,0 +1,659 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css"
+          integrity="sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo" crossorigin="anonymous">
+    <link href="~/assets/css/cbs-styles.min.css" rel="stylesheet">
+    <title>مرحبا المرشد الذكي!</title>
+</head>
+
+<body class="m-0">
+    <div class="container-fluid p-0">
+
+        <aside id="" class="tabbed_sidebar ng-scope chat_sidebar popup-box-on">
+            <div id="chat" class="chat_box_wrapper chat_box_small chat_box_active ios">
+                <div class="chat_box touchscroll chat_box_colors_a" id="inner_chat">
+
+
+                </div>
+            </div>
+
+            <!-- Chat Input Bar -->
+            <div class="bg-light fixed-bottom p-2">
+                <div class="input-group">
+                    <input type="text" id="chat_message" class="form-control" placeholder="اكتب رسالتك" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                    <div class="input-group-text" id="btn-send">ارسال</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+
+    const meiliSearchInstance = axios.create({
+        baseURL: 'https://cbs.mewa-ershad.net/indexes/',
+        timeout: 5000,
+        headers: { 'X-Meili-API-Key': '9de4322556b496f00c7dbf639a57ac485ac74bcfc0b9205d997e1b588684783e' }
+    });
+
+    const murshadikInstance = axios.create({
+        baseURL: 'https://mewa-ershad.net/api/murshadik/',
+        timeout: 15000,
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzYzFiMzA5Ni0yNDg0LTRhMTAtYjlmNC00MjU5YmE5Nzc1OGMiLCJ2YWxpZCI6IlRydWUiLCJ1c2VyaWQiOiIxMTIiLCJmdWxsbmFtZSI6Itin2YTYr9mF2KfZhSDYt9in2LHZgiDYrdiz2YrZhiDYs9mI2YXYsdmIIiwibmFtZSI6Iti32KfYsdmCINit2LPZitmGIiwibGFzdF9uYW1lIjoi2LPZiNmF2LHZiCIsInJvbGVpZCI6IjYiLCJyb2xlbmFtZSI6IkNvbnN1bHRhbnRzIiwiaXNfcHJvZmlsZV9jb21wbGV0ZWQiOiJUcnVlIiwiZXhwIjoxNjQ2NDI5MjAxLCJpc3MiOiJodHRwOi8vbXVyc2hhZGlrLmNvbSIsImF1ZCI6Imh0dHA6Ly9tdXJzaGFkaWsuY29tIn0.J0yj8JNH29oTOU5ZeKlMsly-CUIfRYJ6Q4Q0g64e_VI',
+            'Access-Control-Allow-Origin': '*'
+        }
+    });
+
+    var searchIndex = 'agri_processed_tweets/search';
+
+    var searchQuery = "";
+    var needsMore = false;
+    var searchRecordsLimit = 5;
+    var searchrecordOffset = 0;
+
+    var categoryOptions = [
+        { id: 1, title: "نخيل" },
+        { id: 2, title: "زيتون" },
+        { id: 3, title: "أشجار الفاكهة" },
+        { id: 4, title: "أشجار الزينة" },
+        { id: 5, title: "الخضراوات" },
+        { id: 6, title: "محاصيل حقلية" },
+        { id: 7, title: "البن" },
+        { id: 8, title: "ورد طائفي/زهور الزينة" },
+    ];
+
+    var consultantSkills = [];
+
+    var chatDiv = $('#inner_chat');
+    var chatInput = $('#chat_message');
+    var snd = new Audio("/sounds/message-send.mp3");
+
+    function createBotTextChatBubble(message) {
+        return '<div class="chat_message_wrapper">' +
+            '    <div class="chat_user_avatar">' +
+            '        <a href="#">' +
+            '            <img alt="" src="https://mewa-ershad.net/assets/images/logo.png" class="md-user-image">' +
+            '        </a>' +
+            '    </div>' +
+            '    <ul class="chat_message">' +
+            '        <li>' +
+            '            <p>' + message + '</p>' +
+            '        </li>' +
+            '    </ul>' +
+            '</div>'
+    }
+
+    function createTextChatBubble(message) {
+        return '<div class="chat_message_wrapper chat_message_right" style="display: none;"><ul class="chat_message"><li><p>' + message + '</p></li></ul></div>';
+    }
+
+    function createSelectBubble(message, selectPlaceHolderText, domSelector, options) {
+
+        var select = $('<select class="bg-light form-select form-select-lg px-3" id="' + domSelector + '"><option value="0">' + selectPlaceHolderText + '</option></select>');
+
+        for (const skill of options) {
+            var option = document.createElement("option");
+            option.value = skill.id;
+            option.text = skill.text;
+            select.append(option);
+        }
+
+        var bubbleParent = $('<div class="chat_message_wrapper">' +
+            '    <div class="chat_user_avatar">' +
+            '        <a href="#">' +
+            '            <img alt="" src="https://mewa-ershad.net/assets/images/logo.png" class="md-user-image">' +
+            '        </a>' +
+            '    </div>' +
+            '</div>');
+
+        var optionsMessageParent = $('<ul class="chat_message"></ul>');
+        optionsMessageParent.append('<li>' +
+            '    <p>' + message + '</p>' +
+            '</li>');
+        var optionMessageSelect = $('<li class="bg-transparent p-0"></li>');
+        optionMessageSelect.append(select);
+        optionsMessageParent.append(optionMessageSelect);
+
+        bubbleParent.append(optionsMessageParent);
+
+        self.addBubbleAnimated(chatDiv, bubbleParent);
+
+    }
+
+    function createListBubble(message, domSelector, options) {
+
+        var bubbleParent = $('<div class="chat_message_wrapper">' +
+            '    <div class="chat_user_avatar">' +
+            '        <a href="#">' +
+            '            <img alt="" src="https://mewa-ershad.net/assets/images/logo.png" class="md-user-image">' +
+            '        </a>' +
+            '    </div>' +
+            '</div>');
+
+        var optionParentEl = $('<div class="list-group text-center text-primary"></div>');
+
+        options.forEach(function (option) {
+            optionParentEl.append('<button class="list-group-item list-group-item-action text-primary ' + domSelector + '" rel="' + option.id + '">' + option.text + '</button>');
+        });
+
+        var optionsMessageParent = $('<ul class="chat_message"></ul>');
+        optionsMessageParent.append('<li>' +
+            '    <p>' + message + '</p>' +
+            '</li>');
+
+
+        console.log(optionsMessageParent);
+
+        var optionsMessageLi = $('<li class="p-0 w-100"></li>');
+        optionsMessageLi.append(optionParentEl);
+
+        optionsMessageParent.append(optionsMessageLi);
+
+        bubbleParent.append(optionsMessageParent);
+
+
+        self.addBubbleAnimated(chatDiv, bubbleParent);
+    }
+
+    function createButtonBubbles(options) {
+        var bubbleParentItem = $('<li class="bg-transparent text-center w-100"></li>');
+
+
+        options.forEach(option => {
+            var optionBtn = '<button type="button" class="btn btn-outline-primary btn-sm rounded-pill" id="' + option.id + '">' + option.text + '</button>'
+            bubbleParentItem.append(optionBtn)
+        });
+
+        chatDiv.append(bubbleParentItem);
+    }
+
+    function createArticleBubble(articles) {
+        var articlesDivEl = $('<div></div>');
+        var articleParrentEl = $('<ul class="custom-slider p-0"></ul>');
+
+        articles.forEach(function (article) {
+            var article = $('<li>' +
+                '<div class="card">' +
+                '<img src="' + article.Image + '" class="card-img-top article-img" alt="...">' +
+                '<div class="card-body">' +
+                '<h6 class="card-title text-primary" style="height: 58px; text-overflow: ellipsis; overflow: hidden">' + article.title_ar + '</h6>' +
+                '<button rel="' + article.id + '" class="btn btn-primary btnArticleMore">المزيد</button>' +
+                '</div>' +
+                '</div>' +
+                '</li>');
+            articleParrentEl.append(article);
+        });
+
+        articlesDivEl.append(articleParrentEl);
+
+        self.addBubbleAnimated(chatDiv, articlesDivEl);
+    }
+
+    function createTweetBubble(tweets) {
+        var articlesDivEl = $('<div></div>');
+        var articleParrentEl = $('<ul class="custom-slider p-0"></ul>');
+
+        tweets.forEach(function (tweet) {
+
+            var image = tweet.image ? tweet.image : "https://mewa-ershad.net/assets/images/logo.png";
+            var link = tweet.type == 'qna' ? "qna:" + tweet.id : tweet.link;
+            var tweet = $('<li>' +
+                '<div class="card">' +
+                '<img src="' + image + '" class="card-img-top article-img" alt="...">' +
+                '<div class="card-body">' +
+                '<h6 class="card-title text-primary" style="height: 58px; text-overflow: ellipsis; overflow: hidden">' + tweet.title + '</h6>' +
+                '<button rel="' + link + '" class="btn btn-primary bg-dark btnShowTweet">المزيد</button>' +
+                '</div>' +
+                '</div>' +
+                '</li>');
+            articleParrentEl.append(tweet);
+        });
+
+        articlesDivEl.append(articleParrentEl);
+
+        self.addBubbleAnimated(chatDiv, articlesDivEl);
+    }
+
+    function createConsultantBubble(consultants) {
+        var consultantDivEl = $('<div class="mb-3"></div>');
+        var consultantParrentEl = $('<ul class="list-group"></ul>');
+        var noAvatar = "https://mewa-ershad.net/assets/images/logo.png";
+        consultants.forEach(function (consultant) {
+
+            var avatar = (consultant.avatar != null) ? "https://mw.saatco.net/" + consultant.avatar : noAvatar;
+            var cons = $('<li class="list-group-item d-flex justify-content-between align-items-start select-consultant" rel="' + consultant.chatid + '">' +
+                '<div class="ms-2 me-auto d-flex">' +
+                '    <img class="user-avatar me-2" src="' + avatar + '">' +
+                '    <div class="align-self-center">' +
+                '        <div class="fw-bold">' + consultant.name + '</div>' +
+                // '        <div class="fw-light">'+
+                //             consultant.skills.join(",")+
+                // '        </div>'+
+                '    </div>' +
+                '</div>' +
+                '<span class="badge bg-primary bg-dark rounded-pill align-self-center"> ⭐ ' + consultant.rating + '</span>' +
+                '</li>');
+            consultantParrentEl.append(cons);
+        });
+
+        consultantDivEl.append(consultantParrentEl);
+
+        self.addBubbleAnimated(chatDiv, consultantDivEl);
+    }
+
+    function addNewChatOrConsultantBubble(message) {
+
+        var txtRestart = "بدء محادثة جديدة";
+        var txtSelectConsltant = "محادثة مرشد زراعي";
+        var txtCloseChat = "اغلاق المحادثة";
+        var restartMessageBubble = '<div class="chat_message_wrapper">' +
+            '    <div class="chat_user_avatar">' +
+            '        <a href="#">' +
+            '            <img alt="" src="https://mewa-ershad.net/assets/images/logo.png" class="md-user-image">' +
+            '        </a>' +
+            '    </div>' +
+            '    <ul class="chat_message">' +
+            '        <li>' +
+            '            <p>' + message + '</p>' +
+            '        </li>' +
+            '        <li class="p-0 w-100">' +
+            '            <div class="list-group text-center text-primary">' +
+            '                <button class="list-group-item list-group-item-action text-primary btnRestart" rel="1">' + txtRestart + '</button>' +
+            '                <button class="list-group-item list-group-item-action text-primary btnRestart" rel="2">' + txtSelectConsltant + '</button>' +
+            '                <button class="list-group-item list-group-item-action text-primary btnRestart" rel="3">' + txtCloseChat + '</button>' +
+            '            </div>' +
+            '        </li>' +
+            '    </ul>' +
+            '</div>'
+        self.addBubbleAnimated(chatDiv, restartMessageBubble);
+    }
+
+    function showSatisfactionMessage() {
+        var message = "هل كانت المصادر الإرشادية كافية؟";
+        var satisfactionMessage = '<div class="chat_message_wrapper">' +
+            '    <div class="chat_user_avatar">' +
+            '        <a href=""><img alt="CB" title="CB"src="https://mewa-ershad.net/assets/images/logo.png" class="md-user-image"></a>' +
+            '    </div>' +
+            '    <ul class="chat_message">' +
+            '        <li>' +
+            '            <p>' + message + '</p>' +
+            '        </li>' +
+            '        <li class="p-0 w-100">' +
+            '            <div class="list-group text-center text-primary">' +
+            '               <button type="button" class="list-group-item list-group-item-action text-success btnSatisfactionYes">نعم</button>' +
+            '               <button type="button" class="list-group-item list-group-item-action text-danger btnSatisfactionNo">لا</button>' +
+            '            </div>' +
+            '        </li>' +
+            '    </ul>' +
+            '</div>';
+        self.addBubbleAnimated(chatDiv, satisfactionMessage);
+    }
+
+    function getMyProfile() {
+        murshadikInstance.get('GetUserProfileNew')
+            .then(function (r) {
+                console.log(r);
+            });
+    }
+    function showConsultantsCategories() {
+        murshadikInstance.get('getskills')
+            .then(function (r) {
+                self.consultantSkills = r.data;
+                self.createSelectBubble("الرجاء اختيار مجال التخصص الذي ترغب في استشارة المرشد الزراعي فيه", "الرجاء اختيار التخصص", "skill_select", r.data.map(function (d) { return { id: d.id, text: d.name_ar } }));
+                // self.createListBubble("الرجاء اختيار مجال التخصص الذي ترغب في استشارة المرشد الزراعي فيه", "btnConsultationCategory", r.data.map(function(d){ return {id: d.id,  text: d.name_ar}}));
+            })
+    }
+
+    function getConsultantsList(categoryID = 0) {
+
+        murshadikInstance.get('GetTop5OnlineConsultantForChatBot', {
+            params: {
+                skillid: categoryID,
+                userID: self.getParameterByName('userid')
+            }
+        })
+            .then(function (r) {
+                var successMessageBubble = self.createBotTextChatBubble('الرجاء اختيار مرشد زراعي لبدء المحادثة معه');
+                self.addBubbleAnimated(chatDiv, successMessageBubble);
+                self.createConsultantBubble(r.data.data)
+            });
+    }
+
+    function getSkillsListForConsultant() {
+
+    }
+
+    function showRatingInput() {
+
+    }
+    function searchIndexes(toSearch) {
+        meiliSearchInstance.get(searchIndex, {
+            params: {
+                q: toSearch,
+                limit: searchRecordsLimit,
+                offset: needsMore ? searchrecordOffset * searchRecordsLimit : searchrecordOffset
+            }
+        }
+        )
+            .then(function (r) {
+
+                self.toggleInputState(chatInput, true);
+
+                if (r.data.hits.length > 0) {
+                    var successMessageBubble = self.createBotTextChatBubble('لقد وجدنا المصادر الإرشادية التالية:');
+                    self.addBubbleAnimated(chatDiv, successMessageBubble);
+                    // self.createArticleBubble(r.data.hits);
+
+                    self.createTweetBubble(r.data.hits);
+                } else {
+                    self.addNewChatOrConsultantBubble('لاتتوفر مقالات للمدخلات بالاعلى، هل ترغب في محادثة مرشد زراعي حاليا، أم ترغب في طرح سؤال جديد؟');
+                }
+            })
+            .catch(function (error) {
+                self.toggleInputState(chatInput, true);
+
+                self.addNewChatOrConsultantBubble();
+            })
+            .then(function () {
+                // always executed
+            });
+    }
+
+    function showThanksMessageAndAskForRating() {
+
+        self.toggleInputState(chatInput, false);
+        var thanksMessage = createBotTextChatBubble("شكراً لاستخدامك المرشد الذكي!  نتطلع لخدمتك مستقبلاً.");
+        self.addBubbleAnimated(chatDiv, thanksMessage);
+
+        setTimeout(function () {
+            self.sendCloseWebkitMessage()
+        }, 2000);
+    }
+
+    $(function () {
+
+        $(document).ready(function () {
+
+            var un = self.getParameterByName('username') ? self.getParameterByName('username') : "بك";
+            var welcomeMessage = createBotTextChatBubble(" مرحبا " + un + "، أنا المرشد الذكي، وأنا هنا لمساعدتك.");
+            var welcomeMessage2 = createBotTextChatBubble("أرجوا كتابة المشكلة الزراعية التي تواجها");
+
+            self.addBubbleAnimated(chatDiv, welcomeMessage);
+            self.addBubbleAnimated(chatDiv, welcomeMessage2);
+
+        });
+
+        $("#btn-send").click(function () {
+
+            var question = chatInput.val();
+
+            if (question == '') {
+                return false;
+            }
+
+            self.toggleInputState(chatInput);
+            var messageToAdd = createTextChatBubble(question)
+            self.clearInput(chatInput);
+
+            self.addBubbleAnimated(chatDiv, messageToAdd);
+            searchQuery = question;
+            searchIndexes(searchQuery);
+            needsMore = true;
+            searchrecordOffset = 1;
+
+        });
+
+
+        $('.btn-area').on('click', function (e) {
+
+            var selectedArea = { val: $(this).attr('rel'), text: $(this).text() }
+
+            self.toggleInputState(chatInput);
+            var messageToAdd = createTextChatBubble(selectedArea.text)
+            chatDiv.append(messageToAdd);
+            self.clearInput(chatInput);
+            self.scrollToBottom()
+        });
+    })
+
+    function sendCloseWebkitMessage() {
+        if (window.webkit != undefined) {
+            if (window.webkit.messageHandlers.closeChatMessageHandler != undefined) {
+                window.webkit.
+                    messageHandlers
+                    .closeChatMessageHandler
+                    .postMessage({
+                        action: 'closeChat'
+                    });
+            }
+        }
+
+        if (window.closeChat != undefined) {
+            window
+                .closeChat
+                .postMessage('closeChat');
+        }
+    }
+
+    function changeInputBarPosition(pos) {
+        $('.chat_submit_box').css('bottom', pos)
+    }
+    // Webkit Post Message Handlers
+
+    $("body").on('click', '.btnArticleMore', function () {
+
+
+        setTimeout(function () {
+            self.showSatisfactionMessage();
+        }, 2000);
+
+        if (window.webkit != undefined) {
+            if (window.webkit.messageHandlers.showArticleDetailsMessageHandler != undefined) {
+                window.webkit.
+                    messageHandlers
+                    .showArticleDetailsMessageHandler
+                    .postMessage(
+                        {
+                            articleID: $(this).attr('rel')
+                        }
+                    );
+            }
+        }
+
+        if (window.showArticle != undefined) {
+            window
+                .showArticle
+                .postMessage($(this).attr('rel'));
+        }
+
+    });
+
+    $("body").on('click', '.btnShowTweet', function () {
+
+
+        setTimeout(function () {
+            self.showSatisfactionMessage();
+        }, 2000);
+
+        if (window.webkit != undefined) {
+            if (window.webkit.messageHandlers.showTweetDetailsMessageHandler != undefined) {
+                window.webkit.
+                    messageHandlers
+                    .showTweetDetailsMessageHandler
+                    .postMessage(
+                        {
+                            tweetID: $(this).attr('rel')
+                        }
+                    );
+            }
+        }
+
+        if (window.showTweet != undefined) {
+            window
+                .showTweet
+                .postMessage($(this).attr('rel'));
+        }
+
+    });
+
+    $("body").on('click', '.select-consultant', function () {
+
+        console.log($(this).attr('rel'));
+
+        // setTimeout(function(){
+        //             self.showSatisfactionMessage();
+        //         }, 2000);
+
+        if (window.webkit != undefined) {
+            if (window.webkit.messageHandlers.showConsultantMessageHandler != undefined) {
+                window.webkit.
+                    messageHandlers
+                    .showConsultantMessageHandler
+                    .postMessage(
+                        {
+                            consultantID: $(this).attr('rel')
+                        }
+                    );
+            }
+        }
+
+        if (window.showConsultant != undefined) {
+            window
+                .showConsultant
+                .postMessage($(this).attr('rel'));
+        }
+
+    });
+
+    $("body").on('click', '.btnSatisfactionYes', function () {
+        self.showThanksMessageAndAskForRating();
+    });
+
+    $("body").on('click', '.btnSatisfactionNo', function () {
+        if (!needsMore) {
+            self.addNewChatOrConsultantBubble('هل ترغب في محادثة مرشد زراعي حاليا، أم ترغب في طرح سؤال جديد؟');
+        } else {
+            searchIndexes(searchQuery);
+            needsMore = false;
+            searchrecordOffset = 0;
+        }
+    });
+
+
+    $("body").on('change', '#skill_select', function () {
+
+        var selectItemText = $("#skill_select :selected").text();
+        var selectItemID = $("#skill_select :selected").val();
+
+        var selectedSkill = consultantSkills.find(k => k.id == selectItemID)
+        if (selectedSkill.children.length > 0) {
+
+            var welcomeMessage = createTextChatBubble(selectItemText);
+            self.addBubbleAnimated(chatDiv, welcomeMessage);
+            self.createListBubble("الرجاء اختيار مجال التخصص الذي ترغب في استشارة المرشد الزراعي فيه", "btnConsultationCategory", selectedSkill.children.map(function (d) { return { id: d.id, text: d.name_ar } }));
+
+            return false;
+        }
+
+
+        if (selectItemID <= 0) {
+            return false;
+        }
+        var welcomeMessage = createTextChatBubble(selectItemText);
+        self.addBubbleAnimated(chatDiv, welcomeMessage);
+
+        self.getConsultantsList(selectItemID);
+    });
+
+    $("body").on('click', '.btnConsultationCategory', function () {
+        var welcomeMessage = createTextChatBubble($(this).text());
+        self.addBubbleAnimated(chatDiv, welcomeMessage);
+
+        self.getConsultantsList($(this).attr('rel'));
+    });
+
+    $("body").on('click', '.btnRestart', function () {
+        var action = $(this).attr("rel");
+
+        switch (parseInt(action)) {
+            case 1:
+                var restartMessage = createTextChatBubble($(this).text());
+                self.addBubbleAnimated(chatDiv, restartMessage);
+
+                var welcomeMessage = createBotTextChatBubble(" أرجوا كتابة المشكلة الزراعية التي تواجها");
+                self.addBubbleAnimated(chatDiv, welcomeMessage);
+                self.toggleInputState(chatInput, true);
+                break;
+            case 2:
+                var thanksMessage = createTextChatBubble($(this).text());
+                self.addBubbleAnimated(chatDiv, thanksMessage);
+                // self.getConsultantsList()
+
+                self.showConsultantsCategories();
+                break;
+            default:
+                var thanksMessage = createTextChatBubble($(this).text());
+                self.addBubbleAnimated(chatDiv, thanksMessage);
+                self.showThanksMessageAndAskForRating()
+                break;
+        }
+
+    });
+
+    // Helper Functions
+
+    function addBubbleAnimated(parentDiv, bubble) {
+        $(bubble).appendTo(parentDiv).show();
+        snd.load();
+        snd.play();
+        scrollToBottom()
+
+        // parentDiv.append(bubble);
+        // $(bubble).show();
+    }
+
+    function scrollToBottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function clearInput(input) {
+        input.val('');
+    }
+
+    function toggleInputState(input, doEnable = false) {
+        input.prop('disabled', !doEnable);
+    }
+
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+</script>
+
+</html>

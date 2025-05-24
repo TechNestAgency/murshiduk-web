@@ -1,0 +1,200 @@
+﻿@model MurshadikCP.Controllers.RegionGroupPageModel
+
+
+@*@{
+        List<MurshadikCP.Models.DB.GetTop5ConsultantRating_Result> abc = Model.db.GetTop5ConsultantRating(3).ToList();
+    }*@
+@*<div>
+        @foreach (var item in abc)
+        {
+            <p>@item.avatar</p>
+            <p>@item.fullname</p>
+        }
+    </div>*@
+
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- Bootstrap Rating css -->
+<link href="~/assets/libs/bootstrap-rating/bootstrap-rating.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "مجموعة المنطقة";
+    ViewBag.pTitle = "مجموعة المنطقة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    @foreach (var item in Model.regions)
+    {
+        var totalApprovedUsersInGroup = item.users.Where(x => x.role_id == 6 && x.is_approved == true).Count();
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bg-soft-warning d-flex justify-content-between my-3 p-3 rounded">
+                        <h3>
+                            @item.name_ar
+                        </h3>
+                        <div class="align-self-center font-size-20">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Total Consultant">
+                                    <i class="fas fa-users mr-1"></i> @totalApprovedUsersInGroup
+                                </li>
+                                <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Group Admin">
+                                    <i class="fas fa-user-tie mr-1"></i> @item.users.Where(x => x.role_id == 6 && x.is_group_admin == true).Count()
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+
+                @if (totalApprovedUsersInGroup > 0)
+                {
+                    <div class="col-12">
+                        <div class="card bg-soft-info">
+                            <h5 class="card-body font-weight-bold">
+                                @Resources.Resources.Most_active_consultants
+                            </h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    @foreach (var tc in Model.tcc.Where(x => x.region_id == item.id))
+                                    {
+                                        <div class="col-6 col-md-2">
+                                            <div class="media">
+                                                <div class="me-3">
+                                                    <img class="media-object rounded-circle avatar-xs" alt="" src=@(tc.avatar == null ? "/assets/images/logo.png" : tc.avatar)>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="font-size-13 mb-1 p-2">@tc.fullname</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card bg-soft-success">
+                            <h5 class="card-body font-weight-bold">
+                                @Resources.Resources.TopRatingConsultant
+                            </h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    @foreach (var tp in Model.tcr.Where(x => x.region_id == item.id))
+                                    {
+                                        <div class="col-12 col-md-2">
+                                            <div class="media">
+                                                <div class="me-3">
+                                                    <img class="media-object rounded-circle avatar-xs" alt="" src=@(tp.avatar == null ? "/assets/images/logo.png" : tp.avatar)>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="font-size-13 mb-1 p-2 pl-3">@tp.fullname</h5>
+                                                    <div class="rating-star pl-3">
+                                                        <input type="hidden" class="rating" data-filled="mdi mdi-star text-primary" data-empty="mdi mdi-star-outline text-muted" data-readonly="" value="@tp.rating">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    foreach (var user in item.users.Where(x => x.role_id == 6 && x.is_approved == true && x.active == true).OrderByDescending(x => x.is_group_admin))
+                    {
+
+                        <div class="col-md-2 col-6">
+
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <div class="mx-auto mb-4">
+                                        <img class="media-object rounded-circle avatar-sm" src=@(user.avatar.IsEmpty() ? "/assets/images/logo.png" : user.avatar) />
+                                    </div>
+                                    <h5 class="font-size-12 mb-1 font-weight-bold"><a href="#" class="text-dark">@user.name @user.last_name</a></h5>
+                                    <p class="text-muted" dir="ltr">+@user.phone</p>
+                                    <div>
+                                        <button type="button" class="btn btn-sm font-size-11 m-1 MakeGroupAdmin text-white @(user.is_group_admin == true ? "btn-danger" : "btn-success")" data-status="@user.is_group_admin" data-user-id="@user.id" data-toggle="tooltip" data-placement="top" title="" data-original-title="@(user.is_group_admin == true ? "المشرف مجموعة" : "ليس مسؤول مجموعة")">
+                                            @(user.is_group_admin == false ? "Make Admin" : "Revoke Admin")
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12">
+                        <div class="card">
+                            <h3 class="text-center py-2 py-md-4">No User Found</h3>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    }
+</div>
+
+@section scripts{
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/bootstrap-rating/bootstrap-rating.min.js"></script>
+    <script src="~/assets/js/pages/rating-init.js"></script>
+    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".MakeGroupAdmin").click(function (e) {
+                debugger
+                var status = $(this).data('status');
+                var userid = $(this).data('user-id');
+                var message = "";
+                if (status == "True") { message = "هل أنت متأكد أنك تريد إزالة هذا المستخدم كمسؤول مجموعة؟"; } else { message = "هل أنت متأكد أنك تريد إضافة هذا المستخدم كمسؤول مجموعة؟"; }
+
+                Swal.fire({
+                    title: "تغيير الوضع",
+                    text: message,
+                    type: "warning",
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا',
+                    confirmButtonColor: "#34c38f",
+                    cancelButtonColor: "#f46a6a",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (t) {
+                    if (t.value) {
+                        axios.post('/Region_Group/StatusChangeOfUser', { 'user_id': userid, 'status': status })
+                            .then(function (r) {
+                                if (r.data == "Success") {
+                                    location.reload();
+                                } else {
+                                    swal.fire(r.data, "Something wrong!", "error")
+                                }
+                            })
+                            .catch(function (error) {
+                                swal.fire("Error", error, "error")
+                            });
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+
+}
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
