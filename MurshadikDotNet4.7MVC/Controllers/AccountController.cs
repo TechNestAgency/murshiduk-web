@@ -101,7 +101,7 @@ namespace MurshadikCP.Controllers
                 return View(model);
             }
 
-             var result = await SignInManager.PasswordSignInAsync(model.MobileNo, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.MobileNo, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:

@@ -41,7 +41,7 @@ namespace MurshadikCP.Repositories
                     return appointment;
                 }
             }
-            else if (dt > todayDate)
+            else if (dt.Date > todayDate)
             {
                 var appointment = _db.appointments.Where(x => x.lab_id == lab_id && x.appointment_date == dt)
                 .Select(p => new AppointmentDTO

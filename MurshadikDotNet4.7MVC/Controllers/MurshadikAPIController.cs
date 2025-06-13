@@ -770,9 +770,10 @@ namespace MurshadikCP.Controllers
         public object GetAllAppointmentbyLabID(long lab_id, string date)
         {
             Array a = new Array[0];
+
             if (User.Identity.IsAuthenticated)
             {
-                
+
                 DateTime dt = Convert.ToDateTime(date);
                 DateTime todayDate = DateTime.Now;
                 if (dt.Date == todayDate.Date)
@@ -795,7 +796,7 @@ namespace MurshadikCP.Controllers
                         return appointment;
                     }
                 }
-                else if(dt > todayDate)
+                else if (dt.Date > todayDate)
                 {
                     var appointment = db.appointments.Where(x => x.lab_id == lab_id && x.appointment_date == dt)
                     .Select(p => new AppointmentDTO

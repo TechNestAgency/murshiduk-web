@@ -67,7 +67,7 @@ namespace MurshadikCP.Controllers.API.ApiServices
         public object GetAvailableAppointmentOfDoctor(int ClinicId, DateTime Date, int DoctorId)
         {
             var Appointmet = (from clinicAppointment in db.ClinicAppointments
-                              where clinicAppointment.DoctorId == DoctorId && clinicAppointment.IsBooked == false && EntityFunctions.TruncateTime(clinicAppointment.AppointmentDate) == Date.Date
+                              where clinicAppointment.DoctorId == DoctorId && clinicAppointment.IsBooked == false&& clinicAppointment.ClinicId== ClinicId && EntityFunctions.TruncateTime(clinicAppointment.AppointmentDate) == Date.Date
                               select new
                               {
                                   id = clinicAppointment.Id,

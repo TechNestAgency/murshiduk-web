@@ -576,7 +576,7 @@ namespace MurshadikCP.Controllers.API
         }
 
         // based on lab_id and datetime and return the appointment data
-        [APIAuthorization]
+        //[APIAuthorization]
         [HttpGet]
         [Route("GetAllAppointmentbyLabID")]
         public object GetAllAppointmentbyLabID(long lab_id, string date)
