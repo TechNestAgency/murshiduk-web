@@ -23,6 +23,13 @@ namespace MurshadikCP.Controllers
         UserInfo userInformation = new UserInfo();
         public ActionResult Index(VideoSearchViewModel videoSearch)
         {
+            userInformation = Session["User"] as UserInfo;
+
+            if (userInformation == null)
+            {
+                // Redirect to login if session expired or user not authenticated
+                return RedirectToAction("Login", "Account");
+            }
             string[] CategoryId = System.Configuration.ConfigurationManager.AppSettings["VideoCategoryId"].Split(',');
             if (currentPageID("VideoBoard") > 0)
             {
@@ -30,7 +37,7 @@ namespace MurshadikCP.Controllers
                     return RedirectToAction("NotAllow", "Custom");
             }
 
-            userInformation = (UserInfo)Session["User"];
+            //userInformation = (UserInfo)Session["User"];
             if (userInformation.RoleId == (int)Role.VegetarianGuide)
             {
                 //إرشاد نباتي

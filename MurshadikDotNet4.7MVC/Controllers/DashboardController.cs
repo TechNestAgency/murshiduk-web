@@ -153,7 +153,8 @@ namespace MurshadikCP.Controllers
 
                 List<Object> uSkillsWithIds = new List<object>();
 
-                userSkills.ForEach(us => {
+                userSkills.ForEach(us =>
+                {
                     var thisSkill = allSkills.Where(ass => ass.name.Equals(us.Trim())).FirstOrDefault();
                     if (thisSkill != null)
                     {
@@ -167,7 +168,8 @@ namespace MurshadikCP.Controllers
                         db.skill_user.Add(skill_User);
 
                         uSkillsWithIds.Add(new { Skill = us, SkillID = thisSkill.id });
-                    };
+                    }
+                    ;
                 });
 
                 if (uSkillsWithIds.Any())
@@ -337,13 +339,14 @@ namespace MurshadikCP.Controllers
 
             string strName = Contants.LAYOUT_VERTICAL;
             ViewBag.ModeName = strName;
-           
+
             user user = db.users.Where(x => x.id == CurrentUser.Id).FirstOrDefault();
             ViewData["Avatar"] = user.avatar != null ? user.avatar : "avatar.png";
             ViewData["UserName"] = user.name;
             ViewData["Phone"] = user.phone;
 
-            DateTime sdt = DateTime.Now.AddYears(-2); DateTime edt = DateTime.Now;
+            DateTime sdt = DateTime.Now.AddYears(-2); 
+            DateTime edt = DateTime.Now;
 
             TimeSpan daysToSub = new System.TimeSpan(6, 0, 0, 0);
             var startDate = DateTime.Today.Subtract(daysToSub).StartOfDay();
@@ -367,24 +370,42 @@ namespace MurshadikCP.Controllers
                     endDate = edt;
                 }
 
-                ViewBag.TopMarket = db.markets.Where(x => x.is_active == true && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(5).ToList();
-                ViewBag.TopQuestion = db.qa_questions.Where(x => x.is_approved == false && x.is_verified == false && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
-                ViewBag.TopAnswer = db.qa_answers.Where(x => x.is_approved == false && x.is_verified == false && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
-                ViewBag.TopLabReport = db.appointments.Where(x => x.is_completed == false && x.is_sample_collected == true && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
-                ViewBag.TopReport_Completed = db.appointments.Where(x => x.is_completed == true && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
-                ViewBag.TopConsultant = db.users.Where(x => x.role_id == (int)Role.Consultants && x.created_at >= sdt && x.created_at <= edt).Count();
-                ViewBag.TopFarmers = db.users.Where(x => x.role_id == (int)Role.Farmers && x.created_at >= sdt && x.created_at <= edt).Count();
-                ViewBag.msgs = db.chatmessages.Where(x => x.created_at >= sdt && x.created_at <= edt).Count();
+                //ViewBag.TopMarket = db.markets.Where(x => x.is_active == true && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(5).ToList();
+                //ViewBag.TopQuestion = db.qa_questions.Where(x => x.is_approved == false && x.is_verified == false && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
+                //ViewBag.TopAnswer = db.qa_answers.Where(x => x.is_approved == false && x.is_verified == false && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
+                //ViewBag.TopLabReport = db.appointments.Where(x => x.is_completed == false && x.is_sample_collected == true && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
+                //ViewBag.TopReport_Completed = db.appointments.Where(x => x.is_completed == true && x.created_at >= sdt && x.created_at <= edt).OrderByDescending(x => x.id).Take(10).ToList();
+                //ViewBag.TopConsultant = db.users.Where(x => x.role_id == (int)Role.Consultants && x.created_at >= sdt && x.created_at <= edt).Count();
+                //ViewBag.TopFarmers = db.users.Where(x => x.role_id == (int)Role.Farmers && x.created_at >= sdt && x.created_at <= edt).Count();
+                //ViewBag.msgs = db.chatmessages.Where(x => x.created_at >= sdt && x.created_at <= edt).Count();
+
+                ViewBag.TopMarket = db.markets.Where(x => x.is_active == true).OrderByDescending(x => x.id).Take(5).ToList();
+                ViewBag.TopQuestion = db.qa_questions.Where(x => x.is_approved == false && x.is_verified == false).OrderByDescending(x => x.id).Take(10).ToList();
+                ViewBag.TopAnswer = db.qa_answers.Where(x => x.is_approved == false && x.is_verified == false).OrderByDescending(x => x.id).Take(10).ToList();
+                ViewBag.TopLabReport = db.appointments.Where(x => x.is_completed == false && x.is_sample_collected == true).OrderByDescending(x => x.id).Take(10).ToList();
+                ViewBag.TopReport_Completed = db.appointments.Where(x => x.is_completed == true).OrderByDescending(x => x.id).Take(10).ToList();
+                ViewBag.TopConsultant = db.users.Where(x => x.role_id == (int)Role.Consultants).Count();
+                ViewBag.TopFarmers = db.users.Where(x => x.role_id == (int)Role.Farmers).Count();
+                ViewBag.msgs = db.chatmessages.Count();
 
                 ViewBag.Top5Consultant = db.GetTop5ConsultantRating(Region_id).ToList();
                 ViewBag.topRatingByCalling = db.GetTop5ConsultantCalling(Region_id).ToList();
                 ViewBag.Region_id = Region_id;
+
+                //ViewData["Product"] = db.products.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                //ViewData["Market"] = db.markets.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                //ViewData["Article"] = db.articles.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                //ViewData["Lab"] = db.labs.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                //ViewData["Question"] = db.qa_questions.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                //ViewData["Answer"] = db.qa_answers.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                //ViewData["LabReport"] = db.lab_reports.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+
                 ViewData["Product"] = db.products.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
                 ViewData["Market"] = db.markets.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
-                ViewData["Article"] = db.articles.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                ViewData["Article"] = db.articles.ToList().Count();
                 ViewData["Lab"] = db.labs.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
-                ViewData["Question"] = db.qa_questions.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
-                ViewData["Answer"] = db.qa_answers.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
+                ViewData["Question"] = db.qa_questions.ToList().Count();
+                ViewData["Answer"] = db.qa_answers.ToList().Count();
                 ViewData["LabReport"] = db.lab_reports.Where(x => x.created_at >= sdt && x.created_at <= edt).ToList().Count();
                 ViewBag.NotShow = false;
             }
@@ -420,20 +441,38 @@ namespace MurshadikCP.Controllers
 
             //var todaysEndDate = endDate.AddDays(1);
             var callsTodayDTO = db.calldetails
-                                .Where(cd => cd.status == 2 && cd.created_at >= todaysStartDate && cd.created_at < todaysEndDate)
+                                .Where(cd => cd.status == 2 && cd.created_at >= startDate && cd.created_at < endDate)
                                 .ToList();
-            var callsToday = callsTodayDTO
-                             .GroupBy(ctd => ctd.created_at.Hour)
-                             .Select(ctd => new { Value = ctd.Count(), Key = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, ctd.Key, 0, 0).ChartTimeFormat() })
-                             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            //new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 0, 0).ToString("hh tt");
+
+
+            var rawCalls = db.calldetails
+                        .Where(cd => cd.status == 2 && cd.created_at >= todaysStartDate && cd.created_at < todaysEndDate)
+                        .ToList();
+            var groupedCalls = rawCalls
+                .GroupBy(cd => cd.created_at.Hour)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            var callsToday = Enumerable.Range(0, 24)
+                .ToDictionary(
+                    h => $"{h:D2}:00",                    
+                    h => groupedCalls.ContainsKey(h) ? groupedCalls[h] : 0 
+                );
+
+
+
             var messagesTodayDto = db.chatmessages
                                 .Where(cm => cm.created_at >= todaysStartDate && cm.created_at < todaysEndDate)
                                 .ToList();
-            var messagesToday = messagesTodayDto
-                                 .GroupBy(cmt => cmt.created_at.Hour)
-                                 .Select(ctd => new { Value = ctd.Count(), Key = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, ctd.Key, 0, 0).ChartTimeFormat() })
-                                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            var groupedMessages = messagesTodayDto
+                                    .GroupBy(cmt => cmt.created_at.Hour)
+                                    .ToDictionary(g => g.Key, g => g.Count());
+            var messagesToday = Enumerable.Range(0, 24)
+                .ToDictionary(
+                    h => $"{h:D2}:00",                      
+                    h => groupedMessages.ContainsKey(h) ? groupedMessages[h] : 0
+                );
+
+
 
             Dictionary<string, int> callChartsData = new Dictionary<string, int>();
             Dictionary<string, int> messagesChartsData = new Dictionary<string, int>();
@@ -444,22 +483,32 @@ namespace MurshadikCP.Controllers
             var dt = startDate;
             while (dt.StartOfDay().CompareTo(endDate.EndOfDay()) <= 0)
             {
-                var callDetails = calls.Where(c => c.Date == dt.Date).FirstOrDefault();
-                var messageDetails = messages.Where(m => m.Date == dt.Date).FirstOrDefault();
-                var AndroidDetails = Android.Where(a => a.Date == dt.Date).FirstOrDefault();
-                var IOSDetails = IOS.Where(a => a.Date == dt.Date).FirstOrDefault();
-                var AllUserDetails = AllUsers.Where(a => a.Date == dt.Date).FirstOrDefault();
+                var dateKey = dt.Date.ToString("MMM-dd");
 
-                callChartsData.Add(dt.Date.ToString("MMM-dd"), callDetails != null ? callDetails.Value : 0);
-                messagesChartsData.Add(dt.Date.ToString("MMM-dd"), messageDetails != null ? messageDetails.Value : 0);
+                var callDetails = calls.FirstOrDefault(c => c.Date == dt.Date);
+                var messageDetails = messages.FirstOrDefault(m => m.Date == dt.Date);
+                var AndroidDetails = Android.FirstOrDefault(a => a.Date == dt.Date);
+                var IOSDetails = IOS.FirstOrDefault(a => a.Date == dt.Date);
+                var AllUserDetails = AllUsers.FirstOrDefault(a => a.Date == dt.Date);
 
-                AndroidChartsData.Add(dt.Date.ToString("MMM-dd"), AndroidDetails != null ? AndroidDetails.Value : 0);
-                IOSChartsData.Add(dt.Date.ToString("MMM-dd"), IOSDetails != null ? IOSDetails.Value : 0);
+                if (!callChartsData.ContainsKey(dateKey))
+                    callChartsData.Add(dateKey, callDetails?.Value ?? 0);
 
-                AllUsersData.Add(dt.Date.ToString("MMM-dd"), AllUserDetails != null ? AllUserDetails.Value : 0);
+                if (!messagesChartsData.ContainsKey(dateKey))
+                    messagesChartsData.Add(dateKey, messageDetails?.Value ?? 0);
+
+                if (!AndroidChartsData.ContainsKey(dateKey))
+                    AndroidChartsData.Add(dateKey, AndroidDetails?.Value ?? 0);
+
+                if (!IOSChartsData.ContainsKey(dateKey))
+                    IOSChartsData.Add(dateKey, IOSDetails?.Value ?? 0);
+
+                if (!AllUsersData.ContainsKey(dateKey))
+                    AllUsersData.Add(dateKey, AllUserDetails?.Value ?? 0);
 
                 dt = dt.AddDays(1);
             }
+
 
             ViewBag.startDate = startDate;
             ViewBag.endDate = endDate;
@@ -470,7 +519,7 @@ namespace MurshadikCP.Controllers
             ViewBag.Android = AndroidChartsData;
             ViewBag.AllUsersData = AllUsersData;
             ViewBag.Iphone = IOSChartsData;
-         
+
             List<region> regionddl = db.regions.Where(x => x.active == true).ToList();
             regionddl.Add(new region { id = 0, name_ar = Resources.Resources.All });
             ViewBag.Region = new SelectList(regionddl.OrderBy(x => x.id), "id", "name_ar");

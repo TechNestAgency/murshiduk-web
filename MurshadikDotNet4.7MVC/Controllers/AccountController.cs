@@ -137,15 +137,20 @@ namespace MurshadikCP.Controllers
                             
                             userInformation.roles_Permissions = db.roles_permission.Where(x => x.role_id == u.role_id).OrderBy(x => x.Page.Sort).ToList();
                             Session["Menu"] = userInformation.roles_Permissions;
+                            Session["User"] = userInformation;
                         }
                         
                         bool a = User.Identity.IsAuthenticated;
+                       
                         if (userInformation.RoleId == (int)Role.LabManager)
                         {
                             if (uati != null)
                             {
                                 userInformation.labid = uati != null ? Convert.ToInt32(uati.type_value) : 0;
+
+                               
                                 Session["User"] = userInformation;
+                                
                                 return RedirectToAction("Index", "Appointments", new { @id = userInformation.labid });
                             }
                         }
@@ -192,7 +197,7 @@ namespace MurshadikCP.Controllers
                             Session["User"] = userInformation;
                             return RedirectToAction("Index", "QA");
                         }
-                        else if (userInformation.RoleId == (int)Role.VegetarianGuide || userInformation.RoleId == (int)Role.FishGuide || userInformation.RoleId == (int)Role.AnimalGuide)
+                        else if (userInformation.RoleId == (int)Role.SuperAdmin||userInformation.RoleId == (int)Role.VegetarianGuide || userInformation.RoleId == (int)Role.FishGuide || userInformation.RoleId == (int)Role.AnimalGuide)
                         {
                             Session["User"] = userInformation;
                             return RedirectToAction("Index", "VideoBoard");
